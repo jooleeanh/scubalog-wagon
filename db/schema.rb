@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121154814) do
+ActiveRecord::Schema.define(version: 20161121211401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20161121154814) do
     t.datetime "updated_at", null: false
     t.index ["dive_id"], name: "index_buddies_on_dive_id", using: :btree
     t.index ["user_id"], name: "index_buddies_on_user_id", using: :btree
+  end
+
+  create_table "data_points", force: :cascade do |t|
+    t.integer  "dive_id"
+    t.integer  "time"
+    t.integer  "depth"
+    t.integer  "temp"
+    t.integer  "air"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dive_id"], name: "index_data_points_on_dive_id", using: :btree
   end
 
   create_table "dives", force: :cascade do |t|
@@ -102,6 +113,15 @@ ActiveRecord::Schema.define(version: 20161121154814) do
     t.index ["user_id"], name: "index_participations_on_user_id", using: :btree
   end
 
+  create_table "sightings", force: :cascade do |t|
+    t.integer  "dive_id"
+    t.integer  "animal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["animal_id"], name: "index_sightings_on_animal_id", using: :btree
+    t.index ["dive_id"], name: "index_sightings_on_dive_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -115,16 +135,26 @@ ActiveRecord::Schema.define(version: 20161121154814) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.datetime "dob"
+    t.string   "gender"
+    t.string   "location"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "diving_since"
+    t.string   "certifications",         default: [],              array: true
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "buddies", "dives"
   add_foreign_key "buddies", "users"
+  add_foreign_key "data_points", "dives"
   add_foreign_key "dives", "divesites"
   add_foreign_key "dives", "users"
   add_foreign_key "equipment_sets", "users"
   add_foreign_key "events", "divesites"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
+  add_foreign_key "sightings", "animals"
+  add_foreign_key "sightings", "dives"
 end

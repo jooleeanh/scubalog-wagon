@@ -127,11 +127,8 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
-<row name="date" null="1" autoincrement="0">
-<datatype>DATE</datatype>
-<default>NULL</default></row>
-<row name="time" null="1" autoincrement="0">
-<datatype>TIME</datatype>
+<row name="datetime" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
 <default>NULL</default></row>
 <row name="divesite_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
@@ -139,6 +136,9 @@
 </row>
 <row name="type" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="tank_size" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="bottom_time" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
@@ -180,7 +180,7 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="review_content" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -282,9 +282,6 @@
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="computer" null="1" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="tank_size" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="bcd" null="1" autoincrement="0">

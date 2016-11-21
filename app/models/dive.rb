@@ -1,3 +1,8 @@
+# TODO:
+  # "Must have user, divesite, datetime."
+  # "Type must belong to yml list"
+  # "Depths must be positive"
+  # "Enjoyment must be between 0 and 5"
 
 class Dive < ApplicationRecord
   belongs_to :user

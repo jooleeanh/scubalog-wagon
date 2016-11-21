@@ -1,3 +1,4 @@
+# TODO: "Must have dive, time and depth"
 
 class DataPoint < ApplicationRecord
   belongs_to :dive

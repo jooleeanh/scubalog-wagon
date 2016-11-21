@@ -1,3 +1,4 @@
+# TODO: "Must have name"
 
 class Animal < ApplicationRecord
   has_many :sightings

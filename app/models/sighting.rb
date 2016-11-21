@@ -1,3 +1,4 @@
+# TODO: "Must have dive, animal"
 
 class Sighting < ApplicationRecord
   belongs_to :dive

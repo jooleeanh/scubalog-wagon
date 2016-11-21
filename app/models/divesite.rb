@@ -1,3 +1,6 @@
+# TODO:
+  # "Must have name, location"
+  # "Depths must be positive"
 
 class Divesite < ApplicationRecord
   has_many :events

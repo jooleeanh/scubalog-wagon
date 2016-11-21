@@ -1,3 +1,6 @@
+# TODO:
+  # "Must have email, password, location?"
+  # "Certifications must match with yml"
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -18,7 +21,7 @@ end
 #  latitude               :float
 #  longitude              :float
 #  diving_since           :integer
-#  certifications         :string           default([]), is an 
+#  certifications         :string           default([]), is an
 
 ### Devise ###
 #  encrypted_password     :string           default(""), not null

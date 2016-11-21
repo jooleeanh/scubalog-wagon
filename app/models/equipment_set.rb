@@ -1,3 +1,7 @@
+# TODO:
+  # "Must have user"
+  # "Weight must be positive integer"
+
 
 class EquipmentSet < ApplicationRecord
   belongs_to :user

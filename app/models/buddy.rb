@@ -1,3 +1,4 @@
+# TODO: "Must have user, dive"
 
 class Buddy < ApplicationRecord
   belongs_to :user

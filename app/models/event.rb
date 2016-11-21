@@ -1,3 +1,4 @@
+# TODO: "Must have divesite and datetime"
 
 class Event < ApplicationRecord
   belongs_to :divesite

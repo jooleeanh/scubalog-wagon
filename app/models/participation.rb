@@ -1,3 +1,4 @@
+# TODO: "Must have user, event"
 
 class Participation < ApplicationRecord
   belongs_to :user

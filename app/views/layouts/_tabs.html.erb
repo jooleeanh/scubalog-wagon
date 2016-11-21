@@ -1,42 +1,18 @@
-
-<!-- In the parent view: <%#= render 'layout/tabs', tabs: VARIABLE %> -->
-
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dynamic tabs</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div class="tabs">
-    <% tabs = [
-      {name: "Tab 1", id: "#bio", content: "This is my bio."},
-      {name: "Tab 2", id: "#projects", content: "Here are my projects."},
-      {name: "Tab 3", id: "#contact", content: "Contact me if you want."}
-      ] %>
-    <% tabs.each do |tab| %>
-      <%= link_to(tab[:id]) do %>
-      <%#= link_to tab[:id], 'data-target' => tab[:id], class: "tab" do %>
-        <h3><%= tab[:name] %></h3>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="container text-center">
-    <div class="tab-content" id="bio">
-      <p>This is my bio.</p>
-    </div>
-    <div class="tab-content hidden" id="projects">
-      <p>Here are my projects.</p>
-    </div>
-    <div class="tab-content hidden" id="contact">
-      <p>Contact me if you want.</p>
-    </div>
-  </div>
-  <script src="javascript/tabs.js"></script>
-</body>
-</html>
+<div class="tabs nav nav-pills nav-stacked">
+  <a class="tab active" href="#">
+    <h3>350</h3>
+    <p>Followers</p>
+  </a>
+  <a class="tab" href="#">
+    <h3>456</h3>
+    <p>Following</p>
+  </a>
+  <a class="tab" href="#">
+    <h3>189</h3>
+    <p>Upvoted</p>
+  </a>
+  <a class="tab" href="#">
+    <h3>13</h3>
+    <p>Submitted</p>
+  </a>
+</div>

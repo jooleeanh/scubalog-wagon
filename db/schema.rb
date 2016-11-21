@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121124950) do
+ActiveRecord::Schema.define(version: 20161121131315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dives", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "divesite_id"
+    t.datetime "datetime"
+    t.string   "type"
+    t.integer  "tank_size"
+    t.integer  "bottom_time"
+    t.integer  "start_air"
+    t.integer  "end_air"
+    t.float    "max_depth"
+    t.float    "avg_depth"
+    t.float    "min_temp"
+    t.float    "max_temp"
+    t.text     "comments"
+    t.integer  "enjoyment"
+    t.integer  "visibility"
+    t.text     "polygon",        default: [],              array: true
+    t.integer  "review_rating"
+    t.text     "review_content"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["divesite_id"], name: "index_dives_on_divesite_id", using: :btree
+    t.index ["user_id"], name: "index_dives_on_user_id", using: :btree
+  end
 
   create_table "divesites", force: :cascade do |t|
     t.string   "name"
@@ -28,12 +53,36 @@ ActiveRecord::Schema.define(version: 20161121124950) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "equipment_sets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "mask"
+    t.string   "snorkel"
+    t.string   "fins"
+    t.string   "wetsuit"
+    t.string   "computer"
+    t.string   "bcd"
+    t.string   "regulator"
+    t.float    "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_equipment_sets_on_user_id", using: :btree
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer  "divesite_id"
     t.datetime "datetime"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["divesite_id"], name: "index_events_on_divesite_id", using: :btree
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_participations_on_event_id", using: :btree
+    t.index ["user_id"], name: "index_participations_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,5 +102,10 @@ ActiveRecord::Schema.define(version: 20161121124950) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "dives", "divesites"
+  add_foreign_key "dives", "users"
+  add_foreign_key "equipment_sets", "users"
   add_foreign_key "events", "divesites"
+  add_foreign_key "participations", "events"
+  add_foreign_key "participations", "users"
 end

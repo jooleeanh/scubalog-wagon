@@ -1,0 +1,24 @@
+<footer>
+  <div class="wrapper-dark-grey footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-content">
+          <div class="col-xs-4">
+            <% data.social.each do |k, v| %>
+            <div class="col-xs-<%= 12 / data.social.length %>">
+              <%= link_to v["url"] do %>
+              <i class="footer-icon fa <%= v["fa"] %> fa-2x" aria-hidden="true"></i>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+          <div class="col-xs-8">
+            <div class="text-right">
+              <%= data.project.name %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,8 +1,8 @@
 # TODO:
-  # "Must have user, divesite, datetime."
-  # "Type must belong to yml list"
-  # "Depths must be positive"
-  # "Enjoyment must be between 0 and 5"
+# "Must have user, divesite, datetime."
+# "Type must belong to array (can be implemented later)"
+# "Depths must be positive"
+# "Enjoyment must be between 0 and 5"
 
 class Dive < ApplicationRecord
   belongs_to :user
@@ -31,3 +31,25 @@ end
 #  polygon        :text             default([]), is an Array
 #  review_rating  :integer
 #  review_content :text
+
+TYPES = [
+  "shore",
+  "boat",
+  "reef",
+  "deep",
+  "wall",
+  "drift",
+  "night",
+  "lake",
+  "muck",
+  "wreck",
+  "cave",
+  "cenote",
+  "cavern",
+  "twilight",
+  "shark",
+  "seal",
+  "scallop",
+  "lobster",
+  "nitrox"
+]

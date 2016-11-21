@@ -1,6 +1,6 @@
 # TODO:
   # "Must have email, password, location?"
-  # "Certifications must match with yml"
+  # "Certifications must match with array below"
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -33,3 +33,48 @@ end
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+
+CERTIFICATIONS = [
+
+  "open_water",
+  "advanced_open_water",
+  "master_diver",
+  "boat_diving",
+  "deep_diving",
+  "night",
+  "wreck_diving",
+  "dry_suit_diving",
+  "underwater_photography",
+  "drift",
+
+  "altitude_diving",
+  "river",
+  "ice",
+  "cave",
+  "cavern",
+
+  "rescue",
+  "navigation",
+  "search_and_recovery",
+
+  "nitrox",
+  "equipment",
+  "science_of_diving",
+  "scientific_diving",
+
+  "freediving",
+
+  "advanced_nitrox",
+  "sidemount",
+  "scooter",
+  "cpr",
+  "o2",
+  "rebreather",
+  "trimix",
+  "advanced_trimix",
+  "deco_procedures",
+
+  "dive_guide",
+  "dive_instructor",
+  "dive_instructor_trainer"
+]

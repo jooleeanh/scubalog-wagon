@@ -1,7 +1,12 @@
-# == Schema Information
-#
+
+class Dive < ApplicationRecord
+  belongs_to :user
+  belongs_to :divesite
+  has_many :sightings
+  has_many :data_points
+end
+
 # Table name: dives
-#
 #  id             :integer          not null, primary key
 #  user_id        :integer
 #  divesite_id    :integer
@@ -21,13 +26,3 @@
 #  polygon        :text             default([]), is an Array
 #  review_rating  :integer
 #  review_content :text
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#
-
-class Dive < ApplicationRecord
-  belongs_to :user
-  belongs_to :divesite
-  has_many :sightings
-  has_many :data_points
-end

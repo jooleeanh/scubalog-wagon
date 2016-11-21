@@ -22,3 +22,9 @@ user_story.first(2).each do |story|
 - model - validation - association
 - router controller view
 end
+
+Homepage:
+- Video in background
+- Sign up button
+- (demo page with log sample)
+- (link (in navbar) for divesites and events)

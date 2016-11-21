@@ -1,0 +1,24 @@
+
+As a visitor : I can see divesites and events
+
+As a diver: I can log(basic form) my dive(s) to be displayed on my profile page (should I decide to make them public)
+
+As a diver: I can review a divesite to advise all other members
+
+As a diver : I can organize events and assign settings to them.
+
+As a diver: I can import(dive computer) numerical data to be displayed on my profile page
+
+As a diver: I can share my dive on social medias with a little card.
+
+As a diver: I can ‘friend’ other members and therefore give them access to more specific data.
+
+user_story.first(2).each do |story|
+- Revoir la database
+- Wireframe (max 3min/page) [design charrette]
+- Factoriser les composants du wireframe
+- (Passer sur sketch)
+- Styleguide (html/css) (1h)
+- model - validation - association
+- router controller view
+end

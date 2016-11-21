@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="180" y="30" name="users">
+</datatypes><table x="398" y="16" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -65,26 +65,26 @@
 <row name="location" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<row name="latitude" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="longitude" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
 <row name="diving_since" null="1" autoincrement="0">
 <datatype>YEAR</datatype>
 <default>NULL</default></row>
 <row name="certifications(array)" null="1" autoincrement="0">
 <datatype>ENUM</datatype>
 <default>NULL</default></row>
-<row name="equipment(hash)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
-<default>NULL</default></row>
-<row name="lat_lng(hash)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
-<default>NULL</default></row>
-<row name="friends(array)" null="1" autoincrement="0">
+<row name="followers/followee" null="1" autoincrement="0">
 <datatype>ENUM</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="533" y="157" name="divesites">
+<table x="409" y="363" name="divesites">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -94,20 +94,14 @@
 <row name="location" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
-<row name="lat_lng(hash)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
+<row name="longitude" null="1" autoincrement="0">
+<datatype>DECIMAL</datatype>
 <default>NULL</default></row>
-<row name="photos(array)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
-<default>NULL</default></row>
-<row name="animals(array)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
+<row name="latitude" null="1" autoincrement="0">
+<datatype>DECIMAL</datatype>
 <default>NULL</default></row>
 <row name="difficulty" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="dive_types(array)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
 <default>NULL</default></row>
 <row name="max_depth" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
@@ -118,32 +112,14 @@
 <row name="salinity" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="poi(array)" null="1" autoincrement="0">
+<row name="photos(array)" null="1" autoincrement="0">
 <datatype>ENUM</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="915" y="78" name="reviews">
-<row name="id" null="1" autoincrement="1">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="rating" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="content" null="1" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-<default>NULL</default></row>
-<row name="dive_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="dives" row="id" />
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="706" y="50" name="dives">
+<table x="641" y="117" name="dives">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -151,28 +127,18 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
+<row name="date" null="1" autoincrement="0">
+<datatype>DATE</datatype>
+<default>NULL</default></row>
+<row name="time" null="1" autoincrement="0">
+<datatype>TIME</datatype>
+<default>NULL</default></row>
 <row name="divesite_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="divesites" row="id" />
 </row>
 <row name="type" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
-<default>NULL</default></row>
-<row name="enjoyment" null="1" autoincrement="0">
-<datatype>TINYINT(5)</datatype>
-<default>NULL</default></row>
-<row name="buddies(array)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
-<default>NULL</default></row>
-<row name="computer_info(hash)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
-<default>NULL</default><comment>time: [times...], depth: [depths...], temp:[temps...]</comment>
-</row>
-<row name="date" null="1" autoincrement="0">
-<datatype>DATE</datatype>
-<default>NULL</default></row>
-<row name="time" null="1" autoincrement="0">
-<datatype>TIME</datatype>
 <default>NULL</default></row>
 <row name="bottom_time" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
@@ -198,39 +164,169 @@
 <row name="comments" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
+<row name="enjoyment" null="1" autoincrement="0">
+<datatype>TINYINT(5)</datatype>
+<default>NULL</default></row>
 <row name="visibility" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <row name="polygon(array)" null="1" autoincrement="0">
 <datatype>ENUM</datatype>
 <default>NULL</default></row>
-<row name="animals(array)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
-<default>NULL</default></row>
 <row name="photos" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="review_rating" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="review_content" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="385" y="129" name="events">
+<table x="203" y="473" name="events">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
+<row name="divesite_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="divesites" row="id" />
+</row>
 <row name="date" null="1" autoincrement="0">
 <datatype>DATE</datatype>
 <default>NULL</default></row>
 <row name="time" null="1" autoincrement="0">
 <datatype>TIME</datatype>
 <default>NULL</default></row>
-<row name="divesite_id" null="1" autoincrement="0">
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="906" y="291" name="animals">
+<row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
-<default>NULL</default><relation table="divesites" row="id" />
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="image_url" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="description" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="841" y="433" name="data_points">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="dive_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="dives" row="id" />
 </row>
-<row name="users(array)" null="1" autoincrement="0">
-<datatype>ENUM</datatype>
+<row name="time" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="depth" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="temp" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="air" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="842" y="174" name="sightings">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="dive_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="dives" row="id" />
+</row>
+<row name="animal_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="animals" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="116" y="55" name="equipment_sets">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
 <default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="mask" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="snorkel" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="fins" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="wetsuit" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="computer" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="tank_size" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="bcd" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="regulator" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="weight" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="835" y="33" name="buddies">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="dive_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="dives" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="142" y="350" name="participations">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="event_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="events" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>

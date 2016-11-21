@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121123522) do
+ActiveRecord::Schema.define(version: 20161121124950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "divesites", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "diffulty"
+    t.float    "max_depth"
+    t.float    "avg_depth"
+    t.boolean  "freshwater", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "divesite_id"
+    t.datetime "datetime"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["divesite_id"], name: "index_events_on_divesite_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -32,4 +53,5 @@ ActiveRecord::Schema.define(version: 20161121123522) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "events", "divesites"
 end

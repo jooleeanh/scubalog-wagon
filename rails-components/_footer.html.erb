@@ -1,0 +1,25 @@
+<footer>
+  <div class="wrapper-dark-grey footer flex-c-center">
+    <div class="container">
+      <div class="row">
+        <div class="footer-content flex-c-center">
+          <div class="col-xs-4">
+            <% icons = ['fa-youtube', 'fa-instagram', 'fa-facebook', 'fa-twitter', 'fa-github'] %>
+            <% icons.each do |v| %>
+            <div class="col-xs-<%= 12 / icons.length %>">
+              <%= link_to "#" do %>
+              <i class="footer-icon fa <%= v %> fa-2x" aria-hidden="true"></i>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+          <div class="col-xs-8">
+            <div class="text-right">
+              This is a Yelp challenge @ LeWagon
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

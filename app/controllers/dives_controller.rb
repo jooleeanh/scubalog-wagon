@@ -1,7 +1,7 @@
 class DivesController < ApplicationController
 before_action :set_dive, only: [:show, :edit, :update, :destroy]
 before_action :set_user, only: [:new, :create]
-# before_action :set_divesite, only: [:create]
+before_action :set_divesite, only: [:create]
   def index
     @dives = Dive.all
   end
@@ -14,7 +14,7 @@ before_action :set_user, only: [:new, :create]
   end
 
   def create
-    @dive = @user.dives.new(dive_params)
+    @dive = current_user.dives.new(dive_params)
     @dive.divesite = @divesite
     if @dive.save
       flash[:notice] = "Dive successfully created."
@@ -53,7 +53,7 @@ before_action :set_user, only: [:new, :create]
   end
 
   def dive_params
-    params.require(:dive).permit(:user, :divesite, :datetime, :type, :tank_size, :bottom_time, :start_air, :end_air, :max_depth, :avg_depth, :min_temp, :max_temp, :comments, :enjoyment, :visibility, :polygon, :review_rating, :review_content)
+    params.require(:dive).permit(:user_id, :divesite_id, :datetime, :type, :tank_size, :bottom_time, :start_air, :end_air, :max_depth, :avg_depth, :min_temp, :max_temp, :comments, :enjoyment, :visibility, :review_rating, :review_content)
   end
 end
 

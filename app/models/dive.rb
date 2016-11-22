@@ -12,9 +12,15 @@ class Dive < ApplicationRecord
   # has_one :equipment_set, through: :user # TODO: do it
   has_many :animals, through: :sightings
   validates :datetime, presence: true
-  validates :max_depth, numericality: { only_integer: true}, inclusion: { in: 1...200 }, allow_nil: true # TODO: fix it
-  validates :avg_depth, numericality: { only_integer: true}, inclusion: { in: 1..200 }, allow_nil: true # TODO: fix it
-  validates :enjoyment, numericality: { only_integer: true}, inclusion: { in: 0...5 }, allow_nil: true # TODO: this is currently presence true, see how to fix
+  validates :max_depth, numericality: { only_integer: true},
+                        inclusion: { in: 1...200 },
+                        allow_nil: true
+  validates :avg_depth, numericality: { only_integer: true},
+                        inclusion: { in: 1..200 },
+                        allow_nil: true
+  validates :enjoyment, numericality: { only_integer: true},
+                        inclusion: { in: 0...5 },
+                        allow_nil: true
 
 end
 

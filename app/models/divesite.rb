@@ -11,7 +11,7 @@ class Divesite < ApplicationRecord
   has_many :users, through: :dives
 
   validates :name, presence: true
-  validates :location, presence: true
+  # validates :location, presence: true # TODO: Reverse geocoding
   validates :latitude, :longitude, presence: true
   validates :latitude, uniqueness: { scope: :longitude }
 end

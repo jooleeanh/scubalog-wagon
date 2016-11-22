@@ -1,6 +1,6 @@
 class SightingsController < ApplicationController
   before_action :find_dive, only: [:create]
-  before_action :find_sighting, only: [:update, :delete]
+  before_action :find_sighting, only: [:update, :destroy]
 
   def create
     @sighting = @dive.sightings.new(sighting_params)

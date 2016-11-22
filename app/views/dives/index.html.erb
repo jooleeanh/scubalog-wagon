@@ -1,1 +1,3 @@
-<%= @dives.each { |dive| dive } %>
+<% @dives.each do |dive| %>
+  <p><%= dive.id %></p>
+<% end %>

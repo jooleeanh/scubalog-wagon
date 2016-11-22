@@ -1,6 +1,6 @@
 class BuddiesController < ApplicationController
   before_action :find_dive, only: [:create]
-  before_action :find_buddy, only: [:update, :delete]
+  before_action :find_buddy, only: [:update, :destroy]
 
   def create
     @buddy = @dive.buddies.new(buddy_params)

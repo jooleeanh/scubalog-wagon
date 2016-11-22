@@ -1,1 +1,3 @@
 <%= @dive %>
+<%= link_to "Edit Dive", edit_user_dive_path %>
+<%= link_to "Delete Dive", user_dive_path, method: :delete, data: {confirm: "Do you really want to delete this item?"} %>

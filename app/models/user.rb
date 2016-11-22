@@ -1,5 +1,6 @@
 # TODO:
   # "Certifications must match with array below"
+  # "Uniqueness on email?"
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:

@@ -1,5 +1,7 @@
 require "pry-byebug"
 
+MODELS = [User, EquipmentSet, Divesite, Event, Participation, Dive, Buddy, DataPoint, Animal, Sighting]
+
 def seed_users(number, json_doc)
   number.times do |index|
     i = index.to_s
@@ -18,7 +20,7 @@ def seed_users(number, json_doc)
     if user.save
       puts "#{index} - #{json_doc[i]["first_name"]} #{json_doc[i]["last_name"]}".light_green
     else
-      puts "#{index} - #{user.errors.messages}".light_red
+      puts "#{index} - #{user.errors.full_messages}".light_red
     end
   end
 end
@@ -26,7 +28,21 @@ end
 def seed_equipment_sets
 end
 
-def seed_divesites
+def seed_divesites(number, json_doc)
+  number.times do |index|
+    divesite = json_doc[index.to_s]
+    new_divesite = Divesite.new(
+     name: divesite["name"],
+    #  location: divesite["location"]
+     longitude: divesite["position"]["lng"],
+     latitude: divesite["position"]["lat"]
+    )
+    if new_divesite.save
+      puts "#{index} - #{divesite["name"]}".light_green
+    else
+      puts "#{index} - #{new_divesite.errors.full_messages}".light_red
+    end
+  end
 end
 
 def seed_events
@@ -50,6 +66,10 @@ end
 def seed_sightings
 end
 
+def parse_divesites
+  JSON.parse(File.read("db/divesites_france.json"))
+end
+
 def parse_guys
   JSON.parse(File.read("db/randomuser_100_french_guys.json"))
 end
@@ -58,17 +78,18 @@ def parse_girls
   JSON.parse(File.read("db/randomuser_100_french_girls.json"))
 end
 
-def prompt_for_users
+def create_users
   print "Seed users ? [y/n] > ".light_yellow
   answer = STDIN.gets.chomp
   if answer == "y"
-    prompt_for_user("guys")
-    prompt_for_user("girls")
+    create_user("guys")
+    create_user("girls")
   end
 end
 
-def prompt_for_user(gender)
-  print "(100 unique) How many french #{gender} ? > ".light_cyan
+def create_user(gender)
+  puts "How many french #{gender}? (100 unique)".light_cyan
+  print "> "
   number = STDIN.gets.chomp.to_i
   if number > 0
     case gender
@@ -78,5 +99,34 @@ def prompt_for_user(gender)
   end
 end
 
+def create_divesites
+  print "Seed divesites ? [y/n] > ".light_yellow
+  answer = STDIN.gets.chomp
+  if answer == "y"
+    json_doc = parse_divesites
+    number = 0
+    while number < 1 || number > json_doc.count
+      puts "How many ? (#{json_doc.count} Dive Sites in France)"
+      print "> "
+      number = STDIN.gets.chomp.to_i
+    end
+    seed_divesites(number, json_doc)
+  end
+end
+
+def delete_all?
+  answers = {}
+  MODELS.each do |model|
+    puts "Delete all #{model.name.downcase.pluralize}? [y/n]"
+    print "> "
+    answer = STDIN.gets.chomp
+    answers[model.name.downcase] = answer
+  end
+  MODELS.each_with_index do |model, index|
+    # TODO: 
+  end
+end
+
 puts ""
-prompt_for_users
+create_users
+create_divesites

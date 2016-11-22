@@ -25,7 +25,7 @@ class RandomUser
           password: json["login"]["password"],
           dob: json["dob"],
           registered: json["registered"],
-          photo_large: "https://randomuser.me/api/portraits/men/#{index}.jpg"
+          photo_large: "https://randomuser.me/api/portraits/women/#{index}.jpg"
         }
         @users[index] = user
       end
@@ -33,7 +33,7 @@ class RandomUser
   end
 
   def store_json
-    filepath = "db/randomuser_#{@users.count}_french_guys"
+    filepath = "db/randomuser_#{@users.count}_french_girls"
     File.open(filepath + '.json', 'w') do |file|
       file.write(JSON.generate(@users))
     end
@@ -46,8 +46,8 @@ random_user = RandomUser.new
 # twenty_french_users = "https://randomuser.me/api/?page=1&results=300&seed=abc"
 # thirty_french_users = "https://randomuser.me/api/?page=1&results=480&seed=abc"
 # hundred_french_users = "https://randomuser.me/api/?page=1&results=1430&seed=abc"
-hundred_french_guys = "https://randomuser.me/api/?nat=fr&gender=male&page=1&results=100"
-# hundred_french_girls = "https://randomuser.me/api/?nat=fr&gender=female&page=1&results=100"
+# hundred_french_guys = "https://randomuser.me/api/?nat=fr&gender=male&page=1&results=100"
+hundred_french_girls = "https://randomuser.me/api/?nat=fr&gender=female&page=1&results=100"
 
-random_user.parse_users(hundred_french_guys)
+random_user.parse_users(hundred_french_girls)
 random_user.store_json

@@ -1,21 +1,25 @@
 require "pry-byebug"
 
 def seed_users(number, json_doc)
-
   number.times do |index|
     i = index.to_s
     location = json_doc[i]["street"] + json_doc[i]["city"] + json_doc[i]["state"] + json_doc[i]["postcode"].to_s + json_doc[i]["country"]
-    User.create(
+    user = User.new(
     # first_name: json_doc[i]["first_name"],
     # last_name: json_doc[i]["last_name"],
     gender: json_doc[i]["gender"],
     dob: json_doc[i]["dob"],
     email: json_doc[i]["email"],
+    password: "scubalog",
     location: location,
     created_at: DateTime.parse(json_doc[i]["registered"]),
     # photo: json_doc[i]["photo_large"]
     )
-    puts "#{index + 1} - #{json_doc[i]["first_name"]} #{json_doc[i]["last_name"]}"
+    if user.save
+      puts "#{index} - #{json_doc[i]["first_name"]} #{json_doc[i]["last_name"]}".light_green
+    else
+      puts "#{index} - #{user.errors.messages}".light_red
+    end
   end
 end
 
@@ -55,16 +59,16 @@ def parse_girls
 end
 
 def prompt_for_users
-  print "Seed users ? [y/n] > "
+  print "Seed users ? [y/n] > ".light_yellow
   answer = STDIN.gets.chomp
   if answer == "y"
-    prompt_for_users("guys")
-    prompt_for_users("girls")
+    prompt_for_user("guys")
+    prompt_for_user("girls")
   end
 end
 
-def prompt_for_users(gender)
-  print "(100 unique) How many french #{gender} ? > "
+def prompt_for_user(gender)
+  print "(100 unique) How many french #{gender} ? > ".light_cyan
   number = STDIN.gets.chomp.to_i
   if number > 0
     case gender
@@ -74,4 +78,5 @@ def prompt_for_users(gender)
   end
 end
 
+puts ""
 prompt_for_users

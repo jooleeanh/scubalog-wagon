@@ -1,0 +1,13 @@
+
+
+<div class="container">
+  <div class="row">
+    <% @divesites.each do |divesite| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+          <%= link_to divesite_path(divesite) do %>
+          <%= render 'divesites/divesite_cards', divesite: divesite %>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -4,7 +4,7 @@
       <%= f.error_notification %>
       <div class="form-inputs">
         <%= f.input :datetime, required: true, autofocus: true %>
-        <%= f.association :divesite, collection: @divesites, as: :select %>
+        <%= f.input :divesite, collection: @divesites, as: :select %>
         <%= f.input :type %>
         <%= f.input :tank_size %>
         <%= f.input :bottom_time %>

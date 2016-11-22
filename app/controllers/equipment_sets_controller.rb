@@ -1,6 +1,6 @@
 class EquipmentSetsController < ApplicationController
   before_action :find_user, only: [:new, :create]
-  before_action :find_equipment_set, only: [:update, :delete]
+  before_action :find_equipment_set, only: [:update, :destroy]
 
   # If we want to use it
   def new

@@ -1,15 +1,22 @@
 # TODO:
-  # "Must have email, password, location?"
   # "Certifications must match with array below"
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :participations
-  has_many :dives
-
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :participations
+  has_many :equipment_sets
+  has_many :dives
+  has_many :buddies # TODO: rename this as "me as a buddy"
+  has_many :buddies, through: :dives
+  has_many :events, through: :participations
+  has_many :sightings, through: :dives
+  has_many :animals, through: :sightings
+
+  validates :first_name, :last_name, :location, presence: true
 end
 
 # Table name: users

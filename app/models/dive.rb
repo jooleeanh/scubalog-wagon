@@ -9,6 +9,9 @@ class Dive < ApplicationRecord
   belongs_to :divesite
   has_many :sightings
   has_many :data_points
+  has_many :buddies
+  # has_one :equipment_set, through: :user # TODO: do it
+  has_many :animals, through: :sightings
 end
 
 # Table name: dives

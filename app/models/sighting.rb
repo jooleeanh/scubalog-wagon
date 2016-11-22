@@ -1,7 +1,7 @@
 
 class Sighting < ApplicationRecord
-  belongs_to :dive
-  belongs_to :animal
+  belongs_to :dive, dependent: :destroy
+  belongs_to :animal, dependent: :destroy
 end
 
 # Table name: sightings

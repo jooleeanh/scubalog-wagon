@@ -3,7 +3,7 @@
 
 
 class EquipmentSet < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
 end
 
 # Table name: equipment_sets

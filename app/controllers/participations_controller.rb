@@ -1,6 +1,6 @@
 class ParticipationsController < ApplicationController
   before_action :find_user, only: [:create]
-  before_action :find_participation, only: [:update, :delete]
+  before_action :find_participation, only: [:update, :destroy]
 
   def create
     @participation = @user.participations.new(participation_params)

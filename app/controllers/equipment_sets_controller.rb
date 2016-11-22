@@ -17,7 +17,7 @@ class EquipmentSetsController < ApplicationController
     @equipment_set.update(equipment_set_params)
   end
 
-  def delete
+  def destroy
     @equipment_set.destroy
   end
 

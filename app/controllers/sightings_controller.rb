@@ -12,7 +12,7 @@ class SightingsController < ApplicationController
     @sighting.update(sighting_params) # animal_id and dive_id already permitted?
   end
 
-  def delete
+  def destroy
     @sighting.destroy
   end
 

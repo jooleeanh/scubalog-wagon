@@ -12,7 +12,7 @@ class ParticipationsController < ApplicationController
     @participation.update(participation_params) # user_id and dive_id already permitted?
   end
 
-  def delete
+  def destroy
     @participation.destroy
   end
 

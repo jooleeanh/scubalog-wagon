@@ -12,7 +12,7 @@ class BuddiesController < ApplicationController
     @buddy.update(buddy_params) # user_id and dive_id already permitted?
   end
 
-  def delete
+  def destroy
     @buddy.destroy
   end
 

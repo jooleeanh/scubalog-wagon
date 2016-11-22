@@ -116,17 +116,18 @@ end
 
 def delete_all?
   answers = {}
-  MODELS.each do |model|
+  MODELS.reverse.each do |model|
     puts "Delete all #{model.name.downcase.pluralize}? [y/n]"
     print "> "
     answer = STDIN.gets.chomp
-    answers[model.name.downcase] = answer
+    answers[model.name.downcase] = (answer.downcase == "y")
   end
-  MODELS.each_with_index do |model, index|
-    # TODO: 
+  MODELS.reverse.each_with_index do |model, index|
+    model.destroy_all if answers[index]
   end
 end
 
 puts ""
+delete_all?
 create_users
 create_divesites

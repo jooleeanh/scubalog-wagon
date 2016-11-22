@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :destroy] do
     resources :dives
   end
+
+  resources :events do
+  end
 end

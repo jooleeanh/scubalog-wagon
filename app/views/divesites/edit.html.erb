@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>New divesite</h1>
+
+  <%= simple_form_for @divesite do |f| %>
+  <%= f.input :name %>
+  <%= f.input :latitude %>
+  <%= f.input :longitude %>
+  <%= f.input :difficulty %>
+  <%= f.input :max_depth %>
+  <%= f.input :avg_depth %>
+  <%= f.button :submit %>
+  <% end %>
+</div>

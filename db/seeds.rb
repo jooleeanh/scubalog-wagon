@@ -1,5 +1,3 @@
-require "pry-byebug"
-
 def seed_users(number, json_doc)
   number.times do |index|
     i = index.to_s
@@ -44,10 +42,27 @@ end
 def seed_data_points
 end
 
-def seed_animals
+def seed_animals(json_doc)
+  json_doc.each do |key, category|
+    category["creatures"].each do |k, animal|
+      new_animal = Animal.new(
+      name: animal["name"],
+      image_url: animal["image_url"],
+      )
+      if new_animal.save
+        puts "#{animal["name"]}".light_green
+      else
+        puts "#{new_animal.errors.messages}".light_red
+      end
+    end
+  end
 end
 
 def seed_sightings
+end
+
+def parse_animals
+  JSON.parse(File.read("db/100_animals.json"))
 end
 
 def parse_guys
@@ -57,6 +72,15 @@ end
 def parse_girls
   JSON.parse(File.read("db/randomuser_100_french_girls.json"))
 end
+
+def prompt_for_animals
+  print "Seed animals ? [y/n] > ".light_yellow
+  answer = STDIN.gets.chomp
+  if answer == "y"
+    seed_animals(parse_animals)
+  end
+end
+
 
 def prompt_for_users
   print "Seed users ? [y/n] > ".light_yellow
@@ -80,3 +104,5 @@ end
 
 puts ""
 prompt_for_users
+puts ""
+prompt_for_animals

@@ -5,6 +5,9 @@
 class Divesite < ApplicationRecord
   has_many :events
   has_many :dives
+  has_many :sightings, through: :dives
+  has_many :animals, through: :sightings
+  has_many :users, through: :dives
 end
 
 # Table name: divesites

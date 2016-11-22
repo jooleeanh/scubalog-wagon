@@ -8,6 +8,11 @@ class Divesite < ApplicationRecord
   has_many :sightings, through: :dives
   has_many :animals, through: :sightings
   has_many :users, through: :dives
+
+  validates :name, presence: true
+  validates :location, presence: true
+  validates :latitude, :longitude, presence: true
+  validates :latitude, uniqueness: { scope: :longitude }
 end
 
 # Table name: divesites

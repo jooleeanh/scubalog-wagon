@@ -1,4 +1,6 @@
-# TODO: "Must have user, dive"
+# TODO:
+  # "Must have user, dive"
+  # "Cannot be duplicated ?"
 
 class Buddy < ApplicationRecord
   belongs_to :user

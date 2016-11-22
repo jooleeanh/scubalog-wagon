@@ -62,7 +62,7 @@ def seed_sightings
 end
 
 def parse_animals
-  JSON.parse(File.read("db/random_100_animals.json"))
+  JSON.parse(File.read("db/100_animals.json"))
 end
 
 def parse_guys

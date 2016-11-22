@@ -1,2 +1,6 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<div class="container">
+  <%= simple_form_for @event do |f| %>
+    <%= f.input :datetime %>
+    <%= f.submit %>
+  <% end %>
+</div>

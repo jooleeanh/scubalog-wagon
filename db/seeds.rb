@@ -60,7 +60,20 @@ end
 def seed_data_points
 end
 
-def seed_animals
+def seed_animals(json_doc)
+  json_doc.each do |key, category|
+    category["creatures"].each do |k, animal|
+      new_animal = Animal.new(
+      name: animal["name"],
+      image_url: animal["image_url"],
+      )
+      if new_animal.save
+        puts "#{animal["name"]}".light_green
+      else
+        puts "#{new_animal.errors.messages}".light_red
+      end
+    end
+  end
 end
 
 def seed_sightings
@@ -70,6 +83,10 @@ def parse_divesites
   JSON.parse(File.read("db/divesites_france.json"))
 end
 
+def parse_animals
+  JSON.parse(File.read("db/100_animals.json"))
+end
+
 def parse_guys
   JSON.parse(File.read("db/randomuser_100_french_guys.json"))
 end
@@ -77,6 +94,15 @@ end
 def parse_girls
   JSON.parse(File.read("db/randomuser_100_french_girls.json"))
 end
+
+def prompt_for_animals
+  print "Seed animals ? [y/n] > ".light_yellow
+  answer = STDIN.gets.chomp
+  if answer == "y"
+    seed_animals(parse_animals)
+  end
+end
+
 
 def create_users
   print "Seed users ? [y/n] > ".light_yellow
@@ -131,3 +157,4 @@ puts ""
 delete_all?
 create_users
 create_divesites
+prompt_for_animals

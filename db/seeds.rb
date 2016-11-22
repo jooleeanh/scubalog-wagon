@@ -1,6 +1,11 @@
 require "pry-byebug"
 
-MODELS = [User, EquipmentSet, Divesite, Event, Participation, Dive, Buddy, DataPoint, Animal, Sighting]
+MODELS = [
+  [User, [Participation, Dive, [EquipmentSet, Buddy, DataPoint, Sighting]]],
+  [Divesite, [Event]],
+  [Animal, [Sighting]],
+  [Event, [Participation]]
+]
 
 def seed_users(number, json_doc)
   number.times do |index|
@@ -18,7 +23,7 @@ def seed_users(number, json_doc)
     # photo: json_doc[i]["photo_large"]
     )
     if user.save
-      puts "#{index} - #{json_doc[i]["first_name"]} #{json_doc[i]["last_name"]}".light_green
+      puts "#{index} - #{json_doc[i]["first_name"].capitalize} #{json_doc[i]["last_name"].capitalize}".light_green
     else
       puts "#{index} - #{user.errors.full_messages}".light_red
     end
@@ -142,15 +147,52 @@ end
 
 def delete_all?
   answers = {}
-  MODELS.reverse.each do |model|
-    puts "Delete all #{model.name.downcase.pluralize}? [y/n]"
-    print "> "
+  stylize("--- DELETING SEED ---".light_red)
+  puts "\n"
+  MODELS.each do |model|
+    dependent_models = get_names_in(model[1], []).join(", ")
+    puts "Dependent: ".light_black + "#{dependent_models}".yellow
+    print "- [y/n] ".light_black + "DELETE ".light_red + "#{model[0].name.pluralize}? ".light_yellow
+    print " > "
     answer = STDIN.gets.chomp
-    answers[model.name.downcase] = (answer.downcase == "y")
+    answers[model[0].name.downcase] = (answer.downcase == "y")
   end
-  MODELS.reverse.each_with_index do |model, index|
-    model.destroy_all if answers[index]
+  puts ""
+  MODELS.each do |model|
+    if answers[model[0].name.downcase]
+      stylize("#{model[0].count} #{model[0].name.downcase.pluralize} deleted.".light_red)
+      get_size_of(model[1])
+      puts ""
+      model[0].destroy_all
+    end
   end
+end
+
+def get_names_in(array, results)
+  array.each do |e|
+    if e.class == Array
+      get_names_in(e, results)
+    else
+      results << e.name.pluralize
+    end
+  end
+  results
+end
+
+def get_size_of(array)
+  array.each do |sub_model|
+    if sub_model.class == Array
+      print "  "
+      get_size_of(sub_model)
+    else
+      puts "- #{sub_model.count} #{sub_model.name.pluralize} deleted.".red
+    end
+  end
+end
+
+def stylize(string)
+  string.each_char { |chr| print chr; sleep 0.02 }
+  puts ""
 end
 
 puts ""

@@ -21,6 +21,7 @@ class DivesitesController < ApplicationController
   def create
     @divesite = Divesite.new(divesite_params)
     if @divesite.save
+      flash[:notice] = "Divesite has been added!"
       redirect_to @divesite
     else
       render 'divesites/new'
@@ -32,6 +33,7 @@ class DivesitesController < ApplicationController
 
   def update
     if @divesite.update_attributes(divesite_params)
+      flash[:notice] = "Divesite has been updated!"
       redirect_to @divesite
     else
       render 'divesites/edit'

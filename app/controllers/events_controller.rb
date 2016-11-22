@@ -28,7 +28,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    @divesite = Divesite.find(params[:divesite_id])
     @event = event.find(params[:id])
     if @event.update(event_params)
       flash[:notice] = "Event created!"

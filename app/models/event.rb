@@ -1,7 +1,8 @@
 # TODO: "Must have divesite and datetime"
 
 class Event < ApplicationRecord
-  belongs_to :divesite # TODO: set to "no locations yet" if divesite is destroyed
+  # TODO: set to "no locations yet" if divesite is destroyed
+  belongs_to :divesite, optional: true
   has_many :participations
   validates :datetime, presence: true
 end

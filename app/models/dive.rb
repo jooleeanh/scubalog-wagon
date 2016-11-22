@@ -5,7 +5,8 @@
 
 class Dive < ApplicationRecord
   belongs_to :user, dependent: :destroy
-  belongs_to :divesite # TODO: set "divesite was removed from database" if divesite is destroyed
+  # TODO: set "divesite was removed from database" if divesite is destroyed
+  belongs_to :divesite, optional: true
   has_many :sightings
   has_many :data_points
   has_many :buddies

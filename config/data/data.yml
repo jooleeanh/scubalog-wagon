@@ -1,0 +1,33 @@
+project:
+  name: scubalog
+
+team:
+  julian:
+    first_name: julian
+    last_name: honma
+  nicolas:
+    first_name: nicolas
+    last_name: sitter
+  théophile:
+    first_name: théophile
+    last_name: sourdille
+  florian:
+    first_name: florian
+    last_name: bataille
+
+social:
+  youtube:
+    fa: fa-youtube
+    url: http://youtube.com/
+  instagram:
+    fa: fa-instagram
+    url: http://instagram.com/
+  facebook:
+    fa: fa-facebook
+    url: http://facebook.com/
+  twitter:
+    fa: fa-twitter
+    url: http://twitter.com/
+  github:
+    fa: fa-github
+    url: http://github.com/

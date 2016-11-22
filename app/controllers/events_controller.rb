@@ -9,20 +9,6 @@ class EventsController < ApplicationController
   def show
   end
 
-  def edit
-  end
-
-  def update
-    @divesite = Divesite.find(params[:divesite_id])
-    @event = event.find(params[:id])
-    if @event.update(event_params)
-      flash[:notice] = "Event created!"
-      redirect_to @user
-    else
-      render :new
-    end
-  end
-
   def new
     @event = Event.new
   end
@@ -38,11 +24,23 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @divesite = Divesite.find(params[:divesite_id])
+    @event = event.find(params[:id])
+    if @event.update(event_params)
+      flash[:notice] = "Event created!"
+      redirect_to @user
+    else
+      render :new
+    end
+  end
 
   def destroy
     @event.destroy
   end
-
 
   private
 

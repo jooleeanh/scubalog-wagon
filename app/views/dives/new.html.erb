@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="text-center">
+    <%= simple_form_for [@dive, @user] do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :datetime, required: true, autofocus: true %>
+        <%= f.input  %>
+        <%= f.input :divesite, required: true %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Create new dive" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

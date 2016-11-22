@@ -5,8 +5,8 @@ def seed_users(number, json_doc)
     i = index.to_s
     location = json_doc[i]["street"] + json_doc[i]["city"] + json_doc[i]["state"] + json_doc[i]["postcode"].to_s + json_doc[i]["country"]
     user = User.new(
-    # first_name: json_doc[i]["first_name"],
-    # last_name: json_doc[i]["last_name"],
+    first_name: json_doc[i]["first_name"],
+    last_name: json_doc[i]["last_name"],
     gender: json_doc[i]["gender"],
     dob: json_doc[i]["dob"],
     email: json_doc[i]["email"],

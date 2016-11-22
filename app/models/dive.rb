@@ -4,8 +4,8 @@
 # "Enjoyment must be between 0 and 5"
 
 class Dive < ApplicationRecord
-  belongs_to :user
-  belongs_to :divesite
+  belongs_to :user, dependent: :destroy
+  belongs_to :divesite # TODO: set "divesite was removed from database" if divesite is destroyed
   has_many :sightings
   has_many :data_points
   has_many :buddies

@@ -1,9 +1,9 @@
 # TODO: "Must have name"
 
 class Animal < ApplicationRecord
-  has_many :sightings
+  has_many :sightings, dependent: :destroy
 
-  validates :name, presence: true 
+  validates :name, presence: true
 end
 
 # Table name: animals

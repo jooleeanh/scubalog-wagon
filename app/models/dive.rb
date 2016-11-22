@@ -12,6 +12,7 @@ class Dive < ApplicationRecord
   has_many :buddies
   # has_one :equipment_set, through: :user # TODO: do it
   has_many :animals, through: :sightings
+  validates :divesite, presence: true, on: :create
   validates :datetime, presence: true
   validates :max_depth, numericality: { only_integer: true},
                         inclusion: { in: 1...200 },

@@ -5,6 +5,7 @@
 class Buddy < ApplicationRecord
   belongs_to :user
   belongs_to :dive
+  validates :user, :dive, presence: true
 end
 
 # Table name: buddies

@@ -1,5 +1,4 @@
 # TODO:
-  # "Must have user"
   # "Weight must be positive integer"
 
 

@@ -2,6 +2,8 @@
 
 class DataPoint < ApplicationRecord
   belongs_to :dive
+
+  validates :time, :depth, presence: true
 end
 
 # Table name: data_points

@@ -3,6 +3,7 @@
 class Event < ApplicationRecord
   belongs_to :divesite
   has_many :participations
+  validates :datetime, presence: true
 end
 
 # Table name: events

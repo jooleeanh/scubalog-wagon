@@ -1,56 +1,96 @@
+<div class="container">
+  <div class="row">
+      <%= image_tag("cenote.jpg" , class: "", width: "100%",  height: "300px") %>
+    <div class="container">
+      <div class="row">
 
-<div class="row">
-  <div class="col-xs-12 col-md-12">
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('nothing.jpg');">
-      <div class="card-description">
-        <h1><%= @divesite.name %></h1>
-        <h2><%= @divesite.location %></h2>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-8">
-        <div class="text-center">
-          <h1>Some information</h1>
+        <div class="col-xs-12 col-md-8">
+
+          <div class="">
+            <div class="divesite-info">
+              <h2>Dive Site Information</h2>
+              <dl class="dl-horizontal">
+                <dt>Difficulty</dt>
+                <dd><%= @divesite.difficulty %></dd>
+                <dt>Max Depth</dt>
+                <dd><%= @divesite.max_depth %></dd>
+                <dt>Average Depth</dt>
+                <dd><%= @divesite.avg_depth %></dd>
+              </dl>
+            </div>
+          </div>
+          <div class="">
+            <h2>Upcoming events at <%= @divesite.name %></h2>
+            <% @divesite.events.where.not(description: nil).each do |event| %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <%= event.datetime.strftime("%b %d %Y") %>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <%= event.description %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <div class="">
+            <h2>Reviews</h2>
+            <% @divesite.dives.each do |dive| %>
+            <% unless dive.review_rating.nil? %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <% dive.review_rating.times do %>
+                  <i class="fa fa-star fa-lg" aria-hidden="true"></i>
+                  <% end %>
+                  <% (5 - dive.review_rating).times do %>
+                  <i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
+                  <% end %>
+                  <%= dive.user.first_name.capitalize %>
+                  <small>
+                    <span> at a dive on </span>
+                    <%= dive.datetime.strftime("%b %d %Y") %>
+                  </small>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <%= dive.review_content %>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
         </div>
-        <div class="text-center">
-          <h1>Upcoming events at <%= @divesite.name %></h1>
-        </div>
-        <div class="text-center">
-          <h1>Reviews</h1>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-4 pull-right">
-        <div id="map" style="width: 350px; height: 350px;"></div>
-        <div class="text-center">
-          <h2>Sightings/Animals</h2>
+        <div class="col-xs-12 col-md-4">
+          <div id="map" style="width: 350px; height: 350px;"></div>
+          <div class="text-center">
+            <h2>Sightings/Animals</h2>
+            <% @divesite.sightings.each do |sighting| %>
+            <p><%= sighting.animal.name %></p>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        icon: "/images/mapicon.png"
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: { id: 'map' } }, function() {
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    icon: "/images/mapicon.png"
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    if (markers.length == 0) {
+      handler.getMap().setZoom(2);
+    } else if (markers.length == 1) {
+      handler.getMap().setZoom(14);
+    }
+  });
+});
 <% end %>
-
+<% end %>

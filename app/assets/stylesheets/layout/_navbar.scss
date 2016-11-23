@@ -10,6 +10,10 @@
   justify-content: space-between;
 }
 
+.font-yellowtail {
+  font-family: "Yellowtail";
+  color: #011238;
+}
 /* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {
   position: fixed;
@@ -128,4 +132,9 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+@font-face {
+  font-family: "Yellowtail";
+  src: url(/assets/Yellowtail-Regular.ttf) format("truetype");
 }

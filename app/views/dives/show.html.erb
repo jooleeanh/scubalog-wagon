@@ -1,3 +1,25 @@
 <%= @dive %>
 <%= link_to "Edit Dive", edit_user_dive_path %>
 <%= link_to "Delete Dive", user_dive_path, method: :delete, data: {confirm: "Do you really want to delete this item?"} %>
+
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('nothing.jpg');">
+      <div class="card-description text-center">
+        <h1><%= @dive.name %></h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+        <div class="text-center">
+          <h1>Infos</h1>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4 pull-right">
+        <div id="map" style="width: 350px; height: 350px;"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -54,7 +54,8 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#modal-login" }  %>
+        <%= link_to t(".sign_up", default: "Sign up"),new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#modal-login" } %>
 
     <% end %>
 
@@ -75,4 +76,10 @@
   </div>
 </div>
 
-
+<!-- Modal-call for login and sign up -->
+<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>

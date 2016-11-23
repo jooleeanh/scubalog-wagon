@@ -1,1 +1,12 @@
-<%=  Event.datetime %>
+<div id="map" style="width: 100%; height: 400px;"></div>
+
+<% @divesite.events.each do |e| %>
+ <p> <strong>Date : </strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></p>
+ <p> <strong>Starting hour : </strong> <%= e.datetime.strftime("%H, %M")%></p>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    <%= render 'events/map.js.erb' %>
+  <% end %>
+<% end %>

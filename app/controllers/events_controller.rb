@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :find_divesite, only: [:create]
+  before_action :find_divesite
   before_action :find_event, only: [:show, :edit, :destroy]
 
   def index

@@ -1,17 +1,56 @@
-<h1><%= @divesite.name %></h1>
-<p><%= @divesite.difficulty %></p>
 
-<%= javascript_tag do %>
-  $(document).ready(function() {
-  <% content_for(:after_js) do %>
-    <%= javascript_tag do %>
-      $(document).ready(function() {
-        var coord = <%= raw @flat_coordinates %>;
-        alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('nothing.jpg');">
+      <div class="card-description">
+        <h1><%= @divesite.name %></h1>
+        <h2><%= @divesite.location %></h2>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+        <div class="text-center">
+          <h1>Some information</h1>
+        </div>
+        <div class="text-center">
+          <h1>Upcoming events at <%= @divesite.name %></h1>
+        </div>
+        <div class="text-center">
+          <h1>Reviews</h1>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4 pull-right">
+        <div id="map" style="width: 350px; height: 350px;"></div>
+        <div class="text-center">
+          <h2>Sightings/Animals</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        icon: "/images/mapicon.png"
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
       });
-    <% end %>
+    });
   <% end %>
-    alert('<%= j @alert_message %>');
-  });
 <% end %>
 

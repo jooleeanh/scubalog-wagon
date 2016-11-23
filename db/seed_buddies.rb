@@ -14,5 +14,4 @@ class SeedBuddies < BasicSeed
       end
     end
   end
-
 end

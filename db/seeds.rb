@@ -11,8 +11,22 @@ require_relative 'seed_sightings'
 require_relative 'seed_events'
 require_relative 'seed_participations'
 
+MODELS = [
+  [User, [Participation, Dive, [EquipmentSet, Buddy, DataPoint, Sighting]]],
+  [Divesite, [Event]],
+  [Animal, [Sighting]],
+  [Event, [Participation]]
+]
+
 class Seed < BasicSeed
   # Done
+  def stats?
+    print "[y/n] ".light_black + "Get model stats?".light_yellow + " > "
+    answer = STDIN.gets.chomp
+    if answer == "y"
+      get_size_of(MODELS)
+    end
+  end
   def delete_seed?
     ask_seed("delete")
     answer = STDIN.gets.chomp
@@ -109,6 +123,8 @@ end
 
 puts ""
 seed = Seed.new
+seed.stats?
 seed.delete_seed?
 seed.create_seed?
+seed.stats?
 puts ""

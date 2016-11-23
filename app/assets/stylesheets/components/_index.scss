@@ -3,3 +3,22 @@
 @import "badges";
 @import "banners";
 @import "cards";
+
+#tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.divesites {
+  margin-top: 4%;
+
+}
+
+.divesite_list {
+  margin-left: 10%;
+}
+
+#map {
+  margin-top: 2%;
+}

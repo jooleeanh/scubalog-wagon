@@ -1,9 +1,27 @@
-<div id="map" style="width: 100%; height: 600px;"></div>
+<h1 class='text-center'> <u>Spots near <%= (params[:search_input])%> </u></h1>
+<div id="map" style="width: 100%; height: 400px;"></div>
+
+<div class="container" id="tabs-container">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Spots</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Divers</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Events</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="Divesites"></div>
+    <div role="tabpanel" class="tab-pane" id="Divers"></div>
+    <div role="tabpanel" class="tab-pane" id="Events"></div>
+  </div>
+</div>
+
 
 <div class="container">
   <div class="divesite-list">
     <h2 class="divesite-header text-center">
-      <%= pluralize(@divesites.size, "divesite") %> à proximité
+      <%= pluralize(@divesites.size, "divesite") %> found !
     </h2>
     <div class="row">
       <% @divesites.each do |divesite| %>
@@ -15,7 +33,7 @@
     </div>
   </div>
   <% unless @divesites.any? %>
-    <div class='text-center'> <strong> Aucun site a proximité...</strong></div>
+    <div class='text-center'> <strong> No spots around...</strong></div>
     <br>
     <div class='text-center'><%= link_to "Page d'accueil", root_path %></div>
   <% end %>
@@ -23,30 +41,21 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        icon: "/images/mapicon.png"
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
+    <%= render 'divesites/map.js.erb' %>
   <% end %>
 <% end %>
 
-<div class="container">
-  <div class="row">
+<div class="divesites container">
+  <div class="divesite_list row center-block">
     <% @divesites.each do |divesite| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-          <%= link_to divesite_path(divesite) do %>
-          <%= render 'divesites/divesite_cards', divesite: divesite %>
-          <% end %>
+
+      <div class="col-xs-12 col-sm-6 col-md-6">
+      <ul>
+        <%= link_to divesite_path(divesite) do %>
+
+        <li><%= render 'divesites/divesite_cards', divesite: divesite %></li>
+        <% end %>
+      </ul>
       </div>
     <% end %>
   </div>

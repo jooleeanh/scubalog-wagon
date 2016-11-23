@@ -14,8 +14,7 @@ require_relative 'seed_participations'
 class Seed < BasicSeed
   # Done
   def delete_seed?
-    ask_seed("delete")
-    answer = STDIN.gets.chomp
+    answer = ask_seed("delete")
     if answer == "y"
       puts ""
       seed = DeleteSeed.new
@@ -23,8 +22,7 @@ class Seed < BasicSeed
     end
   end
   def create_seed?
-    ask_seed("create")
-    answer = STDIN.gets.chomp
+    answer = ask_seed("create")
     if answer == "y"
       puts ""
       stylize("--- CREATING SEED ---".light_green)
@@ -97,6 +95,7 @@ class Seed < BasicSeed
     print "seed?".light_cyan
     print " [y/n] ".light_black
     print "> "
+    STDIN.gets.chomp
   end
   def ask_create(model)
     print "- [y/n] ".light_black

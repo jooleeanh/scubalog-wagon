@@ -4,7 +4,7 @@
   # "Uniqueness on name?"
 
 class Divesite < ApplicationRecord
-  has_many :events
+  has_many :events, dependent: :destroy # TODO: subject to change
   has_many :dives
   has_many :sightings, through: :dives
   has_many :animals, through: :sightings

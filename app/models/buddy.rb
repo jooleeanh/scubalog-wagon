@@ -3,9 +3,10 @@
   # "Cannot be duplicated ?"
 
 class Buddy < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  belongs_to :dive, dependent: :destroy
+  belongs_to :user
+  belongs_to :dive
   validates :user, :dive, presence: true
+  validates :user, uniqueness: { scope: :dive }
 end
 
 # Table name: buddies

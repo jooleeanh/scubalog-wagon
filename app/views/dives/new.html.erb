@@ -1,27 +1,29 @@
-<div class="container">
+<div class="container login">
   <div class="text-center">
     <%= simple_form_for [current_user, @dive] do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
-        <%= f.input :datetime, required: true, autofocus: true %>
-        <%= f.association :divesite, collection: @divesites, as: :select %>
-        <%= f.input :type %>
-        <%= f.input :tank_size %>
-        <%= f.input :bottom_time %>
-        <%= f.input :start_air %>
-        <%= f.input :end_air %>\
-        <%= f.input :max_depth %>
-        <%= f.input :avg_depth %>
-        <%= f.input :min_temp %>
-        <%= f.input :max_temp %>
-        <%= f.input :comments %>
-        <%= f.input :enjoyment %>
-        <%= f.input :visibility %>
-        <%= f.input :review_rating %>
-        <%= f.input :review_content %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Create new dive" %>
+        <div class="container login-form">
+          <%= f.input :datetime, required: true, autofocus: true %>
+          <%= f.association :divesite, collection: @divesites, as: :select %>
+          <%= f.input :type %>
+          <%= f.input :tank_size %>
+          <%= f.input :bottom_time %>
+          <%= f.input :start_air %>
+          <%= f.input :end_air %>\
+          <%= f.input :max_depth %>
+          <%= f.input :avg_depth %>
+          <%= f.input :min_temp %>
+          <%= f.input :max_temp %>
+          <%= f.input :comments %>
+          <%= f.input :enjoyment %>
+          <%= f.input :visibility %>
+          <%= f.input :review_rating %>
+          <%= f.input :review_content %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Create new dive" %>
+        </div>
       </div>
     <% end %>
   </div>

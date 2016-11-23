@@ -1,8 +1,8 @@
 # TODO: "Must have user, event"
 
 class Participation < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  belongs_to :event, dependent: :destroy
+  belongs_to :user
+  belongs_to :event
 end
 
 # Table name: participations

@@ -21,4 +21,19 @@ class BasicSeed
       end
     end
   end
+
+  def message(id, name, verb, noun, color)
+    case color
+    when "light_red" then verb = verb.light_red
+    when "light_green" then verb = verb.light_green
+    end
+    print "#{id} - ".light_black
+    print "#{name.capitalize}".light_yellow
+    print " #{verb} "
+    puts "'#{noun}'".blue
+  end
+
+  def error(model)
+    puts "#{model.errors.full_messages}".light_red
+  end
 end

@@ -22,7 +22,6 @@ class Seed < BasicSeed
       seed.delete_all?
     end
   end
-
   def create_seed?
     ask_seed("create")
     answer = STDIN.gets.chomp
@@ -42,7 +41,6 @@ class Seed < BasicSeed
       create_participations?
     end
   end
-
   def create_animals?
     answer = ask_create("animals")
     if answer == "y"
@@ -100,7 +98,6 @@ class Seed < BasicSeed
     print " [y/n] ".light_black
     print "> "
   end
-
   def ask_create(model)
     print "- [y/n] ".light_black
     print "Create ".light_green

@@ -7,7 +7,7 @@ class SeedEquipmentSets < BasicSeed
   def seed_basic_set
     User.all.each do |user|
       if user.equipment_sets.first&.mask == "Aqualung - Sphera"
-        message(user, "already got")
+        message(user, "already has")
       else
         set = user.equipment_sets.new(basic_set)
         if set.save
@@ -37,7 +37,8 @@ class SeedEquipmentSets < BasicSeed
     when "already got" then status = status.light_red
     when "got" then status = status.light_green
     end
-    print "#{user.id} - #{user.first_name.capitalize}".light_yellow
+    print "#{user.id} - ".light_black
+    print "#{user.first_name.capitalize}".light_yellow
     print " #{status} "
     puts "'Basic Equipment Set'".blue
   end

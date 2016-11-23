@@ -75,11 +75,6 @@ class Seed < BasicSeed
       seed.create_divesites
     end
   end
-
-  # TODO:
-  def create_dives?
-    # TODO:
-  end
   def create_equipment_sets?
     answer = ask_create("equipment sets")
     if answer == "y"
@@ -87,10 +82,19 @@ class Seed < BasicSeed
       seed.seed_equipment_sets
     end
   end
-  def create_data_points?
-    # TODO:
+
+  # TODO:
+  def create_dives?
+    answer = ask_create("dives")
+    if answer == "y"
+      seed = SeedDives.new
+      seed.seed_dives
+    end
   end
   def create_buddies?
+    # TODO:
+  end
+  def create_data_points?
     # TODO:
   end
   def create_sightings?

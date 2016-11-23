@@ -5,7 +5,7 @@ class BasicSeed
     puts ""
   end
 
-  def get_size_of(array)
+  def get_size_of(array, action = "")
     array.each do |sub_model|
       if sub_model.class == Array
         print "  "

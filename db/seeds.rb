@@ -109,6 +109,8 @@ end
 
 puts ""
 seed = Seed.new
+seed.stats?
 seed.delete_seed?
 seed.create_seed?
+seed.stats?
 puts ""

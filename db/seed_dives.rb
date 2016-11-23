@@ -1,4 +1,4 @@
-class SeedDives
+class SeedDives < BasicSeed
 
   def seed_dives
   end

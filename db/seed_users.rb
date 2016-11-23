@@ -1,4 +1,4 @@
-class SeedUsers
+class SeedUsers < BasicSeed
 
   def parse_guys
     JSON.parse(File.read("db/data/users_100_french_guys.json"))

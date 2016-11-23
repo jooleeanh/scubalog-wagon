@@ -1,4 +1,4 @@
-class SeedAnimals
+class SeedAnimals < BasicSeed
 
   def parse_animals
     JSON.parse(File.read("db/data/animals_225_oceana.json"))

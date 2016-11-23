@@ -1,4 +1,5 @@
-require "pry-byebug"
+require_relative 'basic_seed'
+require_relative 'delete_seed'
 require_relative 'seed_users'
 require_relative 'seed_divesites'
 require_relative 'seed_buddies'
@@ -10,57 +11,55 @@ require_relative 'seed_sightings'
 require_relative 'seed_events'
 require_relative 'seed_participations'
 
-MODELS = [
-  [User, [Participation, Dive, [EquipmentSet, Buddy, DataPoint, Sighting]]],
-  [Divesite, [Event]],
-  [Animal, [Sighting]],
-  [Event, [Participation]]
-]
-
-class Seed
+class Seed < BasicSeed
   # Done
-  def delete_all?
-    answers = {}
-    stylize("--- DELETING SEED ---".light_red)
-    puts "\n"
-    MODELS.each do |model|
-      dependent_models = get_names_in(model[1], []).join(", ")
-      puts "Dependent: ".light_black + "#{dependent_models}".yellow
-      print "- [y/n] ".light_black + "DELETE ".light_red + "#{model[0].name.pluralize}? ".light_yellow
-      print " > "
-      answer = STDIN.gets.chomp
-      answers[model[0].name.downcase] = (answer.downcase == "y")
-    end
-    puts ""
-    MODELS.each do |model|
-      if answers[model[0].name.downcase]
-        stylize("#{model[0].count} #{model[0].name.downcase.pluralize} deleted.".light_red)
-        get_size_of(model[1])
-        puts ""
-        model[0].destroy_all
-      end
+  def delete_seed?
+    ask_seed("delete")
+    answer = STDIN.gets.chomp
+    if answer == "y"
+      puts ""
+      seed = DeleteSeed.new
+      seed.delete_all?
     end
   end
-  def create_animals
-    print "Seed animals ? [y/n] > ".light_yellow
+
+  def create_seed?
+    ask_seed("create")
     answer = STDIN.gets.chomp
+    if answer == "y"
+      puts ""
+      stylize("--- CREATING SEED ---".light_green)
+      puts "\n"
+      create_users?
+      create_divesites?
+      create_animals?
+      create_buddies?
+      create_data_points?
+      create_dives?
+      create_equipment_sets?
+      create_sightings?
+      create_events?
+      create_participations?
+    end
+  end
+
+  def create_animals?
+    answer = ask_create("animals")
     if answer == "y"
       seed = SeedAnimals.new
       seed.seed_animals
     end
   end
-  def create_users
-    print "Seed users ? [y/n] > ".light_yellow
-    answer = STDIN.gets.chomp
+  def create_users?
+    answer = ask_create("users")
     if answer == "y"
       seed = SeedUsers.new
       seed.create_user("guys")
       seed.create_user("girls")
     end
   end
-  def create_divesites
-    print "Seed divesites ? [y/n] > ".light_yellow
-    answer = STDIN.gets.chomp
+  def create_divesites?
+    answer = ask_create("divesites")
     if answer == "y"
       seed = SeedDivesites.new
       seed.create_divesites
@@ -68,66 +67,51 @@ class Seed
   end
 
   # TODO:
-  def create_buddies
+  def create_buddies?
     # TODO:
   end
-  def create_data_points
+  def create_data_points?
     # TODO:
   end
-  def create_dives
+  def create_dives?
     # TODO:
   end
-  def create_equipment_sets
+  def create_equipment_sets?
     # TODO:
   end
-  def create_sightings
+  def create_sightings?
     # TODO:
   end
-  def create_events
+  def create_events?
     # TODO:
   end
-  def create_participations
+  def create_participations?
     # TODO:
   end
 
   private
 
-  # Helpers
-  def get_names_in(array, results)
-    array.each do |e|
-      if e.class == Array
-        get_names_in(e, results)
-      else
-        results << e.name.pluralize
-      end
+  def ask_seed(action)
+    case action
+    when "delete" then print "  Delete ".light_red
+    when "create" then print "  Create ".light_green
     end
-    results
+    print "seed?".light_cyan
+    print " [y/n] ".light_black
+    print "> "
   end
-  def get_size_of(array)
-    array.each do |sub_model|
-      if sub_model.class == Array
-        print "  "
-        get_size_of(sub_model)
-      else
-        puts "- #{sub_model.count} #{sub_model.name.pluralize} deleted.".red
-      end
-    end
-  end
-  def stylize(string)
-    string.each_char { |chr| print chr; sleep 0.02 }
-    puts ""
+
+  def ask_create(model)
+    print "- [y/n] ".light_black
+    print "Create ".light_green
+    print model.light_yellow
+    print "? > ".light_yellow
+    STDIN.gets.chomp
   end
 end
 
+puts ""
 seed = Seed.new
-seed.delete_all?
-seed.create_users
-seed.create_divesites
-seed.create_animals
-seed.create_buddies
-seed.create_data_points
-seed.create_dives
-seed.create_equipment_sets
-seed.create_sightings
-seed.create_events
-seed.create_participations
+seed.delete_seed?
+seed.create_seed?
+puts ""

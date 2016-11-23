@@ -1,4 +1,4 @@
-class SeedSightings
+class SeedSightings < BasicSeed
 
   def seed_sightings
   end

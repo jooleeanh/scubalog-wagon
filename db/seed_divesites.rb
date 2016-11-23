@@ -1,4 +1,4 @@
-class SeedDivesites
+class SeedDivesites < BasicSeed
 
   def parse_divesites
     JSON.parse(File.read("db/data/divesites_1188_france.json"))

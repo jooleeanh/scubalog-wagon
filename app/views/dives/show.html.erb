@@ -1,3 +1,52 @@
-<%= @dive %>
-<%= link_to "Edit Dive", edit_dive_path %>
-<%= link_to "Delete Dive", dive_path, method: :delete, data: {confirm: "Do you really want to delete this item?"} %>
+<div class="row">
+  <div class="col-xs-12 col-md-12">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://img.20mn.fr/7jSLPqKaS0eZDkWS-P9CPw/2048x1536-fit_des-dechets-en-bord-de-garonne.jpg');">
+      <div class="card-description text-center">
+        <h1><%= @dive.divesite.name %></h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-8">
+        <div>
+          <h1 class="text-center">Infos</h1>
+          <p>Diver : <%= @dive.user.first_name %></p>
+          <p>Date : <%= @dive.datetime.strftime("%A, %d, %B, %Y") %></p>
+          <p>Tank size : <%= @dive.tank_size %></p>
+          <p>Bottom time : <%= @dive.bottom_time %></p>
+          <p>Start air : <%= @dive.start_air %> - End air : <%= @dive.end_air %></p>
+          <p>Max depth : <%= @dive.max_depth %> - Avg depth : <%= @dive.avg_depth %></p>
+          <p>Min temp : <%= @dive.min_temp %> - Max temp <%= @dive.max_depth %></p>
+          <p>Comments : <%= @dive.comments %></p>
+          <p>Enjoyments : <%= @dive.enjoyment %></p>
+          <p>Visibility : <%= @dive.visibility %></p>
+          <p>Review : <%= @dive.review_rating %> <%= @dive.review_content %></p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4 pull-right">
+        <div id="map" style="width: 350px; height: 350px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        icon: "/images/mapicon.png"
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+

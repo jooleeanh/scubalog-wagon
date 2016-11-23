@@ -13,7 +13,7 @@ class SeedEvents < BasicSeed
   def create_events(number)
     number.times do
       divesite = Divesite.all.sample
-      time = Time.now + rand(1...30).days
+      time = Time.now + rand(1...30).days # TODO: Set time between 8 and 20
       event = Event.new(
         divesite: divesite,
         datetime: time

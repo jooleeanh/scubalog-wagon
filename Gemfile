@@ -20,6 +20,8 @@ gem 'figaro'
 
 gem 'json'
 gem 'colorize'
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
 
 gem 'omniauth-facebook'
 

@@ -18,6 +18,8 @@ class SeedDives < BasicSeed
   def basic_dive
     depth = rand(12...40)
     temp = rand(12...18)
+    rating = [nil,nil,nil,nil,nil,nil,1,2,3,4,5].sample
+    rating.nil? ? nil : review = Faker::Lorem.sentence(10)
     {
       divesite: Divesite.all.sample,
       datetime: Time.now - rand(1..365).days,
@@ -30,12 +32,12 @@ class SeedDives < BasicSeed
       avg_depth: (depth * 2 / 3).round,
       min_temp: temp,
       max_temp: temp + rand(1...5),
-      comments: nil,
+      comments: Faker::Lorem.sentence(25),
       enjoyment: rand(1...5),
       visibility: rand(8...20),
       polygon: [],
-      review_rating: [nil,nil,nil,nil,nil,nil,1,2,3,4,5].sample,
-      review_content: nil
+      review_rating: rating,
+      review_content: review
     }
   end
 

@@ -1,2 +1,17 @@
 <h1><%= @divesite.name %></h1>
 <p><%= @divesite.difficulty %></p>
+
+<%= javascript_tag do %>
+  $(document).ready(function() {
+  <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+      $(document).ready(function() {
+        var coord = <%= raw @flat_coordinates %>;
+        alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
+      });
+    <% end %>
+  <% end %>
+    alert('<%= j @alert_message %>');
+  });
+<% end %>
+

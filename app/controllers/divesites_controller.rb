@@ -1,8 +1,16 @@
 class DivesitesController < ApplicationController
   before_action :find_divesite, only: [:show, :edit, :update, :destroy]
 
+
+
   def index
     @divesites = Divesite.all
+
+    @hash = Gmaps4rails.build_markers(@divesites) do |divesite, marker|
+      marker.lat divesite.latitude
+      marker.lng divesite.longitude
+      # marker.infowindow render_to_string(partial: "/divesites/map_box", locals: { divesite: divesite })
+    end
   end
 
   def show
@@ -12,6 +20,8 @@ class DivesitesController < ApplicationController
     #     marker.lng divesite.longitude
     #   end
     # end
+    @alert_message = "#{@divesite.name}"
+    @divesite_coordinates = { lat: @divesite.latitude, lng: @divesite.longitude }
   end
 
   def new

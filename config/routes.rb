@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
 
-  devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'pages#home'
 
-  resources :divesites
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show, :destroy] do
-    resources :dives
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  resources :users, only: [:show, :destroy]
+  resources :equipment_sets, only: [:new, :create, :edit, :update, :destroy]
+  resources :participations, only: [:create, :update, :destroy]
+
+  resources :divesites do
+    resources :events
   end
 
-  resources :events do
+  resources :dives do
+    resources :buddies
+    resources :sightings, only: [:create, :update, :destroy]
+    resources :data_points, only: [:create]
   end
 end

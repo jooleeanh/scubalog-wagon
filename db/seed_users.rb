@@ -1,11 +1,11 @@
 class SeedUsers
 
   def parse_guys
-    JSON.parse(File.read("db/randomuser_100_french_guys.json"))
+    JSON.parse(File.read("db/data/users_100_french_guys.json"))
   end
 
   def parse_girls
-    JSON.parse(File.read("db/randomuser_100_french_girls.json"))
+    JSON.parse(File.read("db/data/users_100_french_girls.json"))
   end
 
   def create_user(gender)

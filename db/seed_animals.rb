@@ -1,7 +1,7 @@
 class SeedAnimals
 
   def parse_animals
-    JSON.parse(File.read("db/100_animals.json"))
+    JSON.parse(File.read("db/data/animals_225_oceana.json"))
   end
 
   def seed_animals

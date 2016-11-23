@@ -1,7 +1,7 @@
 class SeedDivesites
 
   def parse_divesites
-    JSON.parse(File.read("db/divesites_france.json"))
+    JSON.parse(File.read("db/data/divesites_1188_france.json"))
   end
 
   def create_divesites

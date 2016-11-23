@@ -6,6 +6,7 @@ class Buddy < ApplicationRecord
   belongs_to :user
   belongs_to :dive
   validates :user, :dive, presence: true
+  validates :user, uniqueness: { scope: :dive }
 end
 
 # Table name: buddies

@@ -4,22 +4,27 @@ class DivesitesController < ApplicationController
 
 
   def index
-    @divesites = Divesite.all
-
-    @hash = Gmaps4rails.build_markers(@divesites) do |divesite, marker|
-      marker.lat divesite.latitude
-      marker.lng divesite.longitude
-      # marker.infowindow render_to_string(partial: "/divesites/map_box", locals: { divesite: divesite })
+    if params[:search_input].blank?
+      @divesites = Divesite.all
+      build_markers(divesites_with_location(@divesites))
+    elsif Divesite.near(params[:search_input], 60).blank?
+      flash[:alert] = "Pas de site autour de #{params[:search_input].capitalize} :("
+      redirect_to root_path
+    else
+      @divesites = Divesite.near(params[:search_input].capitalize, 60)
+      build_markers(divesites_with_location(@divesites))
     end
+
+      # marker.infowindow render_to_string(partial: "/divesites/map_box", locals: { divesite: divesite })
   end
 
   def show
-    # if @divesite.longitude && @divesite.latitude
-    #   @hash = Gmaps4rails.build_markers(@divesite) do |divesite, marker|
-    #     marker.lat divesite.latitude
-    #     marker.lng divesite.longitude
-    #   end
-    # end
+    if @divesite.longitude && @divesite.latitude
+      @hash = Gmaps4rails.build_markers(@divesite) do |divesite, marker|
+        marker.lat divesite.latitude
+        marker.lng divesite.longitude
+      end
+    end
     @alert_message = "#{@divesite.name}"
     @divesite_coordinates = { lat: @divesite.latitude, lng: @divesite.longitude }
   end
@@ -73,6 +78,11 @@ class DivesitesController < ApplicationController
       :freshwater,
       #:photos,
       )
+  end
+
+
+  def divesites_with_location(divesites)
+    divesites.where.not(latitude: nil, longitude: nil)
   end
 
   def build_markers(divesites)

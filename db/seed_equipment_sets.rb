@@ -5,15 +5,16 @@ class SeedEquipmentSets < BasicSeed
   end
 
   def seed_basic_set
+    noun = "Basic Equipment Set"
     User.all.each do |user|
       if user.equipment_sets.first&.mask == "Aqualung - Sphera"
-        message(user, "already has")
+        message(user.id, user.first_name, "already has", noun, "light_red")
       else
         set = user.equipment_sets.new(basic_set)
         if set.save
-          message(user, "got")
+          message(user.id, user.first_name, "got", noun, "light_green")
         else
-          puts "#{set.errors.full_messages}".light_red
+          error(user)
         end
       end
     end
@@ -30,16 +31,5 @@ class SeedEquipmentSets < BasicSeed
       regulator: "Apeks - XTX50",
       weight: 4
     }
-  end
-
-  def message(user, status)
-    case status
-    when "already got" then status = status.light_red
-    when "got" then status = status.light_green
-    end
-    print "#{user.id} - ".light_black
-    print "#{user.first_name.capitalize}".light_yellow
-    print " #{status} "
-    puts "'Basic Equipment Set'".blue
   end
 end

@@ -1,108 +1,114 @@
-def seed_users(number, json_doc)
-  number.times do |index|
-    i = index.to_s
-    location = json_doc[i]["street"] + json_doc[i]["city"] + json_doc[i]["state"] + json_doc[i]["postcode"].to_s + json_doc[i]["country"]
-    user = User.new(
-    first_name: json_doc[i]["first_name"],
-    last_name: json_doc[i]["last_name"],
-    gender: json_doc[i]["gender"],
-    dob: json_doc[i]["dob"],
-    email: json_doc[i]["email"],
-    password: "scubalog",
-    location: location,
-    created_at: DateTime.parse(json_doc[i]["registered"]),
-    # photo: json_doc[i]["photo_large"]
-    )
-    if user.save
-      puts "#{index} - #{json_doc[i]["first_name"]} #{json_doc[i]["last_name"]}".light_green
-    else
-      puts "#{index} - #{user.errors.messages}".light_red
+require_relative 'basic_seed'
+require_relative 'delete_seed'
+require_relative 'seed_users'
+require_relative 'seed_divesites'
+require_relative 'seed_buddies'
+require_relative 'seed_data_points'
+require_relative 'seed_dives'
+require_relative 'seed_equipment_sets'
+require_relative 'seed_animals'
+require_relative 'seed_sightings'
+require_relative 'seed_events'
+require_relative 'seed_participations'
+
+class Seed < BasicSeed
+  # Done
+  def delete_seed?
+    ask_seed("delete")
+    answer = STDIN.gets.chomp
+    if answer == "y"
+      puts ""
+      seed = DeleteSeed.new
+      seed.delete_all?
     end
   end
-end
-
-def seed_equipment_sets
-end
-
-def seed_divesites
-end
-
-def seed_events
-end
-
-def seed_participations
-end
-
-def seed_dives
-end
-
-def seed_buddies
-end
-
-def seed_data_points
-end
-
-def seed_animals(json_doc)
-  json_doc.each do |key, category|
-    category["creatures"].each do |k, animal|
-      new_animal = Animal.new(
-      name: animal["name"],
-      image_url: animal["image_url"],
-      )
-      if new_animal.save
-        puts "#{animal["name"]}".light_green
-      else
-        puts "#{new_animal.errors.messages}".light_red
-      end
+  def create_seed?
+    ask_seed("create")
+    answer = STDIN.gets.chomp
+    if answer == "y"
+      puts ""
+      stylize("--- CREATING SEED ---".light_green)
+      puts "\n"
+      create_users?
+      create_divesites?
+      create_animals?
+      create_buddies?
+      create_data_points?
+      create_dives?
+      create_equipment_sets?
+      create_sightings?
+      create_events?
+      create_participations?
     end
   end
-end
-
-def seed_sightings
-end
-
-def parse_animals
-  JSON.parse(File.read("db/100_animals.json"))
-end
-
-def parse_guys
-  JSON.parse(File.read("db/randomuser_100_french_guys.json"))
-end
-
-def parse_girls
-  JSON.parse(File.read("db/randomuser_100_french_girls.json"))
-end
-
-def prompt_for_animals
-  print "Seed animals ? [y/n] > ".light_yellow
-  answer = STDIN.gets.chomp
-  if answer == "y"
-    seed_animals(parse_animals)
-  end
-end
-
-
-def prompt_for_users
-  print "Seed users ? [y/n] > ".light_yellow
-  answer = STDIN.gets.chomp
-  if answer == "y"
-    prompt_for_user("guys")
-    prompt_for_user("girls")
-  end
-end
-
-def prompt_for_user(gender)
-  print "(100 unique) How many french #{gender} ? > ".light_cyan
-  number = STDIN.gets.chomp.to_i
-  if number > 0
-    case gender
-    when "guys" then seed_users(number, parse_guys)
-    when "girls" then seed_users(number, parse_girls)
+  def create_animals?
+    answer = ask_create("animals")
+    if answer == "y"
+      seed = SeedAnimals.new
+      seed.seed_animals
     end
+  end
+  def create_users?
+    answer = ask_create("users")
+    if answer == "y"
+      seed = SeedUsers.new
+      seed.create_user("guys")
+      seed.create_user("girls")
+    end
+  end
+  def create_divesites?
+    answer = ask_create("divesites")
+    if answer == "y"
+      seed = SeedDivesites.new
+      seed.create_divesites
+    end
+  end
+
+  # TODO:
+  def create_buddies?
+    # TODO:
+  end
+  def create_data_points?
+    # TODO:
+  end
+  def create_dives?
+    # TODO:
+  end
+  def create_equipment_sets?
+    # TODO:
+  end
+  def create_sightings?
+    # TODO:
+  end
+  def create_events?
+    # TODO:
+  end
+  def create_participations?
+    # TODO:
+  end
+
+  private
+
+  def ask_seed(action)
+    case action
+    when "delete" then print "  Delete ".light_red
+    when "create" then print "  Create ".light_green
+    end
+    print "seed?".light_cyan
+    print " [y/n] ".light_black
+    print "> "
+  end
+  def ask_create(model)
+    print "- [y/n] ".light_black
+    print "Create ".light_green
+    print model.light_yellow
+    print "? > ".light_yellow
+    STDIN.gets.chomp
   end
 end
 
 puts ""
-prompt_for_users
+seed = Seed.new
+seed.delete_seed?
+seed.create_seed?
 puts ""
-prompt_for_animals

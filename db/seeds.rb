@@ -104,15 +104,6 @@ class Seed < BasicSeed
       seed.seed_sightings
     end
   end
-
-  # TODO:
-  def create_data_points?
-    answer = ask_create("data points")
-    if answer == "y"
-      seed = SeedDataPoints.new
-      seed.seed_data_points
-    end
-  end
   def create_events?
     answer = ask_create("events")
     if answer == "y"
@@ -125,6 +116,22 @@ class Seed < BasicSeed
     if answer == "y"
       seed = SeedParticipations.new
       seed.seed_participations
+    end
+  end
+  def create_data_points?
+    answer = ask_create("data points")
+    if answer == "y"
+      seed = SeedDataPoints.new
+      seed.seed_data_points
+    end
+  end
+
+  # TODO:
+  def create_data_points?
+    answer = ask_create("data points")
+    if answer == "y"
+      seed = SeedDataPoints.new
+      seed.seed_data_points
     end
   end
 

@@ -22,6 +22,7 @@ class Seed < BasicSeed
   # Done
   def stats?
     print "[y/n] ".light_black + "Get model stats?".light_yellow + " > "
+    puts "You like 💩💩💩💩💩💩 ?"
     answer = STDIN.gets.chomp
     if answer == "y"
       get_size_of(MODELS)
@@ -162,3 +163,4 @@ seed.delete_seed?
 seed.create_seed?
 seed.stats?
 puts ""
+

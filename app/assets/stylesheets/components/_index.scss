@@ -5,3 +5,22 @@
 @import "cards";
 @import "buttons";
 @import "forms";
+
+#tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.divesites {
+  margin-top: 4%;
+
+}
+
+.divesite_list {
+  margin-left: 10%;
+}
+
+#map {
+  margin-top: 2%;
+}

@@ -1,0 +1,25 @@
+<h2>Reviews</h2>
+<% @divesite.dives.each do |dive| %>
+  <% unless dive.review_rating.nil? %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <% dive.review_rating.times do %>
+            <i class="fa fa-star fa-lg" aria-hidden="true"></i>
+          <% end %>
+          <% (5 - dive.review_rating).times do %>
+            <i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
+          <% end %>
+          <%= dive.user.first_name.capitalize %>
+          <small>
+            <span> at a dive on </span>
+            <%= dive.datetime.strftime("%b %d %Y") %>
+          </small>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= dive.review_content %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

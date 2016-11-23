@@ -12,10 +12,10 @@ require_relative 'seed_events'
 require_relative 'seed_participations'
 
 MODELS = [
+  [Event, [Participation]],
+  [Animal, [Sighting]],
   [User, [Participation, Dive, [EquipmentSet, Buddy, DataPoint, Sighting]]],
   [Divesite, [Event]],
-  [Animal, [Sighting]],
-  [Event, [Participation]]
 ]
 
 class Seed < BasicSeed
@@ -77,16 +77,20 @@ class Seed < BasicSeed
   end
 
   # TODO:
-  def create_buddies?
-    # TODO:
-  end
-  def create_data_points?
-    # TODO:
-  end
   def create_dives?
     # TODO:
   end
   def create_equipment_sets?
+    answer = ask_create("equipment sets")
+    if answer == "y"
+      seed = SeedEquipmentSets.new
+      seed.seed_equipment_sets
+    end
+  end
+  def create_data_points?
+    # TODO:
+  end
+  def create_buddies?
     # TODO:
   end
   def create_sightings?

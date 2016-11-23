@@ -10,11 +10,11 @@ class User < ApplicationRecord
   :omniauthable, omniauth_providers: [:facebook]
 
 
-  has_many :participations
-  has_many :equipment_sets
-  has_many :dives
-  has_many :buddies # TODO: rename this as "me as a buddy"
-  has_many :buddies, through: :dives
+  has_many :participations, dependent: :destroy
+  has_many :equipment_sets, dependent: :destroy
+  has_many :dives, dependent: :destroy
+  has_many :buddies, dependent: :destroy # TODO: rename this as "me as a buddy"
+  has_many :buddies, through: :dives, dependent: :destroy
   has_many :events, through: :participations
   has_many :sightings, through: :dives
   has_many :animals, through: :sightings

@@ -1,7 +1,7 @@
 # TODO: "Must have dive, time and depth"
 
 class DataPoint < ApplicationRecord
-  belongs_to :dive, dependent: :destroy
+  belongs_to :dive
 
   validates :time, :depth, presence: true
 end

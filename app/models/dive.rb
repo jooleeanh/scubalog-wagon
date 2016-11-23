@@ -4,21 +4,42 @@
 # "Enjoyment must be between 0 and 5"
 
 class Dive < ApplicationRecord
-  belongs_to :user, dependent: :destroy
+
+  TYPES = [
+    "shore",
+    "boat",
+    "reef",
+    "deep",
+    "wall",
+    "drift",
+    "night",
+    "lake",
+    "muck",
+    "wreck",
+    "cave",
+    "cenote",
+    "cavern",
+    "twilight",
+    "shark",
+    "seal",
+    "scallop",
+    "lobster",
+    "nitrox"
+  ]
+
+  belongs_to :user
   # TODO: set "divesite was removed from database" if divesite is destroyed
   belongs_to :divesite, optional: true
-  has_many :sightings
-  has_many :data_points
-  has_many :buddies
+  has_many :sightings, dependent: :destroy
+  has_many :data_points, dependent: :destroy
+  has_many :buddies, dependent: :destroy
   # has_one :equipment_set, through: :user # TODO: do it
   has_many :animals, through: :sightings
   validates :divesite, presence: true, on: :create
   validates :datetime, presence: true
-  validates :max_depth, numericality: { only_integer: true},
-                        inclusion: { in: 1...200 },
+  validates :max_depth, inclusion: { in: 1...200 },
                         allow_nil: true
-  validates :avg_depth, numericality: { only_integer: true},
-                        inclusion: { in: 1..200 },
+  validates :avg_depth, inclusion: { in: 1..200 },
                         allow_nil: true
   validates :enjoyment, numericality: { only_integer: true},
                         inclusion: { in: 0...5 },
@@ -31,7 +52,7 @@ end
 #  user_id        :integer
 #  divesite_id    :integer
 #  datetime       :datetime
-#  type           :string
+#  types           :string
 #  tank_size      :integer
 #  bottom_time    :integer
 #  start_air      :integer
@@ -46,25 +67,3 @@ end
 #  polygon        :text             default([]), is an Array
 #  review_rating  :integer
 #  review_content :text
-
-TYPES = [
-  "shore",
-  "boat",
-  "reef",
-  "deep",
-  "wall",
-  "drift",
-  "night",
-  "lake",
-  "muck",
-  "wreck",
-  "cave",
-  "cenote",
-  "cavern",
-  "twilight",
-  "shark",
-  "seal",
-  "scallop",
-  "lobster",
-  "nitrox"
-]

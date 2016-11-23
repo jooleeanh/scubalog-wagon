@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123093115) do
+ActiveRecord::Schema.define(version: 20161123122358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20161123093115) do
     t.integer  "user_id"
     t.integer  "divesite_id"
     t.datetime "datetime"
-    t.string   "type"
+    t.string   "types"
     t.integer  "tank_size"
     t.integer  "bottom_time"
     t.integer  "start_air"

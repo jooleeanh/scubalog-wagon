@@ -43,11 +43,11 @@ class Seed < BasicSeed
       puts "\n"
       create_users?
       create_divesites?
-      create_animals?
-      create_buddies?
-      create_data_points?
       create_dives?
+      create_buddies?
       create_equipment_sets?
+      create_data_points?
+      create_animals?
       create_sightings?
       create_events?
       create_participations?
@@ -82,8 +82,6 @@ class Seed < BasicSeed
       seed.seed_equipment_sets
     end
   end
-
-  # TODO:
   def create_dives?
     answer = ask_create("dives")
     if answer == "y"
@@ -92,19 +90,41 @@ class Seed < BasicSeed
     end
   end
   def create_buddies?
-    # TODO:
-  end
-  def create_data_points?
-    # TODO:
+    answer = ask_create("buddies")
+    if answer == "y"
+      seed = SeedBuddies.new
+      seed.seed_buddies
+    end
   end
   def create_sightings?
-    # TODO:
+    answer = ask_create("sightings")
+    if answer == "y"
+      seed = SeedSightings.new
+      seed.seed_sightings
+    end
+  end
+
+  # TODO:
+  def create_data_points?
+    answer = ask_create("data points")
+    if answer == "y"
+      seed = SeedDataPoints.new
+      seed.seed_data_points
+    end
   end
   def create_events?
-    # TODO:
+    answer = ask_create("events")
+    if answer == "y"
+      seed = SeedEvents.new
+      seed.seed_events
+    end
   end
   def create_participations?
-    # TODO:
+    answer = ask_create("participations")
+    if answer == "y"
+      seed = SeedParticipations.new
+      seed.seed_participations
+    end
   end
 
   private

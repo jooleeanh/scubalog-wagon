@@ -12,8 +12,10 @@ class Divesite < ApplicationRecord
 
   validates :name, presence: true
   # validates :location, presence: true # TODO: Reverse geocoding
-  validates :latitude, :longitude, presence: true
+  # validates :latitude, :longitude, presence: true
   validates :latitude, uniqueness: { scope: :longitude }
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
 end
 
 # Table name: divesites

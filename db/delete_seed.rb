@@ -1,12 +1,5 @@
 class DeleteSeed < BasicSeed
 
-  MODELS = [
-    [User, [Participation, Dive, [EquipmentSet, Buddy, DataPoint, Sighting]]],
-    [Divesite, [Event]],
-    [Animal, [Sighting]],
-    [Event, [Participation]]
-  ]
-
   def delete_all?
     answers = {}
     stylize("--- DELETING SEED ---".light_red)

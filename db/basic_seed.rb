@@ -9,7 +9,7 @@ class BasicSeed
     array.each do |sub_model|
       if sub_model.class == Array
         print "  "
-        get_size_of(sub_model)
+        get_size_of(sub_model, action)
       else
         message = "- #{sub_model.count} #{sub_model.name.pluralize} #{action}"
         case action

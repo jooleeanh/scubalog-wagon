@@ -13,8 +13,7 @@ class User < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :equipment_sets, dependent: :destroy
   has_many :dives, dependent: :destroy
-  has_many :buddies, dependent: :destroy # TODO: rename this as "me as a buddy"
-  has_many :buddies, through: :dives, dependent: :destroy
+  has_many :buddies, dependent: :destroy
   has_many :events, through: :participations
   has_many :sightings, through: :dives
   has_many :animals, through: :sightings

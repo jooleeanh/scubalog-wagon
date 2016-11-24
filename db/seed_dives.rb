@@ -2,7 +2,7 @@ class SeedDives < BasicSeed
 
   def seed_dives
     User.all.each do |user|
-      rand(2...5).times do
+      rand(20...50).times do
         dive = user.dives.new(basic_dive)
         if dive.save
           print "#{user.id} - #{user.first_name.capitalize}".light_yellow

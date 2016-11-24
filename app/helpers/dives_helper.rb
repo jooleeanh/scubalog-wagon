@@ -1,5 +1,9 @@
 module DivesHelper
 
+  def count_type_occurences(dives)
+    dives.map { |dive| dive.types }.each_with_object(Hash.new(0)) { |type, counts| counts[type] += 1 }.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
+  end
+
   def dive_fields_hash(dive)
     [
       { key: "Start time", value: time_long(dive.datetime), unit: "" },

@@ -1,8 +1,6 @@
 class DivesitesController < ApplicationController
   before_action :find_divesite, only: [:show, :edit, :update, :destroy]
 
-
-
   def index
     if params[:search_input].blank?
       @divesites = Divesite.order_by_name
@@ -14,8 +12,14 @@ class DivesitesController < ApplicationController
       @divesites = Divesite.order_by_name.near(params[:search_input].capitalize, 60)
       build_markers(divesites_with_location(@divesites))
     end
-
       # marker.infowindow render_to_string(partial: "/divesites/map_box", locals: { divesite: divesite })
+  end
+
+  def search
+    respond_to do |format|
+    format.html
+    format.json { @divesites = Divesite.search(params[:term]) }
+    end
   end
 
   def show
@@ -75,7 +79,7 @@ class DivesitesController < ApplicationController
       :difficulty,
       :max_depth,
       :avg_depth,
-      :freshwater,
+      :freshwater
       #:photos,
       )
   end

@@ -5,22 +5,24 @@
   <div class="jumbotron">
     <div class="container">
       <h3>Dive Stats</h3>
-      <table class="table">
-        <tr>
-          <% count_type_occurences(@dives).each do |kv| %>
-          <th class="text-center">
-            <%= kv[0].capitalize %>
-          </th>
-          <% end %>
-        </tr>
-        <tr>
-          <% count_type_occurences(@dives).each do |kv| %>
-          <td class="text-center">
-            <%= kv[1] %>
-          </td>
-          <% end %>
-        </tr>
-      </table>
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <% count_type_occurences(@dives).each do |kv| %>
+            <th class="text-center">
+              <%= kv[0].capitalize %>
+            </th>
+            <% end %>
+          </tr>
+          <tr>
+            <% count_type_occurences(@dives).each do |kv| %>
+            <td class="text-center">
+              <%= kv[1] %>
+            </td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>

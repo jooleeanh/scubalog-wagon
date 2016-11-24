@@ -3,7 +3,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= event.datetime.strftime("%b %d %Y") %>
+      <%= link_to event do%>
+      <%= event.datetime.strftime("%b %d %Y") %>. Created by :
+      <%= event.participations.first.user.first_name.capitalize%>
+      <% end %>
     </h3>
   </div>
   <div class="panel-body">

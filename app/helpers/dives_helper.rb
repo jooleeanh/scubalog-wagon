@@ -9,6 +9,11 @@ module DivesHelper
     d.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
   end
 
+  def count_divesite_occurences(dives)
+    d = dives.map { |dive| dive.divesite }.each_with_object(Hash.new(0)) { |divesite, counts| counts[divesite&.name] += 1 }
+    d.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
+  end
+
   def dive_fields_hash(dive)
     [
       { key: "Start time", value: time_long(dive.datetime), unit: "" },

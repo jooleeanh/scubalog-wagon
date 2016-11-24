@@ -3,7 +3,7 @@ before_action :set_dive, only: [:show, :edit, :update, :destroy]
 before_action :all_divesites, only: [:new, :edit, :update, :destroy]
 
   def index
-    @dives = current_user.dives.all
+    @dives = current_user.dives.all.recent
   end
 
   def show

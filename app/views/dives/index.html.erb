@@ -16,7 +16,10 @@
       <div class="product">
       <%= image_tag "cenote.jpg", class: "product-image hidden-xs" %>
         <div class='product-body'>
-          <h3><%= dive.divesite.name %> - <%= dive.datetime %></h3>
+          <ol class="dive-title list-inline">
+            <li><%= format_time(dive.datetime) %></li>
+            <li><h3><%= dive.divesite.name %></h3></li>
+          </ol>
           <p>
             <%= dive.comments %>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus at dicta quibusdam, odit eligendi sit modi debitis facilis accusamus molestias quia, doloribus laboriosam incidunt nesciunt quisquam ex nobis voluptatibus. Cupiditate!

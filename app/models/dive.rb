@@ -44,7 +44,7 @@ class Dive < ApplicationRecord
   validates :enjoyment, numericality: { only_integer: true},
                         inclusion: { in: 0...5 },
                         allow_nil: true
-
+  scope :recent, -> { order(datetime: :desc) }
 end
 
 # Table name: dives

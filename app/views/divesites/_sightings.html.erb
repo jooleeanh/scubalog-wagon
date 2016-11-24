@@ -1,4 +1,22 @@
+
+
 <h2>Sightings/Animals</h2>
-<% @divesite.sightings.each do |sighting| %>
-  <p class="sighting-list"><%= sighting.animal.name %></p>
-<% end %>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-md-4 animal-pics">
+      <%@splitted_animals.each do |sa| %>
+      <%= sa[0].name %><%=  image_tag('http://placehold.it/320x130')%>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-md-4 animal-pics">
+      <%@splitted_animals.each do |sa| %>
+      <%= sa[1].name %><%= image_tag('http://placehold.it/320x130')%>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+

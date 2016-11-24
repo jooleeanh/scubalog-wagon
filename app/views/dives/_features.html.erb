@@ -1,0 +1,27 @@
+<ol class="list-inline">
+  <% if dive.types.blank? == false %>
+    <li class="dive-index-feature">
+      <%= image_tag("icons/scuba.svg", class: "dive-index-icon") %>
+      <span class="dive-index-icon-text"><%= dive.types&.capitalize %></span>
+    </li>
+  <% end %>
+  <% if dive.bottom_time.blank? == false %>
+    <li class="dive-index-feature">
+      <%= image_tag("icons/clock.svg", class: "dive-index-icon") %>
+      <span class="dive-index-icon-text"><%= dive.bottom_time %> min</span>
+    </li>
+  <% end %>
+  <% if dive.max_depth.blank? == false %>
+    <li class="dive-index-feature">
+      <%= image_tag("icons/depth-2.svg", class: "dive-index-icon") %>
+      <span class="dive-index-icon-text"><%= dive.max_depth %>m</span>
+    </li>
+    <% end %>
+  <% if dive.enjoyment.blank? == false %>
+    <li class="dive-index-feature">
+      <% dive.enjoyment&.times do %>
+        <%= image_tag("icons/dot-2.svg", class: "dive-index-icon") %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>

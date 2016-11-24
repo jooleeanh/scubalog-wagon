@@ -52,7 +52,7 @@ end
 #  user_id        :integer
 #  divesite_id    :integer
 #  datetime       :datetime
-#  types           :string
+#  types          :string
 #  tank_size      :integer
 #  bottom_time    :integer
 #  start_air      :integer

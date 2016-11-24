@@ -6,26 +6,41 @@
       <div class="col-sm-12">
         <div id="map" style="width: 100%; height: 300px;"></div>
         <% content_for(:after_js) do %>
-          <%= javascript_tag do %>
-          <%= render 'divesites/map.js.erb' %>
-          <% end %>
+        <%= javascript_tag do %>
+        <%= render 'divesites/map.js.erb' %>
+        <% end %>
         <% end %>
       </div>
     </div>
     <% @dives.each do |dive| %>
-      <div class="product">
+    <div class="product">
       <%= image_tag "cenote.jpg", class: "product-image hidden-xs" %>
-        <div class='product-body'>
-          <ol class="dive-title list-inline">
-            <li><%= format_time(dive.datetime) %></li>
-            <li><h3><%= dive.divesite.name %></h3></li>
-          </ol>
-          <p>
-            <%= dive.comments %>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus at dicta quibusdam, odit eligendi sit modi debitis facilis accusamus molestias quia, doloribus laboriosam incidunt nesciunt quisquam ex nobis voluptatibus. Cupiditate!
-          </p>
-        </div>
+      <div class='product-body'>
+        <ol class="dive-title list-inline">
+          <li><%= format_time(dive.datetime) %></li>
+          <li><h3><%= dive.divesite.name %></h3></li>
+        </ol>
+        <ol class="list-inline">
+          <li class="dive-index-feature">
+            <%= image_tag("icons/scuba.svg", class: "dive-index-icon") %>
+            <span class="dive-index-icon-text"><%= dive.types&.capitalize %></span>
+          </li>
+          <li class="dive-index-feature">
+            <%= image_tag("icons/clock.svg", class: "dive-index-icon") %>
+            <span class="dive-index-icon-text"><%= dive.bottom_time %> min</span>
+          </li>
+          <li class="dive-index-feature">
+            <%= image_tag("icons/depth-2.svg", class: "dive-index-icon") %>
+            <span class="dive-index-icon-text"><%= dive.max_depth %>m</span>
+          </li>
+          <li class="dive-index-feature">
+            <% dive.enjoyment&.times do %>
+              <%= image_tag("icons/dot-2.svg", class: "dive-index-icon") %>
+            <% end %>
+          </li>
+        </ol>
       </div>
+    </div>
     <% end %>
   </div>
 </div>

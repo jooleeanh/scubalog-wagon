@@ -1,47 +1,7 @@
 <div class="dive-index-map">
   <div id="map" style="width: 100%; height: 300px;"></div>
 </div>
-<div class="dive-index-stats">
-  <div class="jumbotron">
-    <div class="container">
-      <h2>Dive Stats</h2>
-      <div class="table-responsive">
-        <table class="table">
-          <tr><th><h3>Types</h3></th></tr>
-          <tr>
-            <% count_type_occurences(@dives).each do |kv| %>
-            <th class="text-center">
-              <%= kv[0].capitalize %>
-            </th>
-            <% end %>
-          </tr>
-          <tr>
-            <% count_type_occurences(@dives).each do |kv| %>
-            <td class="text-center">
-              <%= kv[1] %>
-            </td>
-            <% end %>
-          </tr>
-          <tr><th><h3>Buddies</h3></th></tr>
-          <tr>
-            <% count_buddy_occurences(@dives).each do |kv| %>
-            <th class="text-center">
-              <%= kv[0].capitalize %>
-            </th>
-            <% end %>
-          </tr>
-          <tr>
-            <% count_buddy_occurences(@dives).each do |kv| %>
-            <td class="text-center">
-              <%= kv[1] %>
-            </td>
-            <% end %>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'stats' %>
 <div class="container">
   <div class="dive-index-list">
     <% @dives.each do |dive| %>

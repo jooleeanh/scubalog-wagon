@@ -39,7 +39,7 @@
     <br>
     <div class='text-center'><%= link_to "Page d'accueil", root_path %></div>
   <% end %>
-</di  v>
+</div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -60,9 +60,8 @@
   <% end %>
 <% end %>
 
-<div class="container divesites">
+<div class="divesites">
   <% @divesites.each do |divesite| %>
     <%= render 'divesites/divesite_cards', divesite: divesite %>
-    <div class="bordure"></div>
   <% end %>
 </div>

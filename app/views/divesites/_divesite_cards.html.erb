@@ -1,22 +1,24 @@
-<div class="row radius-row">
-  <div class="col-sm-6">
-    <h2><%= divesite.name %></h2><p> difficulty : <%= divesite.difficulty %></p>
-    <p>
-      Types :
-      <% divesite.dives.each do |dive| %>
-        <%= dive.types %>
+<div class="container">
+  <div class="row margin-row">
+    <div class="col-sm-6">
+      <h2><%= divesite.name %></h2><p> difficulty : <%= divesite.difficulty %></p>
+      <p>
+        Types :
+        <% divesite.dives.each do |dive| %>
+          <%= dive.types %>
+        <% end %>
+      </p>
+      <p>Max depth : <%= divesite.max_depth %></p>
+      <%= link_to divesite_path(divesite) do %>
+        <button type="button" class="btn btn-primary">VIEW THE DIVESITE</button>
       <% end %>
-    </p>
-    <p>Max depth : <%= divesite.max_depth %></p>
-    <%= link_to divesite_path(divesite) do %>
-      <button type="button" class="btn btn-primary">VIEW THE DIVESITE</button>
-    <% end %>
+    </div>
+    <div class="col-sm-4 col-sm-offset-1">
+      <img width="450" height="300" src="https://gekodivebali.com/images/gallery/nusa-penida-crystal-bay-gallery/scuba%20dive%20site%20nusa%20penida%20lembongan%20crystal%20bay%20channel%20kanox%20padi%20divemaster%20dive%20guide%20divers.jpg" class="" sizes="(max-width: 502px) 100vw, 502px">
+    </div>
   </div>
-  <div class="col-sm-4 col-sm-offset-1">
-    <img width="450" height="300" src="https://gekodivebali.com/images/gallery/nusa-penida-crystal-bay-gallery/scuba%20dive%20site%20nusa%20penida%20lembongan%20crystal%20bay%20channel%20kanox%20padi%20divemaster%20dive%20guide%20divers.jpg" class="" sizes="(max-width: 502px) 100vw, 502px">
-  </div>
+  <div class="bordure"></div>
 </div>
-
 
 
 

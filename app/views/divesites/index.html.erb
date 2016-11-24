@@ -20,7 +20,7 @@
 
 
 <div class="container">
-  <div class="divesite-list">
+  <div class="">
     <h2 class="divesite-header text-center">
       <%= pluralize(@divesites.size, "divesite") %> found !
     </h2>
@@ -38,7 +38,7 @@
     <br>
     <div class='text-center'><%= link_to "Page d'accueil", root_path %></div>
   <% end %>
-</div>
+</di  v>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -46,18 +46,9 @@
   <% end %>
 <% end %>
 
-<div class="divesites container">
-  <div class="divesite_list row center-block">
-    <% @divesites.each do |divesite| %>
-
-      <div class="col-xs-12 col-sm-6 col-md-6">
-      <ul>
-        <%= link_to divesite_path(divesite) do %>
-
-        <li><%= render 'divesites/divesite_cards', divesite: divesite %></li>
-        <% end %>
-      </ul>
-      </div>
-    <% end %>
-  </div>
+<div class="container divesites">
+  <% @divesites.each do |divesite| %>
+    <%= render 'divesites/divesite_cards', divesite: divesite %>
+    <div class="bordure"></div>
+  <% end %>
 </div>

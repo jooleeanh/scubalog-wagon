@@ -1,15 +1,4 @@
 {
-    "0": {
-        "id": 21106,
-        "country": "France",
-        "name": "Cap la Houssaye",
-        "location": "La Reunion Island",
-        "rating": 0,
-        "position": {
-            "lat": -21.0182832,
-            "lng": 55.2380722
-        }
-    },
     "1": {
         "id": 15593,
         "country": "France",

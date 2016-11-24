@@ -1,41 +1,92 @@
-<div class="dive-show-map">
-  <div id="map" style="width: 100%; height: 350px;"></div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-8">
+<div class="dive-show">
+  <div class="dive-show-map">
+    <div id="map" style="width: 100%; height: 350px;"></div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <hr>
       <div>
-        <h1 class="text-center">Infos</h1>
-        <p><%= date_long(@dive.datetime) %></p>
-        <p>Tank size : <%= @dive.tank_size %></p>
-        <p>Bottom time : <%= @dive.bottom_time %></p>
-        <p>Start air : <%= @dive.start_air %> - End air : <%= @dive.end_air %></p>
-        <p>Max depth : <%= @dive.max_depth %> - Avg depth : <%= @dive.avg_depth %></p>
-        <p>Min temp : <%= @dive.min_temp %> - Max temp <%= @dive.max_depth %></p>
-        <p>Comments : <%= @dive.comments %></p>
-        <p>Enjoyments : <%= @dive.enjoyment %></p>
-        <p>Visibility : <%= @dive.visibility %></p>
-        <p>Review : <%= @dive.review_rating %> <%= @dive.review_content %></p>
+        <div class="dive-show-header">
+          <h4><%= date_long(@dive.datetime) %></h4>
+          <h2>
+            <%= @dive.divesite.name %>,
+            <em><%= @dive.divesite.location %></em>
+          </h2>
+          <h5>Type: <%= @dive.types %></h5>
+        </div>
+        <hr>
+        <div class="dive-show-info">
+          <h2>Dive details</h2>
+          <div class="jumbotron">
+            <div class="row">
+              <div class="col-xs-12 col-md-4">
+                <dl class="dl-horizontal">
+                  <% dive_fields_hash(@dive).each do |field| %>
+                  <dt><%= field[:key] %></dt>
+                  <dd>
+                    <%= field[:value] %>
+                    <em><%= field[:unit] %></em>
+                  </dd>
+                  <% end %>
+                </dl>
+              </div>
+              <div class="col-xs-12 col-md-8">
+                <img src="http://darkerview.com/wordpress/wp-content/uploads/2012/07/YO-257Profile.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dive-show-equipment">
+          <h2>Equipment</h2>
+          <% eq = @dive.user.equipment_sets.first %>
+          <table class="table">
+            <tr>
+              <th>Mask</th>
+              <th>Snorkel</th>
+              <th>Fins</th>
+              <th>Wetsuit</th>
+              <th>Computer</th>
+              <th>Bcd</th>
+              <th>Regulator</th>
+              <th>Weight</th>
+            </tr>
+            <tr>
+              <td><%= eq.mask %></td>
+              <td><%= eq.snorkel %></td>
+              <td><%= eq.fins %></td>
+              <td><%= eq.wetsuit %></td>
+              <td><%= eq.computer %></td>
+              <td><%= eq.bcd %></td>
+              <td><%= eq.regulator %></td>
+              <td><%= eq.weight %></td>
+            </tr>
+          </table>
+        </div>
+        <hr>
+        <div class="dive-show-comments">
+          <h2>Comments</h2>
+          <%= @dive.comments %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        icon: "/images/mapicon.png"
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: { id: 'map' } }, function() {
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    icon: "/images/mapicon.png"
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    if (markers.length == 0) {
+      handler.getMap().setZoom(2);
+    } else if (markers.length == 1) {
+      handler.getMap().setZoom(14);
+    }
+  });
+});
+<% end %>
 <% end %>

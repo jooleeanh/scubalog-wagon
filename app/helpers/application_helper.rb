@@ -7,6 +7,10 @@ module ApplicationHelper
   def date_long(datetime)
     datetime.strftime("%A, %B %d, %Y")
   end
+
+  def time_long(datetime)
+    datetime.strftime("%k:%M")
+  end
 end
 
 

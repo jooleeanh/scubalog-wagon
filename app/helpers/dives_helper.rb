@@ -4,6 +4,11 @@ module DivesHelper
     dives.map { |dive| dive.types }.each_with_object(Hash.new(0)) { |type, counts| counts[type] += 1 }.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
   end
 
+  def count_buddy_occurences(dives)
+    d = dives.map { |dive| dive.buddies }.each_with_object(Hash.new(0)) { |buddy, counts| counts[buddy[0]&.user&.first_name] += 1 }
+    d.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
+  end
+
   def dive_fields_hash(dive)
     [
       { key: "Start time", value: time_long(dive.datetime), unit: "" },

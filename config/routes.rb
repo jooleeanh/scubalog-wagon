@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Attachinary::Engine => "/attachinary"
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'pages#home'
 

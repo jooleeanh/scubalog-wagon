@@ -1,4 +1,4 @@
-<h2>Upcoming events at <%= @divesite.name %></h2>
+<h2>Upcoming events</h2>
 <% @divesite.events.where.not(description: nil).each do |event| %>
 <div class="panel panel-default">
   <div class="panel-heading">

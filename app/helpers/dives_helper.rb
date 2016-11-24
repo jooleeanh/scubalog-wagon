@@ -1,17 +1,22 @@
 module DivesHelper
 
+  def sort_desc(hash) # returns double array [[k, count],[]]
+    hash.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
+  end
+
   def count_type_occurences(dives)
-    dives.map { |dive| dive.types }.each_with_object(Hash.new(0)) { |type, counts| counts[type] += 1 }.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
+    types = dives.map { |dive| dive.types }.each_with_object(Hash.new(0)) { |type, counts| counts[type] += 1 }.reject { |k, v| k.blank? }
+    sort_desc(types)
   end
 
   def count_buddy_occurences(dives)
-    d = dives.map { |dive| dive.buddies }.each_with_object(Hash.new(0)) { |buddy, counts| counts[buddy[0]&.user&.first_name] += 1 }
-    d.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
+    buddies = dives.map { |dive| dive.buddies }.each_with_object(Hash.new(0)) { |buddy, counts| counts[buddy[0]&.user&.first_name] += 1 }
+    sort_desc(buddies)
   end
 
   def count_divesite_occurences(dives)
-    d = dives.map { |dive| dive.divesite }.each_with_object(Hash.new(0)) { |divesite, counts| counts[divesite&.name] += 1 }
-    d.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
+    divesites = dives.map { |dive| dive.divesite }.each_with_object(Hash.new(0)) { |divesite, counts| counts[divesite&.name] += 1 }
+    sort_desc(divesites)
   end
 
   def dive_fields_hash(dive)

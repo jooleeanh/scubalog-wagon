@@ -28,6 +28,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @divesites = Divesite.all
   end
 
   def create

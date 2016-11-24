@@ -6,7 +6,6 @@ class Event < ApplicationRecord
   has_many :participations, dependent: :destroy
   validates :divesite, presence: true, on: :create
   validates :datetime, presence: true
-
 end
 
 # Table name: events

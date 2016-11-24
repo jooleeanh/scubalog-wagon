@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :divesites do
     get :search, :on => :collection
-    resources :events
+    resources :events, shallow: true
   end
 
   resources :dives do

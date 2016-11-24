@@ -9,7 +9,7 @@
       <%=image_tag('hard_logo.png')%><%= @divesite.difficulty%>
       <% elsif @divesite.difficulty == "Easy" %>
       <%=image_tag('easy_logo.png')%><%= @divesite.difficulty%>
-      <% else %>
+      <% elsif %>
       <%= @divesite.difficulty %>
       <% end %>
       </p>

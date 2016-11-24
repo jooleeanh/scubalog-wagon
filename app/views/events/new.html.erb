@@ -1,6 +1,17 @@
-<div class="container">
-  <%= simple_form_for @event do |f| %>
-    <%= f.input :datetime %>
-    <%= f.submit %>
-  <% end %>
+<div class="container login">
+  <div class="text-center">
+    <%= simple_form_for [@divesite, @event] do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <div class="container login-form">
+          <%= f.input :datetime, required: true, autofocus: true %>
+          <%= f.association :divesite, collection: @divesites, as: :select %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Create new event" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
+

@@ -4,7 +4,15 @@ class EventsController < ApplicationController
 
   def index
     @event = Event.all
-
+    @event.each do |event|
+      if event.divesite.longitude && event.divesite.latitude
+      @hash = Gmaps4rails.build_markers(event.divesite) do |divesite, marker|
+        marker.lat event.divesite.latitude
+        marker.lng event.divesite.longitude
+      end
+    end
+      @divesite_coordinates = { lat: event.divesite.latitude, lng: event.divesite.longitude }
+    end
   end
 
   def show

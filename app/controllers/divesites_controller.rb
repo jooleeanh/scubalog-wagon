@@ -5,11 +5,11 @@ class DivesitesController < ApplicationController
     if params[:search_input].blank?
       @divesites = Divesite.order_by_name
       build_markers(divesites_with_location(@divesites))
-    elsif Divesite.near(params[:search_input], 60).blank?
+    elsif Divesite.near(params[:search_input], 100).blank?
       flash[:alert] = "Aucun spot proche de #{params[:search_input].capitalize} :("
       redirect_to root_path
     else
-      @divesites = Divesite.order_by_name.near(params[:search_input].capitalize, 60)
+      @divesites = Divesite.order_by_name.near(params[:search_input].capitalize, 100)
       build_markers(divesites_with_location(@divesites))
     end
       # marker.infowindow render_to_string(partial: "/divesites/map_box", locals: { divesite: divesite })

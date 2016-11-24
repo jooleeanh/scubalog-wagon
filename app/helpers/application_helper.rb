@@ -1,7 +1,11 @@
 module ApplicationHelper
 
-  def format_time(datetime)
+  def date_short(datetime)
     datetime.strftime("%b. %d, %Y")
+  end
+
+  def date_long(datetime)
+    datetime.strftime("%A, %B %d, %Y")
   end
 end
 

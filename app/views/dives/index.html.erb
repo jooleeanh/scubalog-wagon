@@ -14,7 +14,7 @@
             <%= image_tag "cenote.jpg", class: "product-image hidden-xs" %>
             <div class='product-body'>
               <ol class="dive-title list-inline">
-                <li><h3><%= format_time(dive.datetime) %></h3></li>
+                <li><h3><%= date_short(dive.datetime) %></h3></li>
                 <li><h4><%= dive.divesite.name %></h4></li>
               </ol>
               <%= render 'dives/features', dive: dive %>

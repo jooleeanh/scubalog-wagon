@@ -6,8 +6,7 @@
     <div class="col-xs-12 col-md-8">
       <div>
         <h1 class="text-center">Infos</h1>
-        <p>Diver : <%= @dive.user.first_name %></p>
-        <p>Date : <%= @dive.datetime.strftime("%A, %d, %B, %Y") %></p>
+        <p><%= date_long(@dive.datetime) %></p>
         <p>Tank size : <%= @dive.tank_size %></p>
         <p>Bottom time : <%= @dive.bottom_time %></p>
         <p>Start air : <%= @dive.start_air %> - End air : <%= @dive.end_air %></p>

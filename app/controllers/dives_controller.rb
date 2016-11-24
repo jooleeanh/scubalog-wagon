@@ -18,7 +18,7 @@ before_action :all_divesites, only: [:new, :edit, :update, :destroy]
     @dive = current_user.dives.new(dive_params)
     if @dive.save
       flash[:notice] = "Dive successfully created."
-      redirect_to user_dives_path
+      redirect_to dives_path
     else
       flash[:alert] = "Please review your dive form for errors."
       render :new
@@ -32,7 +32,7 @@ before_action :all_divesites, only: [:new, :edit, :update, :destroy]
   def update
     if @dive.update(dive_params)
       flash[:notice] = "Dive successfully updated."
-      redirect_to user_dive_path
+      redirect_to @dive
     else
       flash[:alert] = "Please review your dive form for errors."
       render :edit
@@ -41,7 +41,7 @@ before_action :all_divesites, only: [:new, :edit, :update, :destroy]
 
   def destroy
     @dive.destroy
-    redirect_to user_dives_path
+    redirect_to dives_path
   end
 
   private
@@ -62,4 +62,3 @@ before_action :all_divesites, only: [:new, :edit, :update, :destroy]
     params.require(:dive).permit(:user_id, :divesite_id, :datetime, :type, :tank_size, :bottom_time, :start_air, :end_air, :max_depth, :avg_depth, :min_temp, :max_temp, :comments, :enjoyment, :visibility, :review_rating, :review_content)
   end
 end
-

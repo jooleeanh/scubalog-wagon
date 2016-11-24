@@ -19,6 +19,9 @@ _initAutocomplete: function() {
 
 _render: function(ul, item) {
   var markup = [
+    '<span class="img">',
+        '<img src="' + 'https://pbs.twimg.com/profile_images/740512341364707328/1dMgs6Sm.jpg' + '" />',
+    '</span>',
     '<span class="name">' + item.name + '</span>',
     '<span class="latitude">' + item.latitude + '</span>',
     '<span class="longitude">' + item.longitude + '</span>'

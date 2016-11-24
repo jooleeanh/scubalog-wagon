@@ -1,16 +1,11 @@
 <div class="container login">
   <div class="text-center">
-    <div class="divesites-search">
-      <input type="text" id="divesites-search-txt" autofocus>
-    <div class="results" id="divesites-search-results"></div>
-  </div>
     <%= simple_form_for [@dive] do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
         <div class="container login-form">
           <%= f.input :datetime, required: true, autofocus: true %>
           <%= f.association :divesite, collection: @divesites, as: :select %>
-          <%= f.input :divesite, as: :search, data: {autocomplete_source: Divesite.pluck(:name).to_json}, input_html: { id: 'divesites-search-txt' } %>
           <%= f.input :types %>
           <%= f.input :tank_size %>
           <%= f.input :bottom_time %>
@@ -33,8 +28,4 @@
     <% end %>
   </div>
 </div>
-
-<%= content_for :script do %>
-  new app.Divesites;
-<% end %>
 

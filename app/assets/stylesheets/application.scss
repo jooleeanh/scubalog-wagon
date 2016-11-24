@@ -15,9 +15,8 @@
 @import "vendor/index";
 @import "models/index";
 
-/*
-*= require jquery-ui
-*/
+// Search queries CSS
+@import "search/index";
 
 .site {
   display: flex;

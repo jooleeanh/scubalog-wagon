@@ -59,6 +59,6 @@ before_action :all_divesites, only: [:new, :edit, :update, :destroy]
   end
 
   def dive_params
-    params.require(:dive).permit(:user_id, :divesite_id, :datetime, :type, :tank_size, :bottom_time, :start_air, :end_air, :max_depth, :avg_depth, :min_temp, :max_temp, :comments, :enjoyment, :visibility, :review_rating, :review_content)
+    params.require(:dive).permit(:user_id, :divesite_id, :datetime, :types, :tank_size, :bottom_time, :start_air, :end_air, :max_depth, :avg_depth, :min_temp, :max_temp, :comments, :enjoyment, :visibility, :review_rating, :review_content)
   end
 end

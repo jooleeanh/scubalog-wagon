@@ -28,10 +28,13 @@
         </div>
       </div>
     </div>
+
     <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-1">
-      <h1>Dives</h1>
+
+      <h1>Dives - <%= @user.dives.size %></h1>
       <% current_user.dives.each do |dive| %>
-        <%= dive.divesite.name %>
+        <p><%= dive.divesite.name %> -  <%= dive.datetime.strftime("%d %B %Y") %></p>
+
       <% end %>
     </div>
   </div>

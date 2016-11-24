@@ -1,11 +1,23 @@
+<h2 class="divesite-info-header"> <u><%= @divesite.name %></u> </h2>
 <div class="divesite-info">
-  <h2>Dive Site Information</h2>
+
   <dl class="dl-horizontal">
-    <dt>Difficulty</dt>
-    <dd><%= @divesite.difficulty %></dd>
-    <dt>Max Depth</dt>
-    <dd><%= @divesite.max_depth %></dd>
-    <dt>Average Depth</dt>
-    <dd><%= @divesite.avg_depth %></dd>
+  <h3> <strong>Main details : </strong></h3>
+  <hr>
+    <p> <strong>Difficulty : </strong>
+      <% if @divesite.difficulty == "Hard" %>
+      <%=image_tag('hard_logo.png')%><%= @divesite.difficulty%>
+      <% elsif @divesite.difficulty == "Easy" %>
+      <%=image_tag('easy_logo.png')%><%= @divesite.difficulty%>
+      <% elsif %>
+      <%= @divesite.difficulty %>
+      <% end %>
+      </p>
+    <p><strong>Max Depth : </strong>
+      <%= @divesite.max_depth %> meters</p>
+    <p><strong>Average Depth : </strong>
+      <%= @divesite.avg_depth %> meters</p>
   </dl>
+  <hr>
+  <p class="small"><em> *Our intel is built and double-checked by professional divers. Safety first!</em></p>
 </div>

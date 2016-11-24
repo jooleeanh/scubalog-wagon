@@ -1,20 +1,31 @@
 <h2 class="text-center"> Events @ <%= @divesite.name %></h2>
 <div id="map" style="width: 100%; height: 400px;"></div>
 
-<div class="container block-center" id="event_list">
-<h3 class="text-center"> Happening soon</h3>
+<h2 class="text-center events-index-title"> Happening soon</h2>
+
+<div class="container block-center" id="events_list">
 <hr>
   <% @divesite.events.each do |e| %>
-   <h4> <strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></strong></h4>
-   <hr>
-   <p> <strong>- Starting hour : </strong> <%= e.datetime.strftime("%H")%>H<%= e.datetime.strftime("%M")%> </p></li>
-   <br>
-   <p> <strong>- Description : </strong> <%= e.description%></p>
-   <br>
-   <p> <strong>- Team : </strong> <%= %></p>
+    <%= link_to e do %>
+      <h4><strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></strong></h4>
+    <% end %>
+    <hr>
+    <% if e.participations.blank?%>
+      <p><strong>- Team leader:</strong> <%= image_tag('private_avatar.png') %> <em class='small'>This team is in private mode</em></p>
+    <% else %>
+      <p><strong>- Team leader : </strong> <%= image_tag('user_avatar.png') %> <%=e.participations.first.user.first_name.capitalize %> <%=e.participations.first.user.last_name.capitalize %></p>
+   <% end %>
+    <p><strong>- Starting hour : </strong> <%= e.datetime.strftime("%HH%M")%></p></li>
+    <p><strong>- Description : </strong> <%= e.description%></p>
+
    <hr>
   <% end %>
+  <div class="events-index-link-back text-center">
+  <%= link_to 'Back to index', divesite_path(@divesite) %>
 </div>
+</div>
+
+
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

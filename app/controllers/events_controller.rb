@@ -1,24 +1,34 @@
 class EventsController < ApplicationController
-  before_action :find_divesite
   before_action :find_event, only: [:show, :edit, :destroy]
+  before_action :find_divesite, only: [:create, :update, :index, :edit, :destroy]
 
   def index
     @event = Event.all
+    @event.each do |event|
+      if event.divesite.longitude && event.divesite.latitude
+      @hash = Gmaps4rails.build_markers(event.divesite) do |divesite, marker|
+        marker.lat event.divesite.latitude
+        marker.lng event.divesite.longitude
+      end
+    end
+      @divesite_coordinates = { lat: event.divesite.latitude, lng: event.divesite.longitude }
+    end
   end
 
   def show
-    if @divesite.longitude && @divesite.latitude
-      @hash = Gmaps4rails.build_markers(@divesite) do |divesite, marker|
-        marker.lat divesite.latitude
-        marker.lng divesite.longitude
+    if @event.divesite.longitude && @event.divesite.latitude
+      @hash = Gmaps4rails.build_markers(@event.divesite) do |divesite, marker|
+        marker.lat @event.divesite.latitude
+        marker.lng @event.divesite.longitude
       end
     end
-    @alert_message = "#{@divesite.name}"
-    @divesite_coordinates = { lat: @divesite.latitude, lng: @divesite.longitude }
+    @alert_message = "#{@event.divesite.name}"
+    @divesite_coordinates = { lat: @event.divesite.latitude, lng: @event.divesite.longitude }
   end
 
   def new
     @event = Event.new
+    @divesites = Divesite.all
   end
 
   def create

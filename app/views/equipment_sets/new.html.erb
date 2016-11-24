@@ -1,0 +1,22 @@
+<div class="container login">
+  <div class="text-center">
+    <%= simple_form_for [@equipment_set] do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <div class="container login-form">
+          <%= f.input :mask %>
+          <%= f.input :snorkel %>
+          <%= f.input :fins %>
+          <%= f.input :wetsuit %>
+          <%= f.input :computer %>
+          <%= f.input :bcd %>
+          <%= f.input :regulator %>
+          <%= f.input :weight %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Create new equipment set" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

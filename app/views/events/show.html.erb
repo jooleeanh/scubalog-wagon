@@ -6,8 +6,11 @@
 <hr>
 <ul>
   <% @divesite.events.each do |e| %>
-   <li><p> <strong>Date : </strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></p></li>
-   </li><p> <strong>Starting hour : </strong> <%= e.datetime.strftime("%H, %M")%></p></li>
+   <li><h4> <strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></strong></h4></li>
+   <hr>
+   </li><p> <strong>Starting hour : </strong> <%= e.datetime.strftime("%H")%>H<%= e.datetime.strftime("%M")%> </p></li>
+   <br>
+   </li><p> <strong>Description : </strong> <%= e.description%></p></li>
    <hr>
   <% end %>
 </ul>

@@ -7,16 +7,16 @@
 <hr>
   <% @divesite.events.each do |e| %>
     <%= link_to e do %>
-      <h4> <strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></strong></h4>
+      <h4><strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></strong></h4>
     <% end %>
     <hr>
     <% if e.participations.blank?%>
-      <p> <strong>- Team leader:</strong> <%= image_tag('private_avatar.png') %> This team is in private mode</p>
+      <p><strong>- Team leader:</strong> <%= image_tag('private_avatar.png') %> This team is in private mode</p>
     <% else %>
-      <p> <strong>- Team leader : </strong> <%= image_tag('user_avatar.png') %> <%=e.participations.first.user.first_name.capitalize %> <%=e.participations.first.user.last_name.capitalize %></p>
+      <p><strong>- Team leader : </strong> <%= image_tag('user_avatar.png') %> <%=e.participations.first.user.first_name.capitalize %> <%=e.participations.first.user.last_name.capitalize %></p>
    <% end %>
-    <p> <strong>- Starting hour : </strong> <%= e.datetime.strftime("%HH%M")%></p></li>
-    <p> <strong>- Description : </strong> <%= e.description%></p>
+    <p><strong>- Starting hour : </strong> <%= e.datetime.strftime("%HH%M")%></p></li>
+    <p><strong>- Description : </strong> <%= e.description%></p>
 
    <hr>
   <% end %>

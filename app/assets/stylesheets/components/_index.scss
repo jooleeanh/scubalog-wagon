@@ -7,26 +7,5 @@
 @import "forms";
 @import "image";
 @import "product";
-
-#tabs-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2%;
-  width: 100%;
-  background-color: #f6f5f8;
-}
-
-.divesites {
-  margin-top: 4%;
-  background-color: #f6f5f8;
-  padding-top: 2%;
-  border-radius: 10px;
-}
-
-.divesite_list {
-  margin-left: 10%;
-}
-
-#map {
-  margin-top: 2%;
-}
+@import "events";
+@import "divesites";

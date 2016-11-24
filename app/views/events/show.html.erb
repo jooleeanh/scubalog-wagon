@@ -1,16 +1,17 @@
-<h2 class="text-center"> Events @ <%= @divesite.name %></h2>
+<h2 class="text-center"> Event Team : <%= @event.participations.first.user.first_name.capitalize %></h2>
 <div id="map" style="width: 100%; height: 400px;"></div>
 
 <div class="container block-center" id="event_list">
-<h3 class="text-center"> Happening soon</h3>
 <hr>
-<ul>
-  <% @divesite.events.each do |e| %>
-   <li><p> <strong>Date : </strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></p></li>
-   </li><p> <strong>Starting hour : </strong> <%= e.datetime.strftime("%H, %M")%></p></li>
+
+   <h4> <strong> <%= @event.datetime.strftime("%A, %d, %B, %Y")%></strong></h4>
    <hr>
-  <% end %>
-</ul>
+   <p> <strong>- Starting hour : </strong> <%= @event.datetime.strftime("%H")%>H<%= @event.datetime.strftime("%M")%> </p></li>
+   <br>
+   <p> <strong>- Description : </strong> <%= @event.description%></p>
+   <br>
+   <p> <strong>- Team : </strong> <%= @event.participations.first.user.first_name.capitalize %></p>
+   <hr>
 </div>
 
 <% content_for(:after_js) do %>

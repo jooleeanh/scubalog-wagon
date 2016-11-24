@@ -20,5 +20,12 @@
     <%= javascript_include_tag "application" %>
 
     <%= yield(:after_js) %>
+
+    <script>
+      $(function() {
+        <%= yield :script %>
+      });
+    </script>
+
   </body>
 </html>

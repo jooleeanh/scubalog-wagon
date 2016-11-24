@@ -15,6 +15,9 @@
 @import "vendor/index";
 @import "models/index";
 
+// Search queries CSS
+@import "search/index";
+
 .site {
   display: flex;
   min-height: 100vh;
@@ -24,3 +27,4 @@
 .site-content {
   flex: 1;
 }
+

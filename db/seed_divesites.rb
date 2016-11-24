@@ -17,7 +17,7 @@ class SeedDivesites < BasicSeed
 
   def seed_divesites(number, json_doc)
     number.times do |index|
-      divesite = json_doc[index.to_s]
+      divesite = json_doc[(index + 1).to_s]
       depth = rand(8...40)
       new_divesite = Divesite.new(
       name: divesite["name"],

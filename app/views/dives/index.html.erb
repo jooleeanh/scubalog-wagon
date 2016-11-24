@@ -9,17 +9,19 @@
     </div>
     <div class="dive-index-list">
       <% @dives.each do |dive| %>
-        <div class="product">
-          <%= image_tag "cenote.jpg", class: "product-image hidden-xs" %>
-          <div class='product-body'>
-            <ol class="dive-title list-inline">
-              <li><%= format_time(dive.datetime) %></li>
-              <li><h3><%= dive.divesite.name %></h3></li>
-            </ol>
-            <%= render 'dives/features', dive: dive %>
+        <%= link_to dive do %>
+          <div class="product">
+            <%= image_tag "cenote.jpg", class: "product-image hidden-xs" %>
+            <div class='product-body'>
+              <ol class="dive-title list-inline">
+                <li><h3><%= format_time(dive.datetime) %></h3></li>
+                <li><h4><%= dive.divesite.name %></h4></li>
+              </ol>
+              <%= render 'dives/features', dive: dive %>
+            </div>
           </div>
-        </div>
         <% end %>
+      <% end %>
     </div>
   </div>
 </div>

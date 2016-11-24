@@ -4,16 +4,14 @@
 <div class="container block-center" id="event_list">
 <h3 class="text-center"> Happening soon</h3>
 <hr>
-<ul>
   <% @divesite.events.each do |e| %>
-   <li><h4> <strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></strong></h4></li>
+   <h4> <strong> <%= e.datetime.strftime("%A, %d, %B, %Y")%></strong></h4>
    <hr>
-   </li><p> <strong>Starting hour : </strong> <%= e.datetime.strftime("%H")%>H<%= e.datetime.strftime("%M")%> </p></li>
+   <p> <strong>Starting hour : </strong> <%= e.datetime.strftime("%H")%>H<%= e.datetime.strftime("%M")%> </p></li>
    <br>
-   </li><p> <strong>Description : </strong> <%= e.description%></p></li>
+   <p> <strong>Description : </strong> <%= e.description%></p>
    <hr>
   <% end %>
-</ul>
 </div>
 
 <% content_for(:after_js) do %>

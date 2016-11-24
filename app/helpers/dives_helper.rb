@@ -17,4 +17,17 @@ module DivesHelper
       { key: "Visibility", value: dive.visibility, unit: "m" }
     ]
   end
+
+  def dive_equipment_hash(equipment)
+    {
+      Mask: equipment.mask,
+      Snorkel: equipment.snorkel,
+      Fins: equipment.fins,
+      Wetsuit: equipment.wetsuit,
+      Computer: equipment.computer,
+      BCD: equipment.bcd,
+      Regulator: equipment.regulator,
+      Weight: equipment.weight,
+    }
+  end
 end

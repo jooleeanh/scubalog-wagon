@@ -41,30 +41,20 @@
           <% eq = @dive.user.equipment_sets.first %>
           <table class="table">
             <tr>
-              <th>Mask</th>
-              <th>Snorkel</th>
-              <th>Fins</th>
-              <th>Wetsuit</th>
-              <th>Computer</th>
-              <th>Bcd</th>
-              <th>Regulator</th>
-              <th>Weight</th>
+              <% dive_equipment_hash(@dive.user.equipment_sets.first).each do |gear_type, gear_name| %>
+              <th><%= gear_type %></th>
+              <% end %>
             </tr>
             <tr>
-              <td><%= eq.mask %></td>
-              <td><%= eq.snorkel %></td>
-              <td><%= eq.fins %></td>
-              <td><%= eq.wetsuit %></td>
-              <td><%= eq.computer %></td>
-              <td><%= eq.bcd %></td>
-              <td><%= eq.regulator %></td>
-              <td><%= eq.weight %></td>
+              <% dive_equipment_hash(@dive.user.equipment_sets.first).each do |gear_type, gear_name| %>
+              <td><%= gear_name %></td>
+              <% end %>
             </tr>
           </table>
         </div>
         <hr>
         <div class="dive-show-comments">
-          <h2>Comments</h2>
+          <h2>Notes</h2>
           <%= @dive.comments %>
         </div>
       </div>

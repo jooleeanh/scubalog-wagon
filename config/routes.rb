@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :participations, only: [:create, :update, :destroy]
 
   resources :divesites do
+    get :search, :on => :collection
     resources :events
   end
 

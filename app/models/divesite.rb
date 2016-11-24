@@ -18,6 +18,10 @@ class Divesite < ApplicationRecord
   after_validation :geocode, if: :location_changed?
 
   scope :order_by_name, -> { order(name: :asc) }
+
+  def self.search(term)
+    where('LOWER(name) ILIKE :term', term: "%#{term.downcase}%")
+  end
 end
 
 # Table name: divesites

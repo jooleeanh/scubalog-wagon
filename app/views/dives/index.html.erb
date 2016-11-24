@@ -16,25 +16,7 @@
               <li><%= format_time(dive.datetime) %></li>
               <li><h3><%= dive.divesite.name %></h3></li>
             </ol>
-            <ol class="list-inline">
-              <li class="dive-index-feature">
-                <%= image_tag("icons/scuba.svg", class: "dive-index-icon") %>
-                <span class="dive-index-icon-text"><%= dive.types&.capitalize %></span>
-              </li>
-              <li class="dive-index-feature">
-                <%= image_tag("icons/clock.svg", class: "dive-index-icon") %>
-                <span class="dive-index-icon-text"><%= dive.bottom_time %> min</span>
-              </li>
-              <li class="dive-index-feature">
-                <%= image_tag("icons/depth-2.svg", class: "dive-index-icon") %>
-                <span class="dive-index-icon-text"><%= dive.max_depth %>m</span>
-              </li>
-              <li class="dive-index-feature">
-                <% dive.enjoyment&.times do %>
-                <%= image_tag("icons/dot-2.svg", class: "dive-index-icon") %>
-                <% end %>
-              </li>
-            </ol>
+            <%= render 'dives/features', dive: dive %>
           </div>
         </div>
         <% end %>

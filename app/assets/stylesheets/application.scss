@@ -13,7 +13,19 @@
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
+@import "models/index";
 
 /*
 *= require jquery-ui
 */
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
+

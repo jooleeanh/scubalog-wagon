@@ -30,7 +30,7 @@ end
 #  location   :string
 #  longitude  :float
 #  latitude   :float
-#  diffulty   :string
+#  difficulty   :string
 #  max_depth  :float
 #  avg_depth  :float
 #  freshwater :boolean          default(FALSE)

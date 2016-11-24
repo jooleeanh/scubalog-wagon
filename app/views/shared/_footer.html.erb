@@ -1,20 +1,19 @@
-<footer>
-  <div class="blue-wrapper footer flex-c-center">
-    <div class="container">
-      <div class="row">
-        <div class="footer-content flex-c-center">
-          <div class="col-xs-6 col-sm-4">
-            <% icons = {
-                youtube: { fa: 'fa-youtube', url: "#" },
-                instagram: { fa: 'fa-instagram', url: "#" },
-                facebook: { fa: 'fa-facebook', url: "#" },
-                twitter: { fa: 'fa-twitter', url: "#" },
-                github: { fa: 'fa-github', url: "#" }
-              } %>
+<div class="blue-wrapper footer flex-c-center">
+  <div class="container">
+    <div class="row">
+      <div class="footer-content flex-c-center">
+        <div class="col-xs-6 col-sm-4">
+          <% icons = {
+            youtube: { fa: 'fa-youtube', url: "#" },
+            instagram: { fa: 'fa-instagram', url: "#" },
+            facebook: { fa: 'fa-facebook', url: "#" },
+            twitter: { fa: 'fa-twitter', url: "#" },
+            github: { fa: 'fa-github', url: "#" }
+            } %>
             <% icons.each do |k, v| %>
             <div class="col-xs-<%= 12 / icons.length %>">
               <%= link_to v[:url], target: "_blank" do %>
-                <i class="footer-icon fa <%= v[:fa] %> fa-2x" aria-hidden="true"></i>
+              <i class="footer-icon fa <%= v[:fa] %> fa-2x" aria-hidden="true"></i>
               <% end %>
             </div>
             <% end %>
@@ -32,4 +31,3 @@
       </div>
     </div>
   </div>
-</footer>

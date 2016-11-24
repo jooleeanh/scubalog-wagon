@@ -16,7 +16,8 @@ class SeedEvents < BasicSeed
       time = Time.now + rand(1...30).days # TODO: Set time between 8 and 20
       event = Event.new(
         divesite: divesite,
-        datetime: time
+        datetime: time,
+        description: Faker::Lorem.sentence(20)
       )
       if event.save
         message(event.id, "Event at #{divesite.name}", "was created at", time.strftime("%a, %b %d"), "light_green")

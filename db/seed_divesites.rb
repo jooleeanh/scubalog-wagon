@@ -18,11 +18,15 @@ class SeedDivesites < BasicSeed
   def seed_divesites(number, json_doc)
     number.times do |index|
       divesite = json_doc[index.to_s]
+      depth = rand(8...40)
       new_divesite = Divesite.new(
       name: divesite["name"],
       #  location: divesite["location"]
       longitude: divesite["position"]["lng"],
-      latitude: divesite["position"]["lat"]
+      latitude: divesite["position"]["lat"],
+      difficulty: ["Easy", "Intermediate", "Hard"].sample,
+      max_depth: depth,
+      avg_depth: depth * 2 / 3,
       )
       if new_divesite.save
         puts "#{index} - #{divesite["name"]}".light_green

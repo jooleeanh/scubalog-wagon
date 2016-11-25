@@ -1,6 +1,6 @@
 class DivesController < ApplicationController
 before_action :set_dive, only: [:show, :edit, :update, :destroy]
-before_action :all_divesites, only: [:new, :edit, :update, :destroy]
+before_action :all_divesites, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @dives = current_user.dives.all.recent
@@ -11,14 +11,13 @@ before_action :all_divesites, only: [:new, :edit, :update, :destroy]
 
   def new
     @dive = Dive.new
-    @divesites = Divesite.all
   end
 
   def create
     @dive = current_user.dives.new(dive_params)
     if @dive.save
       flash[:notice] = "Dive successfully created."
-      redirect_to dives_path
+      redirect_to @dive
     else
       flash[:alert] = "Please review your dive form for errors."
       render :new
@@ -26,7 +25,6 @@ before_action :all_divesites, only: [:new, :edit, :update, :destroy]
   end
 
   def edit
-    @divesites = Divesite.all
   end
 
   def update
@@ -55,7 +53,7 @@ before_action :all_divesites, only: [:new, :edit, :update, :destroy]
   end
 
   def all_divesites
-    @divesites = Divesite.all
+    @divesites = Divesite.order_by_name
   end
 
   def dive_params

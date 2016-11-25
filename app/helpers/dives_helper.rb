@@ -29,7 +29,7 @@ module DivesHelper
       { key: "Tank size", value: dive.tank_size, unit: "L" },
       { key: "Start air", value: dive.start_air, unit: "BAR" },
       { key: "End air", value: dive.end_air, unit: "BAR" },
-      { key: "Air use", value: dive.start_air - dive.end_air, unit: "BAR" },
+      { key: "Air use", value: air_use(dive.start_air, dive.end_air), unit: "BAR" },
       { key: "Air rate", value: "to calculate", unit: "L/min" },
       { key: "Min temp", value: dive.min_temp, unit: "C" },
       { key: "Max temp", value: dive.max_depth, unit: "C" },
@@ -37,16 +37,37 @@ module DivesHelper
     ]
   end
 
+  def air_use(start_air, end_air)
+    if start_air == nil || end_air == nil
+      0
+    else
+      start_air - end_air
+    end
+  end
+
   def dive_equipment_hash(equipment)
-    {
-      Mask: equipment.mask,
-      Snorkel: equipment.snorkel,
-      Fins: equipment.fins,
-      Wetsuit: equipment.wetsuit,
-      Computer: equipment.computer,
-      BCD: equipment.bcd,
-      Regulator: equipment.regulator,
-      Weight: equipment.weight,
-    }
+    if equipment == nil
+      {
+        Mask: "",
+        Snorkel: "",
+        Fins: "",
+        Wetsuit: "",
+        Computer: "",
+        BCD: "",
+        Regulator: "",
+        Weight: "",
+      }
+    else
+      {
+        Mask: equipment.mask,
+        Snorkel: equipment.snorkel,
+        Fins: equipment.fins,
+        Wetsuit: equipment.wetsuit,
+        Computer: equipment.computer,
+        BCD: equipment.bcd,
+        Regulator: equipment.regulator,
+        Weight: equipment.weight,
+      }
+    end
   end
 end

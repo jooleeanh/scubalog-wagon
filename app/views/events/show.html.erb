@@ -24,10 +24,11 @@
   <% end %>
   <hr>
   </p>
-  <p><strong>- Starting hour : </strong> <%= @event.datetime.strftime("%H")%>H<%= @event.datetime.strftime("%M")%> </p></li>
+  <p><strong>- Starting hour: </strong> <%= @event.datetime.strftime("%H")%>H<%= @event.datetime.strftime("%M") %> </p></li>
   <hr>
-  <p><strong>- Description : </strong> <%= @event.description%></p>
+  <p><strong>- Description: </strong> <%= @event.description %></p>
   <hr>
+  <p><strong>- Divesite: </strong> <%= link_to @event.divesite.name, @event.divesite %></p>
 </div>
 
 <div class="join-event-button btn btn-primary center-block">

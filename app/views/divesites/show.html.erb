@@ -7,12 +7,11 @@
 </ul>
 
 <div class="container">
-
   <div class="row">
     <div class="col-xs-12 col-md-8">
       <%= render 'divesites/info' %>
-      <%= render 'divesites/sightings' %>
-      <%= render 'divesites/reviews', dives: @divesite.dives %>
+      <%= render 'shared/sightings', sightings: @divesite.sightings, splitted_animals: @splitted_animals %>
+      <%= render 'divesites/reviews' %>
     </div>
     <div class="col-xs-12 col-md-4 sighting-box">
       <div id="map" style="width: 350px; height: 350px;"></div>

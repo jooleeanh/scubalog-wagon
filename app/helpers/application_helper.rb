@@ -26,6 +26,16 @@ module ApplicationHelper
   def time_long(datetime)
     datetime.strftime("%k:%M")
   end
+
+  def split_animals(sightings)
+    if sightings.any?
+      animals = sightings.map do |sighting|
+        sighting.animal
+      end
+      splitted_animals = animals.each_slice( (animals.size/2.0).round ).to_a
+    end
+    splitted_animals
+  end
 end
 
 

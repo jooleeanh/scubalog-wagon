@@ -31,12 +31,7 @@ class DivesitesController < ApplicationController
     end
     @alert_message = "#{@divesite.name}"
     @divesite_coordinates = { lat: @divesite.latitude, lng: @divesite.longitude }
-    if @divesite.sightings.any?
-      @animals = @divesite.sightings.map do |sighting|
-        sighting.animal
-      end
-      @splitted_animals = @animals.each_slice( (@animals.size/2.0).round ).to_a
-    end
+    @splitted_animals = split_animals(@divesite.sightings)
   end
 
   def new

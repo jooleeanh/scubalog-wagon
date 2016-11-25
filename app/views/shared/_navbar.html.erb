@@ -27,7 +27,7 @@
       <% end %>
 
       <!-- Profile picture and dropdown -->
-      <% avatar_url = current_user.facebook_picture_url || "http://passeportperformances.fr/wp-content/uploads/2016/03/avatar.jpg" %>
+      <% avatar_url = current_user&.facebook_picture_url || "http://passeportperformances.fr/wp-content/uploads/2016/03/avatar.jpg" %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>

@@ -1,14 +1,8 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <% if !user_signed_in? %>
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
       <h3 class="font-yellowtail">Scubalog</h3>
     <% end %>
-  <% else %>
-    <%= link_to current_user, class: "navbar-wagon-brand" do %>
-      <h3 class="font-yellowtail">Scubalog</h3>
-    <% end %>
-  <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">

@@ -6,11 +6,18 @@ class EventsController < ApplicationController
     @event = Event.all
     @event.each do |event|
       if event.divesite.longitude && event.divesite.latitude
-      @hash = Gmaps4rails.build_markers(event.divesite) do |divesite, marker|
-        marker.lat event.divesite.latitude
-        marker.lng event.divesite.longitude
+        @hash = Gmaps4rails.build_markers(event.divesite) do |divesite, marker|
+          marker.lat event.divesite.latitude
+          marker.lng event.divesite.longitude
+          marker.picture(
+          {
+            "url" => "http://www.myiconfinder.com/uploads/iconsets/256-256-a5485b563efc4511e0cd8bd04ad0fe9e.png",
+            "width" =>  32,
+            "height" => 32
+          }
+          )
+        end
       end
-    end
       @divesite_coordinates = { lat: event.divesite.latitude, lng: event.divesite.longitude }
     end
   end

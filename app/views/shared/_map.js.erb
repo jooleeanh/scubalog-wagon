@@ -184,7 +184,7 @@ $(document).ready(function() {
     "elementType": "geometry.stroke",
     "stylers": [
         {
-            "visibility": "on"
+            "visibility": "off"
         }
     ]
 },
@@ -193,8 +193,7 @@ $(document).ready(function() {
     "elementType": "labels",
     "stylers": [
         {
-            "visibility": "on"
-            "color": "#ffe15f"
+            "visibility": "off"
         }
     ]
 },
@@ -279,16 +278,21 @@ $(document).ready(function() {
 ];
 
   var handler = Gmaps.build('Google');
-  handler.buildMap({ provider: { scrollwheel: false,
-  styles: myStyle}, internal: { id: 'map' } }, function() {
+  handler.buildMap({
+    provider: {
+      scrollwheel: false,
+      styles: myStyle
+    },
+    internal: { id: 'map' }
+  },
+  function() {
     markers = handler.addMarkers(<%= raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     if (markers.length == 0) {
       handler.getMap().setZoom(2);
     } else if (markers.length == 1) {
-      handler.getMap().setZoom(14);
+      handler.getMap().setZoom(12); // Set map zoom here
     }
   });
 });
-

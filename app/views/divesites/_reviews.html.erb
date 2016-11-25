@@ -6,15 +6,17 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">
-            <% review[:rating].times do %>
-              <i class="fa fa-star fa-lg" aria-hidden="true"></i>
-            <% end %>
-            <% (5 - review[:rating]).times do %>
-              <i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
+            <% unless review[:rating] == nil %>
+              <% review[:rating].times do %>
+                <i class="fa fa-star fa-lg" aria-hidden="true"></i>
+              <% end %>
+              <% (5 - review[:rating]).times do %>
+                <i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
+              <% end %>
             <% end %>
             <%= review[:user].first_name.capitalize %>
             <small>
-              <span> at a dive on </span>
+              <span> dived on </span>
               <%= date_short(review[:datetime]) %>
             </small>
           </h3>

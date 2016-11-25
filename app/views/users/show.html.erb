@@ -30,12 +30,23 @@
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-1">
+      <div class="">
+      <h1>Last Dives</h1>
+        <div class="panel panel-body">
+          <% last_three_dives = @user.dives[-4...-1] %>
+          <% last_three_dives.each do |dive| %>
+            <p><%= link_to dive.divesite.name, dive %> - <%= dive.datetime.strftime("%d %B %Y") %></p>
+          <% end %>
+          <div class="text-right"><%= link_to "All", dives_path %></div>
+        </div>
 
-      <h1>Dives - <%= @user.dives.size %></h1>
-      <% current_user.dives.each do |dive| %>
-        <p><%= dive.divesite.name %> -  <%= dive.datetime.strftime("%d %B %Y") %></p>
-
-      <% end %>
+        <h1>My Events</h1>
+        <div class="panel panel-body">
+          <% @user.events.each do |event| %>
+            <p><%= link_to event.divesite.name, event %> - <%= event.datetime.strftime("%d %B %Y") %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

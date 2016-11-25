@@ -10,7 +10,7 @@ class SeedAnimals < BasicSeed
       category["creatures"].each do |k, animal|
         new_animal = Animal.new(
         name: animal["name"],
-        image_url: animal["image_url"],
+        image_url: "animals/" + animal["name"].downcase.gsub(" ", "_").gsub("'", "-"),
         )
         if new_animal.save
           puts "#{animal["name"]}".light_green

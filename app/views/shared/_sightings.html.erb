@@ -9,7 +9,7 @@
           <% splitted_animals[0].each do |animal| %>
           <div class="animal-card">
             <p><%= animal.name %></p>
-            <%=  image_tag(animal.image_url, class: "animal-image")%>
+            <%=  image_tag(asset_path(animal.image_url), class: "animal-image")%>
           </div>
           <% end %>
         </div>
@@ -18,7 +18,7 @@
             <% splitted_animals[1].each do |animal| %>
               <div class="animal-card">
                 <p><%= animal.name %></p>
-                <%=  image_tag(animal.image_url, class: "animal-image")%>
+                <%=  image_tag(asset_path(animal.image_url), class: "animal-image")%>
               </div>
             <% end %>
           </div>

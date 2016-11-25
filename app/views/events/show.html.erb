@@ -29,11 +29,16 @@
   <p><strong>- Description: </strong> <%= @event.description %></p>
   <hr>
   <p><strong>- Divesite: </strong> <%= link_to @event.divesite.name, @event.divesite %></p>
+  <hr>
+  <div class="text-center">
+    <% if !@event.participations.map { |participation| participation.user }.include?(current_user) %>
+      <p><%= link_to 'Join this team!', event_participations_path(@event.id), method: :post, class: "btn btn-primary join-event-button center-block"%></p>
+    <% else %>
+      <p>You are participating to this event.</p>
+    <% end %>
+  </div>
 </div>
 
-<div class="join-event-button btn btn-primary center-block">
-  <%= link_to 'Join this team !', event_participations_path(@event.id), method: :post %>
-</div>
 
 <div class="link-back text-center">
   <%= link_to 'Check other events', divesite_events_path(@event.divesite_id) %>

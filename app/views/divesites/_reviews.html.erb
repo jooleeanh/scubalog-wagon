@@ -1,25 +1,31 @@
 <h2>Reviews</h2>
-<% @divesite.dives.each do |dive| %>
-  <% unless dive.review_rating.nil? %>
+<div class="divesite-reviews-list">
+  <div class="container">
+    <% if @reviews.any? %>
+    <% reviews.each do |review| %>
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          <% dive.review_rating.times do %>
-            <i class="fa fa-star fa-lg" aria-hidden="true"></i>
+          <% review[:review_rating].times do %>
+          <i class="fa fa-star fa-lg" aria-hidden="true"></i>
           <% end %>
-          <% (5 - dive.review_rating).times do %>
-            <i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
+          <% (5 - review[:review_rating]).times do %>
+          <i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
           <% end %>
-          <%= dive.user.first_name.capitalize %>
+          <%= review[:user].first_name.capitalize %>
           <small>
             <span> at a dive on </span>
-            <%= dive.datetime.strftime("%b %d %Y") %>
+            <%= date_short(review[:datetime]) %>
           </small>
         </h3>
       </div>
       <div class="panel-body">
-        <%= dive.review_content %>
+        <%= review[:review_content] %>
       </div>
     </div>
-  <% end %>
-<% end %>
+    <% end %>
+    <% else %>
+    <p>No reviews yet</p>
+    <% end %>
+</div>
+</div>

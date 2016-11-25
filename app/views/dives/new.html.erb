@@ -5,7 +5,8 @@
       <div class="form-inputs">
         <div class="container login-form">
           <%= f.input :datetime, required: true, autofocus: true %>
-          <%= f.association :divesite, collection: @divesites, as: :select %>
+          <%= f.association :divesite, collection: @divesites %>
+          <%= f.association :animals, collection: @animals, input_html: { multiple: true } %>
           <%= f.input :types %>
           <%= f.input :tank_size %>
           <%= f.input :bottom_time %>

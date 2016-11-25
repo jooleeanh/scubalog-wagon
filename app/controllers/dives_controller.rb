@@ -1,7 +1,7 @@
 class DivesController < ApplicationController
 before_action :set_dive, only: [:show, :edit, :update, :destroy]
 before_action :all_divesites, only: [:new, :create, :edit, :update, :destroy]
-
+before_action :all_animals, only: [:new, :create]
   def index
     @dives = current_user.dives.all.recent
   end
@@ -57,7 +57,11 @@ before_action :all_divesites, only: [:new, :create, :edit, :update, :destroy]
     @divesites = Divesite.order_by_name
   end
 
+  def all_animals
+    @animals = Animal.order_by_name
+  end
+
   def dive_params
-    params.require(:dive).permit(:user_id, :divesite_id, :datetime, :types, :tank_size, :bottom_time, :start_air, :end_air, :max_depth, :avg_depth, :min_temp, :max_temp, :comments, :enjoyment, :visibility, :review_rating, :review_content)
+    params.require(:dive).permit(:user_id, :divesite_id, :datetime, :types, :tank_size, :bottom_time, :start_air, :end_air, :max_depth, :avg_depth, :min_temp, :max_temp, :comments, :enjoyment, :visibility, :review_rating, :review_content, :animal_ids => [])
   end
 end

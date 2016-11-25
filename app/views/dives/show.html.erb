@@ -12,6 +12,8 @@
         <%= render 'equipment' %>
         <hr>
         <%= render 'comments' %>
+        <hr>
+        <%= render 'shared/sightings', sightings: @dive.sightings, splitted_animals: @splitted_animals %>
       </div>
     </div>
   </div>

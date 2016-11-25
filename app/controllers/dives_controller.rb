@@ -7,6 +7,7 @@ before_action :all_divesites, only: [:new, :create, :edit, :update, :destroy]
   end
 
   def show
+    @splitted_animals = split_animals(@dive.sightings)
   end
 
   def new

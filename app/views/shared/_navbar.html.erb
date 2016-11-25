@@ -1,8 +1,8 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <h3 class="font-yellowtail">Scubalog</h3>
-  <% end %>
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+      <h3 class="font-yellowtail">Scubalog</h3>
+    <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
@@ -18,9 +18,8 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-
       <!-- Profile picture and dropdown -->
-      <% avatar_url = current_user.facebook_picture_url || "http://passeportperformances.fr/wp-content/uploads/2016/03/avatar.jpg" %>
+      <% avatar_url = current_user&.facebook_picture_url || "http://passeportperformances.fr/wp-content/uploads/2016/03/avatar.jpg" %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -48,7 +47,7 @@
 
       <!-- Login text link -->
       <div class="navbar-wagon-item navbar-wagon-link" id="login">Login</div>
-      <div class="navbar-wagon-item navbar-wagon-link" id="signup">Sign up</div>
+      <div class="navbar-wagon-item navbar-wagon-link" id="signup">Signup</div>
 <!--       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#modal-login" }  %>
       <%= link_to t(".sign_up", default: "Sign up"),new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link", data: { toggle: "modal", target: "#modal-login" } %> -->
 

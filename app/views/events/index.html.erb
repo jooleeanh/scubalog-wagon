@@ -11,7 +11,7 @@
     <% end %>
     <hr>
     <% if e.participations.blank?%>
-      <p><strong>- Team leader:</strong> <%= image_tag('private_avatar.png') %> This team is in private mode</p>
+      <p><strong>- Team leader:</strong> <%= image_tag('private_avatar.png') %> <em class='small'>This team is in private mode</em></p>
     <% else %>
       <p><strong>- Team leader : </strong> <%= image_tag('user_avatar.png') %> <%=e.participations.first.user.first_name.capitalize %> <%=e.participations.first.user.last_name.capitalize %></p>
    <% end %>
@@ -21,7 +21,7 @@
    <hr>
   <% end %>
   <div class="events-index-link-back text-center">
-  <%= link_to 'Back to index', divesites_path %>
+  <%= link_to 'Back to index', divesite_path(@divesite) %>
 </div>
 </div>
 

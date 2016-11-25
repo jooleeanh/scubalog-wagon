@@ -1,0 +1,15 @@
+<tr><th><h3>Divesites</h3></th></tr>
+<tr>
+  <% count_divesite_occurences(@dives).each do |kv| %>
+  <th class="text-center">
+    <%= kv[0].capitalize %>
+  </th>
+  <% end %>
+</tr>
+<tr>
+  <% count_divesite_occurences(@dives).each do |kv| %>
+  <td class="text-center">
+    <%= kv[1] %>
+  </td>
+  <% end %>
+</tr>

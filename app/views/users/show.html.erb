@@ -1,7 +1,41 @@
-<h1> <%= @user.email %> </h1>
-
-<%= link_to 'Update my account', edit_user_registration_path %>
-<%= link_to "Delete", user_path, method: :delete, data: { confirm: "Are you sure?" } %>
 
 
 
+<!-- TODO .where(public: true) -->
+
+
+
+<div class="container space-3">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3 col-md-offset-2">
+      <div class="panel space-4"><img  src="https://i.ytimg.com/vi/sWy3s9Dhep0/hqdefault.jpg" class="img-responsive center-block">
+      </div>
+
+      <div class="panel space-4">
+        <div class="panel-header text-center">Informations</div>
+        <div class="panel-body">
+          <p><%= link_to 'Update my account', edit_user_registration_path %></p>
+          <p><%= link_to "Delete", user_path, method: :delete, data: { confirm: "Are you sure?" } %></p>
+          <p> <%= @user.email %> </p>
+        </div>
+      </div>
+
+      <div class="panel space-4">
+        <div class="panel-header text-center">Followers</div>
+        <div class="panel-body">
+          <p>Papa</p>
+          <p>Maman</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-1">
+
+      <h1>Dives - <%= @user.dives.size %></h1>
+      <% current_user.dives.each do |dive| %>
+        <p><%= dive.divesite.name %> -  <%= dive.datetime.strftime("%d %B %Y") %></p>
+
+      <% end %>
+    </div>
+  </div>
+</div>

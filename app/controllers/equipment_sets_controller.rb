@@ -1,5 +1,5 @@
 class EquipmentSetsController < ApplicationController
-  before_action :find_user, only: [:new, :create]
+  # before_action :find_user, only: [:create]
   before_action :find_equipment_set, only: [:update, :destroy]
 
   # If we want to use it
@@ -8,17 +8,30 @@ class EquipmentSetsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @equipment_set = @user.equipment_sets.new(equipment_set_params)
-    @equipment_set.save
-    # TODO: if, redirect, render?
+    if @equipment_set.save
+      flash[:notice] = "Equipment set successfully created."
+      redirect_to current_user
+    else
+      flash[:alert] = "Please review your equipment form for errors."
+      render :new
+    end
   end
 
   def update
-    @equipment_set.update(equipment_set_params)
+    if @equipment_set.update(equipment_set_params)
+      flash[:notice] = "Equipment set successfully updated."
+      redirect_to current_user
+    else
+      flash[:alert] = "Please review your equipment form for errors."
+      render :new
+    end
   end
 
   def destroy
     @equipment_set.destroy
+    redirect_to current_user
   end
 
   private

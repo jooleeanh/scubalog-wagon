@@ -2,17 +2,23 @@
   <div class="banner-content">
     <h1>Scubalog</h1>
     <p>Scubalog Scubalog Scubalog</p>
-    <%= link_to "Dive in", new_user_registration_path, class: "btn btn-banner", data: { toggle: "modal", target: "#modal-login" } %>
+    <% if user_signed_in? %>
+      <%= link_to "Dive in", current_user, class: "btn btn-banner" %>
+    <% else %>
+    <div class="btn btn-banner" id="dive-in">Dive in</div>
+    <% end %>
   </div>
+  <div class="form-login hidden"><%= render 'devise/shared/signinform' %></div>
+  <div class="form-signup hidden"><%= render 'devise/shared/signupform' %></div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-     <!--  <div class="modal-header"> -->
-<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign up form</h4>
+    <div class="modal-content"> --><!--
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <<!-- h4 class="modal-title" id="myModalLabel">Sign up form</h4>
       </div>
       <div class="modal-body">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui perspiciatis corrupti fuga, commodi sunt tempore consectetur facere praesentium? Consequatur deleniti quis veniam sunt culpa laudantium ea officia accusantium animi excepturi.
@@ -21,6 +27,6 @@
 <!--         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Sign up!</button> -->
   <!--     </div> -->
-    </div>
+<!--     </div>
   </div>
-</div>
+</div> -->

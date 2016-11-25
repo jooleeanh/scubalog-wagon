@@ -1,0 +1,38 @@
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= f.error_notification %>
+<div class="container login">
+  <div class="text-center">
+    <hr>
+      <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook" do %>
+        <span class="fa fa-facebook"></span>
+        Sign up with <%= OmniAuth::Utils.camelize(provider) %>
+        <% end %>
+        <br />
+        <% end -%>
+      <% end -%>
+      <hr>
+      <div class="container login-form">
+      <div class="form-inputs">
+        <%= f.input :first_name, required: true, autofocus: true %>
+        <%= f.input :location, required: true, autofocus: true %>
+        <%= f.input :last_name, required: true, autofocus: true %>
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :password_confirmation, required: true %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+      </div>
+      <% end %>
+      <div>
+    <hr>
+      <p>Already a member? </p>
+      <%= link_to "Login", new_session_path(resource_name), class: "btn btn-default" %><br />
+    </div>
+    <hr>
+  </div>
+</div>

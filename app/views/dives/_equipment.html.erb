@@ -1,0 +1,16 @@
+<div class="dive-show-equipment">
+  <h2>Equipment</h2>
+  <% eq = @dive.user.equipment_sets.first %>
+  <table class="table">
+    <tr>
+      <% dive_equipment_hash(@dive.user.equipment_sets.first).each do |gear_type, gear_name| %>
+      <th><%= gear_type %></th>
+      <% end %>
+    </tr>
+    <tr>
+      <% dive_equipment_hash(@dive.user.equipment_sets.first).each do |gear_type, gear_name| %>
+      <td><%= gear_name %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>

@@ -34,7 +34,6 @@
       <h1>Dives - <%= @user.dives.size %></h1>
       <% current_user.dives.each do |dive| %>
         <p><%= dive.divesite.name %> -  <%= dive.datetime.strftime("%d %B %Y") %></p>
-
       <% end %>
     </div>
   </div>

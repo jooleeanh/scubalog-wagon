@@ -57,7 +57,7 @@
 .navbar-wagon-button {
   margin-left: 10px;
   padding: 0 20px;
-  border-radius: 20em;
+  border-radius: 6px;
   line-height: 40px;
   background-color: $brand-color;
   color: white;
@@ -95,7 +95,7 @@
   font-weight: lighter;
   color: #666666;
   border: 1px solid #E6E6E6;
-  border-radius: 5px;
+  border-radius: 0px;
   padding: 0 10px;
   font-size: 14px;
   outline: none;
@@ -138,4 +138,19 @@
 @font-face {
   font-family: "Yellowtail";
   src: url(/assets/Yellowtail-Regular.ttf) format("truetype");
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #011238;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #011238;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #011238;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #011238;
 }

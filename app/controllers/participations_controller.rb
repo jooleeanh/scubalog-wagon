@@ -1,11 +1,20 @@
 class ParticipationsController < ApplicationController
-  before_action :find_user, only: [:create]
-  before_action :find_participation, only: [:update, :destroy]
+  before_action :find_event, only: [:create]
+  # before_action :find_participation, only: [:update, :destroy]
+
+  def new
+    @participation = Participation.new
+  end
 
   def create
-    @participation = @user.participations.new(participation_params)
-    @participation.save
+    @participation = current_user.participations.new
+    @participation.event = @event
+    if @participation.save
     # TODO: if, redirect, render?
+      redirect_to @event
+    else
+      render 'event/show'
+    end
   end
 
   def update
@@ -22,12 +31,12 @@ class ParticipationsController < ApplicationController
     @participation = Participation.find(params[:id])
   end
 
-  def find_user
-    @user = User.find(params[:user_id])
+  def find_event
+    @event = Event.find(params[:event_id])
   end
 
-  def participation_params
-    params.require(:participation).permit(:event_id)
-  end
+  # def participation_params
+  #   params.permit(:event_id)
+  # end
 
 end

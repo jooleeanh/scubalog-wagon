@@ -31,7 +31,7 @@
 </div>
 
 <div class="join-event-button btn btn-primary center-block">
-  Join this team !
+  <%= link_to 'Join this team !', event_participations_path(@event.id), method: :post %>
 </div>
 
 <div class="link-back text-center">

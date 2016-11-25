@@ -2,9 +2,9 @@
 
 <div class="sightings-list">
   <div class="container">
-    
+
     <div class="row">
-      <% if sightings.any? %>
+      <% if sightings != nil %>
       <div class="col-xs-12 col-md-4">
         <% splitted_animals[0].each do |animal| %>
         <div class="animal-card">
@@ -13,15 +13,15 @@
         </div>
         <% end %>
       </div>
-      <% if splitted_animals[1].any? %>
-      <div class="col-xs-12 col-md-4">
-        <% splitted_animals[1].each do |animal| %>
-        <div class="animal-card">
-          <p><%= animal.name %></p>
-          <%=  image_tag(animal.image_url, class: "animal-image")%>
+      <% if splitted_animals[1] != nil %>
+        <div class="col-xs-12 col-md-4">
+          <% splitted_animals[1].each do |animal| %>
+            <div class="animal-card">
+              <p><%= animal.name %></p>
+              <%=  image_tag(animal.image_url, class: "animal-image")%>
+            </div>
+          <% end %>
         </div>
-        <% end %>
-      </div>
       <% end %>
       <% else %>
       <p>No animal sightings reported yet</p>

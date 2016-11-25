@@ -1,7 +1,7 @@
 <div class="dive-show-header">
   <h4><%= date_long(@dive.datetime) %></h4>
   <h2>
-    <%= @dive.divesite.name %>,
+    <%= link_to @dive.divesite.name, @dive.divesite %>
     <em><%= @dive.divesite.location %></em>
   </h2>
   <h5>Type: <%= @dive.types %></h5>

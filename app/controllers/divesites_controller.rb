@@ -23,6 +23,7 @@ class DivesitesController < ApplicationController
   end
 
   def show
+    @reviews = reviews_array(@divesite.dives)
     if @divesite.longitude && @divesite.latitude
       @hash = Gmaps4rails.build_markers(@divesite) do |divesite, marker|
         marker.lat divesite.latitude
@@ -85,7 +86,6 @@ class DivesitesController < ApplicationController
       )
   end
 
-
   def divesites_with_location(divesites)
     divesites.where.not(latitude: nil, longitude: nil)
   end
@@ -110,4 +110,15 @@ class DivesitesController < ApplicationController
     }
   end
 
+  def reviews_array(dives)
+    reviews = dives.map do |dive|
+      review = {}
+      review[:rating] = dive.review_rating
+      review[:content] = dive.review_content
+      review[:user] = dive.user
+      review[:datetime] = dive.datetime
+      review
+    end
+    reviews.reject { |review| review[:rating].blank? }
+  end
 end

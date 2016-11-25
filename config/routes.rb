@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users, only: [:show, :destroy]
   resources :equipment_sets, only: [:new, :create, :edit, :update, :destroy]
-  resources :participations, only: [:create, :update, :destroy]
 
   resources :divesites do
     get :search, :on => :collection
-    resources :events, shallow: true
+    resources :events, shallow: true do
+      resources :participations, only: [:create, :new, :update, :destroy]
+    end
   end
 
   resources :dives do

@@ -29,11 +29,17 @@
 
 ////////////////////////////////
 
+.animal-card {
+  display: flex;
+  flex-direction: column;
+  p {
+
+  }
+}
 .animal-image {
   margin-bottom: 2%;
   height: auto;
   width: 320px;
   // height: 130px;
   // width: 320px;
-
 }

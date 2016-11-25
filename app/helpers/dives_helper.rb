@@ -39,7 +39,7 @@ module DivesHelper
 
   def air_use(start_air, end_air)
     if start_air == nil || end_air == nil
-      0
+      nil
     else
       start_air - end_air
     end
@@ -48,14 +48,14 @@ module DivesHelper
   def dive_equipment_hash(equipment)
     if equipment == nil
       {
-        Mask: "",
-        Snorkel: "",
-        Fins: "",
-        Wetsuit: "",
-        Computer: "",
-        BCD: "",
-        Regulator: "",
-        Weight: "",
+        Mask: nil,
+        Snorkel: nil,
+        Fins: nil,
+        Wetsuit: nil,
+        Computer: nil,
+        BCD: nil,
+        Regulator: nil,
+        Weight: nil,
       }
     else
       {

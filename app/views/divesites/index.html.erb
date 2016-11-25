@@ -25,14 +25,6 @@
     <h2 class="divesite-header text-center">
       <%= pluralize(@divesites.size, "divesite") %> found !
     </h2>
-    <div class="row">
-      <% @divesites.each do |divesite| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-          <%= link_to divesite_path(divesite) do %>
-          <% end %>
-      </div>
-      <% end %>
-    </div>
   </div>
   <% unless @divesites.any? %>
     <div class='text-center'> <strong> No spots around...</strong></div>

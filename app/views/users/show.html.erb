@@ -33,8 +33,7 @@
       <div class="">
       <h1>Last Dives</h1>
         <div class="panel panel-body">
-          <% last_three_dives = @user.dives[-4...-1] %>
-          <% last_three_dives.each do |dive| %>
+          <% @user.dives.recent.first(3).each do |dive| %>
             <p><%= link_to dive.divesite.name, dive %> - <%= dive.datetime.strftime("%d %B %Y") %></p>
           <% end %>
           <div class="text-right"><%= link_to "All", dives_path %></div>

@@ -1,0 +1,25 @@
+
+
+<h2>Sightings/Animals</h2>
+
+<div class="container">
+
+  <div class="row">
+    <% if sightings.any? %>
+      <div class="col-xs-12 col-md-4">
+        <% splitted_animals[0].each do |animal| %>
+        <%= animal.name %><%=  image_tag(animal.image_url, class: "animal-image")%>
+        <% end %>
+      </div>
+      <% if splitted_animals[1].any? %>
+        <div class="col-xs-12 col-md-4">
+          <% splitted_animals[1].each do |animal| %>
+          <%= animal.name %><%= image_tag(animal.image_url, class: "animal-image")%>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No animal sightings reported yet</p>
+    <% end %>
+  </div>
+</div>

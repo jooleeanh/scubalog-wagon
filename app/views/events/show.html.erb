@@ -15,11 +15,11 @@
 
   <h4><strong> <%= @event.datetime.strftime("%A, %d, %B, %Y")%></strong></h4>
   <hr>
-  <p><strong>- Full Team : </strong>
-  <% @event.participations.each do |p|%>
-    <%= link_to p.user do%>
-      <%= image_tag('user_avatar.png') %>
-      <%= p.user.first_name.capitalize%>
+  <p><strong>- Full Team: </strong>
+  <% @event.participations.each do |participation|%>
+    <%= link_to participation.user do %>
+      <%= image_tag(participation.user.facebook_picture_url || 'user_avatar.png') %>
+      <%= participation.user.first_name.capitalize %>
     <% end%>
   <% end %>
   <hr>
@@ -29,11 +29,17 @@
   <p><strong>- Description: </strong> <%= @event.description %></p>
   <hr>
   <p><strong>- Divesite: </strong> <%= link_to @event.divesite.name, @event.divesite %></p>
+  <hr>
+  <div class="text-center">
+    <% if !@event.participations.map { |participation| participation.user }.include?(current_user) %>
+      <p><%= link_to 'Join this team!', event_participations_path(@event.id), method: :post, class: "btn btn-primary join-event-button center-block"%></p>
+    <% else %>
+      <p>You are participating to this event.</p>
+      <p><%= link_to 'Cancel participation', participation_path(@event.participations.find { |participation| participation.user == current_user }), method: :delete, class: "btn btn-primary cancel-event-button center-block"%></p>
+    <% end %>
+  </div>
 </div>
 
-<div class="join-event-button btn btn-primary center-block">
-  <%= link_to 'Join this team !', event_participations_path(@event.id), method: :post %>
-</div>
 
 <div class="link-back text-center">
   <%= link_to 'Check other events', divesite_events_path(@event.divesite_id) %>

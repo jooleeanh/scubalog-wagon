@@ -14,7 +14,7 @@
         </dl>
       </div>
       <div class="col-xs-12 col-md-8">
-        <!-- <%= line_chart @dive.data_points.group(:time).count %> -->
+        <%= area_chart @dive.data_points.pluck(:time, :depth) %>
       </div>
     </div>
   </div>

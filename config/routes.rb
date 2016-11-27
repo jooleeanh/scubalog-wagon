@@ -23,9 +23,9 @@ Rails.application.routes.draw do
     resources :data_points, only: [:create]
   end
 
-  # resources :charts, only: [] do
-  #   collection do
-  #     get 'sporters_by_age'
-  #   end
-  # end
+  resources :charts, only: [] do
+    collection do
+      get 'sporters_by_age'
+    end
+  end
 end

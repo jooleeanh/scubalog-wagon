@@ -13,7 +13,7 @@ class SeedComputerDives < BasicSeed
     dive_count = 0
     freedive_files = 0
     count = 0
-    limit = custom_users.count * 8
+    limit = custom_users.count * 12
     catch :reach_limit do
       Dir.glob((@filedir + "*.sml")) do |file|
         throw :reach_limit if count > limit

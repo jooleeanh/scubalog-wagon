@@ -141,8 +141,8 @@ class SeedComputerDives < BasicSeed
     min_temp: f_data[:min_temp],
     max_temp: f_data[:max_temp],
     comments: nil,
-    enjoyment: nil,
-    visibility: nil,
+    enjoyment: rand(1...5),
+    visibility: rand(2...6)*5,
     polygon: nil,
     )
     dive.divesite = Divesite.all.first

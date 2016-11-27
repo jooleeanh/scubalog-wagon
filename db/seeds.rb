@@ -45,9 +45,9 @@ class Seed < BasicSeed
       create_users?
       create_divesites?
       create_dives?
+      create_computer_dives?
       create_buddies?
       create_equipment_sets?
-      create_computer_dives?
       create_animals?
       create_sightings?
       create_events?

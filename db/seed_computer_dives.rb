@@ -1,4 +1,3 @@
-require 'pry-byebug'
 require_relative 'scrapers/suunto/suunto_device'
 require_relative 'scrapers/suunto/suunto_freediving'
 require_relative 'scrapers/suunto/suunto_scuba'
@@ -17,26 +16,28 @@ class SeedComputerDives < BasicSeed
     limit = custom_users.count * 8
     catch :reach_limit do
       Dir.glob((@filedir + "*.sml")) do |file|
-      throw :reach_limit if count > limit
-      document = create_noko_xml(file)
-      if document.root.css('Header DiveMode').text == "Free"
-        freedive_files += 1
-        # device = SuuntoDevice.new(document)
-        # @log_hash = SuuntoFreediving.new(dive, device).parse
-      else
-        device = SuuntoDevice.new(document)
-        data = SuuntoScuba.new(document, device).parse
-        f_data = reformat_computer_data(data)
-        dive = create_dive(f_data, custom_users.sample)
-        if dive.save
-          dive_count += 1
+        throw :reach_limit if count > limit
+        document = create_noko_xml(file)
+        if document.root.css('Header DiveMode').text == "Free"
+          freedive_files += 1
+          # device = SuuntoDevice.new(document)
+          # @log_hash = SuuntoFreediving.new(dive, device).parse
+        else
+          device = SuuntoDevice.new(document)
+          data = SuuntoScuba.new(document, device).parse
+          f_data = reformat_computer_data(data)
+          binding.pry
+
+          dive = create_dive(f_data, custom_users.sample)
+          if dive.save
+            dive_count += 1
+          end
+          unless f_data[:samples].count < 5
+            create_data_points(dive, f_data[:samples])
+          end
+          count += 1
         end
-        unless f_data[:samples].count > 5
-          create_data_points(dive, f_data[:samples])
-        end
-        count += 1
       end
-    end
     end
     puts "#{freedive_files} freedive files ignored.".yellow
     puts "#{dive_count} dives created".light_yellow
@@ -145,7 +146,8 @@ class SeedComputerDives < BasicSeed
     visibility: rand(2...6)*5,
     polygon: nil,
     )
-    dive.divesite = Divesite.all.first
+    offset = rand(Divesite.count)
+    dive.divesite = Divesite.offset(offset).first
     dive.user = user
     dive
   end

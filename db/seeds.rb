@@ -3,6 +3,7 @@ require_relative 'delete_seed'
 require_relative 'seed_users'
 require_relative 'seed_divesites'
 require_relative 'seed_buddies'
+require_relative 'seed_computer_dives'
 require_relative 'seed_data_points'
 require_relative 'seed_dives'
 require_relative 'seed_equipment_sets'
@@ -46,6 +47,7 @@ class Seed < BasicSeed
       create_dives?
       create_buddies?
       create_equipment_sets?
+      create_computer_dives?
       create_data_points?
       create_animals?
       create_sightings?
@@ -117,15 +119,15 @@ class Seed < BasicSeed
       seed.seed_participations
     end
   end
-  def create_data_points?
-    answer = ask_create("data points")
-    if answer == "y"
-      seed = SeedDataPoints.new
-      seed.seed_data_points
-    end
-  end
 
   # TODO:
+  def create_computer_dives?
+    answer = ask_create("computer dives")
+    if answer == "y"
+      seed = SeedComputerDives.new
+      seed.seed_computer_dive
+    end
+  end
   def create_data_points?
     answer = ask_create("data points")
     if answer == "y"

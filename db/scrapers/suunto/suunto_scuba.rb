@@ -1,5 +1,3 @@
-require_relative 'suunto_device'
-
 class SuuntoScuba
   def initialize(document, device)
     @document = document
@@ -39,6 +37,7 @@ class SuuntoScuba
   end
 
   def parse_samples(hash)
+    samples = {}
     @document.root.css('Sample').each_with_index do |tag, index|
       sample = {}
       time = tag.css('Time').text
@@ -49,8 +48,10 @@ class SuuntoScuba
       sample[:depth] = depth
       sample[:temperature] = temperature
       sample[:tank_pressure] = tank_pressure
-      hash["sample_#{index.to_s.rjust(3, "0")}".to_sym] = sample
+      samples[index.to_s.rjust(3, "0")] = sample
     end
+    samples.reject! { |k, v| v[:depth].blank? }
+    hash[:samples] = samples
     hash
   end
 

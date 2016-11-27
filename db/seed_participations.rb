@@ -1,9 +1,9 @@
 class SeedParticipations < BasicSeed
 
   def seed_participations
-    User.all.each do |user|
-      rand(1..3).times do
-        event = Event.all.sample
+    Event.all.each do |event|
+      rand(2..4).times do
+        user = User.all.sample
         participation = user.participations.new(
         event: event
         )

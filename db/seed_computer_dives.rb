@@ -8,41 +8,43 @@ class SeedComputerDives < BasicSeed
     @dives_with_dps = []
   end
 
-  def seed_computer_dive
+  def seed_computer_dives
     custom_users = User.where.not(facebook_picture_url: nil)
-    dive_count = 0
-    freedive_files = 0
-    count = 0
-    limit = custom_users.count * 12
-    catch :reach_limit do
-      Dir.glob((@filedir + "*.sml")) do |file|
-        throw :reach_limit if count > limit
-        document = create_noko_xml(file)
-        if document.root.css('Header DiveMode').text == "Free"
-          freedive_files += 1
-          # device = SuuntoDevice.new(document)
-          # @log_hash = SuuntoFreediving.new(dive, device).parse
-        else
-          device = SuuntoDevice.new(document)
-          data = SuuntoScuba.new(document, device).parse
-          f_data = reformat_computer_data(data)
-          binding.pry
-
-          dive = create_dive(f_data, custom_users.sample)
-          if dive.save
-            dive_count += 1
+    if custom_users.count < 1
+      puts "No custom users".light_red
+    else
+      dive_count = 0
+      freedive_files = 0
+      count = 0
+      limit = custom_users.count * 12
+      catch :reach_limit do
+        Dir.glob((@filedir + "*.sml")) do |file|
+          throw :reach_limit if count > limit
+          document = create_noko_xml(file)
+          if document.root.css('Header DiveMode').text == "Free"
+            freedive_files += 1
+            # device = SuuntoDevice.new(document)
+            # @log_hash = SuuntoFreediving.new(dive, device).parse
+          else
+            device = SuuntoDevice.new(document)
+            data = SuuntoScuba.new(document, device).parse
+            f_data = reformat_computer_data(data)
+            dive = create_dive(f_data, custom_users.sample)
+            if dive.save
+              dive_count += 1
+            end
+            unless f_data[:samples].count < 5
+              create_data_points(dive, f_data[:samples])
+            end
+            count += 1
           end
-          unless f_data[:samples].count < 5
-            create_data_points(dive, f_data[:samples])
-          end
-          count += 1
         end
       end
+      puts "#{freedive_files} freedive files ignored.".yellow
+      puts "#{dive_count} dives created".light_yellow
+      examples = @dives_with_dps.first(3).join(", #")
+      puts "Examples: Dives ##{examples}".light_black
     end
-    puts "#{freedive_files} freedive files ignored.".yellow
-    puts "#{dive_count} dives created".light_yellow
-    examples = @dives_with_dps.first(3).join(", #")
-    puts "Examples: Dives ##{examples}".light_black
   end
 
   def create_data_points(dive, samples)
@@ -61,7 +63,11 @@ class SeedComputerDives < BasicSeed
         puts dp.errors.full_messages
       end
     end
-    puts "Dive #{dive.id} was created with #{samples.count} data points".light_green
+    print "#{dive.user.first_name}".light_yellow
+    print " - "
+    print "Dive #{dive.id}".blue
+    print " was created with ".light_green
+    print "#{samples.count} data points".blue
   end
 
   def create_noko_xml(filepath)

@@ -28,6 +28,65 @@ class Seed < BasicSeed
       get_size_of(MODELS)
     end
   end
+  def automatic?
+    print "Automatic seed?".light_cyan + " > "
+    answer = STDIN.gets.chomp
+    if answer == "y"
+      destroy_all_seed
+      create_all_seed
+    else
+      delete_seed?
+      create_seed?
+    end
+  end
+  def destroy_all_seed
+    stylize("Destroying all seed.".light_red)
+    MODELS.each do |m|
+      get_size_of(m, "deleted")
+      if m.first.name == "User"
+        binding.pry
+        m.first.where(facebook_picture_url: nil).destroy_all
+      else
+        m.first.destroy_all
+      end
+    end
+  end
+  def create_all_seed
+    users = SeedUsers.new
+    guys = users.parse_guys
+    girls = users.parse_girls
+    users.seed_users(20, guys)
+    users.seed_users(20, girls)
+
+    divesites = SeedDivesites.new
+    json_divesites = divesites.parse_divesites
+    json_divesites = divesites.divide(json_divesites, 5)
+    divesites.seed_divesites(238, json_divesites)
+
+    dives = SeedDives.new
+    dives.seed_dives
+
+    computerdives = SeedComputerDives.new
+    computerdives.seed_computer_dives
+
+    buddies = SeedBuddies.new
+    buddies.seed_buddies
+
+    equipmentsets = SeedEquipmentSets.new
+    equipmentsets.seed_equipment_sets
+
+    animals = SeedAnimals.new
+    animals.seed_animals
+
+    sightings = SeedSightings.new
+    sightings.seed_sightings
+
+    events = SeedEvents.new
+    events.create_events(50)
+
+    participations = SeedParticipations.new
+    participations.seed_participations
+  end
   def delete_seed?
     answer = ask_seed("delete")
     if answer == "y"
@@ -122,7 +181,7 @@ class Seed < BasicSeed
     answer = ask_create("computer dives for custom users")
     if answer == "y"
       seed = SeedComputerDives.new
-      seed.seed_computer_dive
+      seed.seed_computer_dives
     end
   end
 
@@ -150,7 +209,6 @@ end
 puts ""
 seed = Seed.new
 seed.stats?
-seed.delete_seed?
-seed.create_seed?
+seed.automatic?
 seed.stats?
 puts ""

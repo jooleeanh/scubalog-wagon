@@ -6,22 +6,35 @@ class SeedDivesites < BasicSeed
 
   def create_divesites
     json_doc = parse_divesites
-    divide = 0 # Reduce divesite size while getting some from everywhere
-    while divide < 1 || divide > json_doc.count
-      puts "There are #{json_doc.count} Dive Sites in France."
-      puts "Divide by how much?"
-      print "> "
-      divide = STDIN.gets.chomp.to_i
-    end
-    json_doc = json_doc.map.with_index { |(_,v), i| v if (i % divide == 0) }
-    json_doc.reject! { |divesite| divesite == nil }
+    json_doc = ask_divide(json_doc)
+    number = select_divesites(json_doc)
+    seed_divesites(number, json_doc)
+  end
+
+  def select_divesites(json_doc)
     number = 0
     while number < 1 || number > json_doc.count
       puts "Create how many ? (#{json_doc.count} Dive Sites)"
       print "> "
       number = STDIN.gets.chomp.to_i
     end
-    seed_divesites(number, json_doc)
+    number
+  end
+
+  def divide(json_doc, number)
+    json_doc = json_doc.map.with_index { |(_,v), i| v if (i % number == 0) }
+    json_doc.reject! { |divesite| divesite == nil }
+  end
+
+  def ask_divide(json_doc)
+    number = 0 # Reduce divesite size while getting some from everywhere
+    while number < 1 || number > json_doc.count
+      puts "There are #{json_doc.count} Dive Sites in France."
+      puts "Divide by how much?"
+      print "> "
+      number = STDIN.gets.chomp.to_i
+    end
+    divide(json_doc, number)
   end
 
   def seed_divesites(number, json_doc)

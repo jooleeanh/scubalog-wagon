@@ -84,7 +84,7 @@ class Seed < BasicSeed
     end
   end
   def create_dives?
-    answer = ask_create("dives")
+    answer = ask_create("dives for fake users")
     if answer == "y"
       seed = SeedDives.new
       seed.seed_dives
@@ -119,7 +119,7 @@ class Seed < BasicSeed
     end
   end
   def create_computer_dives?
-    answer = ask_create("computer dives")
+    answer = ask_create("computer dives for custom users")
     if answer == "y"
       seed = SeedComputerDives.new
       seed.seed_computer_dive

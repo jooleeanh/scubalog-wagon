@@ -1,0 +1,5 @@
+<%= link_to dive do %>
+  <h3><%= dive.divesite.name %></h3>
+  <h5><%= date_short(dive.datetime) %></h5>
+  <p><%= dive.types %></p>
+<% end %>

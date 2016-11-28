@@ -1,7 +1,7 @@
 class DivesController < ApplicationController
-before_action :set_dive, only: [:show, :edit, :update, :destroy]
-before_action :all_divesites, only: [:new, :create, :edit, :update, :destroy]
-before_action :all_animals, only: [:new, :create]
+  before_action :set_dive, only: [:show, :edit, :update, :destroy]
+  before_action :all_divesites, only: [:new, :create, :edit, :update, :destroy]
+  before_action :all_animals, only: [:new, :create]
   def index
     @dives = current_user.dives.all.recent
     build_markers(@dives)
@@ -75,7 +75,7 @@ before_action :all_animals, only: [:new, :create]
     @hash = Gmaps4rails.build_markers(dives) do |dive, marker|
       marker.lat dive.divesite.latitude
       marker.lng dive.divesite.longitude
+      marker.infowindow render_to_string(partial: "/dives/map_box", locals: { dive: dive })
     end
   end
-
 end

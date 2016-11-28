@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sml SdkVersion="2.6.6" Modified="2012-09-22T10:39:51" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.suunto.com/schemas/sml">
+	<DeviceLog>
+		<Header>
+			<Battery>2.8</Battery>
+			<DateTime>2016-09-16T20:13:57</DateTime>
+			<Duration>5</Duration>
+			<Depth>
+				<Max>2.36</Max>
+				<Avg>1.76</Avg>
+			</Depth>
+			<Diving>
+				<DiveMode>Air</DiveMode>
+				<Conservatism>0</Conservatism>
+				<Altitude>0</Altitude>
+				<SurfaceTime>259200</SurfaceTime>
+				<NumberInSeries>1</NumberInSeries>
+				<SurfacePressure>102100</SurfacePressure>
+				<Algorithm>Suunto Technical RGBM</Algorithm>
+				<Gases>
+					<Gas>
+						<State>Air</State>
+						<Oxygen>0.210</Oxygen>
+					</Gas>
+				</Gases>
+				<StartTissue>
+					<CNS>0.0065625</CNS>
+					<OTU>1.265625</OTU>
+					<Nitrogen>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+					</Nitrogen>
+					<RgbmNitrogen>1</RgbmNitrogen>
+				</StartTissue>
+				<EndTissue>
+					<CNS>0.0065625</CNS>
+					<OTU>1.265625</OTU>
+					<OLF>0.0065625</OLF>
+					<Nitrogen>
+						<Pressure>79300</Pressure>
+						<Pressure>79200</Pressure>
+						<Pressure>79100</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+						<Pressure>79000</Pressure>
+					</Nitrogen>
+					<RgbmNitrogen>1</RgbmNitrogen>
+				</EndTissue>
+			</Diving>
+			<SampleInterval>20</SampleInterval>
+		</Header>
+		<Device>
+			<Name>Suunto D6i</Name>
+			<SerialNumber>51670658</SerialNumber>
+			<Info>
+				<SW>1.2.10</SW>
+				<HW>0.0.0</HW>
+				<BSL>0.0.0</BSL>
+			</Info>
+		</Device>
+		<Samples>
+			<Sample>
+				<Time>0</Time>
+				<Events>
+					<State>
+						<Type>Below Surface</Type>
+						<Active>true</Active>
+					</State>
+					<State>
+						<Type>Wet Outside</Type>
+						<Active>true</Active>
+					</State>
+					<State>
+						<Type>Below Wet Activation Depth</Type>
+						<Active>true</Active>
+					</State>
+				</Events>
+			</Sample>
+			<Sample>
+				<Time>0</Time>
+				<Depth>2.06</Depth>
+				<Temperature>304.15</Temperature>
+				<Events>
+					<State>
+						<Type>Dive Active</Type>
+						<Active>true</Active>
+					</State>
+				</Events>
+			</Sample>
+			<Sample>
+				<Time>5</Time>
+				<Events>
+					<State>
+						<Type>Below Surface</Type>
+						<Active>false</Active>
+					</State>
+				</Events>
+			</Sample>
+			<Sample>
+				<Time>5</Time>
+				<Events>
+					<State>
+						<Type>Below Surface</Type>
+						<Active>false</Active>
+					</State>
+				</Events>
+			</Sample>
+		</Samples>
+	</DeviceLog>
+</sml>

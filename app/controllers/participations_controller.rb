@@ -1,6 +1,6 @@
 class ParticipationsController < ApplicationController
   before_action :find_event, only: [:create]
-  # before_action :find_participation, only: [:update, :destroy]
+  before_action :find_participation, only: [:update, :destroy]
 
   def new
     @participation = Participation.new
@@ -22,7 +22,9 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
+    @event = @participation.event
     @participation.destroy
+    redirect_to @event
   end
 
   private
@@ -34,9 +36,4 @@ class ParticipationsController < ApplicationController
   def find_event
     @event = Event.find(params[:event_id])
   end
-
-  # def participation_params
-  #   params.permit(:event_id)
-  # end
-
 end

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sml Version="2.6.6" Modified="2013-11-26T10:39:51" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.suunto.com/schemas/sml">
+	<DeviceSettings>
+		<Device>
+			<Name>D6i</Name>
+			<SerialNumber>51670658</SerialNumber>
+			<Info>
+				<SW>1.2.10</SW>
+			</Info>
+		</Device>
+		<PersonalInfo>julian.honma@gmail.com</PersonalInfo>
+	</DeviceSettings>
+	<DeviceHistory>
+		<Device>
+			<Name>D6i</Name>
+			<SerialNumber>51670658</SerialNumber>
+			<Info>
+				<SW>1.2.10</SW>
+			</Info>
+		</Device>
+		<Histories>
+			<History>
+				<Type>Scuba</Type>
+				<TotalTime>353460</TotalTime>
+				<Logs>136</Logs>
+				<MaxDepth>34.17</MaxDepth>
+			</History>
+			<History>
+				<Type>Free</Type>
+				<TotalTime>71035</TotalTime>
+				<Logs>839</Logs>
+				<LongestDive>
+					<Time>185</Time>
+					<Depth>23.95</Depth>
+				</LongestDive>
+				<DeepestDive>
+					<Time>129</Time>
+					<Depth>49.32</Depth>
+				</DeepestDive>
+			</History>
+		</Histories>
+	</DeviceHistory>
+</sml>

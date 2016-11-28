@@ -87,5 +87,4 @@ instance.oceana.each do |id, category|
     instance.scrape_creature(id, c_id, noko_creature)
   end
 end
-binding.pry
 instance.store_json

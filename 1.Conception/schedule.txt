@@ -1,0 +1,23 @@
+1. Dashboard(Stats divs / Ajax Calls / Swipebox)
+
+&
+
+1. Dive Log + New dive form + data-points
+
+2. Create Sidebar + Navbar + Breadcrumbs
+
+3. Rework events page (events#index + event#show)
+
+4. Finalize design (once and for all !)
+
+5. Implement background vid
+
+6. Create content for user stories
+
+Optional :
+
+. Build follower system
+
+. Notifications for events
+
+. Autocomplete

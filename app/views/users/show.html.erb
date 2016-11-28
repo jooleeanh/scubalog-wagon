@@ -2,8 +2,9 @@
 
 
 <!-- TODO .where(public: true) -->
-
-
+<div class="container dive_container">
+<div id="result" style="clear:both;"></div>
+</div>
 
 <div class="container">
   <div>
@@ -20,7 +21,8 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3 col-md-offset-2">
-      <div class="panel space-4"><img  src="https://i.ytimg.com/vi/sWy3s9Dhep0/hqdefault.jpg" class="img-responsive center-block">
+      <div class="panel space-4">
+        <%= find_user_photo(@user) %>
       </div>
 
       <div class="panel space-4">
@@ -45,8 +47,8 @@
       <div class="">
       <h1>Last Dives </h1>
 
-        <div class="">
 
+        <div class="">
           <div class="text-right"><%= link_to "All", dives_path %></div>
         </div>
 
@@ -58,9 +60,12 @@
         </div>
       </div>
     </div>
+
   </div>
+
 </div>
 
+<<<<<<< HEAD
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     <%= render 'users/light_slider.js.erb' %>
@@ -68,4 +73,6 @@
 <% end %>
 
 
+=======
+>>>>>>> master
 

@@ -18,7 +18,7 @@
   <p><strong>- Full Team: </strong>
   <% @event.participations.each do |participation|%>
     <%= link_to participation.user do %>
-      <%= image_tag(participation.user.facebook_picture_url || 'user_avatar.png') %>
+      <%= display_avatar(participation.user) %>
       <%= participation.user.first_name.capitalize %>
     <% end%>
   <% end %>

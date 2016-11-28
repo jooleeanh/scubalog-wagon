@@ -35,6 +35,7 @@ class Dive < ApplicationRecord
   has_many :buddies, dependent: :destroy
   # has_one :equipment_set, through: :user # TODO: do it
   has_many :animals, through: :sightings
+  has_attachments :photos, maximum: 5
   before_create :set_review_rating
   validates :divesite, presence: true, on: :create
   validates :datetime, presence: true

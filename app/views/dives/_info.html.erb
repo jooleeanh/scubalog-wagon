@@ -13,10 +13,12 @@
           <% end %>
         </dl>
       </div>
-      <div class="col-xs-12 col-md-8">
-        <%= area_chart @dive.data_points.pluck(:time, :depth) %>
-        <%= line_chart @dive.data_points.pluck(:time, :depth) %>
+      <div class="col-xs-12 col-md-8" id="container">
+        <%= area_chart @dive.data_points.pluck(:time, :depth), xtitle: "Time", ytitle: "Depth", library: { yAxis: {
+            reversed: true }} %>
       </div>
     </div>
   </div>
 </div>
+
+<%= yield :charts_js %>

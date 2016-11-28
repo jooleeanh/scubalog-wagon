@@ -64,7 +64,7 @@ before_action :all_animals, only: [:new, :create]
   end
 
   def dive_params
-    params.require(:dive).permit(:user_id, :divesite_id, :datetime, :types, :tank_size, :bottom_time, :start_air, :end_air, :max_depth, :avg_depth, :min_temp, :max_temp, :comments, :enjoyment, :visibility, :review_rating, :review_content, :animal_ids => [])
+    params.require(:dive).permit(:user_id, :divesite_id, :datetime, :types, :tank_size, :bottom_time, :start_air, :end_air, :max_depth, :avg_depth, :min_temp, :max_temp, :comments, :enjoyment, :visibility, :review_rating, :review_content, animal_ids: [], photos: [])
   end
 
   def divesites_with_location(dives)

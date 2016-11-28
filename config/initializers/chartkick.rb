@@ -1,0 +1,2 @@
+# Chartkick.options = {
+# }

@@ -20,11 +20,11 @@ _initAutocomplete: function() {
 _render: function(ul, item) {
   var markup = [
     '<span class="img">',
-        '<img src="' + 'https://pbs.twimg.com/profile_images/740512341364707328/1dMgs6Sm.jpg' + '" />',
+        '<img src="' + 'http://portalnacional.com.pt/images/empresas/8/3/0/0/9/83009.jpg' + '" />',
     '</span>',
     '<span class="name">' + item.name + '</span>',
-    '<span class="latitude">' + item.latitude + '</span>',
-    '<span class="longitude">' + item.longitude + '</span>'
+    '<span class="latitude">' + 'Lat: ' + item.latitude + '</span>',
+    '<span class="longitude">' + 'Lgn: ' + item.longitude + '</span>'
   ];
   return $('<li>')
     .append(markup.join(''))

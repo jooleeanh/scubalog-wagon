@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :events, through: :participations
   has_many :sightings, through: :dives
   has_many :animals, through: :sightings
+  has_attachment :photo
 
   validates :first_name, :last_name, :location, presence: true
 

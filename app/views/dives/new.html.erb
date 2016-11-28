@@ -5,36 +5,43 @@
     <div class="form-inputs">
       <div class="container login-form">
         <div class="dive-new-form">
-          <div class="zoomTarget dive-new-form-field log-active"><%= f.input :datetime, as: :date, required: true, autofocus: true %></div>
-          <div class="zoomTarget dive-new-form-field"><%= f.association :divesite, collection: @divesites %></div>
-          <div class="zoomTarget dive-new-form-field"><%= f.input :types, label: 'Dive type'%></div>
-          <div class="dive-new-form-field"><%= f.input :enjoyment %></div>
-          <div class="zoomTarget dive-new-form-field"><%= f.association :animals, collection: @animals, input_html: { multiple: true } %></div>
-          <div class="dive-new-form-field"><%= f.input :comments, label: 'Personal comments'%></div>
-          <div class="dive-new-computer-info">
+          <% size1 = 0.8 %>
+          <% size2 = 0.5 %>
+          <h2 tabindex=0>New Dive</h2>
+          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :datetime, as: :date, required: true %></div>
+          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.association :divesite, collection: @divesites %></div>
+          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :types, label: 'Dive type'%></div>
+          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :enjoyment %></div>
+          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.association :animals, collection: @animals, input_html: { multiple: true } %></div>
+          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :comments, label: 'Personal comments'%></div>
+          <div class="zoomTarget dive-new-computer-info">
             <div class="row">
               <div class="col-xs-12 col-sm-6">
-                <div class="zoomTarget dive-new-form-field"><%= f.input :bottom_time %></div>
+                <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size2 %>"><%= f.input :bottom_time %></div>
               </div>
               <div class="col-xs-12 col-sm-6">
-                <div class="zoomTarget dive-new-form-field"><%= f.input :max_depth %></div>
+                <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size2 %>"><%= f.input :max_depth %></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size2 %>"><%= f.input :start_air %></div>
               </div>
               <div class="col-xs-12 col-sm-6">
-                <div class="dive-new-form-field"><%= f.input :start_air %></div>
+                <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size2 %>"><%= f.input :end_air %></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size2 %>"><%= f.input :max_temp, label: 'Temperature' %></div>
               </div>
               <div class="col-xs-12 col-sm-6">
-                <div class="dive-new-form-field"><%= f.input :end_air %></div>
-              </div>
-              <div class="col-xs-12 col-sm-6">
-                <div class="dive-new-form-field"><%= f.input :max_temp, label: 'Temperature' %></div>
-              </div>
-              <div class="col-xs-12 col-sm-6">
-                <div class="dive-new-form-field"><%= f.input :visibility %></div>
+                <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size2 %>"><%= f.input :visibility %></div>
               </div>
             </div>
           </div>
-          <div class="dive-new-form-field"><%= f.input :photos, as: :attachinary %></div>
-          <div class="dive-new-form-field"><%= f.input :review_content, label: 'Share a tip to fellow divers' %></div>
+          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :photos, as: :attachinary %></div>
+          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :review_content, label: 'Share a tip to fellow divers' %></div>
         </div>
       </div>
       <div class="form-actions">

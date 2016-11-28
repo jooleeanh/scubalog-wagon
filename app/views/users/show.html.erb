@@ -56,7 +56,7 @@
 
         <h1>My Events</h1>
         <div class="panel panel-body">
-          <% @user.events.each do |event| %>
+          <% @user.events.recent.each do |event| %>
             <p><%= link_to event.divesite.name, event %> - <%= event.datetime.strftime("%d %B %Y") %></p>
           <% end %>
         </div>

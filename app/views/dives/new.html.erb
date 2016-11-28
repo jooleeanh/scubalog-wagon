@@ -1,17 +1,24 @@
 <div class="container divelog">
   <div class="text-center">
     <%= simple_form_for [@dive] do |f| %>
-      <%= f.error_notification %>
-      <div class="form-inputs">
-        <div class="container login-form">
-          <div class="dive-new-form">
-            <div class="dive-new-form-field log-active"><%= f.input :datetime, as: :date, required: true, autofocus: true %></div>
-            <div class="dive-new-form-field"><%= f.association :divesite, collection: @divesites %></div>
-            <div class="dive-new-form-field"><%= f.association :animals, collection: @animals, input_html: { multiple: true } %></div>
-            <div class="dive-new-form-field"><%= f.input :types, label: 'Dive type'%></div>
-            <div class="dive-new-form-field"><%= f.input :bottom_time %></div>
-            <div class="dive-new-form-field"><%= f.input :max_depth %></div>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <div class="container login-form">
+        <div class="dive-new-form">
+          <div class="zoomTarget dive-new-form-field log-active"><%= f.input :datetime, as: :date, required: true, autofocus: true %></div>
+          <div class="zoomTarget dive-new-form-field"><%= f.association :divesite, collection: @divesites %></div>
+          <div class="zoomTarget dive-new-form-field"><%= f.input :types, label: 'Dive type'%></div>
+          <div class="dive-new-form-field"><%= f.input :enjoyment %></div>
+          <div class="zoomTarget dive-new-form-field"><%= f.association :animals, collection: @animals, input_html: { multiple: true } %></div>
+          <div class="dive-new-form-field"><%= f.input :comments, label: 'Personal comments'%></div>
+          <div class="dive-new-computer-info">
             <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="zoomTarget dive-new-form-field"><%= f.input :bottom_time %></div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="zoomTarget dive-new-form-field"><%= f.input :max_depth %></div>
+              </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="dive-new-form-field"><%= f.input :start_air %></div>
               </div>
@@ -25,16 +32,15 @@
                 <div class="dive-new-form-field"><%= f.input :visibility %></div>
               </div>
             </div>
-            <div class="dive-new-form-field"><%= f.input :enjoyment %></div>
-            <div class="dive-new-form-field"><%= f.input :comments, label: 'Personal comments'%></div>
-            <div class="dive-new-form-field"><%= f.input :review_content, label: 'Share a tip to fellow divers' %></div>
-            <div class="dive-new-form-field"><%= f.input :photos, as: :attachinary %></div>
           </div>
-        </div>
-        <div class="form-actions">
-          <%= f.button :submit, "Log this dive !", class: 'btn btn-primary' %>
+          <div class="dive-new-form-field"><%= f.input :photos, as: :attachinary %></div>
+          <div class="dive-new-form-field"><%= f.input :review_content, label: 'Share a tip to fellow divers' %></div>
         </div>
       </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Log this dive !", class: 'btn btn-primary' %>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>

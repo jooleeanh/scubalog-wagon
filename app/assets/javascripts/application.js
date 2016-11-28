@@ -8,4 +8,5 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
+//= require zoomooz/jquery.zoomooz.js
 //= require_tree .

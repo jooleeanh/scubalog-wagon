@@ -203,6 +203,7 @@ GEM
       railties (= 5.0.0.1)
       sprockets-rails (>= 2.0.0)
     rails-assets-underscore (1.8.3)
+    rails-assets-zoomooz (1.1.6)
     rails-dom-testing (2.0.1)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6.0)
@@ -310,6 +311,7 @@ DEPENDENCIES
   puma
   rails (= 5.0.0.1)
   rails-assets-underscore!
+  rails-assets-zoomooz!
   rails_admin (>= 1.0.0.rc)
   redis
   remotipart!

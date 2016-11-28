@@ -15,9 +15,9 @@
       </div>
       <div class="col-xs-12 col-md-8" id="container">
         <%= line_chart [
-        {name: "Time", data: @dive.data_points.pluck(:time, :depth), library: { yAxis: {reversed: true}, xAxis: {reversed: true}}},
-        {name: "Air Consumption", data: @dive.data_points.pluck(:time, :air), library: { yAxis: {reversed: true}, xAxis: {reversed: true}}},
-        {name: "Temperature", data: @dive.data_points.pluck(:time, :temp), library: { yAxis: {reversed: true}, xAxis: {reversed: true}}}] %>
+        {name: "Time", data: @dive.data_points.pluck(:time, :depth)},
+        {name: "Air Consumption", data: @dive.data_points.pluck(:time, :air)},
+        {name: "Temperature", data: @dive.data_points.pluck(:time, :temp)}], library: { yAxis: {reversed: true}, xAxis: {reversed: true}} %>
       </div>
     </div>
   </div>

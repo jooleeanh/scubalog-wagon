@@ -44,7 +44,6 @@ class Seed < BasicSeed
     MODELS.each do |m|
       get_size_of(m, "deleted")
       if m.first.name == "User"
-        binding.pry
         m.first.where(facebook_picture_url: nil).destroy_all
       else
         m.first.destroy_all

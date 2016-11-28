@@ -35,6 +35,8 @@ class Dive < ApplicationRecord
   has_many :buddies, dependent: :destroy
   # has_one :equipment_set, through: :user # TODO: do it
   has_many :animals, through: :sightings
+  has_attachments :photos, maximum: 5
+  before_create :set_review_rating
   validates :divesite, presence: true, on: :create
   validates :datetime, presence: true
   validates :max_depth, inclusion: { in: 1...200 },
@@ -45,6 +47,12 @@ class Dive < ApplicationRecord
                         inclusion: { in: 1...6 },
                         allow_nil: true
   scope :recent, -> { order(datetime: :desc) }
+
+  private
+
+  def set_review_rating
+    self.review_rating = self.enjoyment
+  end
 end
 
 # Table name: dives

@@ -67,7 +67,7 @@ class SeedComputerDives < BasicSeed
     print " - "
     print "Dive #{dive.id}".blue
     print " was created with ".light_green
-    print "#{samples.count} data points".blue
+    puts "#{samples.count} data points".blue
   end
 
   def create_noko_xml(filepath)

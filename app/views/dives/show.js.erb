@@ -1,9 +1,11 @@
-$('#show').click(function() {
+$('#result').html(" <%= j render 'dives/show', dive: @dive%>");
+
+$('.show').click(function() {
   $('#result').slideDown();
 });
 
-$('#hide').click(function() {
+$('.slide-up').click(function() {
   $('#result').slideUp();
 });
 
-$('#result').html(" <%= j render 'dives/show', dive: @dive%>");
+

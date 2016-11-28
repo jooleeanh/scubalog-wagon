@@ -23,13 +23,17 @@
   padding-left: 15px;
 }
 
-#pageloader {
-  width: 50%;
-  height: 200px;
-}
-
 #result {
   height: 30%;
   width: 90%;
 }
 
+#sidebar-wrapper {
+  width: 15%;
+  height: 100%;
+  margin-top: 4%;
+}
+
+.js-container {
+  width: 65%;
+}

@@ -2,11 +2,51 @@
 
 
 <!-- TODO .where(public: true) -->
-<div class="container dive_container">
-<div id="result" style="clear:both;"></div>
-</div>
 
-<div class="container">
+
+<div class="container js-container">
+<div id="wrapper">
+  <div class="overlay"></div>
+
+  <!-- Sidebar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+      <ul class="nav sidebar-nav">
+          <li class="sidebar-brand">
+              <a href="/">Home</a>
+          </li>
+          <li>
+              <a href="/dives/new">Log a dive</a>
+          </li>
+          <li>
+              <a href="">Events</a>
+          </li>
+          <li>
+              <a href="#">Near you</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="dropdown-header">Dropdown heading</li>
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+          <li>
+              <a href="#">Services</a>
+          </li>
+          <li>
+              <a href="#">Contact</a>
+          </li>
+          <li>
+              <a href="https://twitter.com/TSourdille">Follow me</a>
+          </li>
+      </ul>
+  </nav>
+
+</div>
   <div>
     <ul id="lightSlider">
       <% @user.dives.each do |dive| %>
@@ -14,11 +54,15 @@
           <img src="https://i.ytimg.com/vi/sWy3s9Dhep0/hqdefault.jpg" class="img-responsive">
             <p><%= link_to dive.divesite.name, dive %></p>
             <p><%= dive.datetime.strftime("%d %B %Y") %></p>
-            <div class=""> <%= link_to 'Check', dive, remote: true, :id => 'show' %></div>
-            <%= link_to "Hide", dive, remote: true, :id => 'hide' %>
+            <%= link_to 'Check', dive, remote: true, class: 'show' %>
+            <%= link_to "Hide", dive, remote: true, class: 'slide-up' %>
         </li>
       <% end %>
     </ul>
+  </div>
+
+  <div class="container dive_container">
+    <div id="result" style="clear:both;"></div>
   </div>
 
   <div class="row">

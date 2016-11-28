@@ -4,7 +4,7 @@ require_relative 'scrapers/suunto/suunto_scuba'
 
 class SeedComputerDives < BasicSeed
   def initialize
-    @filedir = "/home/julian/code/jooleeanh/scubalog/db/scrapers/suunto/suunto_logs/"
+    @filedir = "db/scrapers/suunto/suunto_logs/"
     @dives_with_dps = []
   end
 

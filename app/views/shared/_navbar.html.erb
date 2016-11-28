@@ -8,12 +8,16 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <form action="/divesites" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Look for a spot" name="search_input">
-      <button type="submit" class="navbar-wagon-search-btn">
+    <form action="/divesites" class="divesites-search  navbar-wagon-search ">
+      <input type="text" class="navbar-wagon-search-input" placeholder="Look for a spot" name="search_input" id="divesites-search-txt">
+      <button type="submit" class="results navbar-wagon-search-btn" id="divesites-search-results">
         <i class="fa fa-search"></i>
       </button>
     </form>
+
+    <%= content_for :script do %>
+  new app.Divesites;
+<% end %>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>

@@ -15,6 +15,10 @@
   color: #011238;
   font-size: 35px;
 }
+
+.font-yellowtail:hover {
+  text-decoration: none;
+}
 /* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {
   position: fixed;
@@ -27,6 +31,10 @@
 /* Navbar logo */
 .navbar-wagon-brand img {
   width: 50px;
+}
+
+.navbar-wagon-brand:hover {
+  text-decoration: none;
 }
 
 /* Navbar right section (with form, links, button) */

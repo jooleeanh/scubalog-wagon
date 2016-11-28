@@ -1,4 +1,4 @@
-1. Dashboard
+1. Dashboard(Stats divs / Ajax Calls / Swipebox)
 
 &
 

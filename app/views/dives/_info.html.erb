@@ -14,11 +14,14 @@
         </dl>
       </div>
       <div class="col-xs-12 col-md-8" id="container">
-        <%= area_chart @dive.data_points.pluck(:time, :depth), xtitle: "Time", ytitle: "Depth", library: { yAxis: {
-            reversed: true }} %>
+        <%= line_chart [
+        {name: "Time", data: @dive.data_points.pluck(:time, :depth), library: { yAxis: {reversed: true}, xAxis: {reversed: false}}},
+        {name: "Air", data: @dive.data_points.pluck(:air, :depth), library: { yAxis: {reversed: true}, xAxis: {reversed: false}}},
+        {name: "Temperature", data: @dive.data_points.pluck(:temp, :depth), library: { yAxis: {reversed: true}, xAxis: {reversed: false}}}] %>
       </div>
     </div>
   </div>
 </div>
 
-<%= yield :charts_js %>
+
+

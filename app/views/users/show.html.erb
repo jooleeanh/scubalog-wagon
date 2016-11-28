@@ -6,7 +6,7 @@
 <div id="result" style="clear:both;"></div>
 </div>
 
-<div class="container space-3">
+<div class="container space-3 user-info">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3 col-md-offset-2">
       <div class="panel space-4"><img  src="https://i.ytimg.com/vi/sWy3s9Dhep0/hqdefault.jpg" class="img-responsive center-block">
@@ -38,7 +38,8 @@
             <p>
             <%= link_to dive.divesite.name, dive %> - <%= dive.datetime.strftime("%d %B %Y") %>
             </p>
-            <div class=""> <%= link_to 'Check', dive, remote: true %></div>
+            <div class=""> <%= link_to 'Check', dive, remote: true, :id => 'show' %></div>
+            <%= link_to "Hide", dive, remote: true, :id => 'hide' %>
           <% end %>
           <div class="text-right"><%= link_to "All", dives_path %></div>
         </div>

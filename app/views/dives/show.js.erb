@@ -1,2 +1,9 @@
-// var selected_dive = $(" <%= j render 'dives/show', dive: @dive%>").hide();
+$('#show').click(function() {
+  $('#result').slideDown();
+});
+
+$('#hide').click(function() {
+  $('#result').slideUp();
+});
+
 $('#result').html(" <%= j render 'dives/show', dive: @dive%>");

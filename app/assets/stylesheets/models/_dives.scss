@@ -43,8 +43,9 @@
 ////////////////////////////////
 
 .dive-show {
-  margin-bottom: 100px;
+  margin-right: -22%;
 }
+
 .dive-show-cover {
   height: 300px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -58,3 +59,45 @@
 }
 
 ////////////////////////////////
+
+.dive-box {
+  width: 60%;
+}
+
+.first-row {
+  margin-top: 10%;
+
+}
+
+.first-row p {
+  font-size: 30px;
+  font-weight: bold;
+  color: #04724D;
+}
+
+.first-row h6 {
+  color: #034932;
+}
+
+
+.following-row {
+  margin-top: 2%;
+}
+
+.following-row p{
+  font-size: 28px;
+  font-weight: bold;
+  color: #04724D;
+}
+
+.following-row h6{
+  color: #034932;
+}
+
+.dive-chart {
+  max-width: 500px;
+}
+
+.dive_container {
+  width: 100%;
+}

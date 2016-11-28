@@ -26,10 +26,7 @@ class DivesitesController < ApplicationController
   def show
     @reviews = reviews_array(@divesite.dives)
     if @divesite.longitude && @divesite.latitude
-      @hash = Gmaps4rails.build_markers(@divesite) do |divesite, marker|
-        marker.lat divesite.latitude
-        marker.lng divesite.longitude
-      end
+      build_markers(@divesite)
     end
     @alert_message = "#{@divesite.name}"
     @divesite_coordinates = { lat: @divesite.latitude, lng: @divesite.longitude }

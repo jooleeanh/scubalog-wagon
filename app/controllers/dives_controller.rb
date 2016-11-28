@@ -10,6 +10,10 @@ before_action :all_animals, only: [:new, :create]
   def show
     build_markers(@dive)
     @splitted_animals = split_animals(@dive.sightings)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

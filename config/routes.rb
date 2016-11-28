@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :destroy]
   resources :equipment_sets, only: [:new, :create, :edit, :update, :destroy]
 
+
+
   resources :divesites do
     get :search, :on => :collection
     resources :events, shallow: true do

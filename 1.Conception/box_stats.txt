@@ -1,0 +1,10 @@
+graph (depth over time)
+________________________
+
+#-dive type
+#-max depth
+#-dive time
+#-temperature
+#-start air
+#-end air
+#-enjoyment

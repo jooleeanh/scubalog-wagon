@@ -42,7 +42,7 @@ class Dive < ApplicationRecord
   validates :avg_depth, inclusion: { in: 1..200 },
                         allow_nil: true
   validates :enjoyment, numericality: { only_integer: true},
-                        inclusion: { in: 0...5 },
+                        inclusion: { in: 1...6 },
                         allow_nil: true
   scope :recent, -> { order(datetime: :desc) }
 end

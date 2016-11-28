@@ -33,7 +33,7 @@ class DivesitesController < ApplicationController
     end
     @alert_message = "#{@divesite.name}"
     @divesite_coordinates = { lat: @divesite.latitude, lng: @divesite.longitude }
-    @splitted_animals = split_animals(@divesite.sightings)
+    @splitted_animals = split_animals(@divesite.sightings.select(:animal_id).uniq)
   end
 
   def new

@@ -74,12 +74,14 @@
   height: 100%;
 }
 
-#sub-box-1 p {
+#sub-box-1 h2 {
   margin-top: 8%;
+  font-weight: 600;
 }
 
-#sub-box-2 p {
+#sub-box-2 h2 {
   margin-top: 8%;
+  font-weight: 600;
 }
 
 .sub-box h2 {
@@ -90,7 +92,7 @@
   height: 33.33%;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -116,14 +118,38 @@
 
 .full-box-icons {
   height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 0 35px;
 }
 
 .full-box-icons img{
   margin-top: 0%;
-  width: 70px;
+  width: 50px;
+}
+
+.type-header {
+  border-top: solid 1px #3C4859;
+  border-bottom: solid 1px #3C4859;
+  width: 100%;
+  background-color: #F3FCF0;
+}
+
+.type-header h2{
+  margin-top: 1%;
+  text-align: center;
+}
+
+.my-spots-header {
+  border-top: solid 1px #3C4859;
+  border-bottom: solid 1px #3C4859;
+  width: 100%;
+  background-color: #F3FCF0;
+}
+
+.my-spots-header h2{
+  margin-top: 1%;
+  text-align: center;
 }

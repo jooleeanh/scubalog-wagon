@@ -6,13 +6,17 @@
 class Dive < ApplicationRecord
 
   TYPES = [
+
+# selected icons >>>>
+    "shark",
     "shore",
     "boat",
     "reef",
     "deep",
+    "night",
+# >>>>>>>>>>>>>
     "wall",
     "drift",
-    "night",
     "lake",
     "muck",
     "wreck",
@@ -20,7 +24,6 @@ class Dive < ApplicationRecord
     "cenote",
     "cavern",
     "twilight",
-    "shark",
     "seal",
     "scallop",
     "lobster",

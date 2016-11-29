@@ -40,13 +40,17 @@
     <div class="dive-sightings">
       <h2>Sightings</h2>
       <div class="row">
-        For each animal:
-        <div class="col-xs-6 col-md-3">
-        </div>
+        <% @dive.sightings.each do |sighting| %>
+          <div class="col-xs-6 col-md-3">
+            <p class="text-center"><%= sighting.animal.name %></p>
+            <%=  image_tag(asset_path(sighting.animal.image_url), class: "img-responsive")%>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="comments">
-      text
+      <h2>Comments</h2>
+      <p><%= @dive.comments %></p>
     </div>
   </div>
 </div>

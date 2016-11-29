@@ -1,12 +1,18 @@
 module ApplicationHelper
 
-  def display_avatar(user)
+  def display_avatar(user, extra_class = "")
     if user.photo?
-      return cl_image_tag(user.photo.path, :width=>36, :height=>36, :crop=>"fill", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+      return cl_image_tag(user.photo.path, :width=>36, :height=>36, :crop=>"fill", class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
     elsif user.facebook_picture_url.nil? == false
-      return image_tag(user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+      return image_tag(user.facebook_picture_url, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
     else
-      return image_tag("user_avatar.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+      return image_tag("user_avatar.png", class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+    end
+  end
+
+  def display_name(user)
+    if user
+      return user.first_name
     end
   end
 

@@ -2,76 +2,73 @@
 
 
 <!-- TODO .where(public: true) -->
-<div class="container dive_container">
-<div id="result" style="clear:both;"></div>
-</div>
 
-<div class="container">
-  <div>
-    <ul id="lightSlider">
-      <% @user.dives.each do |dive| %>
-        <li>
-          <img src="https://i.ytimg.com/vi/sWy3s9Dhep0/hqdefault.jpg" class="img-responsive">
-            <p><%= link_to dive.divesite.name, dive %></p>
-            <p><%= dive.datetime.strftime("%d %B %Y") %></p>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3 col-md-offset-2">
-      <div class="panel space-4">
-        <%= find_user_photo(@user) %>
-      </div>
-
-      <div class="panel space-4">
-        <div class="panel-header text-center">Informations</div>
-        <div class="panel-body">
-          <p><%= link_to 'Update my account', edit_user_registration_path %></p>
-          <p><%= link_to "Delete", user_path, method: :delete, data: { confirm: "Are you sure?" } %></p>
-          <p> <%= @user.email %> </p>
+<div class="container-fluid" id='container-cover'>
+  <div class="container-fluid" id='stats-container'>
+    <div class="row">
+      <div class="col-md-12" id='graph-container'>
+        <div class="col-md-6 average-stats">
+          <div class="chart-graph">
+           <%= line_chart @user.dives.first.data_points.pluck(:time, :depth), height: '550px' %>
+          </div>
         </div>
-      </div>
+        <div class="average-stats-details">
+          <!-- <div class="my-stats-header">
+            <h2>My main stats</h2>
+          </div> -->
+          <div class="box-stats">
+            <div class="sub-box" id="sub-box-1">
+              <h2 class="text-center">Total dives </h2>
+              <h2 class="text-center"><%= @user.dives.count %></h2>
+            </div>
+            <div class="sub-box" id="sub-box-2"%>
+              <h2 class="text-center"> Time spent </h2>
+              <h2 class="text-center"> 24 hrs </h2>
+            </div>
+          </div>
+          <div class="type-header">
+              <h2>My diving style</h2>
+          </div>
+          <div class="full-box">
+            <div class="full-box-icons">
+              <p><%= image_tag "shark_icon.png" %></p>
+              <p> 30 Shark dive</p>
+            </div>
 
-      <div class="panel space-4">
-        <div class="panel-header text-center">Followers</div>
-        <div class="panel-body">
-          <p>Papa</p>
-          <p>Maman</p>
+            <div class="full-box-icons">
+              <p><%= image_tag "reef_icon.png" %></p>
+              <p> 30 Reef dive</p>
+            </div>
+            <div class="full-box-icons">
+              <p><%= image_tag "shore_icon.png" %></p>
+              <p> 1 Shore dive</p>
+            </div>
+          </div>
+          <div class="my-spots-header">
+            <h2>My records</h2>
+          </div>
+          <div class="full-box">
+            <div class="full-box-icons">
+              <p> Longest dive</p>
+              <p> 58 mns</p>
+            </div>
+            <div class="full-box-icons">
+              <p> Max Depth</p>
+              <p> 28m</p>
+            </div>
+            <div class="full-box-icons">
+              <p> Hard dives</p>
+              <p> 18</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-1">
-      <div class="">
-      <h1>Last Dives </h1>
-
-
-        <div class="">
-          <div class="text-right"><%= link_to "All", dives_path %></div>
-        </div>
-
-        <h1>My Events</h1>
-        <div class="panel panel-body">
-          <% @user.events.each do |event| %>
-            <p><%= link_to event.divesite.name, event %> - <%= event.datetime.strftime("%d %B %Y") %></p>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
   </div>
-
 </div>
-
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     <%= render 'users/light_slider.js.erb' %>
   <% end %>
 <% end %>
-
-
-
-

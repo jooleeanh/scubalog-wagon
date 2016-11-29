@@ -42,9 +42,20 @@
 }
 ////////////////////////////////
 
-.dive-show {
-  margin-bottom: 100px;
+.dive-navigation-box {
+  display: flex;
+  flex-direction: row;
 }
+.dive-navigation-item {
+  flex-grow: 1;
+}
+
+////////////////////////////////
+
+.dive-show {
+  margin-right: -22%;
+}
+
 .dive-show-cover {
   height: 300px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -56,7 +67,20 @@
 .dive-show-graph {
   height: 80%;
 }
-
+.dive-info-box {
+  height: 300px;
+  margin: 20px 0;
+}
+.dive-info-box-stats {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.dive-info-box-item {
+  flex-grow: 1;
+  border: 1px solid black;
+}
 ////////////////////////////////
 
 .dive-new-form {
@@ -66,4 +90,48 @@
 }
 .log-active {
   opacity: 1;
+}
+.dive-box {
+  width: 80%;
+}
+
+.first-row {
+  margin-top: 10%;
+}
+
+.first-row p {
+  font-size: 30px;
+  font-weight: bold;
+  color: #367A94;
+}
+
+.first-row h6 {
+  color: #367A94;
+}
+
+
+.following-row {
+  margin-top: 2%;
+}
+
+.following-row p {
+  font-size: 28px;
+  font-weight: bold;
+  color: #367A94;
+}
+
+.following-row h6 {
+  color: #367A94;
+}
+
+.dive-chart {
+  max-width: 500px;
+}
+
+.dive_container {
+  width: 100%;
+}
+
+.header-box {
+  width: 100%;
 }

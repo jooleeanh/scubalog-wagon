@@ -1,0 +1,52 @@
+<div class="sidebar closed" id="sidebar">
+  <div class="sidebar-content">
+    <a href="#" class="visible-xs menu-handle" id="close-menu">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <div class="sidebar-item sidebar-logo">
+      <h1>Scubalog</h1>
+      <div class="sidebar-item sidebar-search">
+        <form action="/divesites" class="navbar-wagon-search ">
+          <input type="text" class="navbar-wagon-search-input" placeholder="Look for a spot" name="search_input" id="divesites-search-txt">
+          <button type="submit" class="results navbar-wagon-search-btn" id="divesites-search-results">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <hr>
+    <div class="sidebar-group-user">
+      <ol class="list-inline">
+        <li class="sidebar-item sidebar-user-avatar">
+          <%= display_avatar(current_user) %>
+        </li>
+        <li class="sidebar-item sidebar-user-name">
+          <%= display_name(current_user) %>
+        </li>
+      </ol>
+    </div>
+    <div class="sidebar-group-actions">
+      <div class="sidebar-item sidebar-log-dive">
+        <%= link_to "Log dive", new_dive_path, class: "sidebar-link" %>
+      </div>
+    </div>
+    <hr>
+    <div class="sidebar-group-menus">
+      <div class="sidebar-item sidebar-dashboard">
+        <%= link_to "Dashboard", current_user, class: "sidebar-link" %>
+      </div>
+      <div class="sidebar-item sidebar-my-dives">
+        <%= link_to "Dives", dives_path, class: "sidebar-link" %>
+      </div>
+      <div class="sidebar-item">
+        <%= link_to "Photos", "", class: "sidebar-link" %>
+      </div>
+      <div class="sidebar-item sidebar-events">
+        <%= link_to "Events", "", class: "sidebar-link" %>
+      </div>
+      <div class="sidebar-item sidebar-dive-spots">
+        <%= link_to "Dive spots", divesites_path, class: "sidebar-link" %>
+      </div>
+    </div>
+  </div>
+</div>

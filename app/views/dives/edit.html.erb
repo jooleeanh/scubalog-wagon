@@ -1,8 +1,8 @@
-<div class="container login">
+<div class="container-fluid login">
   <div class="text-center">
     <%= simple_form_for [current_user, @dive] do |f| %>
       <%= f.error_notification %>
-      <div class="container login-form">
+      <div class="container-fluid login-form">
         <div class="form-inputs">
           <%= f.input :datetime, required: true, autofocus: true %>
           <%= f.input :divesite, collection: @divesites, as: :select %>

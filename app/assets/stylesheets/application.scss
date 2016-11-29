@@ -14,6 +14,7 @@
 @import "pages/index";
 @import "vendor/index";
 @import "models/index";
+@import "layout/sidebar";
 
 // Search queries CSS
 @import "search/index";
@@ -22,9 +23,13 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-color: white;
 }
 
 .site-content {
   flex: 1;
 }
 
+.app-content {
+  flex-grow: 1;
+}

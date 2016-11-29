@@ -12,7 +12,9 @@
       <p><%= find_user_photo(current_user)%></p>
       </div>
       <div class="panel space-4 avatar-bar">
-        <h6>Welcome <%=current_user.first_name.capitalize%></h6>
+        <% if current_user %>
+          <h6>Welcome <%=current_user.first_name.capitalize%></h6>
+        <% end %>
       </div>
       <div class="link-box">
         <li class="sidebar-brand">

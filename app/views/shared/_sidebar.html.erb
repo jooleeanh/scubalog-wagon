@@ -1,0 +1,50 @@
+<div id="wrapper">
+  <div class="overlay"></div>
+
+  <!-- Sidebar -->
+
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+      <ul class="nav sidebar-nav">
+      <%= link_to root_path, class: "navbar-wagon-brand" do %>
+        <h3 class="font-yellowtail">Scubalog</h3>
+      <% end %>
+      <div class="panel-body text-center">
+      <p><%= find_user_photo(current_user)%></p>
+      </div>
+      <div class="panel space-4 avatar-bar">
+        <h6>Welcome <%=current_user.first_name.capitalize%></h6>
+      </div>
+      <div class="link-box">
+        <li class="sidebar-brand">
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/dives/new">Log a dive</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">Have it the way you like</li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Pictures</a></li>
+            <li><a href="#">Event policy</a></li>
+          </ul>
+        </li>
+        <li>
+            <a href="">Events</a>
+        </li>
+        <li>
+            <a href="/divesites">Near you</a>
+        </li>
+
+        <li>
+            <a href="#">About us</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+      </div>
+      </ul>
+  </nav>
+
+</div>

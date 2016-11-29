@@ -2,71 +2,55 @@
 
 
 <!-- TODO .where(public: true) -->
-<div class="container dive_container">
-<div id="result" style="clear:both;"></div>
-</div>
 
-<div class="container">
-  <div>
-    <ul id="lightSlider">
-      <% @user.dives.each do |dive| %>
-        <li>
-          <%= link_to dive do %>
-            <%= image_tag "https://i.ytimg.com/vi/sWy3s9Dhep0/hqdefault.jpg", class: "img-responsive" %>
-          <% end %>
-            <p><%= link_to dive.divesite.name, dive %></p>
-            <p><%= dive.datetime.strftime("%d %B %Y") %></p>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3 col-md-offset-2">
-      <div class="panel space-4">
-        <%= find_user_photo(@user) %>
-      </div>
-
-      <div class="panel space-4">
-        <div class="panel-header text-center">Informations</div>
-        <div class="panel-body">
-          <p><%= link_to 'Update my account', edit_user_registration_path %></p>
-          <p><%= link_to "Delete", user_path, method: :delete, data: { confirm: "Are you sure?" } %></p>
-          <p> <%= @user.email %> </p>
+<div class="container" id='container-cover'>
+  <div class="container" id='stats-container'>
+    <div class="row">
+      <div class="col-md-12" id='graph-container'>
+        <div class="col-md-6 average-stats">
+          <div class="chart-graph">
+           <%= line_chart @user.dives.first.data_points.pluck(:time, :depth) %>
+          </div>
         </div>
-      </div>
+        <div class="average-stats-details">
+          <div class="box-stats">
+            <div class="sub-box">
+              <p class="text-center">Dives</p>
+              <h2 class="text-center">144</h2>
+            </div>
+            <div class="sub-box">
+              <p class="text-center">Time spent </p>
+              <h2 class="text-center"> 24 hrs </h2>
+            </div>
+          </div>
 
-      <div class="panel space-4">
-        <div class="panel-header text-center">Followers</div>
-        <div class="panel-body">
-          <p>Papa</p>
-          <p>Maman</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-1">
-      <div class="">
-      <h1>Last Dives </h1>
-
-
-        <div class="">
-          <div class="text-right"><%= link_to "All", dives_path %></div>
-        </div>
-
-        <h1>My Events</h1>
-        <div class="panel panel-body">
-          <% @user.events.recent.each do |event| %>
-            <p><%= link_to event.divesite.name, event %> - <%= event.datetime.strftime("%d %B %Y") %></p>
-          <% end %>
+          <div class="full-box">
+            <div class="full-box-details">
+              <p> Sharks</p>
+            </div>
+            <div class="full-box-details">
+              <p> Nemo</p>
+            </div>
+            <div class="full-box-details">
+              <p>Turtle </p>
+            </div>
+          </div>
+          <div class="full-box">
+            <div class="full-box-details">
+              <p> Sharks</p>
+            </div>
+            <div class="full-box-details">
+              <p> Nemo</p>
+            </div>
+            <div class="full-box-details">
+              <p>Turtle </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
-
 </div>
-
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

@@ -1,12 +1,12 @@
 <div class="dive-show-header">
   <div class="row">
-    <div class="col-xs-12 col-sm-3">
-      <h4><%= date_long(@dive.datetime) %></h4>
-      <h2>
+    <div class="col-xs-12 col-sm-3 header-box">
+
+      <h4>
         <%= link_to @dive.divesite.name, @dive.divesite %>
+        <%= date_long(@dive.datetime) %>
         <em><%= @dive.divesite.location %></em>
-      </h2>
-      <h5>Type: <%= @dive.types %></h5>
+      </h4>
     </div>
     <div class="col-xs-12 col-sm-9">
       <% @dive.photos.each do |photo| %>

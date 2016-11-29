@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,9 +15,15 @@
 
   <body class="site">
     <%= render 'shared/navbar' %>
-    <%= render 'shared/sidebar' %>
     <%= render 'shared/flashes' %>
-    <main class="site-content"><%= yield %></main>
+    <main class="site-content">
+      <div class="app-sidebar">
+        <%= render 'shared/sidebar' %>
+      </div>
+      <div class="app-content">
+        <%= yield %>
+      </div>
+    </main>
     <%= render 'shared/footer' %>
 
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_KEY']}", defer: true %>

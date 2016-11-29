@@ -1,52 +1,52 @@
-<div id="wrapper">
-  <div class="overlay"></div>
-
-  <!-- Sidebar -->
-
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-      <ul class="nav sidebar-nav">
-      <%= link_to root_path, class: "navbar-wagon-brand" do %>
-        <h3 class="font-yellowtail">Scubalog</h3>
-      <% end %>
-      <div class="panel-body text-center">
-      <p><%= find_user_photo(current_user)%></p>
+<div class="sidebar closed" id="sidebar">
+  <div class="sidebar-content">
+    <a href="#" class="visible-xs menu-handle" id="close-menu">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <div class="sidebar-item sidebar-logo">
+      <h1>Scubalog</h1>
+      <div class="sidebar-item sidebar-search">
+        <form action="/divesites" class="navbar-wagon-search ">
+          <input type="text" class="navbar-wagon-search-input" placeholder="Look for a spot" name="search_input" id="divesites-search-txt">
+          <button type="submit" class="results navbar-wagon-search-btn" id="divesites-search-results">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
       </div>
-      <div class="panel space-4 avatar-bar">
-        <% if current_user %>
-          <h6>Welcome <%=current_user.first_name.capitalize%></h6>
-        <% end %>
+    </div>
+    <hr>
+    <div class="sidebar-group-user">
+      <ol class="list-inline">
+        <li class="sidebar-item sidebar-user-avatar">
+          <%= display_avatar(current_user) %>
+        </li>
+        <li class="sidebar-item sidebar-user-name">
+          <%= display_name(current_user) %>
+        </li>
+      </ol>
+    </div>
+    <div class="sidebar-group-actions">
+      <div class="sidebar-item sidebar-log-dive">
+        <%= link_to "Log dive", new_dive_path, class: "sidebar-link" %>
       </div>
-      <div class="link-box">
-        <li class="sidebar-brand">
-            <a href="/">Home</a>
-        </li>
-        <li>
-            <a href="/dives/new">Log a dive</a>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-header">Have it the way you like</li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Pictures</a></li>
-            <li><a href="#">Event policy</a></li>
-          </ul>
-        </li>
-        <li>
-            <a href="">Events</a>
-        </li>
-        <li>
-            <a href="/divesites">Near you</a>
-        </li>
-
-        <li>
-            <a href="#">About us</a>
-        </li>
-        <li>
-            <a href="#">Contact</a>
-        </li>
+    </div>
+    <hr>
+    <div class="sidebar-group-menus">
+      <div class="sidebar-item sidebar-dashboard">
+        <%= link_to "Dashboard", current_user, class: "sidebar-link" %>
       </div>
-      </ul>
-  </nav>
-
+      <div class="sidebar-item sidebar-my-dives">
+        <%= link_to "Dives", dives_path, class: "sidebar-link" %>
+      </div>
+      <div class="sidebar-item">
+        <%= link_to "Photos", "", class: "sidebar-link" %>
+      </div>
+      <div class="sidebar-item sidebar-events">
+        <%= link_to "Events", "", class: "sidebar-link" %>
+      </div>
+      <div class="sidebar-item sidebar-dive-spots">
+        <%= link_to "Dive spots", divesites_path, class: "sidebar-link" %>
+      </div>
+    </div>
+  </div>
 </div>

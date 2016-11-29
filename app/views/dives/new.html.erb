@@ -1,9 +1,9 @@
-<div class="container divelog">
+<div class="container-fluid divelog">
   <div class="text-center">
     <%= simple_form_for [@dive] do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
-        <div class="container login-form">
+        <div class="container-fluid login-form">
           <%= f.input :datetime, as: :date, required: true, autofocus: true %>
           <%= f.association :divesite, collection: @divesites %>
           <%= f.association :animals, collection: @animals, input_html: { multiple: true } %>

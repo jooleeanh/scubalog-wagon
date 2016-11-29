@@ -3,7 +3,8 @@ class DivesController < ApplicationController
   before_action :all_divesites, only: [:new, :create, :edit, :update, :destroy]
   before_action :all_animals, only: [:new, :create]
   def index
-    @dives = current_user.dives.all.recent
+    @dives = current_user.dives.all.recent.first(5)
+    @dive = @dives.first
     build_markers(@dives)
   end
 

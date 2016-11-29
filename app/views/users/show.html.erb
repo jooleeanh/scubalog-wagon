@@ -3,47 +3,83 @@
 
 <!-- TODO .where(public: true) -->
 
-<div class="container" id='container-cover'>
-  <div class="container" id='stats-container'>
+<div class="container-fluid" id='container-cover'>
+  <div class="container-fluid" id='stats-container'>
     <div class="row">
       <div class="col-md-12" id='graph-container'>
         <div class="col-md-6 average-stats">
           <div class="chart-graph">
-           <%= line_chart @user.dives.first.data_points.pluck(:time, :depth) %>
+           <%= line_chart @user.dives.first.data_points.pluck(:time, :depth), height: '550px' %>
           </div>
         </div>
         <div class="average-stats-details">
+          <!-- <div class="my-stats-header">
+            <p>My main stats</p>
+          </div> -->
           <div class="box-stats">
-            <div class="sub-box">
-              <p class="text-center">Dives</p>
-              <h2 class="text-center">144</h2>
+            <div class="sub-box" id="sub-box-1">
+              <p class="text-center">Total dives </p>
+              <h2 class="text-center"><%= @user.dives.count %></h2>
             </div>
-            <div class="sub-box">
-              <p class="text-center">Time spent </p>
+            <div class="sub-box" id="sub-box-2"%>
+              <p class="text-center"> Time spent </p>
               <h2 class="text-center"> 24 hrs </h2>
             </div>
           </div>
-
+          <!-- <div class="type-header">
+              <p>Your diving style</p>
+          </div> -->
           <div class="full-box">
-            <div class="full-box-details">
-              <p> Sharks</p>
+            <div class="full-box-icons">
+              <p><%= image_tag "shark_icon.png" %></p>
+              <p>Shark dive</p>
             </div>
-            <div class="full-box-details">
-              <p> Nemo</p>
+
+            <div class="full-box-icons">
+              <p><%= image_tag "reef_icon.png" %></p>
+              <p>Reef dive</p>
             </div>
-            <div class="full-box-details">
-              <p>Turtle </p>
+            <div class="full-box-icons">
+              <p><%= image_tag "shore_icon.png" %></p>
+              <p>Shore dive</p>
             </div>
           </div>
+          <!-- <div class="my-spots-header">
+            <p>My fav spots</p>
+          </div> -->
           <div class="full-box">
             <div class="full-box-details">
-              <p> Sharks</p>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://trello-backgrounds.s3.amazonaws.com/583060c9989f19549238eb5b/800x534/bf4ef26fa227f1b81263e4b0fef2a7ac/cenote.jpg');">
+                <div class="card-category">
+                 Scubalog
+                 </div>
+                  <!-- <div class="card-description">
+                   <h2>Scubalog</h2>
+                   <p>Scubalog Scubalog Scubalog Scubalog</p>
+                  </div> -->
+                </div>
+              </div>
+            <div class="full-box-details">
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://trello-backgrounds.s3.amazonaws.com/583060c9989f19549238eb5b/800x534/bf4ef26fa227f1b81263e4b0fef2a7ac/cenote.jpg');">
+                <div class="card-category">
+                 Scubalog
+                 </div>
+                  <!-- <div class="card-description">
+                   <h2>Scubalog</h2>
+                   <p>Scubalog Scubalog Scubalog Scubalog</p>
+                  </div> -->
+              </div>
             </div>
             <div class="full-box-details">
-              <p> Nemo</p>
-            </div>
-            <div class="full-box-details">
-              <p>Turtle </p>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://trello-backgrounds.s3.amazonaws.com/583060c9989f19549238eb5b/800x534/bf4ef26fa227f1b81263e4b0fef2a7ac/cenote.jpg');">
+                <div class="card-category">
+                  Scubalog
+                     </div>
+                <!--  <div class="card-description">
+                   <h2>Scubalog</h2>
+                   <p>Scubalog Scubalog Scubalog Scubalog</p>
+                 </div> -->
+               </div>
             </div>
           </div>
         </div>
@@ -57,7 +93,3 @@
     <%= render 'users/light_slider.js.erb' %>
   <% end %>
 <% end %>
-
-
-
-

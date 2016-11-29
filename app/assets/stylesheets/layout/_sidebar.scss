@@ -6,7 +6,15 @@ $sidebar_width: 300px;
   min-height: 100vh;
 }
 
+.app-sidebar {
+  min-height: 100%;
+}
+.sidebar-content {
+  // position: fixed; // to make sidebar flow with scroll
+}
 .sidebar {
+  // position: relative; // to make sidebar flow with scroll
+  min-height: 100%;
   background: #353942;
   color: white;
   flex-basis: $sidebar_width;

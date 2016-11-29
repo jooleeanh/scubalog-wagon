@@ -10,6 +10,12 @@ module ApplicationHelper
     end
   end
 
+  def display_name(user)
+    if user
+      return user.first_name
+    end
+  end
+
   def resource_name
     :user
   end

@@ -3,10 +3,6 @@
 <div id="map" style="width: 100%; height: 400px;"></div>
 
 
-  <!-- Nav tabs -->
-
-
-
 
   <div class="">
     <ul>
@@ -50,8 +46,23 @@
 </div>
 
 
+<<<<<<< HEAD
 
 
+=======
+<div class="container-fluid">
+  <div class="">
+    <h2 class="divesite-header text-center">
+      <%= pluralize(@divesites.size, "divesite") %> found !
+    </h2>
+  </div>
+  <% unless @divesites.any? %>
+    <div class='text-center'> <strong> No spots around...</strong></div>
+    <br>
+    <div class='text-center'><%= link_to "Page d'accueil", root_path %></div>
+  <% end %>
+</div>
+>>>>>>> master
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

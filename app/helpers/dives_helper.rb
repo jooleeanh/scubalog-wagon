@@ -1,5 +1,9 @@
 module DivesHelper
 
+  def time_relative(datetime)
+    ((Time.now - datetime) / (60*60*24)).day
+  end
+
   def sort_desc(hash) # returns double array [[k, count],[]]
     hash.reject { |k, v| k.blank? }.sort_by {|_, value| value }.reverse
   end

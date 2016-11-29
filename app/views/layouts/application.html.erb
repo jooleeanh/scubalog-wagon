@@ -17,11 +17,12 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <main class="site-content">
-      <%= render 'shared/sidebar' %>
-      <!-- <a href="#" class="visible-xs menu-handle" id="open-menu">
-        <i class="fa fa-bars"></i>
-      </a> -->
-      <%= yield %>
+      <div class="app-sidebar">
+        <%= render 'shared/sidebar' %>
+      </div>
+      <div class="app-content">
+        <%= yield %>
+      </div>
     </main>
     <%= render 'shared/footer' %>
 

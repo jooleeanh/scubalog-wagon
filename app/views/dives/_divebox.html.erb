@@ -4,6 +4,8 @@
   </div>
   <div class="body">
     <div class="dive-title">
+      The mega cool divespot
+      5 years ago on a rainy tuesday
     </div>
     <div class="dive-info">
       <h2>Dive info</h2>
@@ -11,25 +13,27 @@
         <div class="col-xs-12 col-md-4">
           stats
           <div class="col-xs-12 col-md-12">
-            time start
+            <%= date_long(@dive.datetime) %>
           </div>
           <div class="col-xs-6">
-            Max depth
+            <%= @dive.max_depth %>
           </div>
           <div class="col-xs-6">
-            dive time
+            <%= @dive.bottom_time %>
           </div>
           <div class="col-xs-6">
-            start + end air
+            <span><%= @dive.start_air %></span>
+            <span> - </span>
+            <span><%= @dive.end_air %></span>
           </div>
           <div class="col-xs-6">
             air consumption
           </div>
           <div class="col-xs-6">
-            Temp
+            <%= (@dive.min_temp + @dive.max_temp) / 2 %>
           </div>
           <div class="col-xs-6">
-            Viz
+            <%= @dive.visibility %>
           </div>
         </div>
         <div class="col-xs-12 col-md-8">

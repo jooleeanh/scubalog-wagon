@@ -56,5 +56,18 @@
 .dive-show-graph {
   height: 80%;
 }
-
+.dive-info-box {
+  height: 300px;
+  margin: 20px 0;
+}
+.dive-info-box-stats {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.dive-info-box-item {
+  flex-grow: 1;
+  border: 1px solid black;
+}
 ////////////////////////////////

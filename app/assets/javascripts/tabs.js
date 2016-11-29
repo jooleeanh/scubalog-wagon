@@ -1,5 +1,4 @@
 $(function(){
-  $(".tab:first-child").addClass('active');
 
   $(".tab").on("click", function(e){
     // Hide content

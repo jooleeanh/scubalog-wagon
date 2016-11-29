@@ -20,28 +20,6 @@
 
 ////////////////////////////////
 
-.divelog {
-  margin-top: 3%;
-  margin-bottom: 3%;
-}
-
-.login-form {
-  width: 50%;
-  background-color: #F7F7F7;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  border-radius: 5px;
-}
-
-.form-actions {
-  margin-top: 3%;
-}
-
-.form-actions.input button{
-  background-color: #5C8A1D;
-}
-////////////////////////////////
-
 .dive-navigation-box {
   display: flex;
   flex-direction: row;
@@ -83,7 +61,37 @@
 }
 ////////////////////////////////
 
+
+.dive-new {
+  height: 100%;
+}
+.dive-form-background {
+  background-position: center;
+  background-size: cover;
+  // background: url('turtle-storm.jpg') no-repeat center center fixed, linear-gradient(rgba(120,120,120,0.3), rgba(120,120,120,0.2));
+  // background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), image-url('turtle-storm.jpg');
+  // min-height: 200vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  // background-size: cover !important;
+}
+.login-form {
+  width: 50%;
+  background-color: #F7F7F7;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 5px;
+}
+
+.form-actions {
+  margin-top: 3%;
+}
+
+.form-actions.input button{
+  background-color: #5C8A1D;
+}
+
 .dive-new-form {
+  color: rgb(230, 230, 230)
 }
 .dive-new-form-field {
   opacity: 0.5;

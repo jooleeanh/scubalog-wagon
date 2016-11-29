@@ -1,14 +1,15 @@
-<div class="container-fluid divelog">
-  <div class="text-center">
+<div class="dive-new">
+  <div class="text-center dive-form-background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "turtle-storm.jpg" %>');">
     <%= simple_form_for [@dive] do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <div class="container login-form">
-        <div class="dive-new-form">
+      <div class="container-fluid">
+        <div class="dive-new-form text-left">
           <% size1 = 0.8 %>
           <% size2 = 0.5 %>
           <h2 tabindex=0>New Dive</h2>
-          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :datetime, as: :date, required: true %></div>
+          <p>When was your dive?</p>
+          <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :datetime, as: :date, required: true, label: false %></div>
           <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.association :divesite, collection: @divesites %></div>
           <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :types, label: 'Dive type'%></div>
           <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :enjoyment %></div>
@@ -43,9 +44,9 @@
           <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :photos, as: :attachinary %></div>
           <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :review_content, label: 'Share a tip to fellow divers' %></div>
         </div>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Log this dive !", class: 'btn btn-primary' %>
+        <div class="form-actions">
+          <%= f.button :submit, "Log this dive !", class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
     <% end %>

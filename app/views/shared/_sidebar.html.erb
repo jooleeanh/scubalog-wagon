@@ -9,10 +9,10 @@
         <h3 class="font-yellowtail">Scubalog</h3>
       <% end %>
       <div class="panel-body text-center">
-      <p><%= find_user_photo(@user)%></p>
+      <p><%= find_user_photo(current_user)%></p>
       </div>
       <div class="panel space-4 avatar-bar">
-        <h6>Welcome <%=@user.first_name.capitalize%></h6>
+        <h6>Welcome <%=current_user.first_name.capitalize%></h6>
       </div>
       <div class="link-box">
         <li class="sidebar-brand">

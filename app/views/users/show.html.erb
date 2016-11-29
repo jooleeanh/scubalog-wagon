@@ -2,6 +2,7 @@
 
 
 <!-- TODO .where(public: true) -->
+
 <div class="container" id='container-cover'>
   <div class="container" id='stats-container'>
     <div class="row">
@@ -46,63 +47,10 @@
             </div>
           </div>
         </div>
-        </div>
       </div>
     </div>
   </div>
 </div>
-<!--   <div class="container dive_container"> -->
-<!--     <div id="result" style="clear:both;"></div> -->
-<!--   </div> -->
-<!--  -->
-<!--   <div class="row"> -->
-<!--     <div class="col-xs-12 col-sm-6 col-md-3 col-md-offset-2"> -->
-<!--  -->
-<!--  -->
-<!--       <div class="panel space-4"> -->
-<!--         <div class="panel-header text-center">Informations</div> -->
-<!--         <div class="panel-body"> -->
-<!--           <p><%= link_to 'Update my account', edit_user_registration_path %></p> -->
-<!--           <p><%= link_to "Delete", user_path, method: :delete, data: { confirm: "Are you sure?" } %></p> -->
-<!--           <p> <%= @user.email %> </p> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--  -->
-<!--       <div class="panel space-4"> -->
-<!--         <div class="panel-header text-center">Followers</div> -->
-<!--         <div class="panel-body"> -->
-<!--           <p>Papa</p> -->
-<!--           <p>Maman</p> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--     </div> -->
-
-<!--     <div class="panel space-4">
-      <div class="panel-header text-center">Infos</div>
-      <div class="panel-body">
-      <p><%= find_user_photo(@user)%></p>
-      </div>
-    </div> -->
-
-    <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-md-offset-1">
-      <div class="">
-      <h1>Last Dives </h1>
-
-        <div class="panel panel-body" data-target="#dive_index">
-          <% @user.dives.recent.first(3).each do |dive| %>
-            <p>
-            <%= link_to dive.divesite.name, dive %> - <%= dive.datetime.strftime("%d %B %Y") %>
-            </p>
-          <% end %>
-
-        </div>
-      </div>
-    </div> -->
-
-  </div>
-
-</div>
-
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

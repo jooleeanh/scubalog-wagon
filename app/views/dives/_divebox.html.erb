@@ -1,11 +1,33 @@
 <div class="container">
   <div class="header">
-    5 x divespot cards in flexbox
+    <h2>Your recent dives</h2>
+    <div class="dive-navigation-box">
+      <% @dives.each do |dive| %>
+        <div class="dive-navigation-item">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "waves.jpg" %>');">
+            <div class="card-category">
+              <%= time_ago_in_words(dive.datetime) %>
+              <span>ago</span>
+            </div>
+            <div class="card-description">
+              <h2><%= dive.divesite.name %></h2>
+              <p><%= date_long(dive.datetime) %></p>
+            </div>
+            <%= display_avatar(current_user, "card-user") %>
+            <a class="card-link" href="#" ></a>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
+
+
+
+
+
+
   <div class="body">
     <div class="dive-title">
-      The mega cool divespot
-      5 years ago on a rainy tuesday
     </div>
     <div class="dive-info">
       <h2>Dive info</h2>
@@ -67,10 +89,10 @@
       <h2>Sightings</h2>
       <div class="row">
         <% @dive.sightings.each do |sighting| %>
-          <div class="col-xs-6 col-md-3">
-            <p class="text-center"><%= sighting.animal.name %></p>
-            <%=  image_tag(asset_path(sighting.animal.image_url), class: "img-responsive")%>
-          </div>
+        <div class="col-xs-6 col-md-3">
+          <p class="text-center"><%= sighting.animal.name %></p>
+          <%=  image_tag(asset_path(sighting.animal.image_url), class: "img-responsive")%>
+        </div>
         <% end %>
       </div>
     </div>

@@ -42,6 +42,16 @@
 }
 ////////////////////////////////
 
+.dive-navigation-box {
+  display: flex;
+  flex-direction: row;
+}
+.dive-navigation-item {
+  flex-grow: 1;
+}
+
+////////////////////////////////
+
 .dive-show {
   margin-bottom: 100px;
 }

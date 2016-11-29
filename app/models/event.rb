@@ -6,6 +6,8 @@ class Event < ApplicationRecord
   has_many :participations, dependent: :destroy
   validates :divesite, presence: true, on: :create
   validates :datetime, presence: true
+
+  scope :recent, -> { order(datetime: :asc) }
 end
 
 # Table name: events

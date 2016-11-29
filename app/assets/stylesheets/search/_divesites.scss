@@ -1,10 +1,8 @@
 .divesites-search input {
   width: 100%;
-  font-size: 1em;
-  padding: .5em 1.3em;
+  font-size: -1em;
   background: transparent;
   border: 1px solid #ddd;
-  border-radius: 2em;
 }
 
 .divesites-search input:focus {
@@ -13,7 +11,7 @@
 
 .divesites-search .results .ui-widget-content {
   background: #fff;
-  font-size: .9em;
+  font-size: -1em;
   padding: .5em 0;
   border-color: #ddd;
   box-shadow: 0 .1em .2em rgba(187, 187, 187, 0.64);

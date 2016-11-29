@@ -48,6 +48,16 @@ $sidebar_width: 300px;
 
 .sidebar-item {
   padding: 5px;
+  font-weight: 800;
+  a {
+    color: #6c6c6c;
+  }
+  a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+  }
+  a:hover {
+    color: rgb(199, 199, 199)
+  }
 }
 .sidebar-group-user {
   flex-direction: column;
@@ -61,9 +71,6 @@ $sidebar_width: 300px;
 }
 .sidebar-group-menus {
   margin-left: 20px;
-}
-.sidebar-link {
-  font-size: 20px;
 }
 .sidebar-logo, .user-avatar, .user-name {
   text-align: center;

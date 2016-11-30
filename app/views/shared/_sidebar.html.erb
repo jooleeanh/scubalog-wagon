@@ -5,7 +5,7 @@
     </a>
     <div class="sidebar-item sidebar-logo">
       <div class="sidebar-item sidebar-search">
-        <form action="/divesites" class="navbar-wagon-search ">
+        <form action="/divesites" class="divesites-search navbar-wagon-search">
           <input type="text" class="navbar-wagon-search-input" placeholder="Look for a spot" name="search_input" id="divesites-search-txt">
           <button type="submit" class="results navbar-wagon-search-btn" id="divesites-search-results">
             <i class="fa fa-search"></i>
@@ -64,3 +64,7 @@
     </div>
   </div>
 </div>
+
+    <%= content_for :script do %>
+      new app.Divesites;
+    <% end %>

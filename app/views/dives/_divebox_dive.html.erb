@@ -1,50 +1,51 @@
 <div>
   <div class="dive-info">
-    <div class="row">
-      <div class="dive-info-box">
+    <div class="row divebox-row">
+      <div class="dashboard-dive-info-box">
         <div class="col-xs-12 col-md-4">
           <div class="container-fluid single-dive-container-cover">
             <div class="container-fluid" id='single-dive-stats-container'>
               <div class="row">
                 <div class="col-md-12" id='graph-container'>
                   <div class="average-stats-details">
-                    <!-- <div class="my-stats-header">
-                    <h2>My main stats</h2>
-                  </div> -->
-                  <div class="box-stats">
-                    <div class="head-box">
-                      <p class="text-center">Dive Type</p>
-                      <h1 class="text-center"><%= dive.types&.capitalize %></h1>
-
-                    </div>
-                  </div>
-
-                  <div class="full-box">
-                    <div class="full-box-icons">
-                      <h3> <%=  dive.max_depth.to_i%> m </h3>
-                      <p> Max Depth</p>
-                    </div>
-                    <div class="full-box-icons">
-                      <h3> <%=  dive.min_temp%>°C</h3>
-                      <p> Temp</p>
+                    <div class="box-stats">
+                      <div class="head-box">
+                        <p class="text-center">Dive Type</p>
+                        <% if dive.types.blank? %>
+                        <h1 class="text-center">Casual</h1>
+                        <% else %>
+                        <h1 class="text-center"><%= dive.types&.capitalize %></h1>
+                        <% end %>
+                      </div>
                     </div>
 
-                  </div>
+                    <div class="full-box">
+                      <div class="full-box-icons">
+                        <h3> <%=  dive.max_depth.to_i%> m </h3>
+                        <p> Max Depth</p>
+                      </div>
+                      <div class="full-box-icons">
+                        <h3> <%=  dive.min_temp%>°C</h3>
+                        <p> Temp</p>
+                      </div>
 
-                  <div class="full-box">
-                    <div class="full-box-icons">
-                      <h3> <%=  dive.visibility%> m </h3>
-                      <p> Visibility</p>
                     </div>
-                    <div class="full-box-icons">
-                      <h3> <%=  dive.tank_size%></h3>
-                      <p> Tank-size</p>
+
+                    <div class="full-box">
+                      <div class="full-box-icons">
+                        <h3> <%=  dive.visibility%> m </h3>
+                        <p> Visibility</p>
+                      </div>
+                      <div class="full-box-icons">
+                        <h3> <%=  dive.tank_size%></h3>
+                        <p> Tank-size</p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="full-box">
-                    <div class="full-box-icons">
-                      <h3> <%=dive.enjoyment%>/5</h3>
-                      <p> Enjoyment</p>
+                    <div class="full-box">
+                      <div class="full-box-icons">
+                        <h3> <%=dive.enjoyment%>/5</h3>
+                        <p> Enjoyment</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -52,135 +53,29 @@
             </div>
           </div>
         </div>
-
-      </div>
-      <div class="col-xs-12 col-md-8 dive-graph">
-        <%= line_chart [
-        {name: "Time", data: dive.data_points.pluck(:time, :depth)},
-        {name: "Air Consumption", data: dive.data_points.pluck(:time, :air)},
-        {name: "Temperature", data: dive.data_points.pluck(:time, :temp)}], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true %>
+        <div class="col-xs-12 col-md-8 dive-graph">
+          <%= line_chart [
+            {name: "Time", data: dive.data_points.pluck(:time, :depth)},
+            {name: "Air Consumption", data: dive.data_points.pluck(:time, :air)},
+            {name: "Temperature", data: dive.data_points.pluck(:time, :temp)}], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-<div class="dive-sightings">
-  <h2 class="text-center">Sightings</h2>
-  <div class="row">
-    <% dive.sightings.each do |sighting| %>
-    <div class="col-xs-6 col-md-3">
-      <p class="text-center"><%= sighting.animal.name %></p>
-      <%=  image_tag(asset_path(sighting.animal.image_url), class: "img-responsive")%>
+  <div class="dive-sightings">
+    <h2 class="text-center">Sightings</h2>
+    <div class="row">
+      <% dive.sightings.each do |sighting| %>
+      <div class="col-xs-6 col-md-3">
+        <p class="text-center"><%= sighting.animal.name %></p>
+        <%=  image_tag(asset_path(sighting.animal.image_url), class: "img-responsive")%>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
-</div>
-<div class="comments">
-  <h2 class="text-center">Comments</h2>
-  <p><%= dive.comments %></p>
-</div>
-
-
-
-
-
-<!-- <div class="dive-info-box-stats text-center">
-<div class="dive-info-box-item">
-<p>Start time</p>
-<%= time_long(dive.datetime) %>
-</div>
-<div class="dive-info-box-item">
-<div class="col-xs-6">
-<p>Max depth</p>
-<%= dive.max_depth %>
-<span class="dive-unit">meters</span>
-</div>
-<div class="col-xs-6">
-<p>Dive time</p>
-<%= dive.bottom_time %>
-<span class="dive-unit">minutes</span>
-</div>
-</div>
-<div class="dive-info-box-item">
-<div class="col-xs-6">
-<p>Air</p>
-<span><%= dive.start_air %></span>
-<span> - </span>
-<span><%= dive.end_air %></span>
-<span class="dive-unit">BAR</span>
-<div>
-<div class="dive-info">
-<h2>Dive info</h2>
-<div class="row">
-<div class="dive-info-box">
-<div class="col-xs-12 col-md-4">
-<div class="dive-info-box-stats text-center">
-<div class="dive-info-box-item">
-<p>Start time</p>
-<%= time_long(dive.datetime) %>
-</div>
-<div class="dive-info-box-item">
-<div class="col-xs-6">
-<p>Max depth</p>
-<%= dive.max_depth %>
-<span class="dive-unit">meters</span>
-</div>
-<div class="col-xs-6">
-<p>Dive time</p>
-<%= dive.bottom_time %>
-<span class="dive-unit">minutes</span>
-</div>
-</div>
-<div class="dive-info-box-item">
-<div class="col-xs-6">
-<p>Air</p>
-<span><%= dive.start_air %></span>
-<span> - </span>
-<span><%= dive.end_air %></span>
-<span class="dive-unit">BAR</span>
-</div>
-<div class="col-xs-6">
-<p>Air efficiency</p>
-</div>
-</div>
-<div class="dive-info-box-item">
-<div class="col-xs-6">
-<p>Temperature</p>
-<%= dive.max_temp %>
-</div>
-<div class="col-xs-6">
-<p>Visibility</p>
-<%= dive.visibility %>
-</div>
-</div>
-</div>
-</div>
-
-
-<div class="col-xs-12 col-md-8">
-<%= line_chart [
-{name: "Time", data: dive.data_points.pluck(:time, :depth)},
-{name: "Air Consumption", data: dive.data_points.pluck(:time, :air)},
-{name: "Temperature", data: dive.data_points.pluck(:time, :temp)}], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true %>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="dive-sightings">
-<h2>Sightings</h2>
-<div class="row">
-<% dive.sightings.each do |sighting| %>
-<div class="col-xs-6 col-md-3">
-<p class="text-center"><%= sighting.animal.name %></p>
-<%=  image_tag(asset_path(sighting.animal.image_url), class: "img-responsive")%>
-</div>
-<% end %>
-</div>
-</div>
-<div class="comments">
-<h2>Comments</h2>
-<p><%= dive.comments %></p>
-</div>
-</div>
+  <div class="comments">
+    <h2 class="text-center">Comments</h2>
+    <p><%= dive.comments %></p>
+  </div>
 </div>

@@ -62,9 +62,7 @@
               <p> 1 Shore dive</p>
             </div>
           </div>
-
         </div>
-        <%= render 'dives/divebox', dives: @user.dives.first(5) %>
       </div>
     </div>
   </div>
@@ -73,10 +71,6 @@
 <%= image_tag ('diver_icon.png'), width: '30px'%>
  <h3> Last dives</h3>
 </div>
-
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    <%= render 'users/light_slider.js.erb' %>
-  <% end %>
-<% end %>
+<div class="container-fluid">
+  <%= render 'dives/divebox', dives: @user.dives.first(5) %>
+</div>

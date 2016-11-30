@@ -7,7 +7,9 @@
         <div class="dive-new-form text-left">
           <% size1 = 0.8 %>
           <% size2 = 0.9 %>
-          <h2 tabindex=0>New Dive</h2>
+          <div class="dive-input-header">
+            <h2 tabindex=0 class="text-center">Log a dive</h2>
+          </div>
           <div class="dive-input dive-input-datetime">
             <p>
               <i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
@@ -93,7 +95,7 @@
                 <div class="dive-input dive-input-max-temp">
                   <p>
                     <%= image_tag("icons/temperature.png" , class: "dive-index-icon") %>
-                    What was the water temperature? (celsius)
+                    What was the water temperature?
                   </p>
                   <div class="dive-new-form-field"><%= f.input :max_temp, label: false %></div>
                 </div>

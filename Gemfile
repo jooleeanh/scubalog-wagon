@@ -29,6 +29,7 @@ gem 'faker'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'chartkick'
+gem 'groupdate'
 
 gem 'omniauth-facebook'
 

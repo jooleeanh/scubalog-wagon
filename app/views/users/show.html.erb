@@ -14,7 +14,8 @@
       <div class="col-md-12" id='graph-container'>
         <div class="col-md-6 average-stats">
           <div class="chart-graph">
-           <%= line_chart @user.dives.first.data_points.pluck(:time, :depth), height: '700px', width: '600px' %>
+            <%= line_chart cumulative_line_chart_data(@user) %>
+           <% line_chart @user.dives.group_by_day(:datetime).count, height: '700px', width: '600px' %>
           </div>
         </div>
         <div class="average-stats-details">
@@ -83,4 +84,3 @@
     <%= render 'dives/divebox', dives: @user.dives.recent.first(5) %>
   </div>
 </div>
-

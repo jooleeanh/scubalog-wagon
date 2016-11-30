@@ -1,4 +1,5 @@
 module UsersHelper
+
   def find_user_photo(user)
     if user
       if user.photo?
@@ -9,6 +10,14 @@ module UsersHelper
     else
       return image_tag("user_avatar.png", class: "user-show-photo")
     end
+  end
+
+  def cumulative_line_chart_data(user)
+    sum = 0
+    data = user.dives.group_by_day(:datetime).count
+    data = data.to_a.sort { |k, v| k[0] <=> v[0] }
+    data = data.map { |k, v| { k => (sum += v) } }
+    data = data.reduce({}, :merge)
   end
 
   def compute_total_divetime(user)

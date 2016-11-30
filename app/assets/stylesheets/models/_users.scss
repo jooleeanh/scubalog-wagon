@@ -45,13 +45,6 @@
   width: 460px;
 }
 
-.box-stats {
-  background-color: rgba(53, 57, 66, 0.9);
-}
-
-.head-box {
-}
-
 .head-box p{
   margin-top: 8%;
   color: white;
@@ -62,25 +55,24 @@
   color: white;
 }
 
-.full-box-icons h3 {
-  font-size: 28px;
+.dive-info {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
-.divebox-header {
-  border-bottom: 3px solid #ECECEC;
-  height: 180px;
+.dive-info-box {
+  height: 450px;
+  background-color: white;
 }
 
 .dashboard-dive-info-box {
-  height: 450px;
-  background-color: white;
-  margin-top: 45px;
-  margin-bottom: 60px;
-
+  height: 550px;
+  margin-top: 50px;
 }
 
 .divebox-row {
   background-color: white;
+  height: 600px;
 }
 
 .dive-graph {
@@ -90,9 +82,6 @@
 
 .dive-navigation-item {
   padding-left: 20px;
-
-  // width: 200px;
-  // height: 125px;
 }
 
 .dive-card {
@@ -109,6 +98,3 @@
 .dive-container {
   background-color: #F4F3F2;
 }
-
-.dive-info {
-  }

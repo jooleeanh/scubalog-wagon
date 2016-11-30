@@ -3,35 +3,50 @@
 <div id="map" style="width: 100%; height: 400px;"></div>
 
 
-<div class="container-fluid" id="tabs-container">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Spots</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Divers</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Events</a></li>
-  </ul>
+
+  <div class="">
+    <ul>
+      <a data-toggle="tab" class="col-xs-6 text-right" href="#divesites">
+        <h2>Spots</h2>
+      </a>
+      <a data-toggle="tab" class="col-xs-6 text-left" href="#events">
+        <h2>Events</h2>
+      </a>
+    </ul>
+  </div>
 
   <!-- Tab panes -->
+<div class="container">
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="Divesites"></div>
-    <div role="tabpanel" class="tab-pane" id="Divers"></div>
-    <div role="tabpanel" class="tab-pane" id="Events"></div>
+    <div class="tab-pane active" id="divesites">
+
+        <h2 class="divesite-header text-center">
+          <%= pluralize(@divesites.size, "divesite") %> found !
+        </h2>
+
+      <% unless @divesites.any? %>
+        <div class='text-center'> <strong> No spots around...</strong></div>
+        <br>
+        <div class='text-center'><%= link_to "Page d'accueil", root_path %></div>
+      <% end %>
+      <div class="divesites">
+        <% @divesites.each do |divesite| %>
+          <%= render 'divesites/divesite_cards', divesite: divesite %>
+        <% end %>
+      </div>
+    </div>
+    <div class="tab-pane" id="events">
+      <% @divesites.each do |divesite| %>
+        <% divesite.events.each do |event| %>
+          <%= render 'events/events_cards', event: event %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
 
-<div class="container-fluid">
-  <div class="">
-    <h2 class="divesite-header text-center">
-      <%= pluralize(@divesites.size, "divesite") %> found !
-    </h2>
-  </div>
-  <% unless @divesites.any? %>
-    <div class='text-center'> <strong> No spots around...</strong></div>
-    <br>
-    <div class='text-center'><%= link_to "Page d'accueil", root_path %></div>
-  <% end %>
-</div>
+
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -39,8 +54,3 @@
   <% end %>
 <% end %>
 
-<div class="divesites">
-  <% @divesites.each do |divesite| %>
-    <%= render 'divesites/divesite_cards', divesite: divesite %>
-  <% end %>
-</div>

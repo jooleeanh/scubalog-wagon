@@ -1,6 +1,4 @@
 
-
-
 <!-- TODO .where(public: true) -->
 <div class="dashboard-header">
 <i class="fa fa-address-book" style="font-size:28px;"></i>
@@ -9,71 +7,7 @@
  <p></p>
 </div>
 <div class="container-fluid" id='container-cover'>
-  <div class="container-fluid" id='stats-container'>
-    <div class="row">
-      <div class="col-md-12" id='graph-container'>
-        <div class="col-md-6 average-stats">
-          <div class="chart-graph">
-            <%= line_chart cumulative_line_chart_data(@user) %>
-           <% line_chart @user.dives.group_by_day(:datetime).count, height: '700px', width: '600px' %>
-          </div>
-        </div>
-        <div class="average-stats-details">
-          <!-- <div class="my-stats-header">
-            <h2>My main stats</h2>
-          </div> -->
-          <div class="box-stats">
-            <div class="sub-box" id="sub-box-1">
-
-              <h1 class="text-center"><%= @user.dives.count %></h1>
-              <p class="text-center">dives</p>
-            </div>
-            <div class="sub-box" id="sub-box-2"%>
-              <h1 class="text-center"><%= compute_total_divetime(@user) %></h1>
-              <p class="text-center"> minutes under water </p>
-            </div>
-          </div>
-
-          <div class="full-box">
-            <div class="full-box-icons">
-              <h2><%= compute_longest_dive(@user) %> min</h2>
-              <p> Longest Dive</p>
-            </div>
-            <div class="full-box-icons">
-              <h2><%= compute_deepest_dive(@user) %> m</h2>
-              <p> Max Depth</p>
-            </div>
-            <div class="full-box-icons">
-              <h2><%= compute_sightings(@user) %></h2>
-              <p> Encounters</p>
-            </div>
-          </div>
-          <div class="full-box">
-            <!--
-            <%# compute_top3_divetypes(@user).each do |type, count| %>
-              <div class="full-box-icons">
-                <p><%#= image_tag "#{type}_icon.png" %></p>
-                <p> <%#= pluralize(count, "#{type} dive") %></p>
-              </div>
-            <%# end %> -->
-
-            <div class="full-box-icons">
-              <p><%= image_tag "shark_icon.png" %></p>
-              <p> 8 Shark dives</p>
-            </div>
-            <div class="full-box-icons">
-              <p><%= image_tag "reef_icon.png" %></p>
-              <p> 30 Reef dives</p>
-            </div>
-            <div class="full-box-icons">
-              <p><%= image_tag "shore_icon.png" %></p>
-              <p> 12 Shore dives</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'dives/summary' %>
 </div>
 <div class="dashboard-header">
 <%= image_tag ('diver_icon.png'), width: '30px'%>

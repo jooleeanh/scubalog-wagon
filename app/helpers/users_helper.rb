@@ -23,7 +23,13 @@ module UsersHelper
   def compute_total_divetime(user)
     total = 0
     user.dives.each { |dive| total += dive.bottom_time }
-    total
+    if total > (60 * 24)
+      pluralize((total.fdiv(60 * 24)).round(1), "day")
+    elsif total > 60
+      pluralize((total.fdiv(60).round(1)), "hour")
+    else
+      total.to_s + " min"
+    end
   end
 
   def compute_longest_dive(user)

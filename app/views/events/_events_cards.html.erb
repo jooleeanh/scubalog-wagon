@@ -1,11 +1,11 @@
 <% if event.participations.present? %>
     <div class="col-xs-12 col-sm-4 col-sm-offset-1">
       <div class="events-card">
-        <%= link_to event do %>
+
         <div class="event-card-index">
           <div class="product">
             <div class="product-body">
-
+              <%= link_to event do %>
               <h3><%= event.datetime.strftime("%d %b %Y") %></h3>
               <h5>By <%= event.participations.first.user.first_name.capitalize %></h5>
               <h4><%= event.divesite.name %></h4>

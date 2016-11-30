@@ -15,10 +15,14 @@ module ApplicationHelper
   end
 
   def display_avatar_big(user, extra_class = "")
-    if user.photo?
-      return cl_image_tag(user.photo.path, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
-    elsif user.facebook_picture_url.nil? == false
-      return image_tag(user.facebook_picture_url, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+    if user
+      if user.photo?
+        return cl_image_tag(user.photo.path, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+      elsif user.facebook_picture_url.nil? == false
+        return image_tag(user.facebook_picture_url, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+      elsif user.image
+        return image_tag(user.image, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+      end
     else
       return image_tag("user_avatar.png", class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
     end

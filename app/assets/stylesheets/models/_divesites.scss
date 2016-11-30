@@ -83,6 +83,10 @@
 
 .margin-row {
   margin: 40px 40px;
+  background-color: #353942;
+  border-radius: 20px;
+  padding: 10px 10px;
+  width: 80%;
 }
 
 
@@ -92,4 +96,41 @@
 
 div.bordure {
   border-bottom: 1px solid black;
+}
+
+.divesite-index-card {
+}
+
+.divesite-index-card h2, p {
+  color: rgb(190,190,190);
+}
+
+.divesite-index-card img {
+  border-radius: 20px;
+}
+
+.divesite-index-card button:hover {
+  color: #6c6c6c;
+  border-color: rgb(190,190,190);
+}
+
+.text-divesite-index {
+  text-align: center;
+  width: 250px;
+}
+
+.col-sm-2 .col-sm-offset-4 .text-center .btn .btn-banner-sidebar h2 {
+  color: #353942;
+}
+
+.title-divesite {
+  color: #353942;
+}
+
+.btn-banner-sidebar-tab h2 {
+  color: #353942;
+}
+
+.btn-banner-sidebar-tab {
+  border-color: #353942;
 }

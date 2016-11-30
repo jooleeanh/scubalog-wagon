@@ -1,19 +1,18 @@
 <% if params[:search_input] == nil %>
-  <h1 class='text-center'>All the spots</h1>
+  <h1 class='text-center title-divesite'>All the spots</h1>
 <% else %>
-  <h1 class='text-center'>Spots around <%= (params[:search_input]).capitalize %></h1>
+  <h1 class='text-center title-divesite'>Spots around <%= (params[:search_input]).capitalize %></h1>
 <% end %>
 
 <div id="map" style="width: 100%; height: 400px;"></div>
 
-
 <div class="container-fluid">
   <div class="row">
       <a data-toggle="tab" class="col-sm-2 col-sm-offset-4 text-center" href="#divesites">
-        <h2>SPOTS</h2>
+        <h2>Spots</h2>
       </a>
-      <a data-toggle="tab" class="col-sm-2 text-center tab-btn" href="#events">
-        <h2>EVENTS</h2>
+      <a data-toggle="tab" class="col-sm-2 text-center" href="#events">
+        <h2>Events</h2>
       </a>
   </div>
 </div>
@@ -21,11 +20,11 @@
 <div class="container-fluid">
   <div class="tab-content divesites-index">
     <div class="tab-pane active" id="divesites">
-
-        <h2 class="divesite-header text-center">
-          <%= pluralize(@divesites.size, "divesite") %> found !
-        </h2>
-
+        <% if  params[:search_input] != nil%>
+          <h2 class="divesite-header text-center">
+            <%= pluralize(@divesites.size, "divesite") %> found!
+          </h2>
+        <% end %>
       <% unless @divesites.any? %>
         <div class='text-center'> <strong> No spots around...</strong></div>
         <br>
@@ -46,9 +45,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

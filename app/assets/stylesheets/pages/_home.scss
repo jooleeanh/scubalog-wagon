@@ -2,10 +2,3 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-#bgvid video{
-  position: fixed; right: 0; bottom: 0;
-  min-width: 1110px; min-height: 500px;
-  width: auto; height: auto; z-index: -100;
-  background: url(cenote.jpg) no-repeat;
-  background-size: cover;
-}

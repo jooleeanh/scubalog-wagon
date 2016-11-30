@@ -1,4 +1,5 @@
 module UsersHelper
+
   def find_user_photo(user)
     if user
       if user.photo?
@@ -11,10 +12,24 @@ module UsersHelper
     end
   end
 
+  def cumulative_line_chart_data(user)
+    sum = 0
+    data = user.dives.group_by_day(:datetime).count
+    data = data.to_a.sort { |k, v| k[0] <=> v[0] }
+    data = data.map { |k, v| { k => (sum += v) } }
+    data = data.reduce({}, :merge)
+  end
+
   def compute_total_divetime(user)
     total = 0
     user.dives.each { |dive| total += dive.bottom_time }
-    total
+    if total > (60 * 24)
+      pluralize((total.fdiv(60 * 24)).round(1), "day")
+    elsif total > 60
+      pluralize((total.fdiv(60).round(1)), "hour")
+    else
+      total.to_s + " min"
+    end
   end
 
   def compute_longest_dive(user)

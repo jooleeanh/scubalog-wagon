@@ -37,15 +37,12 @@
   width: 65%;
 }
 
+
+
+// <<<<<<<<<<<<<<<<<<<<<<<<<<< Dive divs
+
 .single-dive-container-cover {
-  width: 503px;
-}
-
-.box-stats {
-  background-color: rgba(53, 57, 66, 0.9);
-}
-
-.head-box {
+  width: 460px;
 }
 
 .head-box p{
@@ -58,33 +55,48 @@
   color: white;
 }
 
-.full-box-icons h3 {
-  font-size: 28px;
+.dive-info {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .dive-info-box {
   height: 450px;
+  background-color: white;
+}
+
+.dashboard-dive-info-box {
+  height: 550px;
+  margin-top: 50px;
+}
+
+.divebox-row {
+  background-color: white;
+  height: 600px;
 }
 
 .dive-graph {
-  margin-top: 9%;
+  margin-top: 76px;
+  padding-right: 45px;
 }
 
 .dive-navigation-item {
-  padding-left: 10px;
-  border-radius: 30px;
-  // width: 200px;
-  // height: 125px;
+  padding-left: 20px;
 }
 
 .dive-card {
   height: 145px;
+  border-radius: 15px;
+  border: solid 2px #CECECE;
 }
 
 .dive-navigation-box {
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 60px;
+}
 
+.dive-container {
+  background-color: #F4F3F2;
 }
 
 .profil-header {

@@ -20,14 +20,12 @@
 }
 
 #container-cover {
-  width: 100%;
-  height: 600px;
   background-color: #F4F3F2;
 }
 
 #stats-container {
   height: 100%;
-  width: 90%;
+  width: 100%;
   margin-top: 3%;
 }
 
@@ -36,21 +34,15 @@
   width: 100%;
 }
 
-#graph-container {
-  height: 93%;
-  width: 100%;
-}
-
 .average-stats {
-  height: 80%;
-  background-color: #F4F3F2;
   display: flex;
   align-items: center;
-
+  height: 500px;
+  background-color: #F4F3F2;
 }
 
 .average-stats-details {
-  height: 80%;
+  height: 100%;
   background-color: #F4F3F2;
   display: flex;
   align-items: center;
@@ -59,10 +51,10 @@
 
 .chart-graph {
   display: flex;
-  padding-right: 5px;
   overflow: auto;
   height: 100%;
-  margin-right: 15%;
+  width: 100%;
+  align-items: center;
 }
 
 .highcharts-background {
@@ -74,7 +66,7 @@
   display: flex;
   height: 33.33%;
   width: 100%;
-  background-color: #E6E6E6;
+  background-color: #353942;
   justify-content: center;
   align-items: center;
 }
@@ -85,59 +77,25 @@
   width: 50%;
   background-color: #F4F3F2;
   border-bottom: solid 1px #d8f5e3;
-  color: #011238;
-}
-
-#sub-box-1{
-  height: 100%;
-}
-
-#sub-box-2{
-  height: 100%;
 }
 
 #sub-box-1 h1 {
-  margin-top: 18%;
-  margin-bottom: 6%;
   font-weight: 600;
 }
 
-#sub-box-1 h1{
-  margin-left: 12%;
-}
-
-#sub-box-1 p{
-  margin-left: 12%;
-}
-
 #sub-box-2 h1 {
-  margin-top: 19%;
-  margin-bottom: 7%;
   font-weight: 600;
   font-size: 36px;
 }
 
-.sub-box h2 {
-  margin-top: 0%;
-}
-
-#sub-box-2 h1{
-  margin-right: 20%;
-}
-
-#sub-box-2 p{
-  margin-right: 20%;
-}
-
 .full-box {
-  height: 33.33%;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border-top: solid 1px #d8f5e3;
   border-bottom: solid 1px #d8f5e3;
-
+  padding: 5% 0;
 }
 
 .full-box-details {
@@ -161,22 +119,23 @@
 }
 
 .full-box-icons {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 0 50px;
+  margin: 0 2%;
+}
+
+.full-box-icons h3 {
+  font-size: 28px;
 }
 
 .full-box-icons h2{
-  margin-top: 13%;
-  margin-bottom: 13%;
   color: #011238;
 }
 
 .full-box-icons p{
-color: #011238;
+  color: #011238;
 }
 
 .full-box-icons img{

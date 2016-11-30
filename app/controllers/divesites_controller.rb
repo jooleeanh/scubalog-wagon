@@ -14,7 +14,7 @@ class DivesitesController < ApplicationController
       build_markers(divesites_with_location(@divesites))
     elsif Divesite.near(params[:search_input], search_radius).blank?
       flash[:alert] = "Aucun spot proche de #{params[:search_input].capitalize} :("
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       @divesites = Divesite.order_by_name.near(params[:search_input].capitalize, search_radius)
       build_markers(divesites_with_location(@divesites))

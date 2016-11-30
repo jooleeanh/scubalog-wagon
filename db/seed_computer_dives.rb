@@ -82,10 +82,7 @@ class SeedComputerDives < BasicSeed
     f_data = {}
     f_data[:datetime] = Time.parse(data[:date_time])
     f_data[:types] = "Deep" if (data[:max_depth].to_i > 18)
-    begin
-      f_data[:bottom_time] = data[:samples].last[:time] / 60
-    rescue
-    end
+    f_data[:bottom_time] = data[:duration].to_i / 60
     f_samples = reformat_samples(data[:samples])
     pressures = array_all(f_samples, :tank_pressure)
     pressures.map! { |pressure| pressure = nil if pressure == 0 }

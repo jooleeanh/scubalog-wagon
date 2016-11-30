@@ -6,16 +6,6 @@
     <a href="#" class="visible-xs menu-handle" id="close-menu">
       <i class="fa fa-arrow-left"></i>
     </a>
-    <div class="sidebar-item sidebar-logo">
-      <div class="sidebar-item sidebar-search">
-        <form action="/divesites" class="divesites-search navbar-wagon-search">
-          <input type="text" class="navbar-wagon-search-input" placeholder="Look for a spot" name="search_input" id="divesites-search-txt">
-          <button type="submit" class="results navbar-wagon-search-btn" id="divesites-search-results">
-            <i class="fa fa-search"></i>
-          </button>
-        </form>
-      </div>
-    </div>
 
     <div class="sidebar-group-user">
         <div class="sidebar-item sidebar-user-avatar">
@@ -34,6 +24,18 @@
         <%= link_to "Log a dive", new_dive_path, class: "sidebar-link btn btn-banner-sidebar" %>
       </div>
     </div>
+    <hr>
+    <div class="sidebar-item sidebar-logo">
+      <div class="sidebar-item sidebar-search">
+        <form action="/divesites" class="divesites-search navbar-wagon-search">
+          <input type="text" class="navbar-wagon-search-input" placeholder="Look for a spot" name="search_input" id="divesites-search-txt">
+          <button type="submit" class="results navbar-wagon-search-btn" id="divesites-search-results">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
     <hr>
     <div class="sidebar-group-menus">
       <div class="sidebar-item sidebar-dashboard">
@@ -67,7 +69,7 @@
           <% icons.each do |k, v| %>
             <div class="col-xs-<%= 12 / icons.length %>">
               <%= link_to v[:url], target: "_blank" do %>
-                <i class="footer-icon fa <%= v[:fa] %> fa-2x" aria-hidden="true"></i>
+                <i class="footer-icon fa-lg <%= v[:fa] %> fa" aria-hidden="true"></i>
               <% end %>
             </div>
           <% end %>

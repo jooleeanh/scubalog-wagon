@@ -1,4 +1,4 @@
-$sidebar_width: 300px;
+$sidebar_width: 250px;
 
 .site-content {
   display: flex;
@@ -133,6 +133,10 @@ $sidebar_width: 300px;
 .btn-banner-sidebar:hover {
   border-color: #6c6c6c;
 
+}
+
+.sibebar hr {
+   color: rgb(199, 199, 199);
 }
 
 

@@ -26,13 +26,13 @@
 
 .footer-icon {
   text-decoration: none;
-  color: #6c6c6c;
+  color: rgb(199, 199, 199);
   padding: 5px;
   transition: color 15  0ms ease;
 }
 
 .footer-icon:hover {
-    color: rgb(199, 199, 199)
+    color: #6c6c6c;
 }
 
 // http://stackoverflow.com/questions/24087944/bootstrap-different-img-size-at-lg-md-sm-and-xs

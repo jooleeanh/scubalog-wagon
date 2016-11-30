@@ -78,7 +78,7 @@
 <%= image_tag ('diver_icon.png'), width: '30px'%>
  <h3> Last dives</h3>
 </div>
-<div class="container-fluid">
+<div class="container-fluid dive-container">
   <div class="dive-navigator">
     <%= render 'dives/divebox', dives: @user.dives.recent.first(5) %>
   </div>

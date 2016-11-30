@@ -48,17 +48,32 @@ $sidebar_width: 300px;
   color: white;
 }
 
-.sidebar-item {
-  padding: 5px;
+.sidebar-item-name {
+  font-size: 20px;
+    padding: 5px;
   font-weight: 800;
   a {
-    color: #6c6c6c;
+    color: rgb(199, 199, 199)
   }
   a:hover, a:visited, a:link, a:active {
     text-decoration: none;
   }
   a:hover {
-    color: rgb(199, 199, 199)
+    color: #6c6c6c;
+  }
+}
+
+.sidebar-item {
+  padding: 5px;
+  font-weight: 800;
+  a {
+    color: rgb(199, 199, 199);
+  }
+  a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+  }
+  a:hover {
+    color: #6c6c6c;
   }
 }
 .sidebar-group-user {
@@ -90,4 +105,34 @@ $sidebar_width: 300px;
   left:0;
   text-align: center;
 }
+
+.sidebar-scubalog {
+  color: rgb(199, 199, 199);
+  text-align: center;
+  text-decoration: none;
+}
+
+.sidebar-scubalog:hover {
+  text-decoration: none;
+}
+
+.sidebar-scubalog:active {
+  text-decoration: none;
+}
+
+.btn-banner-sidebar {
+  border: solid 1px bold;
+  border-color: rgb(199, 199, 199);
+  color: rgb(199, 199, 199);
+  background-color: transparent;
+  padding: 10px 40px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn-banner-sidebar:hover {
+  border-color: #6c6c6c;
+
+}
+
 

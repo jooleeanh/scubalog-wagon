@@ -7,7 +7,7 @@
           <p>
             Types:
             <% divesite.dives.each do |dive| %>
-              <%= dive.types.capitalize %>
+              <%= dive.types&.capitalize %>
             <% end %>
           </p>
           <p>Max depth: <%= divesite.max_depth %> m</p>
@@ -17,9 +17,10 @@
         </div>
       </div>
       <div class="col-sm-4 col-sm-offset-1">
-        <img width="100%" height="auto" src="https://gekodivebali.com/images/gallery/nusa-penida-crystal-bay-gallery/scuba%20dive%20site%20nusa%20penida%20lembongan%20crystal%20bay%20channel%20kanox%20padi%20divemaster%20dive%20guide%20divers.jpg" class="" sizes="(max-width: 502px) 100vw, 502px">
+      <div class="">
+          <img src="https://gekodivebali.com/images/gallery/nusa-penida-crystal-bay-gallery/scuba%20dive%20site%20nusa%20penida%20lembongan%20crystal%20bay%20channel%20kanox%20padi%20divemaster%20dive%20guide%20divers.jpg">
+        </div>
       </div>
     </div>
   </div>
-  <hr>
 

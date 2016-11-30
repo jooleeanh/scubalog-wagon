@@ -27,8 +27,8 @@
         <% end %>
       <% unless @divesites.any? %>
         <div class='text-center'> <strong> No spots around...</strong></div>
-        <br>
-        <div class='text-center'><%= link_to "Page d'accueil", root_path %></div>
+        <div class='text-center'><%= link_to "Page d'accueil", root_path %>
+        </div>
       <% end %>
       <div class="divesites">
         <% @divesites.each do |divesite| %>

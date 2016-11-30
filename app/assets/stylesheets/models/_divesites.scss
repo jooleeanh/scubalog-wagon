@@ -85,7 +85,7 @@
   margin: 40px 40px;
   background-color: #353942;
   border-radius: 20px;
-  padding: 10px 10px;
+  padding: 20px 5px;
   width: 80%;
 }
 
@@ -107,6 +107,8 @@ div.bordure {
 
 .divesite-index-card img {
   border-radius: 20px;
+  width: 350px;
+  display: block;
 }
 
 .divesite-index-card button:hover {
@@ -116,7 +118,7 @@ div.bordure {
 
 .text-divesite-index {
   text-align: center;
-  width: 250px;
+  width: 315px;
 }
 
 .col-sm-2 .col-sm-offset-4 .text-center .btn .btn-banner-sidebar h2 {
@@ -134,3 +136,25 @@ div.bordure {
 .btn-banner-sidebar-tab {
   border-color: #353942;
 }
+
+.event-card-index {
+  background-color: #353942;
+  color: rgb(190,190,190);
+}
+
+.event-card-index a {
+  background-color: #6c6c6c;
+  color: rgb(190,190,190);
+}
+
+.event-card-index a:hover{
+  background-color: #6c6c6c;
+  color: rgb(190,190,190);
+}
+
+#divesites {
+  color: #6c6c6c;
+}
+
+
+

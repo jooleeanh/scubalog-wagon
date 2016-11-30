@@ -10,6 +10,7 @@ $sidebar_width: 300px;
   min-height: 100%;
 }
 .sidebar-content {
+  position: fixed;
   // position: fixed; // to make sidebar flow with scroll
 }
 .sidebar {
@@ -20,6 +21,7 @@ $sidebar_width: 300px;
   flex-basis: $sidebar_width;
   padding: 10px;
   width: $sidebar_width;
+  position: relative;
 }
 
 .content {

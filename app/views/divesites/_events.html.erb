@@ -3,9 +3,13 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
-      <%= link_to event do%>
-      <%= event.datetime.strftime("%b %d %Y") %>. Created by :
-      <%= event.participations.first.user.first_name.capitalize%>
+       <% if @divesite.events.blank? %>
+        <%= No events yet at @divesite %>
+       <% else %>
+        <%= link_to event do%>
+        <%= event.datetime.strftime("%b %d %Y") %>. Created by :
+        <%= event.participations.first.user.first_name.capitalize%>
+        <% end %>
       <% end %>
     </h3>
   </div>

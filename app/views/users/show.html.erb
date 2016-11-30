@@ -2,14 +2,19 @@
 
 
 <!-- TODO .where(public: true) -->
+<div class="dashboard-header">
+<i class="fa fa-address-book" style="font-size:28px;"></i>
+ <h3>  Summary</h3>
 
+ <p></p>
+</div>
 <div class="container-fluid" id='container-cover'>
   <div class="container-fluid" id='stats-container'>
     <div class="row">
       <div class="col-md-12" id='graph-container'>
         <div class="col-md-6 average-stats">
           <div class="chart-graph">
-           <%= line_chart @user.dives.first.data_points.pluck(:time, :depth), height: '550px' %>
+           <%= line_chart @user.dives.first.data_points.pluck(:time, :depth), height: '700px', width: '600px' %>
           </div>
         </div>
         <div class="average-stats-details">
@@ -18,16 +23,29 @@
           </div> -->
           <div class="box-stats">
             <div class="sub-box" id="sub-box-1">
-              <h2 class="text-center">Total dives </h2>
-              <h2 class="text-center"><%= @user.dives.count %></h2>
+
+              <h1 class="text-center"><%= @user.dives.count %></h1>
+              <p class="text-center"> Dives logged</p>
             </div>
             <div class="sub-box" id="sub-box-2"%>
-              <h2 class="text-center"> Time spent </h2>
-              <h2 class="text-center"> 24 hrs </h2>
+              <h1 class="text-center"> 104 min </h1>
+              <p class="text-center"> Spent under water </p>
             </div>
           </div>
-          <div class="type-header">
-              <h2>My diving style</h2>
+
+          <div class="full-box">
+            <div class="full-box-icons">
+              <h2> 49 min</h2>
+              <p> Longest dive</p>
+            </div>
+            <div class="full-box-icons">
+              <h2> 18 m</h2>
+              <p> Max Depth</p>
+            </div>
+            <div class="full-box-icons">
+              <h2> 8</h2>
+              <p> Encounters</p>
+            </div>
           </div>
           <div class="full-box">
             <div class="full-box-icons">
@@ -44,27 +62,15 @@
               <p> 1 Shore dive</p>
             </div>
           </div>
-          <div class="my-spots-header">
-            <h2>My records</h2>
-          </div>
-          <div class="full-box">
-            <div class="full-box-icons">
-              <p> Longest dive</p>
-              <p> 58 mns</p>
-            </div>
-            <div class="full-box-icons">
-              <p> Max Depth</p>
-              <p> 28m</p>
-            </div>
-            <div class="full-box-icons">
-              <p> Hard dives</p>
-              <p> 18</p>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="dashboard-header">
+<%= image_tag ('diver_icon.png'), width: '30px'%>
+ <h3> Last dives</h3>
 </div>
 
 <% content_for(:after_js) do %>

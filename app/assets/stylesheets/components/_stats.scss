@@ -1,3 +1,24 @@
+.dashboard-header {
+  min-height: 8%;
+  min-width: 100%;
+  background-color: #f8fafd;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #BABABA;
+  border-top: solid 1px #BABABA;
+}
+
+.dashboard-header h3 {
+  margin-bottom: 20px;
+  margin-left: 1%;
+  font-weight: 600;
+  color: #353942;
+}
+
+.dashboard-header i {
+  margin-left: 4%;
+}
+
 #container-cover {
   width: 100%;
   height: 80%;
@@ -6,9 +27,8 @@
 
 #stats-container {
   height: 100%;
-  width: 70%;
+  width: 90%;
   margin-top: 3%;
-  margin-left: 20%;
 }
 
 #stats-container .row {
@@ -17,7 +37,7 @@
 }
 
 #graph-container {
-  height: 100%;
+  height: 93%;
   width: 100%;
 }
 
@@ -42,6 +62,7 @@
   padding-right: 5px;
   overflow: auto;
   height: 100%;
+  margin-right: 15%;
 }
 
 .highcharts-background {
@@ -53,7 +74,7 @@
   display: flex;
   height: 33.33%;
   width: 100%;
-  background-color: #f4fcf1;
+  background-color: #E6E6E6;
   justify-content: center;
   align-items: center;
 }
@@ -62,8 +83,9 @@
 .sub-box {
   height: 100%;
   width: 50%;
-  background-color: #f4fcf1;
-
+  background-color: #F3FCF0;
+  border-bottom: solid 1px #d8f5e3;
+  color: #011238;
 }
 
 #sub-box-1{
@@ -74,18 +96,37 @@
   height: 100%;
 }
 
-#sub-box-1 h2 {
-  margin-top: 8%;
+#sub-box-1 h1 {
+  margin-top: 18%;
+  margin-bottom: 6%;
   font-weight: 600;
 }
 
-#sub-box-2 h2 {
-  margin-top: 8%;
+#sub-box-1 h1{
+  margin-left: 12%;
+}
+
+#sub-box-1 p{
+  margin-left: 12%;
+}
+
+#sub-box-2 h1 {
+  margin-top: 19%;
+  margin-bottom: 7%;
   font-weight: 600;
+  font-size: 36px;
 }
 
 .sub-box h2 {
   margin-top: 0%;
+}
+
+#sub-box-2 h1{
+  margin-right: 20%;
+}
+
+#sub-box-2 p{
+  margin-right: 20%;
 }
 
 .full-box {
@@ -94,6 +135,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: solid 1px #d8f5e3;
+  border-bottom: solid 1px #d8f5e3;
+
 }
 
 .full-box-details {
@@ -122,7 +166,17 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 0 35px;
+  padding: 0 50px;
+}
+
+.full-box-icons h2{
+  margin-top: 13%;
+  margin-bottom: 13%;
+  color: #011238;
+}
+
+.full-box-icons p{
+color: #011238;
 }
 
 .full-box-icons img{
@@ -131,8 +185,8 @@
 }
 
 .type-header {
-  border-top: solid 1px #3C4859;
-  border-bottom: solid 1px #3C4859;
+  border-top: solid 1px #E6E6E6;
+  border-bottom: solid 1px #E6E6E6;
   width: 100%;
   background-color: #F3FCF0;
 }
@@ -143,8 +197,8 @@
 }
 
 .my-spots-header {
-  border-top: solid 1px #3C4859;
-  border-bottom: solid 1px #3C4859;
+  border-top: solid 1px #E6E6E6;
+  border-bottom: solid 1px #E6E6E6;
   width: 100%;
   background-color: #F3FCF0;
 }
@@ -152,4 +206,8 @@
 .my-spots-header h2{
   margin-top: 1%;
   text-align: center;
+}
+
+.dashboard-header img{
+  margin-left: 4%;
 }

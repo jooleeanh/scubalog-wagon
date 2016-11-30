@@ -1,3 +1,4 @@
+
 <div class="dive-info">
   <div class="row">
     <div class="dive-info-box">
@@ -107,20 +108,79 @@
               <span> - </span>
               <span><%= dive.end_air %></span>
               <span class="dive-unit">BAR</span>
+<div>
+  <div class="dive-info">
+    <h2>Dive info</h2>
+    <div class="row">
+      <div class="dive-info-box">
+        <div class="col-xs-12 col-md-4">
+          <div class="dive-info-box-stats text-center">
+            <div class="dive-info-box-item">
+              <p>Start time</p>
+              <%= time_long(dive.datetime) %>
             </div>
-            <div class="col-xs-6">
-              <p>Air efficiency</p>
+            <div class="dive-info-box-item">
+              <div class="col-xs-6">
+                <p>Max depth</p>
+                <%= dive.max_depth %>
+                <span class="dive-unit">meters</span>
+              </div>
+              <div class="col-xs-6">
+                <p>Dive time</p>
+                <%= dive.bottom_time %>
+                <span class="dive-unit">minutes</span>
+              </div>
             </div>
-          </div>
-          <div class="dive-info-box-item">
-            <div class="col-xs-6">
-              <p>Temperature</p>
-              <%= dive.max_temp %>
+            <div class="dive-info-box-item">
+              <div class="col-xs-6">
+                <p>Air</p>
+                <span><%= dive.start_air %></span>
+                <span> - </span>
+                <span><%= dive.end_air %></span>
+                <span class="dive-unit">BAR</span>
+              </div>
+              <div class="col-xs-6">
+                <p>Air efficiency</p>
+              </div>
             </div>
-            <div class="col-xs-6">
-              <p>Visibility</p>
-              <%= dive.visibility %>
+            <div class="dive-info-box-item">
+              <div class="col-xs-6">
+                <p>Temperature</p>
+                <%= dive.max_temp %>
+              </div>
+              <div class="col-xs-6">
+                <p>Visibility</p>
+                <%= dive.visibility %>
+              </div>
             </div>
           </div>
         </div>
- -->
+
+
+        <div class="col-xs-12 col-md-8">
+          <%= line_chart [
+            {name: "Time", data: dive.data_points.pluck(:time, :depth)},
+            {name: "Air Consumption", data: dive.data_points.pluck(:time, :air)},
+            {name: "Temperature", data: dive.data_points.pluck(:time, :temp)}], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dive-sightings">
+    <h2>Sightings</h2>
+    <div class="row">
+      <% dive.sightings.each do |sighting| %>
+      <div class="col-xs-6 col-md-3">
+        <p class="text-center"><%= sighting.animal.name %></p>
+        <%=  image_tag(asset_path(sighting.animal.image_url), class: "img-responsive")%>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="comments">
+    <h2>Comments</h2>
+    <p><%= dive.comments %></p>
+  </div>
+</div>
+

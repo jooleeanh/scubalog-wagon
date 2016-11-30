@@ -33,6 +33,7 @@ class SeedUsers < BasicSeed
       email: json_doc[i]["email"],
       password: "scubalog",
       location: location,
+      image: json_doc[i]["photo_large"],
       created_at: DateTime.parse(json_doc[i]["registered"]),
       # photo: json_doc[i]["photo_large"]
       )

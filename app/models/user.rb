@@ -53,6 +53,7 @@ end
 #  longitude              :float
 #  diving_since           :integer
 #  certifications         :string           default([]), is an
+#  image                  :string
 
 ### Devise ###
 #  encrypted_password     :string           default(""), not null

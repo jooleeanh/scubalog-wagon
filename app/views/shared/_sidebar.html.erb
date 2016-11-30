@@ -10,12 +10,12 @@
     <div class="sidebar-group-user">
         <div class="sidebar-item sidebar-user-avatar">
           <%= link_to current_user do %>
-           <%= display_avatar_big(current_user, "avatar-big") %>
+           <%= display_avatar_big(@user, "avatar-big") %>
           <% end %>
         </div>
         <div class="sidebar-item-name sidebar-user-name">
         <%= link_to current_user do %>
-          <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
+          <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
         <% end %>
         </div>
     </div>
@@ -53,12 +53,14 @@
       <div class="sidebar-item sidebar-dive-spots">
         <%= link_to "Dive spots", divesites_path, class: "sidebar-link" %>
       </div>
-      <div class="sidebar-item sidebar-dive-spots">
-        <%= link_to "Update Profile", edit_user_registration_path, class: "sidebar-link" %>
-      </div>
-      <div class="sidebar-item sidebar-dive-spots">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "sidebar-link" %>
-      </div>
+      <% if current_user == @user %>
+        <div class="sidebar-item sidebar-dive-spots">
+          <%= link_to "Update Profile", edit_user_registration_path, class: "sidebar-link" %>
+        </div>
+        <div class="sidebar-item sidebar-dive-spots">
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "sidebar-link" %>
+        </div>
+      <% end %>
         <div class="sidebar-icons">
         <% icons = {
           youtube: { fa: 'fa-youtube', url: "#" },

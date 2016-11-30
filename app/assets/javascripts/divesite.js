@@ -11,6 +11,10 @@ _initAutocomplete: function() {
   this._input
     .autocomplete({
       source: '/divesites/search',
+      messages: {
+        noResults:'',
+        results: function() {}
+      },
       appendTo: '#divesites-search-results',
       select: $.proxy(this._select, this)
     })
@@ -36,3 +40,4 @@ _select: function(e, ui) {
   return false;
 }
 };
+

@@ -1,0 +1,30 @@
+$(document).ready(function() {
+  var data = [
+    { id: 0, text: 'enhancement' },
+    { id: 1, text: 'bug' },
+    { id: 2, text: 'duplicate' },
+    { id: 3, text: 'invalid' },
+    { id: 4, text: 'wontfix' }
+  ];
+  var divesite = <%= Divesite.search_json.to_json.html_safe %>
+  var divetypes = <%= Dive.types_json.to_json.html_safe %>
+  $(".js-example-basic-multiple").select2({
+    placeholder: "Select a type",
+    data: divetypes
+  });
+  $(".js-example-basic-single").select2({
+    placeholder: "Select a divesite",
+    data: divesite,
+    allowClear: true
+  });
+
+  $("dive-new-select-divesite").select2({
+    placeholder: "Select a divesite",
+    data: divesite,
+    allowClear: true
+  });
+  $(".js-example-basic-multiple").select2({
+    placeholder: "Select a state",
+    data: divetypes
+  });
+});

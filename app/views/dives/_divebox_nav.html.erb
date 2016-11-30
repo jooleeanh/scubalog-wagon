@@ -1,0 +1,19 @@
+<div class="dive-navigation-box">
+  <% dives.each do |dive| %>
+    <div class="dive-navigation-item">
+      <%= link_to dive, remote: true do %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "waves.jpg" %>');">
+          <div class="card-category">
+            <%= time_ago_in_words(dive.datetime) %>
+            <span>ago</span>
+          </div>
+          <div class="card-description">
+            <h2><%= dive.divesite.name %></h2>
+            <p><%= date_long(dive.datetime) %></p>
+          </div>
+          <%= display_avatar(current_user, "card-user") %>
+          <% end %>
+        </div>
+    </div>
+  <% end %>
+</div>

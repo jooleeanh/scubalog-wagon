@@ -47,14 +47,6 @@ ActiveRecord::Schema.define(version: 20161130152411) do
     t.index ["user_id"], name: "index_buddies_on_user_id", using: :btree
   end
 
-  create_table "computer_dives", force: :cascade do |t|
-    t.integer  "dive_id"
-    t.string   "attachment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dive_id"], name: "index_computer_dives_on_dive_id", using: :btree
-  end
-
   create_table "data_points", force: :cascade do |t|
     t.integer  "dive_id"
     t.integer  "time"
@@ -181,7 +173,6 @@ ActiveRecord::Schema.define(version: 20161130152411) do
 
   add_foreign_key "buddies", "dives"
   add_foreign_key "buddies", "users"
-  add_foreign_key "computer_dives", "dives"
   add_foreign_key "data_points", "dives"
   add_foreign_key "dives", "divesites"
   add_foreign_key "dives", "users"

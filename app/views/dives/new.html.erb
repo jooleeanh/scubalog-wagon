@@ -1,38 +1,133 @@
-<div class="container-fluid divelog">
-  <div class="text-center">
+<div class="dive-new">
+  <div class="text-center dive-form-background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "turtle-storm.jpg" %>');">
     <%= simple_form_for [@dive] do |f| %>
-      <%= f.error_notification %>
-      <div class="form-inputs">
-        <div class="container-fluid login-form">
-          <%= f.input :datetime, as: :date, required: true, autofocus: true %>
-          <%= f.association :divesite, collection: @divesites %>
-          <%= f.association :animals, collection: @animals, input_html: { multiple: true } %>
-          <%= f.input :types, label: 'Dive type'%>
-          <%= f.input :bottom_time %>
-          <%= f.input :max_depth %>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <%= f.input :start_air %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <div class="container-fluid">
+        <div class="dive-new-form text-left">
+          <% size1 = 0.8 %>
+          <% size2 = 0.9 %>
+          <h2 tabindex=0>New Dive</h2>
+          <div class="dive-input dive-input-datetime">
+            <p>
+              <i class="fa fa-calendar-o fa-lg" aria-hidden="true"></i>
+              <strong>When</strong> was your dive?
+            </p>
+            <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :datetime, as: :date, required: true, label: false %></div>
+          </div>
+          <div class="dive-input dive-input-divesite">
+            <p>
+              <%= image_tag("icons/dive-flag" , class: "dive-index-icon") %>
+              What was the dive site <strong>name</strong>?
+            </p>
+            <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.association :divesite, collection: @divesites, label: false %></div>
+          </div>
+          <div class="dive-input dive-input-types">
+            <p>
+              <%= image_tag("icons/scuba.svg" , class: "dive-index-icon") %>
+              What was the dive <strong>type</strong>?
+            </p>
+            <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :types, label: false %></div>
+          </div>
+          <div class="dive-input dive-input-enjoyment">
+            <p>Enjoyed it? (1 to 5)</p>
+            <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :enjoyment, label: false %></div>
+          </div>
+          <div class="dive-input dive-input-animals">
+            <p>
+              <%= image_tag("icons/turtle.png" , class: "dive-index-icon") %>
+              What did you see?
+            </p>
+            <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.association :animals, collection: @animals, input_html: { multiple: true }, label: false %></div>
+          </div>
+          <div class="dive-input dive-input-comments">
+            <p>
+              <%= image_tag("icons/note.png" , class: "dive-index-icon") %>
+              Notes
+            </p>
+            <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :comments, label: false %></div>
+          </div>
+          <div class="dive-new-computer-info">
+            <div class="zoomTarget row" data-targetsize="<%= size2 %>">
+              <div class="col-xs-12 col-sm-6">
+                <div class="dive-input dive-input-bottom-time">
+                  <p>
+                    <%= image_tag("icons/clock.png" , class: "dive-index-icon") %>
+                    How <strong>long</strong> were you down there for?
+                  </p>
+                  <div class="dive-new-form-field"><%= f.input :bottom_time, label: false %></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="dive-input dive-input-max-depth">
+                  <p>
+                    <%= image_tag("icons/depth.png" , class: "dive-index-icon") %>
+                    How <strong>deep</strong> did you go?
+                  </p>
+                  <div class="dive-new-form-field"><%= f.input :max_depth, label: false %></div>
+                </div>
+              </div>
             </div>
-            <div class="col-xs-12 col-sm-6">
-              <%= f.input :end_air %>
+            <div class="zoomTarget row" data-targetsize="<%= size2 %>">
+              <div class="col-xs-12 col-sm-6">
+                <div class="dive-input dive-input-start-air">
+                  <p>
+                    <%= image_tag("icons/gauge-full.png" , class: "dive-index-icon") %>
+                    How much air did you <strong>start</strong> with?
+                  </p>
+                  <div class="dive-new-form-field"><%= f.input :start_air, label: false %></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="dive-input dive-input-end-air">
+                  <p>
+                    <%= image_tag("icons/gauge-empty.png" , class: "dive-index-icon") %>
+                    How much air did you <strong>end</strong> with?
+                  </p>
+                  <div class="dive-new-form-field"><%= f.input :end_air, label: false %></div>
+                </div>
+              </div>
+            </div>
+            <div class="zoomTarget row" data-targetsize="<%= size2 %>">
+              <div class="col-xs-12 col-sm-6">
+                <div class="dive-input dive-input-max-temp">
+                  <p>
+                    <%= image_tag("icons/temperature.png" , class: "dive-index-icon") %>
+                    What was the water temperature? (celsius)
+                  </p>
+                  <div class="dive-new-form-field"><%= f.input :max_temp, label: false %></div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="dive-input dive-input-visibility">
+                  <p>
+                    <%= image_tag("icons/binoculars.png" , class: "dive-index-icon") %>
+                    How much visibility? (meters)
+                  </p>
+                  <div class="dive-new-form-field"><%= f.input :visibility, label: false %></div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-6">
-            <%= f.input :max_temp, label: 'Temperature' %>
+          <div class="dive-input dive-input-photos">
+            <p>
+              <%= image_tag("icons/camera.png" , class: "dive-index-icon") %>
+              Photos!
+            </p>
+            <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :photos, as: :attachinary, label: false %></div>
           </div>
-          <div class="col-xs-12 col-sm-6">
-            <%= f.input :visibility %>
+          <div class="dive-input dive-input-review-content">
+            <p>
+              <%= image_tag("icons/bulb.png" , class: "dive-index-icon") %>Share a tip about that spot
+            </p>
+            <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :review_content, label: 'Share a tip to fellow divers', label: false %></div>
           </div>
-          <%= f.input :enjoyment %>
-          <%= f.input :comments, label: 'Personal comments'%>
-          <%= f.input :review_content, label: 'Share a tip to fellow divers' %>
-          <%= f.input :photos, as: :attachinary %>
-        </div>
-        <div class="form-actions">
-          <%= f.button :submit, "Log this dive !", class: 'btn btn-primary' %>
+          <div class="form-actions">
+            <%= f.button :submit, "Log this dive !", class: 'btn btn-primary' %>
+          </div>
         </div>
       </div>
+    </div>
     <% end %>
   </div>
 </div>

@@ -25,25 +25,25 @@
             <div class="sub-box" id="sub-box-1">
 
               <h1 class="text-center"><%= @user.dives.count %></h1>
-              <p class="text-center"> Dives logged</p>
+              <p class="text-center">dives</p>
             </div>
             <div class="sub-box" id="sub-box-2"%>
-              <h1 class="text-center"> 104 min </h1>
-              <p class="text-center"> Spent under water </p>
+              <h1 class="text-center"><%= compute_total_divetime(@user) %></h1>
+              <p class="text-center"> minutes under water </p>
             </div>
           </div>
 
           <div class="full-box">
             <div class="full-box-icons">
-              <h2> 49 min</h2>
-              <p> Longest dive</p>
+              <h2><%= compute_longest_dive(@user) %> min</h2>
+              <p> Longest Dive</p>
             </div>
             <div class="full-box-icons">
-              <h2> 18 m</h2>
+              <h2><%= compute_deepest_dive(@user) %> m</h2>
               <p> Max Depth</p>
             </div>
             <div class="full-box-icons">
-              <h2> 8</h2>
+              <h2><%= compute_sightings(@user) %></h2>
               <p> Encounters</p>
             </div>
           </div>

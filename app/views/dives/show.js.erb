@@ -1,13 +1,11 @@
 $(document).ready(function() {
   $("#divebox_item").html("<%= j render 'dives/divebox_dive', dive: @dive %>");
 
-  $('#result').html(" <%= j render 'dives/show', dive: @dive%>");
-
-  $('.show').click(function() {
-    $('#result').slideDown();
-  });
-
-  $('.slide-up').click(function() {
-    $('#result').slideUp();
-  });
+  // $('.show').click(function() {
+  //   $('#result').slideDown();
+  // });
+  //
+  // $('.slide-up').click(function() {
+  //   $('#result').slideUp();
+  // });
 })

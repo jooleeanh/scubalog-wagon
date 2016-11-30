@@ -72,5 +72,7 @@
  <h3> Last dives</h3>
 </div>
 <div class="container-fluid">
-  <%= render 'dives/divebox', dives: @user.dives.first(5) %>
+  <div class="dive-navigator">
+    <%= render 'dives/divebox', dives: @user.dives.recent.first(5) %>
+  </div>
 </div>

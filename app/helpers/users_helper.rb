@@ -32,4 +32,8 @@ module UsersHelper
     end
     sightings
   end
+
+  def compute_top3_divetypes(user)
+    user.dives.group(:types).order('types DESC').limit(5).count(:id).reject { |k,v| k.nil? }
+  end
 end

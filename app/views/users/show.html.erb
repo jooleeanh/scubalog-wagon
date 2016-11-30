@@ -48,18 +48,25 @@
             </div>
           </div>
           <div class="full-box">
-            <div class="full-box-icons">
-              <p><%= image_tag "shark_icon.png" %></p>
-              <p> 30 Shark dive</p>
-            </div>
+            <!--
+            <%# compute_top3_divetypes(@user).each do |type, count| %>
+              <div class="full-box-icons">
+                <p><%#= image_tag "#{type}_icon.png" %></p>
+                <p> <%#= pluralize(count, "#{type} dive") %></p>
+              </div>
+            <%# end %> -->
 
             <div class="full-box-icons">
+              <p><%= image_tag "shark_icon.png" %></p>
+              <p> 8 Shark dives</p>
+            </div>
+            <div class="full-box-icons">
               <p><%= image_tag "reef_icon.png" %></p>
-              <p> 30 Reef dive</p>
+              <p> 30 Reef dives</p>
             </div>
             <div class="full-box-icons">
               <p><%= image_tag "shore_icon.png" %></p>
-              <p> 1 Shore dive</p>
+              <p> 12 Shore dives</p>
             </div>
           </div>
         </div>

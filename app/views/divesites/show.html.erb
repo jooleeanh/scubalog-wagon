@@ -2,7 +2,6 @@
 </div>
 <ul class="breadcrumb divesite-breadcrumb">
   <li><a href="/">Home</a></li>
-  <li><%= link_to "Previous page", request.referer.present? ? request.referer : default_path %></li>
   <li><%= @divesite.name.downcase.capitalize %></li>
 </ul>
 

@@ -70,6 +70,13 @@
 
 }
 
+.first-box-stats {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .box-stats {
   display: flex;
   width: 100%;
@@ -77,6 +84,8 @@
   justify-content: center;
   align-items: center;
 }
+
+
 
 
 .sub-box {

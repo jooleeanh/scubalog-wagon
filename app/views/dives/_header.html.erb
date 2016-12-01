@@ -1,11 +1,25 @@
 
 <div class="profil-header">
-  <h2 class="text-center" style="padding-bottom: 20px;">
+  <h2 class="text-center" style="padding-bottom: 5px;">
+    <% if @dive.user == current_user %>
+      <strong>
+        <h2>My Dive</h2>
+      </strong>
+    <% else %>
+      <strong>
+        <h2><%= @dive.user.first_name %> dive</h2>
+      </strong>
+    <% end %>
+  </h2>
+</div>
+<div>
+  <h2 class="" style="padding-bottom: 20px;">
     <strong>
-      <%= link_to( @dive.divesite, class: "head-link") do %>
+      <%= link_to( @dive.divesite, class: "title-head") do %>
         At <%= @dive.divesite.name %>,
         on <%= date_long(@dive.datetime) %>
       <% end %>
     </strong>
   </h2>
+
 </div>

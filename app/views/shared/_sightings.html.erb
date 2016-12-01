@@ -1,24 +1,25 @@
-<h2>Sightings/Animals</h2>
-
 <div class="sightings-list">
-  <div class="container-fluid">
-
+  <div class="container-fluid sightings-container">
+  <h2 class="text-center">Encountered at <%= @divesite.name %> </h2>
+  <hr>
     <% if sightings != nil && splitted_animals != nil %>
       <div class="row">
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-md-6 animal-box">
           <% splitted_animals[0].each do |animal| %>
           <div class="animal-card">
-            <p><%= animal.name %></p>
+            <p class="text-center"><%= animal.name %></p>
             <%=  image_tag(asset_path(animal.image_url), class: "animal-image")%>
+            <hr>
           </div>
           <% end %>
         </div>
         <% if splitted_animals[1] != nil %>
-          <div class="col-xs-12 col-md-6">
+          <div class="col-xs-12 col-md-6 animal-box">
             <% splitted_animals[1].each do |animal| %>
               <div class="animal-card">
-                <p><%= animal.name %></p>
+                <p class="text-center"><%= animal.name %></p>
                 <%=  image_tag(asset_path(animal.image_url), class: "animal-image")%>
+                <hr>
               </div>
             <% end %>
           </div>

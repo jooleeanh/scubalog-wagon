@@ -1,6 +1,9 @@
-<h2>Reviews</h2>
+<div class="divesite-reviews-header">
+  <i class="fa fa-star-o" style="font-size:28px;"></i>
+  <h3>Reviews</h3>
+</div>
 <div class="divesite-reviews-list">
-  <div class="container-fluid">
+  <div class="container-fluid reviews-container">
     <% if @reviews.any? %>
       <% @reviews.each do |review| %>
       <div class="panel panel-default">

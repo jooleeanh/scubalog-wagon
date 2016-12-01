@@ -2,22 +2,23 @@
   <div class="row">
     <div class="col-xs-12 col-md-6 average-stats">
       <div class="chart-graph">
-        <%= line_chart cumulative_line_chart_data(@user), width: "100%" %>
-        <% line_chart @user.dives.group_by_day(:datetime).count, height: '700px', width: '600px' %>
+        <%#= line_chart cumulative_line_chart_data(@user), width: "100%" %>
+        <div id="map" style="width: 100%; height: 98%;"></div>
       </div>
     </div>
     <div class="col-xs-12 col-md-6 average-stats-details">
       <div class="box-stats">
         <div class="sub-box" id="sub-box-1">
-
-          <h1 class="text-center"><%= @user.dives.count %></h1>
-          <p class="text-center">dives</p>
+          <div class="sub-box-item">
+            <h1 class="text-center"><%= @user.dives.count %></h1>
+            <p class="text-center">dives</p>
+          </div>
         </div>
         <div class="sub-box" id="sub-box-2"%>
           <h1 class="text-center"><%= compute_total_divetime(@user) %></h1>
           <p class="text-center"> under water </p>
-        </div>
       </div>
+    </div>
 
       <div class="full-box">
         <div class="full-box-icons">
@@ -53,3 +54,9 @@
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    <%= render 'shared/map.js.erb' %>
+  <% end %>
+<% end %>

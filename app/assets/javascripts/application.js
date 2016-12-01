@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-fileupload/basic
+//= require swipebox
 //= require chartkick
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
@@ -10,3 +11,5 @@
 //= require gmaps/google
 //= require zoomooz/jquery.zoomooz.js
 //= require_tree .
+
+

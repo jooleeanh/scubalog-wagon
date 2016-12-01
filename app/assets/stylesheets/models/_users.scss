@@ -37,10 +37,6 @@
   width: 65%;
 }
 
-
-
-// <<<<<<<<<<<<<<<<<<<<<<<<<<< Dive divs
-
 .single-dive-container-cover {
   // width: 460px;
   height: 100%;
@@ -58,12 +54,18 @@
   color: white;
 }
 .dive-comments {
-  padding: 20px 0;
+  padding-left:10%;
+  margin-bottom: 10%;
 }
 .dive-title {
   padding: 0 5%;
 }
-.dive-sightings {}
+.dive-sightings {
+  padding-right: 10%;
+  padding-bottom: 10%;
+  margin-bottom: 10%;
+  border-right: solid 1px black;
+}
 .dive-info {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -134,7 +136,6 @@
   // border-bottom: solid 1px #BABABA;
   // border-top: solid 1px #BABABA;
   color: white;
-  font-family: Yellowtail;
 }
 
 .dive-title {

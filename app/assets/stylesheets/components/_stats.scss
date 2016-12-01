@@ -1,7 +1,7 @@
 .dashboard-header {
   min-height: 50px;
   min-width: 100%;
-  background-color: #f8fafd;
+  background-color: #d0d8d9;
   display: flex;
   align-items: center;
   border-bottom: solid 1px #BABABA;
@@ -42,7 +42,14 @@
 }
 
 .average-stats-details {
-  height: 100%;
+  background-color: #F4F3F2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 500px;
+}
+
+.average-dive-stats-details {
   background-color: #F4F3F2;
   display: flex;
   align-items: center;
@@ -64,7 +71,6 @@
 
 .box-stats {
   display: flex;
-  height: 33.33%;
   width: 100%;
   background-color: #353942;
   justify-content: center;
@@ -77,6 +83,14 @@
   width: 50%;
   background-color: #F4F3F2;
   border-bottom: solid 1px #d8f5e3;
+}
+
+.sub-box-item {
+  margin-bottom: 10%;
+}
+
+.sub-box p{
+  color: #333333;
 }
 
 #sub-box-1 h1 {
@@ -99,7 +113,7 @@
 }
 
 .full-box-details {
-  height: 100%;
+
   width: 100%;
   display: flex;
   justify-content: center;
@@ -131,11 +145,11 @@
 }
 
 .full-box-icons h2{
-  color: #011238;
+  color: #333333;
 }
 
 .full-box-icons p{
-  color: #011238;
+  color: #333333;
 }
 
 .full-box-icons img{
@@ -170,3 +184,7 @@
 .dashboard-header img{
   margin-left: 4%;
 }
+
+
+
+// #353942

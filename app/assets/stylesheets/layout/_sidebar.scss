@@ -8,6 +8,7 @@ $sidebar_width: 250px;
 
 .app-sidebar {
   min-height: 100%;
+  border-right: solid 1px #C7C7C7;
 }
 .sidebar-content {
   position: fixed;
@@ -16,7 +17,7 @@ $sidebar_width: 250px;
 .sidebar {
   // position: relative; // to make sidebar flow with scroll
   min-height: 100%;
-  background: #353942;
+  background: #001013;
   color: white;
   flex-basis: $sidebar_width;
   padding: 10px;
@@ -135,7 +136,7 @@ $sidebar_width: 250px;
 
 }
 
-.sibebar hr {
+.sibebar hr{
    color: rgb(199, 199, 199);
 }
 

@@ -9,15 +9,16 @@
     <div class="col-xs-12 col-md-6 average-stats-details">
       <div class="box-stats">
         <div class="sub-box" id="sub-box-1">
-
-          <h1 class="text-center"><%= @user.dives.count %></h1>
-          <p class="text-center">dives</p>
+          <div class="sub-box-item">
+            <h1 class="text-center"><%= @user.dives.count %></h1>
+            <p class="text-center">dives</p>
+          </div>
         </div>
         <div class="sub-box" id="sub-box-2"%>
           <h1 class="text-center"><%= compute_total_divetime(@user) %></h1>
           <p class="text-center"> under water </p>
-        </div>
       </div>
+    </div>
 
       <div class="full-box">
         <div class="full-box-icons">

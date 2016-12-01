@@ -1,18 +1,14 @@
-<div class="dive-show">
-  <div class="container-fluid dive-box">
-    <div class="row">
-      <%= render 'header' %>
-       <hr>
-      <div>
-        <%= render 'info' %>
-      </div>
+
+<div class="container-fluid dive-box">
+  <div class="row">
+    <%= render 'header' %>
+     <hr>
+    <div>
+      <%= render 'info' %>
     </div>
-    <hr>
-      <p><%= link_to "Return to my dives", dives_path %> </p>
-      <p></p>
-    <hr>
   </div>
 </div>
+
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

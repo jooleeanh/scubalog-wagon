@@ -11,6 +11,7 @@ require_relative 'seed_animals'
 require_relative 'seed_sightings'
 require_relative 'seed_events'
 require_relative 'seed_participations'
+require_relative 'seed_custom'
 
 MODELS = [
   [Event, [Participation]],
@@ -37,6 +38,15 @@ class Seed < BasicSeed
     else
       delete_seed?
       create_seed?
+    end
+  end
+  def custom?
+    print "Custom seed?".light_cyan + " > "
+    answer = STDIN.gets.chomp
+    if answer == "y"
+      seed = SeedCustom.new
+      seed.create_divesites
+      seed.create_dives(seed.julian)
     end
   end
   def destroy_all_seed
@@ -209,5 +219,6 @@ puts ""
 seed = Seed.new
 seed.stats?
 seed.automatic?
+seed.custom?
 seed.stats?
 puts ""

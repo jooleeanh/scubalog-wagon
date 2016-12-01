@@ -62,6 +62,23 @@ module ApplicationHelper
     datetime.strftime("%k:%M")
   end
 
+  def get_ju_flo_photos
+    julian = User.find_by(last_name: "Honma")
+    flo = User.find_by(last_name: "Bataille")
+    active_record = []
+    active_record << julian&.dives
+    active_record << flo&.dives
+    active_record.reject! { |dive| dive.nil? }
+    photos = []
+    active_record.each do |active|
+      active.each do |dive|
+        dive.photos.each { |photo| photos << photo.path }
+      end
+    end
+    photos.reject! { |photo| photo.nil? }
+    photos
+  end
+
   def split_animals(sightings)
     if sightings.any?
       animals = sightings.map do |sighting|

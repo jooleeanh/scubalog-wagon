@@ -18,12 +18,12 @@
       </div> -->
       <div class="col-xs-12 col-md-7">
         <div class="col-xs-12 col-md-3 text-center following-row">
-          <p> <%= @dive.avg_depth.to_i %></p>
+          <p> <%= @dive.avg_depth.to_i %> m</p>
           <h6> Depth </h6>
         </div>
 
         <div class="col-xs-12 col-md-3 text-center following-row">
-          <p><%= @dive.bottom_time %></p>
+          <p><%= @dive.bottom_time %> min</p>
           <h6> Time </h6>
         </div>
 
@@ -48,7 +48,7 @@
         </div>
 
         <div class="col-xs-12 col-md-4 text-center following-row">
-          <p><%= @dive.enjoyment %> </p>
+          <p><%= @dive.enjoyment %>/5</p>
           <h6> Enjoyment </h6>
         </div>
       </div>

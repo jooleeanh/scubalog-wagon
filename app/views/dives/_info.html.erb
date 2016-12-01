@@ -56,7 +56,7 @@
       </div>
     </div>
 
-    <div class="row following-row">
+    <div class="row following-graph">
       <div class="col-xs-12" id="container">
         <%= line_chart [
             {name: "Depth", data: @dive.data_points.pluck(:time, :depth)},

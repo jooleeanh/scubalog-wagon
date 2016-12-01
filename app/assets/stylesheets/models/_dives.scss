@@ -110,6 +110,7 @@
 }
 .dive-box {
   width: 80%;
+  margin-top: 5%;
 }
 
 .first-row {
@@ -126,10 +127,12 @@
   color: #353942;
 }
 
+.following-graph {
+  margin: 5%;
+}
 
 .following-row {
   padding: 30px;
-  // border: solid 1px #353942;
 }
 
 .following-row p {
@@ -154,4 +157,13 @@
   width: 100%;
 }
 .dive-icon {
+}
+
+.head-link {
+  color: white;
+}
+
+.head-link:hover {
+  color: #C7C7C7;
+  text-decoration: none;
 }

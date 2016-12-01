@@ -1,20 +1,48 @@
-<% if params[:search_input] == nil %>
-  <h1 class='text-center title-divesite'>All the spots</h1>
-<% else %>
-  <h1 class='text-center title-divesite'>Spots around <%= (params[:search_input]).capitalize %></h1>
-<% end %>
+<div class="profil-header">
+  <h2 class="text-center" style="padding-bottom: 10px"><strong>Dive Spots</strong></u></h2>
+</div>
 
-<div id="map" style="width: 100%; height: 400px;"></div>
+<div class="dashboard-header">
+  <%= image_tag ('diver_icon.png'), width: '30px'%>
+    <% if params[:search_input] == nil %>
+      <h3>  All the spots</h3>
+    <% else %>
+      <h3>Spots around <%= (params[:search_input]).capitalize %></h3>
+  <% end %>
+</div>
 
+<div id="map" style="width: 100%; height: 400px; margin-top:0;"></div>
+  <div class="dashboard-header">
+    <% event_number = @divesites.map { |divesite| divesite.events.count }.reduce(:+) %>
+      <% if  params[:search_input] != nil %>
+        <i class="fa fa-search" style="font-size:28px;"></i>
+        <h3><%= pluralize(@divesites.size, "spot") %> found and
+        <%= pluralize(event_number, "event") %></h3>
+    <% else %>
+      <i class="fa fa-search" style="font-size:28px;"></i>
+        <h3><%= pluralize(Divesite.count, "spot") %> and
+        <%= pluralize(event_number, "event") %> listed</h3>
+    <% end %>
+  </div>
 <div class="container-fluid">
   <div class="row">
     <div class="divesites-tabs">
-      <a data-toggle="tab" class="col-sm-2 col-sm-offset-4 text-center" href="#divesites">
-        <h2>Spots</h2>
-      </a>
-      <a data-toggle="tab" class="col-sm-2 text-center" href="#events">
-        <h2>Events</h2>
-      </a>
+      <div class="text-center">
+      <div class="btn btn-banner-sidebar no-border">
+        <a data-toggle="tab" class="col-sm-2 col-sm-offset-4 text-center" href="#divesites">
+        <div class="tab-effect-divesite">
+          <h2>Spots</h2>
+        </div>
+        </a>
+      </div>
+      <div class="btn btn-banner-sidebar no-border">
+        <a data-toggle="tab" class="col-sm-2 text-center" href="#events">
+        <div class="tab-effect-divesite">
+          <h2>Events</h2>
+        </div>
+        </a>
+      </div>
+      </div>
     </div>
   </div>
 </div>
@@ -22,11 +50,6 @@
 <div class="container-fluid">
   <div class="tab-content divesites-index">
     <div class="tab-pane active" id="divesites">
-        <% if  params[:search_input] != nil%>
-          <h2 class="divesite-header text-center">
-            <%= pluralize(@divesites.size, "divesite") %> found!
-          </h2>
-        <% end %>
       <% unless @divesites.any? %>
         <div class='text-center'> <strong> No spots around...</strong></div>
         <div class='text-center'><%= link_to "Page d'accueil", root_path %>
@@ -38,12 +61,14 @@
         <% end %>
       </div>
     </div>
-    <div class="divesites-index" id="events">
+    <div class="tab-pane" id="events">
+    <div class="divesites-index">
       <% @divesites.each do |divesite| %>
         <% divesite.events.each do |event| %>
           <%= render 'events/events_cards', event: event %>
         <% end %>
       <% end %>
+      </div>
     </div>
   </div>
 </div>

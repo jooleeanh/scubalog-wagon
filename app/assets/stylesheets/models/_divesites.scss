@@ -118,7 +118,7 @@ div.bordure {
 
 .text-divesite-index {
   text-align: center;
-  width: 315px;
+  width: 350px;
 }
 
 .col-sm-2 .col-sm-offset-4 .text-center .btn .btn-banner-sidebar h2 {
@@ -140,6 +140,7 @@ div.bordure {
 .event-card-index {
   background-color: #353942;
   color: rgb(190,190,190);
+  border-radius: 5px;
 }
 
 .event-card-index a {
@@ -149,8 +150,6 @@ div.bordure {
 }
 
 .event-card-index a:hover{
-  background-color: #6c6c6c;
-  color: rgb(190,190,190);
   text-decoration: none;
 }
 
@@ -160,13 +159,25 @@ div.bordure {
 
 .divesites-tabs {
   text-decoration: none;
-  color: #6c6c6c;
+  color: #353942;
+}
+
+.divesites-tabs:hover {
 }
 
 .divesites-tabs a {
   text-decoration: none;
-  color: #6c6c6c;
+  color: #353942;
 }
 
+.no-border {
+  border: 0;
+}
 
+.no-border:active {
+}
+
+.tab-effect-divesite:hover {
+  background: red;
+}
 

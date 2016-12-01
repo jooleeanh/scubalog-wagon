@@ -22,7 +22,7 @@ module UsersHelper
 
   def compute_total_divetime(user)
     total = 0
-    user.dives.each { |dive| total += dive.bottom_time }
+    user.dives.each { |dive| total += dive.bottom_time.to_i }
     if total > (60 * 24)
       pluralize((total.fdiv(60 * 24)).round(1), "day")
     elsif total > 60
@@ -33,11 +33,11 @@ module UsersHelper
   end
 
   def compute_longest_dive(user)
-    user.dives.order(bottom_time: :DESC).first.bottom_time
+    user.dives.order(bottom_time: :DESC).first.bottom_time.to_i
   end
 
   def compute_deepest_dive(user)
-    user.dives.order(max_depth: :DESC).first.max_depth.round
+    user.dives.order(max_depth: :DESC).first.max_depth.to_i.round
   end
 
   def compute_sightings(user)

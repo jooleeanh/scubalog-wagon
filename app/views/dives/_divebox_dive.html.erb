@@ -2,12 +2,12 @@
   <div class="dive-info">
     <div class="row divebox-row">
       <div class="dashboard-dive-info-box">
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-4 dive-card-box">
           <div class="container-fluid single-dive-container-cover">
             <div class="container-fluid" id='single-dive-stats-container'>
               <div class="row">
                 <div class="col-md-12" id='graph-container'>
-                  <div class="average-stats-details">
+                  <div class="average-dive-stats-details">
                     <div class="box-stats">
                       <div class="head-box">
                         <p class="text-center">Dive Type</p>
@@ -33,7 +33,7 @@
 
                     <div class="full-box">
                       <div class="full-box-icons">
-                        <h3> <%=  dive.visibility%> m </h3>
+                        <h3> <%= dive.visibility%> m </h3>
                         <p> Visibility</p>
                       </div>
                       <div class="full-box-icons">

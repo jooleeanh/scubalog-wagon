@@ -58,12 +58,18 @@
   color: white;
 }
 .dive-comments {
-  padding: 20px 0;
+  padding-left:10%;
+  margin-bottom: 10%;
 }
 .dive-title {
   padding: 0 5%;
 }
-.dive-sightings {}
+.dive-sightings {
+  padding-right: 10%;
+  padding-bottom: 10%;
+  margin-bottom: 10%;
+  border-right: solid 1px black;
+}
 .dive-info {
   margin-top: 50px;
   margin-bottom: 50px;
@@ -77,13 +83,14 @@
 .dashboard-dive-info-box {
   height: 100%;
   width: 100%;
-  padding: 20px 5%;
-
+  padding: 60px 5%;
   background-color: white;
-  div[class^="col"] {
-    height: 100%;
-  }
+  height: 100%;
   // height: 550px;
+}
+
+#map {
+  border: solid 2px #D0D8D9;
 }
 
 .divebox-row {
@@ -91,6 +98,7 @@
 }
 
 .dive-graph {
+  padding-top : 100px;
   height: 100%;
   width: 100%;
   display: flex;
@@ -132,4 +140,9 @@
   // border-bottom: solid 1px #BABABA;
   // border-top: solid 1px #BABABA;
   color: white;
+}
+
+.dive-title {
+  border-top: solid 1px #D0D8D9;
+  border-bottom: solid 1px #D0D8D9;
 }

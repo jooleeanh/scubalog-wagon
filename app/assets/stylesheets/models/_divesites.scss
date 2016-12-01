@@ -25,21 +25,37 @@
   margin-bottom: 6%;
 }
 
+.divesite-show-container {
+  margin-top: 5%;
+}
+
 .divesite-info {
+  border: solid 2px #EFEFEF;
   margin-bottom: 6%;
-  background-color: rgba(245, 245, 245, 0.5);
+  background-color: #001013;
   padding: 2px;
-  padding-top: 20px;
+  padding-top: 12px;
+  margin-left: 5%;
   border-radius: 5px;
+  color: #D2D2D2;
+  width: 90%
+}
+
+.divesite-info h4 {
+  font-size: 32px;
 }
 
 .divesite-info-header {
-  margin-top: 8%;
   margin-bottom: 3%;
+  padding-left: 3%;
 }
 
 .divesite-info p{
  padding-left: 7%;
+}
+
+.divesite-info-message {
+ padding-left: 60%;
 }
 
 .divesite-info h2{
@@ -63,9 +79,126 @@
   padding-left: 3%;
 }
 
-.divesite-reviews-list {
-  margin: 30px 0;
+.sightings-header {
+  min-height: 50px;
+  min-width: 100%;
+  background-color: #d0d8d9;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #BABABA;
+  border-top: solid 1px #BABABA;
 }
+
+.sightings-header h3 {
+  margin-bottom: 20px;
+  margin-left: 1%;
+  font-weight: 600;
+  color: #353942;
+}
+
+.sightings-header i {
+  margin-left: 4%;
+}
+
+.divesite-header {
+  min-height: 50px;
+  min-width: 100%;
+  background-color: #d0d8d9;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #BABABA;
+  border-top: solid 1px #BABABA;
+}
+
+.divesite-header h3 {
+  margin-bottom: 20px;
+  margin-left: 1%;
+  font-weight: 600;
+  color: #353942;
+}
+
+.divesite-header i {
+  margin-left: 4%;
+}
+
+.divesite-reviews-header {
+  min-height: 50px;
+  min-width: 100%;
+  background-color: #d0d8d9;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #BABABA;
+  border-top: solid 1px #BABABA;
+}
+
+.divesite-reviews-header h3 {
+  margin-bottom: 20px;
+  margin-left: 1%;
+  font-weight: 600;
+  color: #353942;
+}
+
+.divesite-reviews-header i {
+  margin-left: 4%;
+}
+
+.divesite-reviews-list {
+  width: 59%;
+  border: solid 2px white;
+  margin: 30px 0;
+  margin-left: 4%;
+  background-color: #001013;
+}
+
+.divesite-breadcrumb {
+  margin-bottom: 0px;
+}
+
+.sightings-container {
+  border: solid 3px #EFEFEF;
+  width: 59%;
+  background-color: #001013;
+  border-radius: 5px;
+  margin-left: 4%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.sightings-container h2{
+  color: white;
+  margin-top: 0%;
+  font-size: 28px;
+}
+
+.sightings-container hr {
+  height: 1px;
+  color: white;
+  background-color: white;
+  border: none
+}
+
+.animal-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.animal-box img {
+  border-radius: 5px;
+  border: solid 2px #B3B3B3;
+}
+
+.reviews-container {
+  padding-top: 5%;
+  padding-bottom: 3%;
+  width: 60%;
+}
+
+.reviews-container .panel-heading{
+  background-color: #D0D8D9;
+}
+
 
 #tabs-container {
   display: flex;
@@ -170,6 +303,13 @@ div.bordure {
   color: #353942;
 }
 
+.sighting-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .no-border {
   border: 0;
 }
@@ -180,4 +320,3 @@ div.bordure {
 .tab-effect-divesite:hover {
   background: red;
 }
-

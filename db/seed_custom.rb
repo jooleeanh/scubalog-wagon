@@ -47,7 +47,7 @@ class SeedCustom
 
   def divesites
     [
-      ["Jemeluk", "Jemeluk, Thailand"],
+      ["Bali", "Bali, Thailand"],
       ["Cathedral Rock", "Cathedral Rocks, Cape Ann, MA"],
       ["Old Garden Beach", "Old Garden Beach, Cape Ann, MA"],
       ["Blue Heron Bridge", "Blue Heron Bridge, Florida"],

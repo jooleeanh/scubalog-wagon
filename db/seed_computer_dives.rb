@@ -9,14 +9,22 @@ class SeedComputerDives < BasicSeed
   end
 
   def seed_computer_dives
-    custom_users = User.where.not(facebook_picture_url: nil)
+    custom_users = []
+    # seed = SeedCustom.new
+    # seed.create_divesites
+    users = User.where.not(facebook_picture_url: nil)
+    custom_users << users.find_by(last_name: "Bataille")
+    custom_users << users.find_by(last_name: "Honma")
+    custom_users.reject! { |u| u.nil? }
     if custom_users.count < 1
       puts "No custom users".light_red
     else
       dive_count = 0
       freedive_files = 0
       count = 0
-      limit = custom_users.count * 12
+      limit = 14
+      dives = SeedCustom.new.dives
+      photos = SeedCustom.new.photos
       catch :reach_limit do
         Dir.glob((@filedir + "*.sml")) do |file|
           throw :reach_limit if count > limit
@@ -29,7 +37,8 @@ class SeedComputerDives < BasicSeed
             device = SuuntoDevice.new(document)
             data = SuuntoScuba.new(document, device).parse
             f_data = reformat_computer_data(data)
-            dive = create_dive(f_data, custom_users.sample)
+            dive = create_dive(f_data, dives[count], custom_users.sample)
+            dive.photo_urls = photos[count]
             if dive.save
               dive_count += 1
             end
@@ -63,11 +72,15 @@ class SeedComputerDives < BasicSeed
         puts dp.errors.full_messages
       end
     end
-    print "#{dive.user.first_name}".light_yellow
-    print " - "
-    print "Dive #{dive.id}".blue
-    print " was created with ".light_green
-    puts "#{samples.count} data points".blue
+    if dive.save
+      print "#{dive.user.first_name}".light_yellow
+      print " - "
+      print "Dive #{dive.id}".blue
+      print " was created with ".light_green
+      puts "#{samples.count} data points".blue
+    else
+      puts "Error in creating dive (create data point end)"
+    end
   end
 
   def create_noko_xml(filepath)
@@ -132,25 +145,24 @@ class SeedComputerDives < BasicSeed
     array
   end
 
-  def create_dive(f_data, user)
+  def create_dive(f_data, dive, user)
     dive = Dive.new(
     datetime: f_data[:datetime],
-    types: f_data[:types],
-    tank_size: 80,
+    types: dive[:types],
+    tank_size: dive[:tank_size],
     bottom_time: f_data[:bottom_time],
-    start_air: f_data[:start_air],
-    end_air: f_data[:end_air],
+    start_air: f_data[:start_air] || dive[:start_air],
+    end_air: f_data[:end_air] || dive[:end_air],
     max_depth: f_data[:max_depth],
     avg_depth: f_data[:avg_depth],
     min_temp: f_data[:min_temp],
     max_temp: f_data[:max_temp],
-    comments: nil,
-    enjoyment: rand(1...5),
-    visibility: rand(2...6)*5,
-    polygon: nil,
+    comments: dive[:comments],
+    enjoyment: dive[:enjoyment],
+    visibility: dive[:visibility],
+    divesite: dive[:divesite]
+    # polygon: nil,
     )
-    offset = rand(Divesite.count)
-    dive.divesite = Divesite.offset(offset).first
     dive.user = user
     dive
   end

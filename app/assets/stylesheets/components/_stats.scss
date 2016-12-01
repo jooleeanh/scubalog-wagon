@@ -27,6 +27,7 @@
   height: 100%;
   width: 100%;
   margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 #stats-container .row {
@@ -46,7 +47,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 500px;
+  height: 100%;
 }
 
 .average-dive-stats-details {
@@ -54,6 +55,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 70%;
 }
 
 .chart-graph {
@@ -109,7 +111,7 @@
   align-items: center;
   border-top: solid 1px #d8f5e3;
   border-bottom: solid 1px #d8f5e3;
-  padding: 5% 0;
+  padding: 20px 0;
 }
 
 .full-box-details {

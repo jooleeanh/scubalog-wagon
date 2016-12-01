@@ -61,7 +61,7 @@ $sidebar_width: 250px;
     text-decoration: none;
   }
   a:hover {
-    color: #6c6c6c;
+    color: #1F74BA;
   }
 }
 
@@ -75,7 +75,8 @@ $sidebar_width: 250px;
     text-decoration: none;
   }
   a:hover {
-    color: #6c6c6c;
+    color: #1F74BA;
+    border-color: #1F74BA;
   }
 }
 .sidebar-group-user {
@@ -132,10 +133,10 @@ $sidebar_width: 250px;
   font-weight: bold;
 }
 
-.btn-banner-sidebar:hover {
-  border-color: #6c6c6c;
-
+.btn-banner-sidebar :hover {
+  border-color: #1F74BA;
 }
+
 
 .sibebar hr{
    color: rgb(199, 199, 199);

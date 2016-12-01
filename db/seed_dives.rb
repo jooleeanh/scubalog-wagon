@@ -1,7 +1,7 @@
 class SeedDives < BasicSeed
 
   def seed_dives
-    User.all.each do |user|
+    User.where(facebook_picture_url: nil).each do |user|
       rand(5...20).times do
         dive = user.dives.new(basic_dive)
         if dive.save

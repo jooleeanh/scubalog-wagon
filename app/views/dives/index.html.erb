@@ -4,24 +4,25 @@
 <div class="container-fluid">
   <div class="dive-index-list">
     <% @dives.each do |dive| %>
-      <%= link_to dive do %>
-        <div class="product">
-          <%= image_tag "cenote.jpg", class: "product-image hidden-xs" %>
-          <div class='product-body'>
-            <ol class="dive-title list-inline">
-              <li><h3><%= date_short(dive.datetime) %></h3></li>
-              <li><h4><%= dive.divesite.name %></h4></li>
-            </ol>
-            <%= render 'dives/features', dive: dive %>
-          </div>
+    <%= link_to dive do %>
+    <div class="product">
+      <% url = cloudinary_url(dive&.photos&.first&.path) || "" %>
+      <%= image_tag(url, :height => 131, :width => 175, :crop => "fill") %>
+        <div class='product-body'>
+          <ol class="dive-title list-inline">
+            <li><h3><%= date_short(dive.datetime) %></h3></li>
+            <li><h4><%= dive.divesite.name %></h4></li>
+          </ol>
+          <%= render 'dives/features', dive: dive %>
         </div>
+      </div>
       <% end %>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<% content_for(:after_js) do %>
+  <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-    <%= render 'shared/map.js.erb' %>
+  <%= render 'shared/map.js.erb' %>
   <% end %>
-<% end %>
+  <% end %>

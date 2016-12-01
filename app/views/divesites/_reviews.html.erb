@@ -4,6 +4,16 @@
 </div>
 <div class="divesite-reviews-list">
   <div class="container-fluid reviews-container">
+    <% total = 0 %>
+    <% @divesite.dives.each do |dive|%>
+      <% total += dive.review_rating %>
+    <% end %>
+    <% avg = total / @divesite.dives.length %>
+    <p class='text-center'>Average rating: <% avg.times do  %>
+    <i class="fa fa-star fa-lg" aria-hidden="true"></i>
+    <% end %>
+    </p>
+  <hr>
     <% if @reviews.any? %>
       <% @reviews.each do |review| %>
       <div class="panel panel-default">
@@ -11,7 +21,7 @@
           <h3 class="panel-title">
             <% unless review[:rating] == nil %>
               <% review[:rating].times do %>
-                <i class="fa fa-star fa-lg" aria-hidden="true"></i>
+
               <% end %>
               <% (5 - review[:rating]).times do %>
                 <i class="fa fa-star-o fa-lg" aria-hidden="true"></i>
@@ -32,5 +42,6 @@
     <% else %>
     <p>No reviews yet</p>
     <% end %>
-</div>
+    <hr>
+  </div>
 </div>

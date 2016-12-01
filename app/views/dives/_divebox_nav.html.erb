@@ -1,7 +1,7 @@
 <div class="dive-navigation-box">
   <% dives.each do |dive| %>
     <div class="dive-navigation-item">
-      <%= link_to dive, remote: true do %>
+      <%= link_to dive, remote: true, class: "dive-card-link" do %>
         <div class="card dive-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "waves.jpg" %>');">
           <div class="card-category">
             <%= time_ago_in_words(dive.datetime) %>

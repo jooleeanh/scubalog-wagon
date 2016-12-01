@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    build_markers(@user.dives)
   end
 
   def destroy
@@ -14,5 +15,12 @@ class UsersController < ApplicationController
 
 private
 
+  def build_markers(dives)
+    @hash = Gmaps4rails.build_markers(dives) do |dive, marker|
+      marker.lat dive.divesite.latitude
+      marker.lng dive.divesite.longitude
+      marker.infowindow render_to_string(partial: "/dives/map_box", locals: { dive: dive })
+    end
+  end
 
 end

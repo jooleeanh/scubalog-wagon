@@ -110,6 +110,7 @@
 }
 .dive-box {
   width: 80%;
+  margin-top: 5%;
 }
 
 .first-row {
@@ -117,28 +118,31 @@
 }
 
 .first-row p {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
-  color: #367A94;
+  color: #353942;
 }
 
 .first-row h6 {
-  color: #367A94;
+  color: #353942;
 }
 
+.following-graph {
+  margin: 5%;
+}
 
 .following-row {
-  margin-top: 2%;
+  padding: 30px;
 }
 
 .following-row p {
   font-size: 28px;
   font-weight: bold;
-  color: #367A94;
+  color: #353942;
 }
 
 .following-row h6 {
-  color: #367A94;
+  color: #353942;
 }
 
 .dive-chart {
@@ -153,4 +157,13 @@
   width: 100%;
 }
 .dive-icon {
+}
+
+.head-link {
+  color: white;
+}
+
+.head-link:hover {
+  color: #C7C7C7;
+  text-decoration: none;
 }

@@ -1,7 +1,9 @@
 <div class="dive-show-info">
     <div class="row">
-      <div class="col-xs-12 col-md-8 dive-chart">
-        <%= area_chart @dive.data_points.pluck(:time, :depth) %>
+      <div class="col-xs-12 col-md-5 dive-chart">
+        <div class="dive-index-map">
+          <div id="map" style="width: 100%; height: 300px;"></div>
+        </div>
       </div>
       <!-- <div class="col-xs-12 col-md-4">
         <dl class="dl-horizontal">
@@ -14,49 +16,53 @@
           <% end %>
         </dl>
       </div> -->
-      <div class="col-xs-12 col-md-3 text-center first-row">
-      <h6> Depth </h6>
-      <p> 14 m</p>
+      <div class="col-xs-12 col-md-7">
+        <div class="col-xs-12 col-md-3 text-center following-row">
+          <p> <%= @dive.avg_depth.to_i %> m</p>
+          <h6> Depth </h6>
+        </div>
+
+        <div class="col-xs-12 col-md-3 text-center following-row">
+          <p><%= @dive.bottom_time %> min</p>
+          <h6> Time </h6>
+        </div>
+
+        <div class="col-xs-12 col-md-3 text-center following-row">
+          <p><%= @dive.types %></p>
+          <h6> Type </h6>
+        </div>
+
+        <div class="col-xs-12 col-md-3 text-center following-row">
+          <p><%= @dive.min_temp.to_i %> °C</p>
+          <h6> Temp </h6>
+        </div>
+
+        <div class="col-xs-12 col-md-4 text-center following-row">
+          <p><%= @dive.start_air %> bar</p>
+          <h6> Start air </h6>
+        </div>
+
+        <div class="col-xs-12 col-md-4 text-center following-row">
+          <p><%= @dive.end_air %> bar</p>
+          <h6> End air </h6>
+        </div>
+
+        <div class="col-xs-12 col-md-4 text-center following-row">
+          <p><%= @dive.enjoyment %>/5</p>
+          <h6> Enjoyment </h6>
+        </div>
       </div>
-      <div class="col-xs-12 col-md-3 text-center first-row">
-        <h6> Time </h6>
-        <p> 2 h</p>
+
       </div>
     </div>
 
-<hr>
-    <div class="row">
-
-      <div class="col-xs-12 col-md-3 text-center following-row">
-      <h6> Type </h6>
-      <p> Shark </p>
-      </div>
-      <div class="col-xs-12 col-md-3 text-center following-row">
-      <h6> Temp. </h6>
-      <p> 15°c</p>
-
-      </div>
-      <div class="col-xs-12 col-md-3 text-center following-row">
-      <h6> Start air </h6>
-      <p> 200 bar</p>
-      </div>
-      <div class="col-xs-12 col-md-3 text-center following-row">
-      <h6> End air </h6>
-      <p> 100 bar</p>
-      </div>
-    </div>
-<hr>
-    <div class="row">
-
-      <div class="col-xs-12 col-md-12 text-center following-row">
-      <h6> Enjoyment </h6>
-      <p> 5/5 </p>
-      <div class="col-xs-12 col-md-8" id="container">
+    <div class="row following-graph">
+      <div class="col-xs-12" id="container">
         <%= line_chart [
-        {name: "Time", data: @dive.data_points.pluck(:time, :depth)},
-        {name: "Air Consumption", data: @dive.data_points.pluck(:time, :air)},
-        {name: "Temperature", data: @dive.data_points.pluck(:time, :temp)}], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true %>
+            {name: "Depth", data: @dive.data_points.pluck(:time, :depth)},
+            {name: "Air Consumption", data: @dive.data_points.pluck(:time, :air), visible: false},
+            {name: "Temperature", data: @dive.data_points.pluck(:time, :temp), visible: false}
+            ], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true %>
       </div>
-
     </div>
 </div>

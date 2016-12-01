@@ -1,0 +1,19 @@
+<% if @dive.photos? %>
+  <%= dive.photos.each do |photo|%>
+    <a href="big/image.jpg" class="swipebox" title="My Caption">
+      <img src="small/image.jpg" alt="image">
+    </a>
+  <% end %>
+<% end %>
+
+
+<%= content_for :after_js do %>
+
+  <script type="text/javascript">
+  ;( function( $ ) {
+
+    $( '.swipebox' ).swipebox();
+
+  } )( jQuery );
+  </script>
+<% end %>

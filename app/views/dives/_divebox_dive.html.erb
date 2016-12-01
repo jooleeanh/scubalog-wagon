@@ -71,27 +71,4 @@
       </div>
     </div>
   </div>
-  <div class="dive-sightings">
-    <h2 class="text-center">Sightings</h2>
-    <% if dive.sightings.blank? %>
-    <h3>No sightings on this dive</h3>
-    <% else %>
-    <div class="row">
-      <% dive.sightings.each do |sighting| %>
-      <div class="col-xs-6 col-md-3">
-        <p class="text-center"><%= sighting.animal.name %></p>
-        <%=  image_tag(asset_path(sighting.animal.image_url), class: "img-responsive")%>
-      </div>
-      <% end %>
-    </div>
-    <% end %>
-  </div>
-  <div class="dive-comments">
-    <h2 class="text-center">Comments</h2>
-    <% if dive.comments.blank? %>
-    <h5 class="text-center">No comments</h5>
-    <% else %>
-    <h5><%= dive.comments %></h5>
-    <% end %>
-  </div>
 </div>

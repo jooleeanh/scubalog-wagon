@@ -79,7 +79,11 @@
   padding-top: 8px;
 }
 
-#events_list h2, h3, h4, h5, h6, p {
+#event_list h2, h3, h4, h5, h6 {
+  font-size: 18px;
+}
+
+#events_list h2, h3, h4, h5, h6 {
   font-size: 18px;
 }
 
@@ -95,13 +99,13 @@
 
 .join-event-button{
   margin-top: 3%;
-  margin-bottom: 3%;
-  width: 20%;
+  margin-bottom: 6%;
+  width: 30%;
 }
 
 .cancel-event-button{
   margin-top: 3%;
-  margin-bottom: 3%;
+  margin-bottom: 6%;
   width: 30%;
 }
 

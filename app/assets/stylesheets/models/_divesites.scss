@@ -140,6 +140,7 @@ div.bordure {
 .event-card-index {
   background-color: #353942;
   color: rgb(190,190,190);
+  border-radius: 5px;
 }
 
 .event-card-index a {
@@ -149,8 +150,6 @@ div.bordure {
 }
 
 .event-card-index a:hover{
-  background-color: #6c6c6c;
-  color: rgb(190,190,190);
   text-decoration: none;
 }
 
@@ -173,6 +172,9 @@ div.bordure {
 
 .no-border {
   border: 0;
+}
+
+.no-border:active {
 }
 
 .tab-effect-divesite:hover {

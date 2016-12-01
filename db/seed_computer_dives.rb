@@ -10,8 +10,8 @@ class SeedComputerDives < BasicSeed
 
   def seed_computer_dives
     custom_users = []
-    # seed = SeedCustom.new
-    # seed.create_divesites
+    seed = SeedCustom.new
+    seed.create_divesites
     users = User.where.not(facebook_picture_url: nil)
     custom_users << users.find_by(last_name: "Bataille")
     custom_users << users.find_by(last_name: "Honma")

@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-fileupload/basic
+//= require swipebox
 //= require chartkick
 //= require cloudinary/jquery.cloudinary
 //= require attachinary

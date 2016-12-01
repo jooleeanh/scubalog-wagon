@@ -19,29 +19,29 @@ class SeedCustom
     dives.each_with_index do |dive, i|
       new_dive = user.dives.new(dive)
       if new_dive.save!
-        new_dive.photo_urls = photos[i][:photo_urls]
-        puts "Dive created: #{dive.datetime}"
+        new_dive.photo_urls = photos[i]
+        puts "Dive created"
       end
     end
   end
 
   def photos
     [
-      [divesite_name: "Jemeluk", photo_urls: ["dive-photos/bali-dive-1.jpg", "dive-photos/bali-dive-2.jpg", "dive-photos/bali-dive-3.jpg", "dive-photos/bali-dive-4.jpg"]],
-      [divesite_name: "Cathedral Rock", photo_urls: ["dive-photos/bos-dive-1.jpg", "dive-photos/bos-dive-2.jpg", "dive-photos/bos-dive-3.jpg"]],
-      [divesite_name: "Old Garden Beach", photo_urls: ["dive-photos/boston-dive-1.jpg", "dive-photos/boston-dive-2.jpg", "dive-photos/boston-dive-3.jpg", "dive-photos/boston-dive-4.jpg"]],
-      [divesite_name: "Blue Heron Bridge", photo_urls: ["dive-photos/flo-dive-1.jpg", "dive-photos/flo-dive-2.jpg", "dive-photos/flo-dive-3.jpg", "dive-photos/flo-dive-4.jpg"]],
-      [divesite_name: "Turtle Heaven", photo_urls: ["dive-photos/gili-dive-1.jpg", "dive-photos/gili-dive-3.jpg", "dive-photos/gili-dive-4.jpg"]],
-      [divesite_name: "Blue Dome", photo_urls: ["dive-photos/greece-dive-1.jpg", "dive-photos/greece-dive-2.jpg", "dive-photos/greece-dive-3.jpg", "dive-photos/greece-dive-4.jpg"]],
-      [divesite_name: "Hin Muang", photo_urls: ["dive-photos/lanta-dive-1.jpg", "dive-photos/lanta-dive-3.jpg", "dive-photos/lanta-dive-4.jpg"]],
-      [divesite_name: "Cenote Minotauro", photo_urls: ["dive-photos/mexico-dive-1.jpg", "dive-photos/mexico-dive-2.jpg", "dive-photos/mexico-dive-3.jpg"]],
-      [divesite_name: "Cenote Dreamgate", photo_urls: ["dive-photos/mexico-sav-dive-1.jpg", "dive-photos/mexico-sav-dive-2.jpg", "dive-photos/mexico-sav-dive-3.jpg", "dive-photos/mexico-sav-dive-4.jpg"]],
-      [divesite_name: "Canoe Beach", photo_urls: ["dive-photos/nahant-dive-1.jpg", "dive-photos/nahant-dive-2.jpg", "dive-photos/nahant-dive-3.jpg"]],
-      [divesite_name: "Stingray City", photo_urls: ["dive-photos/ray-dive-1.jpg", "dive-photos/ray-dive-2.jpg", "dive-photos/ray-dive-3.jpg"]],
-      [divesite_name: "Isle of Shoals", photo_urls: ["dive-photos/seal-dive-1.jpg", "dive-photos/seal-dive-3.jpg", "dive-photos/seal-dive-5.jpg"]],
-      [divesite_name: "Jupiter", photo_urls: ["dive-photos/shark-dive-1.jpg", "dive-photos/shark-dive-2.jpg", "dive-photos/shark-dive-3.jpg"]],
-      [divesite_name: "Isla Mujeres", photo_urls: ["dive-photos/whale-shark-dive-1.jpg", "dive-photos/whale-shark-dive-2.jpg", "dive-photos/whale-shark-dive-3.jpg"]],
-      [divesite_name: "Kittiwake", photo_urls: ["dive-photos/wreck-dive-1.jpg", "dive-photos/wreck-dive-2.jpg"]],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/bali-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/bali-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/bali-dive-3.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/bali-dive-4.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/bos-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/bos-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/bos-dive-3.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/boston-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/boston-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/boston-dive-3.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/boston-dive-4.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/flo-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/flo-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/flo-dive-3.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/flo-dive-4.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/gili-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/gili-dive-3.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/gili-dive-4.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/greece-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/greece-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/greece-dive-3.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/greece-dive-4.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/lanta-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/lanta-dive-3.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/lanta-dive-4.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/mexico-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/mexico-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/mexico-dive-3.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/mexico-sav-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/mexico-sav-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/mexico-sav-dive-3.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/mexico-sav-dive-4.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/nahant-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/nahant-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/nahant-dive-3.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/ray-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/ray-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/ray-dive-3.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/seal-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/seal-dive-3.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/seal-dive-5.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/shark-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/shark-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/shark-dive-3.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/whale-shark-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/whale-shark-dive-2.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/whale-shark-dive-3.jpg"],
+      ["http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/wreck-dive-1.jpg", "http://res.cloudinary.com/jooleeanh/image/upload/v1480379642/my-dives/wreck-dive-2.jpg"],
     ]
   end
 

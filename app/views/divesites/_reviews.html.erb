@@ -21,7 +21,7 @@
           <h3 class="panel-title">
             <% unless review[:rating] == nil %>
               <% review[:rating].times do %>
-
+                <i class="fa fa-star fa-lg" aria-hidden="true"></i>
               <% end %>
               <% (5 - review[:rating]).times do %>
                 <i class="fa fa-star-o fa-lg" aria-hidden="true"></i>

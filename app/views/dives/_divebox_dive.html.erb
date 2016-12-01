@@ -1,4 +1,4 @@
-<div>
+<div class="divebox-dive">
   <div class="dive-info">
     <div class="row divebox-row">
       <div class="dashboard-dive-info-box">
@@ -57,8 +57,10 @@
           <%= line_chart [
             {name: "Time", data: dive.data_points.pluck(:time, :depth)},
             {name: "Air Consumption", data: dive.data_points.pluck(:time, :air)},
-            {name: "Temperature", data: dive.data_points.pluck(:time, :temp)}], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true %>
-          </div>
+            {name: "Temperature", data: dive.data_points.pluck(:time, :temp)}
+          ],
+          library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true
+          %>
         </div>
       </div>
     </div>

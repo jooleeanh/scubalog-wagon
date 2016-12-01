@@ -1,6 +1,12 @@
 $(document).ready(function() {
-  $("#divebox_item").html("<%= j render 'dives/divebox_dive', dive: @dive %>");
-
+  $(".dive-card-link").click(function() {
+    $("#divebox_item").fadeOut(400, function() {
+      $("#divebox_item").html("<%= j render 'dives/divebox_dive', dive: @dive %>")
+      $("#divebox_item").fadeIn();
+      // $("#divebox_item").hide();
+      // $("#divebox_item").show();
+    });
+  })
   // $('.show').click(function() {
   //   $('#result').slideDown();
   // });

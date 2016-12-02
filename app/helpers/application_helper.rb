@@ -75,6 +75,12 @@ module ApplicationHelper
         dive.photos.each { |photo| photos << photo.path }
       end
     end
+    photos = photos.map.with_index { |photo, i| photo if ((i % 3) == 0) }
+    photos.reject! { |photo| photo.nil? }
+    photos.reverse!
+    bad_photos = [0,4,10,13]
+    photos = photos.reject.with_index { |photo, i| photo if bad_photos.include?(i) }
+    photos.reject! { |photo| photo.nil? }
     photos.reject! { |photo| photo.nil? }
     photos
   end

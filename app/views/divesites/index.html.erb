@@ -56,8 +56,8 @@
         </div>
       <% end %>
       <div class="divesites">
-        <% @divesites.each do |divesite| %>
-          <%= render 'divesites/divesite_cards', divesite: divesite %>
+        <% @divesites.each_with_index do |divesite, i| %>
+          <%= render 'divesites/divesite_cards', divesite: divesite, index: i %>
         <% end %>
       </div>
     </div>

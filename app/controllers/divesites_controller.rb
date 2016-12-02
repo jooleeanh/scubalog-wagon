@@ -123,6 +123,6 @@ class DivesitesController < ApplicationController
       review[:datetime] = dive.datetime
       review
     end
-    reviews.reject { |review| review[:rating].blank? && review[:content].blank? }
+    reviews.reject { |review| review[:rating].blank? || review[:content].blank? }
   end
 end

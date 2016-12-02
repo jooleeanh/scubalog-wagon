@@ -2,7 +2,7 @@ class SeedSightings < BasicSeed
 
   def seed_sightings
     Dive.all.each do |dive|
-      4.times do
+      2.times do
         animal = Animal.all.sample
         sighting = dive.sightings.new(animal: animal)
         if sighting.save

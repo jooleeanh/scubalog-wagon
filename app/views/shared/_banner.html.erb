@@ -1,7 +1,7 @@
 <div class="banner banner-home">
   <div class="banner-content">
     <h1>Scubalog</h1>
-    <p>Never dive alone</p>
+    <p>Track your dives, find new buddies</p>
     <% if user_signed_in? %>
       <%= link_to "Dive in", current_user, class: "btn btn-banner" %>
     <% else %>
@@ -11,4 +11,3 @@
   <div class="form-login hidden"><%= render 'devise/shared/signinform' %></div>
   <div class="form-signup hidden"><%= render 'devise/shared/signupform' %></div>
 </div>
-

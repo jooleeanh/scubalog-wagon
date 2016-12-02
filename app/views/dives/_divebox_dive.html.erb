@@ -2,7 +2,17 @@
   <div class="dive-title">
     <h2><%= dive.divesite.name %></h2>
     <h3><%= date_long(dive.datetime) %></h3>
-
+    <div class="row following-row">
+      <div class="dive-photo">
+        <% if dive.photos && dive.photos? %>
+          <% dive.photos.each do |photo|%>
+            <%= link_to cloudinary_url(("http://res.cloudinary.com/jooleeanh/image/upload/#{photo.path}"), resource_type: :raw), class: "swipebox" do %>
+              <%= cl_image_tag(photo.path, :width => 300, :height => 200, :crop => :fill) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="dive-info">
     <div class="dashboard-dive-info-box">
@@ -70,3 +80,14 @@
     </div>
   </div>
 </div>
+
+<%= content_for :after_js do %>
+
+<script type="text/javascript">
+;( function( $ ) {
+
+  $( '.swipebox' ).swipebox();
+
+} )( jQuery );
+</script>
+<% end %>

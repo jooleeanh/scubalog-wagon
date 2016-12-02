@@ -17,8 +17,8 @@
         <div class="sub-box" id="sub-box-2"%>
           <h1 class="text-center"><%= compute_total_divetime(@user) %></h1>
           <p class="text-center"> under water </p>
+        </div>
       </div>
-    </div>
 
       <div class="full-box">
         <div class="full-box-icons">
@@ -36,27 +36,27 @@
       </div>
       <div class="full-box">
         <div class="full-box-icons">
-          <p><%= image_tag "shark_icon.png" %></p>
-          <p><%= rand(1...2) %></p>
-          <p>Shark dives</p>
+          <p><%= image_tag "shore_icon.png" %></p>
+          <p>5</p>
+          <p>Shore dives</p>
         </div>
         <div class="full-box-icons">
           <p><%= image_tag "reef_icon.png" %></p>
-          <p><%= rand(2...4) %></p>
+          <p>4</p>
           <p>Reef dives</p>
         </div>
         <div class="full-box-icons">
-          <p><%= image_tag "shore_icon.png" %></p>
-          <p><%= rand(3...5) %></p>
-          <p>Shore dives</p>
-      </div>
+          <p><%= image_tag "shark_icon.png" %></p>
+          <p>2</p>
+          <p>Shark dives</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    <%= render 'shared/map.js.erb' %>
-  <% end %>
+<%= javascript_tag do %>
+<%= render 'shared/map.js.erb' %>
+<% end %>
 <% end %>

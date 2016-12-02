@@ -1,11 +1,8 @@
 <div class="divebox-dive">
   <div class="dive-title">
-    <div class="dive-title-text">
-      <h2><%= dive.divesite.name %></h2>
-      <h3><%= date_long(dive.datetime) %></h3>
-    </div>
-    <div class="dive-title-photos">
-      <div class="row following-row">
+    <h2><%= dive.divesite.name %></h2>
+    <h3><%= date_long(dive.datetime) %></h3>
+    <div class="row following-row">
       <div class="dive-photo">
         <% if dive.photos && dive.photos? %>
           <% dive.photos.each do |photo|%>
@@ -15,7 +12,6 @@
           <% end %>
         <% end %>
       </div>
-    </div>
     </div>
   </div>
   <div class="dive-info">

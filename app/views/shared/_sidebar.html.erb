@@ -1,23 +1,24 @@
+<% unless current_user.blank? -%>
 <div class="sidebar closed" id="sidebar">
   <div class="sidebar-content">
-      <%= link_to root_path, class: "sidebar-scubalog" do %>
-        <h3 class="font-yellowtail sidebar-scubalog">Scubalog</h3>
-      <% end %>
+    <%= link_to root_path, class: "sidebar-scubalog" do %>
+    <h3 class="font-yellowtail sidebar-scubalog">Scubalog</h3>
+    <% end %>
     <a href="#" class="visible-xs menu-handle" id="close-menu">
       <i class="fa fa-arrow-left"></i>
     </a>
 
     <div class="sidebar-group-user">
-        <div class="sidebar-item sidebar-user-avatar">
-          <%= link_to current_user do %>
-           <%= display_avatar_big(current_user, "avatar-big") %>
-          <% end %>
-        </div>
-        <div class="sidebar-item-name sidebar-user-name">
+      <div class="sidebar-item sidebar-user-avatar">
         <%= link_to current_user do %>
-          <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
+        <%= display_avatar_big(current_user, "avatar-big") %>
         <% end %>
-        </div>
+      </div>
+      <div class="sidebar-item-name sidebar-user-name">
+        <%= link_to current_user do %>
+        <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
+        <% end %>
+      </div>
     </div>
     <div class="sidebar-group-actions">
       <div class="sidebar-item sidebar-log-dive">
@@ -53,13 +54,13 @@
       <div class="sidebar-item sidebar-dive-spots">
         <%= link_to "Dive spots", divesites_path, class: "sidebar-link" %>
       </div>
-        <div class="sidebar-item sidebar-dive-spots">
-          <%= link_to "Update Profile", edit_user_registration_path, class: "sidebar-link" %>
-        </div>
-        <div class="sidebar-item sidebar-dive-spots">
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "sidebar-link" %>
-        </div>
-        <div class="sidebar-icons">
+      <div class="sidebar-item sidebar-dive-spots">
+        <%= link_to "Update Profile", edit_user_registration_path, class: "sidebar-link" %>
+      </div>
+      <div class="sidebar-item sidebar-dive-spots">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "sidebar-link" %>
+      </div>
+      <div class="sidebar-icons">
         <% icons = {
           youtube: { fa: 'fa-youtube', url: "#" },
           instagram: { fa: 'fa-instagram', url: "#" },
@@ -67,17 +68,18 @@
           twitter: { fa: 'fa-twitter', url: "#" }
           } %>
           <% icons.each do |k, v| %>
-            <div class="col-xs-<%= 12 / icons.length %>">
-              <%= link_to v[:url], target: "_blank" do %>
-                <i class="footer-icon fa-lg <%= v[:fa] %> fa" aria-hidden="true"></i>
-              <% end %>
-            </div>
+          <div class="col-xs-<%= 12 / icons.length %>">
+            <%= link_to v[:url], target: "_blank" do %>
+            <i class="footer-icon fa-lg <%= v[:fa] %> fa" aria-hidden="true"></i>
+            <% end %>
+          </div>
           <% end %>
         </div>
+      </div>
     </div>
   </div>
-</div>
+  <% end %>
 
-    <%= content_for :script do %>
-      new app.Divesites;
-    <% end %>
+  <%= content_for :script do %>
+  new app.Divesites;
+  <% end %>

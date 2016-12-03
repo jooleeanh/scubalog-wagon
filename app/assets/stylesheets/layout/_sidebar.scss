@@ -102,10 +102,11 @@ $sidebar_width: 250px;
 }
 
 .sidebar-icons {
+  display: flex;
+  justify-content: center;
   position: fixed;
   bottom: 10px;
-  left:0;
-  text-align: center;
+  // text-align: center;
 }
 
 .sidebar-scubalog {

@@ -1,4 +1,5 @@
-<% if dive.user.dives.count > 0 || @user&.dives&.count > 0  || current_user&.dives&.count > 0 %>
+<% if dive || @user %>
+<% unless dive&.user&.dives&.count&.zero? || @user&.dives&.count&.zero? || current_user&.dives&.count&.zero? %>
 <div class="divebox-dive">
   <div class="dive-title">
     <h2><%= dive.divesite.name %></h2>
@@ -90,4 +91,5 @@
     $( '.swipebox' ).swipebox();
   } )( jQuery );
   </script>
+<% end %>
 <% end %>

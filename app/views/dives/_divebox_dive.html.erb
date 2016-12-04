@@ -1,5 +1,5 @@
 <% if dive || @user %>
-<% unless dive&.user&.dives&.count&.zero? || @user&.dives&.count&.zero? || current_user&.dives&.count&.zero? %>
+<% if dive&.user&.dives&.count&.positive? || @user&.dives&.count&.positive? || current_user&.dives&.count&.positive? %>
 <div class="divebox-dive">
   <div class="dive-title">
     <h2><%= dive.divesite.name %></h2>

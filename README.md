@@ -1,8 +1,6 @@
-# Scubalog
----
-Scuba-diving logbook.
-Final project for the LeWagon Bordeaux coding school.
-Visit [Scubalog](http://scubalog.herokuapp.com)
+# [Scubalog](http://scubalog.herokuapp.com)  
+Scuba-diving logbook.  
+Final project for the LeWagon Bordeaux coding school.  
 
 ## Authors
 Created by [jooleeanh][1], [Nicositter88][2], [TSourdille][3] and [flosnoww][4].

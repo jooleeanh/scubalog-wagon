@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Rails app created as part of the final project of the Le Wagon coding bootcamp by Julian Honma, Florian Bataille, Theophie Sourdille and Nicolas Sitter-Nolleau, with special credits to Malone Lopez.

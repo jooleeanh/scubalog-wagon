@@ -1,6 +1,8 @@
 <div class="container-fluid login">
     <div class="text-center">
       <hr>
+      <p><%= link_to "Checkout our user interface", user_path(User.find_by(last_name: "Honma").id), class: "" %></p>
+      <hr>
         <%- if devise_mapping.omniauthable? %>
         <%- resource_class.omniauth_providers.each do |provider| %>
         <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook" do %>

@@ -2,6 +2,7 @@ class DivesController < ApplicationController
   before_action :set_dive, only: [:show, :edit, :update, :destroy]
   before_action :all_divesites, only: [:new, :create, :edit, :update, :destroy]
   before_action :all_animals, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: [:show]
   def index
     @dives = current_user.dives.all.recent
     @dive = @dives.first

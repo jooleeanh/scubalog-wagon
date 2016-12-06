@@ -1,5 +1,6 @@
-# [Scubalog](http://scubalog.herokuapp.com)  
+# Scubalog
 Scuba-diving logbook.  
+[http://scubalog.herokuapp.com](http://scubalog.herokuapp.com)  
 Final project for the LeWagon Bordeaux coding school.  
 
 ## Authors

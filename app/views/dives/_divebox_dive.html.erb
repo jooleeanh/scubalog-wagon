@@ -2,7 +2,7 @@
 <% if dive&.user&.dives&.count&.positive? || @user&.dives&.count&.positive? || current_user&.dives&.count&.positive? %>
 <div class="divebox-dive">
   <div class="dive-title">
-    <h2><%= dive.divesite.name %></h2>
+    <h2><%= dive.divesite.name %> <small><em><%= link_to "More details", dive %></em></small></h2>
     <h3><%= date_long(dive.datetime) %></h3>
     <div class="row following-row">
       <div class="dive-photo">

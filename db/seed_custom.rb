@@ -15,19 +15,19 @@ class SeedCustom
     end
   end
 
-  def create_dives(user, number)
-    dives.first(number).each_with_index do |dive, i|
-      new_dive = user.dives.new(dive)
-      if new_dive.save!
-        begin
-          new_dive.photo_urls = photos[i]
-          puts "Dive created"
-        rescue
-          puts "Failure to connect to Cloudinary"
-        end
-      end
-    end
-  end
+  # def create_dives(user, number)
+  #   dives.first(number).each_with_index do |dive, i|
+  #     new_dive = user.dives.new(dive)
+  #     if new_dive.save!
+  #       begin
+  #         new_dive.photo_urls = photos[i]
+  #         puts "Dive created"
+  #       rescue
+  #         puts "Failure to connect to Cloudinary"
+  #       end
+  #     end
+  #   end
+  # end
 
   def photos
     [

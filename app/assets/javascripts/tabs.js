@@ -1,6 +1,6 @@
 $(function(){
 
-  $(".tab").on("click", function(e){
+  $("body").on("click", ".tab", function(e){
     // Hide content
     var tagBye = $('.tabs .active').data('target');
     $(tagBye).toggleClass('hidden')

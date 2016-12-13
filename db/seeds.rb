@@ -44,9 +44,11 @@ class Seed < BasicSeed
     print "Custom seed?".light_cyan + " > "
     answer = STDIN.gets.chomp
     if answer == "y"
-      seed = SeedCustom.new
-      seed.create_divesites
-      seed.create_dives(seed.julian, 15)
+      custom_users = []
+      users = User.where.not(facebook_picture_url: nil)
+      custom_users << users.find_by(last_name: "Bataille")
+      custom_users << users.find_by(last_name: "Honma")
+      custom_users.reject! { |u| u.nil? }
     end
   end
   def destroy_all_seed
@@ -76,7 +78,7 @@ class Seed < BasicSeed
     dives.seed_dives
 
     computerdives = SeedComputerDives.new
-    computerdives.seed_computer_dives
+    computerdives.seed_computer_dives(User.where.not(facebook_picture_url: nil), 6)
 
     buddies = SeedBuddies.new
     buddies.seed_buddies
@@ -190,7 +192,7 @@ class Seed < BasicSeed
     answer = ask_create("computer dives for custom users")
     if answer == "y"
       seed = SeedComputerDives.new
-      seed.seed_computer_dives
+      seed.seed_computer_dives(User.where.not(facebook_picture_url: nil), 6)
     end
   end
 

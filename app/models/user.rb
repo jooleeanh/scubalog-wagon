@@ -47,7 +47,8 @@ class User < ApplicationRecord
     require_relative '../../db/seed_custom'
     seed = SeedCustom.new
     seed.create_divesites
-    seed.create_dives(User.find(self.id))
+    byebug
+    seed.create_dives(User.find(self.id), 5)
   end
 end
 

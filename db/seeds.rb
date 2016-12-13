@@ -46,7 +46,7 @@ class Seed < BasicSeed
     if answer == "y"
       seed = SeedCustom.new
       seed.create_divesites
-      seed.create_dives(seed.julian)
+      seed.create_dives(seed.julian, 15)
     end
   end
   def destroy_all_seed

@@ -19,8 +19,12 @@ class SeedCustom
     dives.each_with_index do |dive, i|
       new_dive = user.dives.new(dive)
       if new_dive.save!
-        new_dive.photo_urls = photos[i]
-        puts "Dive created"
+        begin
+          new_dive.photo_urls = photos[i]
+          puts "Dive created"
+        rescue
+          puts "Failure to connect to Cloudinary"
+        end
       end
     end
   end
@@ -47,7 +51,7 @@ class SeedCustom
 
   def divesites
     [
-      ["Bali", "Bali, Thailand"],
+      ["Jemeluk", "Bali, Thailand"],
       ["Cathedral Rock", "Cathedral Rocks, Cape Ann, MA"],
       ["Old Garden Beach", "Old Garden Beach, Cape Ann, MA"],
       ["Blue Heron Bridge", "Blue Heron Bridge, Florida"],

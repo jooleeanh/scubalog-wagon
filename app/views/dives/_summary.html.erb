@@ -59,16 +59,18 @@
         <p>
           <% florian = User.find_by(last_name: "Bataille") %>
           <% julian = User.find_by(last_name: "Honma") %>
+          <% if julian.nil? == false %>
           Check out
-          <%= link_to "Julian", user_path(julian.id) %>
-          <% if florian.nil? == false %>
-            and
-            <%= link_to "Florian", user_path(florian.id) %>
-            's profiles
-          <% else %>
-            's profile
-          <% end %>
+            <%= link_to "Julian", user_path(julian.id) %>
+            <% if florian.nil? == false %>
+              and
+              <%= link_to "Florian", user_path(florian.id) %>
+              's profiles
+            <% else %>
+              's profile
+            <% end %>
            to see how your dashboard will look like after a few dives ;)
+         <% end %>
         </p>
       </div>
     <% end %>

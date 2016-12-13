@@ -1,7 +1,7 @@
 
   <div class="divesite-index-card">
     <div class="row margin-row">
-      <div class="col-sm-6">
+      <div class="col-xs-12 col-md-5">
         <div class="text-divesite-index">
           <h2><%= divesite.name %></h2><p>Difficulty: <%= divesite.difficulty %></p>
           <p>
@@ -12,14 +12,14 @@
           </p>
           <p>Max depth: <%= divesite.max_depth %> m</p>
           <%= link_to divesite_path(divesite) do %>
-            <button type="button" class="btn btn-banner-sidebar">View this divesite</button>
+            <button type="button" class="btn btn-banner-sidebar">
+              <span class="button-text">View this divesite</span>
+            </button>
           <% end %>
         </div>
       </div>
-      <div class="col-sm-4">
-      <div class="">
-          <%= cl_image_tag get_ju_flo_photos[index], height: 233, :crop => "fill" %>
-        </div>
+      <div class="col-xs-12 col-md-7">
+        <%= cl_image_tag get_ju_flo_photos[index], height: 233, :crop => "fill" %>
       </div>
     </div>
   </div>

@@ -21,8 +21,10 @@
       </div>
     </div>
     <div class="sidebar-group-actions">
-      <div class="sidebar-item sidebar-log-dive">
-        <%= link_to "Log a dive", new_dive_path, class: "sidebar-link btn btn-banner-sidebar" %>
+      <div class="sidebar-item" style="width: 80%;">
+        <%= link_to new_dive_path, class: "sidebar-link btn btn-banner-sidebar" do %>
+          <span class="button-text">Log a dive</span>
+        <% end %>
       </div>
     </div>
     <hr>

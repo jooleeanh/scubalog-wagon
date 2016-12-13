@@ -128,9 +128,12 @@ $sidebar_width: 250px;
   border-color: rgb(199, 199, 199);
   color: rgb(199, 199, 199);
   background-color: transparent;
-  padding: 10px 40px;
+  width: 90%;
   border-radius: 5px;
   font-weight: bold;
+}
+.btn-text {
+  padding: 10px 0;
 }
 
 .btn-banner-sidebar :hover {

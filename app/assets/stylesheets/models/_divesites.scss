@@ -244,6 +244,12 @@ div.bordure {
   border-bottom: 1px solid black;
 }
 
+.divesite-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
 .divesite-index-card {
 }
 
@@ -253,9 +259,10 @@ div.bordure {
 
 .divesite-index-card img {
   border-radius: 20px;
-  margin: 1%;
-  width: 100%;
-  display: block;
+  margin: 5%;
+  // display: block;
+  // height: 100%;
+  object-fit: cover;
 }
 
 .divesite-index-card button:hover {

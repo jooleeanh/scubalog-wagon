@@ -17,10 +17,10 @@
       <div class="app-sidebar">
       <% unless controller_name == "pages" %>
         <%= render 'shared/sidebar' %>
+        <button class="fa fa-bars fa-3x menu-icon hidden-sm hidden-md hidden-lg" data-toggle="dropdown" id="open-menu"></button>
       <% end %>
       </div>
       <div class="app-content">
-        <button class="fa fa-bars fa-3x menu-icon hidden-sm" data-toggle="dropdown" id="open-menu"></button>
         <%= yield %>
       </div>
     </main>

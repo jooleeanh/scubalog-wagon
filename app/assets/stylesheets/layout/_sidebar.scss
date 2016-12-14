@@ -12,7 +12,7 @@ $sidebar_width: 250px;
 }
 .sidebar-content {
   position: fixed;
-  // position: fixed; // to make sidebar flow with scroll
+  width: 230px;
 }
 .sidebar {
   // position: relative; // to make sidebar flow with scroll
@@ -128,9 +128,12 @@ $sidebar_width: 250px;
   border-color: rgb(199, 199, 199);
   color: rgb(199, 199, 199);
   background-color: transparent;
-  padding: 10px 40px;
+  width: 100%;
   border-radius: 5px;
   font-weight: bold;
+}
+.btn-text {
+  padding: 10px 0;
 }
 
 .btn-banner-sidebar :hover {

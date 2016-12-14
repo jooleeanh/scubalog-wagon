@@ -14,12 +14,13 @@
 </div>
 <div>
   <h2 class="" style="padding-bottom: 20px;">
-    <strong>
-      <%= link_to( @dive.divesite, class: "title-head") do %>
-        At <%= @dive.divesite.name %>,
-        on <%= date_long(@dive.datetime) %>
-      <% end %>
+    <strong class="title-head">
+      At <%= @dive.divesite.name %>,
+      on <%= date_long(@dive.datetime) %>
     </strong>
+    <p style="padding-left: 6%;">
+      <%= link_to("Check out the divesite", @dive.divesite) %>
+    </p>
   </h2>
 
 </div>

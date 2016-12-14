@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     if @user.destroy
       redirect_to root_url, notice: "User deleted."
     end
-
   end
 
 private
@@ -22,5 +21,4 @@ private
       marker.infowindow render_to_string(partial: "/dives/map_box", locals: { dive: dive })
     end
   end
-
 end

@@ -9,7 +9,6 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable,
   :omniauthable, omniauth_providers: [:facebook]
 
-
   has_many :participations, dependent: :destroy
   has_many :equipment_sets, dependent: :destroy
   has_many :dives, dependent: :destroy
@@ -20,6 +19,8 @@ class User < ApplicationRecord
   has_attachment :photo
 
   validates :first_name, :last_name, :location, presence: true
+
+  after_create :seed_template_dives
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
@@ -40,6 +41,10 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  def seed_template_dives
+    self.dives = User.find_by(last_name: "Honma").dives
   end
 end
 

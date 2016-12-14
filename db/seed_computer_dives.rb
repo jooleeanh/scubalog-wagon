@@ -1,6 +1,8 @@
 require_relative 'scrapers/suunto/suunto_device'
 require_relative 'scrapers/suunto/suunto_freediving'
 require_relative 'scrapers/suunto/suunto_scuba'
+require_relative 'basic_seed'
+require_relative 'seed_custom'
 
 class SeedComputerDives < BasicSeed
   def initialize
@@ -8,44 +10,40 @@ class SeedComputerDives < BasicSeed
     @dives_with_dps = []
   end
 
-  def seed_computer_dives
-    custom_users = []
-    seed = SeedCustom.new
-    seed.create_divesites
-    users = User.where.not(facebook_picture_url: nil)
-    custom_users << users.find_by(last_name: "Bataille")
-    custom_users << users.find_by(last_name: "Honma")
-    custom_users.reject! { |u| u.nil? }
+  def seed_computer_dives(custom_users, number_dives)
     if custom_users.count < 1
       puts "No custom users".light_red
     else
       dive_count = 0
       freedive_files = 0
       count = 0
-      limit = 14
-      dives = SeedCustom.new.dives
-      photos = SeedCustom.new.photos
-      catch :reach_limit do
-        Dir.glob((@filedir + "*.sml")) do |file|
-          throw :reach_limit if count > limit
-          document = create_noko_xml(file)
-          if document.root.css('Header DiveMode').text == "Free"
-            freedive_files += 1
-            # device = SuuntoDevice.new(document)
-            # @log_hash = SuuntoFreediving.new(dive, device).parse
-          else
-            device = SuuntoDevice.new(document)
-            data = SuuntoScuba.new(document, device).parse
-            f_data = reformat_computer_data(data)
-            dive = create_dive(f_data, dives[count], custom_users.sample)
-            dive.photo_urls = photos[count]
-            if dive.save
-              dive_count += 1
+      seed = SeedCustom.new
+      seed.create_divesites
+      dives = seed.dives
+      photos = seed.photos
+      custom_users.each do
+        catch :reach_limit do
+          Dir.glob((@filedir + "*.sml")) do |file|
+            throw :reach_limit if count > number_dives
+            document = create_noko_xml(file)
+            if document.root.css('Header DiveMode').text == "Free"
+              freedive_files += 1
+              # device = SuuntoDevice.new(document)
+              # @log_hash = SuuntoFreediving.new(dive, device).parse
+            else
+              device = SuuntoDevice.new(document)
+              data = SuuntoScuba.new(document, device).parse
+              f_data = reformat_computer_data(data)
+              dive = create_dive(f_data, dives[count], custom_users.sample)
+              dive.photo_urls = photos[count]
+              if dive.save
+                dive_count += 1
+              end
+              unless f_data[:samples].count < 5
+                create_data_points(dive, f_data[:samples])
+              end
+              count += 1
             end
-            unless f_data[:samples].count < 5
-              create_data_points(dive, f_data[:samples])
-            end
-            count += 1
           end
         end
       end

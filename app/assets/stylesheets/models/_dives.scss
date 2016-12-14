@@ -76,24 +76,6 @@
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   // background-size: cover !important;
 }
-.login-form {
-  width: 50%;
-  background-color: #F7F7F7;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  border-radius: 5px;
-}
-
-.form-actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-actions.input button{
-  background-color: #5C8A1D;
-}
 
 .dive-new-form {
   color: rgb(230, 230, 230);

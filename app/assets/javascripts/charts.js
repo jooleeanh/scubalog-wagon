@@ -1,7 +1,7 @@
 $(function(){
   $(".chart:first-child").addClass('active');
 
-  $(".chart").on("click", function(e){
+  $("body").on("click", '.chart', function(e){
     // Hide content
     var tagBye = $('.charts .active').data('target');
     $(tagBye).toggleClass('hidden')

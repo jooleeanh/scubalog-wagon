@@ -11,25 +11,27 @@
     <div class="sidebar-group-user">
       <div class="sidebar-item sidebar-user-avatar">
         <%= link_to current_user do %>
-        <%= display_avatar_big(current_user, "avatar-big") %>
+          <%= display_avatar_big(current_user, "avatar-big") %>
         <% end %>
       </div>
       <div class="sidebar-item-name sidebar-user-name">
-        <%= link_to current_user do %>
+        <%= link_to edit_user_registration_path do %>
         <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
         <% end %>
       </div>
     </div>
     <div class="sidebar-group-actions">
-      <div class="sidebar-item sidebar-log-dive">
-        <%= link_to "Log a dive", new_dive_path, class: "sidebar-link btn btn-banner-sidebar" %>
+      <div class="sidebar-item" style="width: 80%;">
+        <%= link_to new_dive_path, class: "sidebar-link btn btn-banner-sidebar" do %>
+          <span class="button-text">Log a dive</span>
+        <% end %>
       </div>
     </div>
     <hr>
     <div class="sidebar-item sidebar-logo">
       <div class="sidebar-item sidebar-search">
         <form action="/divesites" class="divesites-search navbar-wagon-search">
-          <input type="text" class="navbar-wagon-search-input" placeholder="Look for a spot" name="search_input" id="divesites-search-txt">
+          <input type="text" class="navbar-wagon-search-input" placeholder="  Look for a spot" name="search_input" id="divesites-search-txt">
           <button type="submit" class="results navbar-wagon-search-btn" id="divesites-search-results">
             <i class="fa fa-search"></i>
           </button>
@@ -44,12 +46,6 @@
       </div>
       <div class="sidebar-item sidebar-my-dives">
         <%= link_to "Dives", dives_path, class: "sidebar-link" %>
-      </div>
-      <div class="sidebar-item">
-        <%= link_to "Photos", "", class: "sidebar-link" %>
-      </div>
-      <div class="sidebar-item sidebar-events">
-        <%= link_to "Events", "", class: "sidebar-link" %>
       </div>
       <div class="sidebar-item sidebar-dive-spots">
         <%= link_to "Dive spots", divesites_path, class: "sidebar-link" %>

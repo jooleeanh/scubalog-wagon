@@ -17,7 +17,7 @@
       <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :dob %>
+      <%= f.input :dob, label: "Date of Birth" %>
       <%= f.input :gender%>
       <%= f.input :location%>
       <%= f.input :certifications%>
@@ -29,9 +29,6 @@
     </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <p style="padding-bottom: 50px;">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
 </div>

@@ -1,95 +1,94 @@
 <% if dive || @user %>
-<% if dive&.user&.dives&.count&.positive? || @user&.dives&.count&.positive? || current_user&.dives&.count&.positive? %>
-<div class="divebox-dive">
-  <div class="dive-title">
-    <h2><%= dive.divesite.name %></h2>
-    <h3><%= date_long(dive.datetime) %></h3>
-    <div class="row following-row">
-      <div class="dive-photo">
-        <% if dive.photos && dive.photos? %>
-        <% dive.photos.each do |photo|%>
-        <%= link_to cloudinary_url(("http://res.cloudinary.com/jooleeanh/image/upload/#{photo.path}"), resource_type: :raw), class: "swipebox" do %>
-        <%= cl_image_tag(photo.path, :width => 300, :height => 200, :crop => :fill) %>
-        <% end %>
-        <% end %>
-        <% end %>
+  <% if dive&.user&.dives&.count&.positive? || @user&.dives&.count&.positive? || current_user&.dives&.count&.positive? %>
+    <div class="divebox-dive">
+    <div class="dive-title">
+      <h2><%= dive.divesite.name %> <small><em><%= link_to "More details", dive %></em></small></h2>
+      <h3><%= date_long(dive.datetime) %></h3>
+      <div class="row following-row">
+        <div class="dive-photo">
+          <% if dive.photos && dive.photos? %>
+            <% dive.photos.each do |photo|%>
+              <%= link_to cloudinary_url(("http://res.cloudinary.com/jooleeanh/image/upload/#{photo.path}"), resource_type: :raw), class: "swipebox" do %>
+                <%= cl_image_tag(photo.path, :width => 300, :height => 200, :crop => :fill, class: "swipebox-image") %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="dive-info">
-    <div class="dashboard-dive-info-box">
-      <div class="row">
-        <div class="col-xs-12 col-md-4">
-          <div class="container-fluid single-dive-container-cover">
-            <div class="average-stats-details">
-              <div class="box-stats">
-                <div class="head-box">
-                  <p class="text-center">Dive Type</p>
-                  <% if dive.types.blank? %>
-                  <h1 class="text-center">Casual</h1>
-                  <% else %>
-                  <h1 class="text-center"><%= dive.types&.capitalize %></h1>
-                  <% end %>
+    <div class="dive-info">
+      <div class="dashboard-dive-info-box">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <div class="container-fluid single-dive-container-cover">
+              <div class="average-stats-details">
+                <div class="box-stats">
+                  <div class="head-box">
+                    <p class="text-center">Dive Type</p>
+                    <% if dive.types.blank? %>
+                    <h1 class="text-center">Casual</h1>
+                    <% else %>
+                    <h1 class="text-center"><%= dive.types&.capitalize %></h1>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
-              <div class="full-box">
-                <div class="full-box-icons">
-                  <h3><%= time_long(dive.datetime) %></h3>
-                  <p>Start</p>
+                <div class="full-box">
+                  <div class="full-box-icons">
+                    <h3><%= time_long(dive.datetime) %></h3>
+                    <p>Start</p>
+                  </div>
+                  <div class="full-box-icons">
+                    <h3><%= dive.bottom_time %> min</h3>
+                    <p>Duration</p>
+                  </div>
                 </div>
-                <div class="full-box-icons">
-                  <h3><%= dive.bottom_time %> min</h3>
-                  <p>Duration</p>
-                </div>
-              </div>
-              <div class="full-box">
-                <div class="full-box-icons">
-                  <h3><%= dive.max_depth.to_i%> m</h3>
-                  <p>Max Depth</p>
-                </div>
-                <div class="full-box-icons">
-                  <h3> <%=  dive.visibility%> m </h3>
-                  <p> Visibility</p>
-                </div>
+                <div class="full-box">
+                  <div class="full-box-icons">
+                    <h3><%= dive.max_depth.to_i%> m</h3>
+                    <p>Max Depth</p>
+                  </div>
+                  <div class="full-box-icons">
+                    <h3> <%=  dive.visibility%> m </h3>
+                    <p> Visibility</p>
+                  </div>
 
-              </div>
-              <div class="full-box">
-                <div class="full-box-icons">
-                  <h3> <%=  dive.min_temp%>°C</h3>
-                  <p> Temp</p>
                 </div>
-                <div class="full-box-icons">
-                  <h3> <%=dive.enjoyment%>/5</h3>
-                  <p> Enjoyment</p>
+                <div class="full-box">
+                  <div class="full-box-icons">
+                    <h3> <%=  dive.min_temp%>°C</h3>
+                    <p> Temp</p>
+                  </div>
+                  <div class="full-box-icons">
+                    <h3> <%=dive.enjoyment%>/5</h3>
+                    <p> Enjoyment</p>
+                  </div>
                 </div>
-              </div>
-              <div class="full-box">
+                <div class="full-box">
 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-8">
+            <div class="dive-graph">
+              <%= line_chart [
+                {name: "Depth", data: dive.data_points.pluck(:time, :depth)},
+                {name: "Air Consumption", data: dive.data_points.pluck(:time, :air), visible: false},
+                {name: "Temperature", data: dive.data_points.pluck(:time, :temp), visible: false}], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, width: "100%", height: "100%", discrete: true %>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-md-8">
-          <div class="dive-graph">
-            <%= line_chart [
-              {name: "Depth", data: dive.data_points.pluck(:time, :depth)},
-              {name: "Air Consumption", data: dive.data_points.pluck(:time, :air), visible: false},
-              {name: "Temperature", data: dive.data_points.pluck(:time, :temp), visible: false}], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, width: "100%", height: "100%", discrete: true %>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
-</div>
+  <% end %>
 
-<% end %>
-
-<%= content_for :after_js do %>
-  <script type="text/javascript">
-  ;( function( $ ) {
-    $( '.swipebox' ).swipebox();
-  } )( jQuery );
-  </script>
-<% end %>
+  <%= content_for :after_js do %>
+    <script type="text/javascript">
+    ;( function( $ ) {
+      $( '.swipebox' ).swipebox();
+    } )( jQuery );
+    </script>
+  <% end %>
 <% end %>

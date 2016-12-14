@@ -1,10 +1,7 @@
 <div id='stats-container'>
   <div class="row">
     <div class="col-xs-12 col-md-6 average-stats">
-      <div class="chart-graph">
-        <%#= line_chart cumulative_line_chart_data(@user), width: "100%" %>
-        <div id="map" style="width: 100%; height: 98%;"></div>
-      </div>
+      <div id="map" style="width: 100%; height: 98%;"></div>
     </div>
     <% if @user.dives.count > 0 %>
       <div class="col-xs-12 col-md-6 average-stats-details">
@@ -59,16 +56,18 @@
         <p>
           <% florian = User.find_by(last_name: "Bataille") %>
           <% julian = User.find_by(last_name: "Honma") %>
+          <% if julian.nil? == false %>
           Check out
-          <%= link_to "Julian", user_path(julian.id) %>
-          <% if florian.nil? == false %>
-            and
-            <%= link_to "Florian", user_path(florian.id) %>
-            's profiles
-          <% else %>
-            's profile
-          <% end %>
+            <%= link_to "Julian", user_path(julian.id) %>
+            <% if florian.nil? == false %>
+              and
+              <%= link_to "Florian", user_path(florian.id) %>
+              's profiles
+            <% else %>
+              's profile
+            <% end %>
            to see how your dashboard will look like after a few dives ;)
+         <% end %>
         </p>
       </div>
     <% end %>

@@ -244,6 +244,12 @@ div.bordure {
   border-bottom: 1px solid black;
 }
 
+.divesite-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
 .divesite-index-card {
 }
 
@@ -253,8 +259,10 @@ div.bordure {
 
 .divesite-index-card img {
   border-radius: 20px;
-  width: 350px;
-  display: block;
+  margin: 5%;
+  // display: block;
+  // height: 100%;
+  object-fit: cover;
 }
 
 .divesite-index-card button:hover {
@@ -264,7 +272,6 @@ div.bordure {
 
 .text-divesite-index {
   text-align: center;
-  width: 350px;
 }
 
 .col-sm-2 .col-sm-offset-4 .text-center .btn .btn-banner-sidebar h2 {

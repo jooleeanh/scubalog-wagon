@@ -326,13 +326,12 @@ div.bordure {
   justify-content: center;
   align-items: center;
 }
-
 .no-border {
   border: 0;
 }
+.empty-body {
+  color: rgb(124, 124, 124);
+  padding: 20px 2%;
+  font-size: $base-size;
 
-.no-border:active {
-}
-
-.tab-effect-divesite:hover {
 }

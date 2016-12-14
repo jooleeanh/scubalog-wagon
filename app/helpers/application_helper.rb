@@ -3,28 +3,14 @@ module ApplicationHelper
   def display_avatar(user, extra_class = "")
     if user
       if user.photo?
-        return cl_image_tag(user.photo.path, :width=>36, :height=>36, :crop=>"fill", class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+        return cl_image_tag(user.photo.path, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu")
       elsif user.facebook_picture_url.nil? == false
-        return image_tag(user.facebook_picture_url, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+        return image_tag(user.facebook_picture_url, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu")
       elsif user.image
-        return image_tag(user.image, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
+        return image_tag(user.image, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu")
+      else
+        return image_tag("user_avatar.png", class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu")
       end
-    else
-      return image_tag("user_avatar.png", class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
-    end
-  end
-
-  def display_avatar_big(user, extra_class = "")
-    if user
-      if user.photo?
-        return cl_image_tag(user.photo.path, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
-      elsif user.facebook_picture_url.nil? == false
-        return image_tag(user.facebook_picture_url, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
-      elsif user.image
-        return image_tag(user.image, class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
-      end
-    else
-      return image_tag("user_avatar.png", class: "avatar dropdown-toggle #{extra_class}", id: "navbar-wagon-menu", "data-toggle": "dropdown")
     end
   end
 

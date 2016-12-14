@@ -4,14 +4,11 @@
     <%= link_to root_path, class: "sidebar-scubalog" do %>
     <h3 class="font-yellowtail sidebar-scubalog">Scubalog</h3>
     <% end %>
-    <a href="#" class="visible-xs menu-handle" id="close-menu">
-      <i class="fa fa-arrow-left"></i>
-    </a>
 
     <div class="sidebar-group-user">
       <div class="sidebar-item sidebar-user-avatar">
         <%= link_to current_user do %>
-          <%= display_avatar_big(current_user, "avatar-big") %>
+          <%= display_avatar(current_user, "avatar-big") %>
         <% end %>
       </div>
       <div class="sidebar-item-name sidebar-user-name">

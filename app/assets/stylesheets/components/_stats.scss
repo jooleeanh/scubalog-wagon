@@ -38,6 +38,7 @@
 .average-stats {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 500px;
   background-color: #F4F3F2;
 }
@@ -150,11 +151,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px 2%;
+  margin: 0px 2%;
 }
 
 .full-box-icons h3 {
   font-size: 28px;
+  margin: 10px 0 0 0;
 }
 
 .full-box-icons h2{
@@ -163,6 +165,7 @@
 
 .full-box-icons p{
   color: #333333;
+  text-align: center;
 }
 
 .full-box-icons img{

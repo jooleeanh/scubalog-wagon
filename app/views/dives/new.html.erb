@@ -1,5 +1,5 @@
 <div class="dive-new">
-  <div class="text-center dive-form-background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "freediving-1383104.jpg" %>');">
+  <div class="text-center dive-form-background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "freediver-60p.jpg" %>');">
     <%= simple_form_for [@dive] do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
@@ -9,6 +9,15 @@
           <% size2 = 0.9 %>
           <div class="dive-input-header">
             <h2 tabindex=0 class="text-center">Log a dive</h2>
+            <p class="text-center">
+              Press
+              <span class="dive-new-key">TAB</span>
+              and
+              <span class="dive-new-key">SHIFT</span>
+              <span class="dive-new-key">TAB</span>
+              to navigate
+            </p>
+            <button type="button" autofocus style="opacity: 0;"></button>
           </div>
           <div class="dive-input dive-input-datetime">
             <p>
@@ -122,7 +131,7 @@
             <p>
               <%= image_tag("icons/bulb.png" , class: "dive-index-icon") %>Share a tip about that spot
             </p>
-            <div class="zoomTarget dive-new-form-field" data-targetsize="<%= size1 %>"><%= f.input :review_content, label: 'Share a tip to fellow divers', label: false %></div>
+            <div class="zoomTarget dive-new-form-field dive-new-form-field-last" data-targetsize="<%= size1 %>"><%= f.input :review_content, label: false %></div>
           </div>
           <div class="form-actions">
             <%= f.button :submit, "Log this dive !", class: 'btn btn-primary' %>

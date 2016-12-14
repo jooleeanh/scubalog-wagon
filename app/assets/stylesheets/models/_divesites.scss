@@ -160,10 +160,9 @@
 
 .sightings-container {
   border: solid 3px #EFEFEF;
-  width: 59%;
   background-color: #353942;
   border-radius: 5px;
-  margin-left: 4%;
+  margin: auto 4%;
   padding-top: 2%;
   padding-bottom: 2%;
 }
@@ -228,11 +227,10 @@ color: white;
 }
 
 .margin-row {
-  margin: 40px 40px;
   background-color: #353942;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 20px 5px;
-  width: 80%;
+  margin: 30px auto;
 }
 
 
@@ -254,15 +252,13 @@ div.bordure {
 }
 
 .divesite-index-card h2, p {
-  color: rgb(190,190,190);
+  color: rgb(176, 176, 176);
 }
 
 .divesite-index-card img {
-  border-radius: 20px;
   margin: 5%;
-  // display: block;
-  // height: 100%;
   object-fit: cover;
+  width: 350px;
 }
 
 .divesite-index-card button:hover {
@@ -272,6 +268,7 @@ div.bordure {
 
 .text-divesite-index {
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .col-sm-2 .col-sm-offset-4 .text-center .btn .btn-banner-sidebar h2 {
@@ -329,14 +326,12 @@ div.bordure {
   justify-content: center;
   align-items: center;
 }
-
 .no-border {
   border: 0;
 }
+.empty-body {
+  color: rgb(124, 124, 124);
+  padding: 20px 2%;
+  font-size: $base-size;
 
-.no-border:active {
-}
-
-.tab-effect-divesite:hover {
-  background: red;
 }

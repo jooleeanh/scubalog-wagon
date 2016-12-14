@@ -46,7 +46,7 @@ class Seed < BasicSeed
     if answer == "y"
       custom_users = []
       users = User.where.not(facebook_picture_url: nil)
-      custom_users << users.find_by(last_name: "Bataille")
+      # custom_users << users.find_by(last_name: "Bataille")
       custom_users << users.find_by(last_name: "Honma")
       custom_users.reject! { |u| u.nil? }
     end

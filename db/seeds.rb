@@ -192,7 +192,7 @@ class Seed < BasicSeed
     answer = ask_create("computer dives for custom users")
     if answer == "y"
       seed = SeedComputerDives.new
-      seed.seed_computer_dives(User.where(last_name: Honma), 15)
+      seed.seed_computer_dives(User.where(last_name: "Honma"), 15)
     end
   end
 

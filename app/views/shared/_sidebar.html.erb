@@ -11,11 +11,11 @@
     <div class="sidebar-group-user">
       <div class="sidebar-item sidebar-user-avatar">
         <%= link_to current_user do %>
-        <%= display_avatar_big(current_user, "avatar-big") %>
+          <%= display_avatar_big(current_user, "avatar-big") %>
         <% end %>
       </div>
       <div class="sidebar-item-name sidebar-user-name">
-        <%= link_to current_user do %>
+        <%= link_to edit_user_registration_path do %>
         <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
         <% end %>
       </div>
@@ -46,12 +46,6 @@
       </div>
       <div class="sidebar-item sidebar-my-dives">
         <%= link_to "Dives", dives_path, class: "sidebar-link" %>
-      </div>
-      <div class="sidebar-item">
-        <%= link_to "Photos", "", class: "sidebar-link" %>
-      </div>
-      <div class="sidebar-item sidebar-events">
-        <%= link_to "Events", "", class: "sidebar-link" %>
       </div>
       <div class="sidebar-item sidebar-dive-spots">
         <%= link_to "Dive spots", divesites_path, class: "sidebar-link" %>

@@ -21,5 +21,4 @@ private
       marker.infowindow render_to_string(partial: "/dives/map_box", locals: { dive: dive })
     end
   end
-
 end

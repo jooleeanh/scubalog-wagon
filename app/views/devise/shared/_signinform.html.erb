@@ -11,6 +11,18 @@
           <% end -%>
         <% end -%>
         <hr>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.input :first_name, as: :hidden, input_html: { value: 'Scuba' }   %>
+          <%= f.input :last_name, as: :hidden, input_html: { value: 'Diver' }   %>
+          <%= f.input :location, as: :hidden, input_html: { value: 'Bordeaux' }   %>
+          <%= f.input :email, as: :hidden, input_html: { value: 'visitor@scubalog.com' }   %>
+          <%= f.input :password, as: :hidden, input_html: { value: 'scubalog' }   %>
+          <%= f.input :password_confirmation, as: :hidden, input_html: { value: 'scubalog' }   %>
+          <div class="form-actions">
+            <%= f.button :submit, 'Sign in as a visitor', class: 'btn' %>
+          </div>
+        <% end %>
+        <hr>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="container-fluid login-form">
         <div class="form-inputs">

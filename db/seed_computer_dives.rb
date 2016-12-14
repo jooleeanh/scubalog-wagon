@@ -17,7 +17,6 @@ class SeedComputerDives < BasicSeed
       dive_count = 0
       freedive_files = 0
       count = 0
-      byebug
       seed = SeedCustom.new
       seed.create_divesites
       dives = seed.dives

@@ -44,10 +44,7 @@ class User < ApplicationRecord
   end
 
   def seed_template_dives
-    require_relative '../../db/seed_computer_dives'
-    require_relative '../../db/basic_seed'
-    seed = SeedComputerDives.new
-    seed.seed_computer_dives([User.find(self.id)], 5)
+    self.dives = User.find_by(last_name: "Honma").dives
   end
 end
 

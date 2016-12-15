@@ -144,14 +144,12 @@
   color: #353942;
 }
 
-.dive-chart {
-  max-width: 500px;
-}
-
 .dive_container {
   width: 100%;
 }
-
+.dive-show-info {
+  padding-top: 40px;
+}
 .header-box {
   width: 100%;
 }
@@ -166,22 +164,33 @@
   color: #C7C7C7;
   text-decoration: none;
 }
-
+.sightings-comments {
+  padding-bottom: 50px;
+}
 .title-head {
   color: #353942;
   padding-left: 6%;
 }
 
+
 .title-head:hover {
   text-decoration: none;
   color: #C7C7C7;
 }
-
+.swipebox-image {
+  text-align: center;
+  overflow: hidden;
+  img {
+    position: relative; /* allows repositioning */
+    left: 100%; /* move the whole width of the image to the right */
+    margin-left: -200%; /* magic! */
+  }
+}
 .dive-photo {
-  display: flex;
-  justify-content: center;
 }
 
-.divebax {
-  width: 80%;
+@media (min-width: $screen-sm) {
+  .divebax {
+    width: 80%;
+  }
 }

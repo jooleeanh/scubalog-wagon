@@ -1,10 +1,14 @@
-<div class="row following-row">
+<div class="row">
   <div class="dive-photo">
     <% if @dive.photos && @dive.photos? %>
       <% @dive.photos.each do |photo|%>
-        <%= link_to cloudinary_url(("http://res.cloudinary.com/jooleeanh/image/upload/#{photo.path}"), resource_type: :raw), class: "swipebox" do %>
-          <%= cl_image_tag(photo.path, :width => 300, :height => 200, :crop => :fill) %>
-        <% end %>
+        <div class="col-xs-12 col-md-4">
+          <div class="swipebox-image">
+            <%= link_to cloudinary_url(("http://res.cloudinary.com/jooleeanh/image/upload/#{photo.path}"), resource_type: :raw), class: "swipebox" do %>
+              <%= cl_image_tag(photo.path, :width => 300, :height => 200, :crop => :fill) %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     <% end %>
   </div>

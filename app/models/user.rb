@@ -44,7 +44,8 @@ class User < ApplicationRecord
   end
 
   def seed_template_dives
-    self.dives = User.find_by(last_name: "Honma").dives
+    dives = User.find_by(last_name: "Honma").dives.clone
+    self.dives = dives.update_all(user: self)
   end
 end
 

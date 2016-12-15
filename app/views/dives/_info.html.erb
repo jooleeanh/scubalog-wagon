@@ -5,49 +5,33 @@
         <div id="map" style="width: 100%; height: 300px;"></div>
       </div>
     </div>
-    <!-- <div class="col-xs-12 col-md-4">
-      <dl class="dl-horizontal">
-        <% dive_fields_hash(@dive).each do |field| %>
-        <dt><%= field[:key] %></dt>
-        <dd>
-          <%= field[:value] %>
-          <em><%= field[:unit] %></em>
-        </dd>
-        <% end %>
-      </dl>
-    </div> -->
     <div class="col-xs-12 col-md-8">
-      <div class="col-xs-12 col-md-3 text-center following-row">
+      <div class="col-xs-6 col-lg-4 text-center following-row">
         <p> <%= @dive.max_depth.to_i %> m</p>
         <h6> Depth </h6>
       </div>
 
-      <div class="col-xs-12 col-md-3 text-center following-row">
+      <div class="col-xs-6 col-lg-4 text-center following-row">
         <p><%= @dive.bottom_time %> min</p>
         <h6> Time </h6>
       </div>
 
-      <div class="col-xs-12 col-md-3 text-center following-row">
+      <div class="col-xs-6 col-lg-4 text-center following-row">
         <p><%= @dive.types.capitalize %></p>
         <h6> Type </h6>
       </div>
 
-      <div class="col-xs-12 col-md-3 text-center following-row">
+      <div class="col-xs-6 col-lg-4 text-center following-row">
         <p><%= @dive.max_temp.to_i %> °C</p>
         <h6> Temp </h6>
       </div>
 
-      <div class="col-xs-12 col-md-4 text-center following-row">
-        <p><%= @dive.start_air %> bar</p>
-        <h6> Start air </h6>
+      <div class="col-xs-6 col-lg-4 text-center following-row">
+        <p><%= air_use(@dive) %> bar</p>
+        <h6> Air use </h6>
       </div>
 
-      <div class="col-xs-12 col-md-4 text-center following-row">
-        <p><%= @dive.end_air %> bar</p>
-        <h6> End air </h6>
-      </div>
-
-      <div class="col-xs-12 col-md-4 text-center following-row">
+      <div class="col-xs-6 col-lg-4 text-center following-row">
         <p><%= @dive.enjoyment %>/5</p>
         <h6> Enjoyment </h6>
       </div>
@@ -68,11 +52,12 @@
         {name: "Depth", data: @dive.data_points.pluck(:time, :depth)},
         {name: "Air Consumption", data: @dive.data_points.pluck(:time, :air), visible: false},
         {name: "Temperature", data: @dive.data_points.pluck(:time, :temp), visible: false}
-        ], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true %>
+        ], library: { yAxis: {reversed: true}, xAxis: {reversed: true}}, discrete: true, width: "100%" %>
     <% end %>
   </div>
 </div>
-<div class="row">
+<div class="sightings-comments">
+  <div class="row">
   <div class="col-xs-12 col-md-6">
     <div class="dive-sightings">
       <h2 class="text-center" style="padding-bottom: 7%;">Sightings</h2>
@@ -100,4 +85,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>

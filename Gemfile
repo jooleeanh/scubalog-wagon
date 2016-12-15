@@ -30,6 +30,7 @@ gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
 gem 'chartkick'
 gem 'groupdate'
+gem 'deep_cloneable'
 
 gem 'omniauth-facebook'
 

@@ -1,13 +1,26 @@
 .login {
-  width: 500px;
+  width: 100%;
   background-color: #F9F9F9;
   color: black;
+}
+@media (max-width: $screen-sm) {
+  .form-login,.form-signup {
+    width: 80%;
+  }
+}
+@media (min-width: $screen-sm) {
+  .form-login,.form-signup {
+    width: 400px;
+  }
+}
+.form-sign-up {
+  padding: 0 0 40px 0;
 }
 
 .login-form {
   align-text: center;
   color: black;
-  width: 80%;
+  width: 70%;
   background-color: #F7F7F7;
   padding-top: 2%;
   padding-bottom: 2%;

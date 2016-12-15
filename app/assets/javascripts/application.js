@@ -12,4 +12,10 @@
 //= require zoomooz/jquery.zoomooz.js
 //= require_tree .
 
-
+$(document).ready(function() {
+  if (window.location.hash == '#_=_'){
+    history.replaceState
+        ? history.replaceState(null, null, window.location.href.split('#')[0])
+        : window.location.hash = '';
+}
+});

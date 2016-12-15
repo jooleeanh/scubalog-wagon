@@ -87,6 +87,8 @@ GEM
     colorize (0.8.1)
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
+    deep_cloneable (2.2.2)
+      activerecord (>= 3.1.0, < 5.2.0)
     devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -295,6 +297,7 @@ DEPENDENCIES
   cloudinary (= 1.1.0)
   coffee-rails
   colorize
+  deep_cloneable
   devise
   faker
   figaro

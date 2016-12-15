@@ -41,11 +41,11 @@ module DivesHelper
     ]
   end
 
-  def air_use(start_air, end_air)
-    if start_air == nil || end_air == nil
-      nil
+  def air_use(dive)
+    if dive.start_air == nil || dive.end_air == nil
+      0
     else
-      start_air - end_air
+      dive.start_air - dive.end_air
     end
   end
 

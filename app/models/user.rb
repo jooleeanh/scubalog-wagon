@@ -44,8 +44,15 @@ class User < ApplicationRecord
   end
 
   def seed_template_dives
-    dives = User.find_by(last_name: "Honma").dives.clone
-    self.dives = dives.update_all(user: self)
+    unless self.last_name == "Honma"
+      dives = User.find_by(last_name: "Honma").dives
+      dives.each do |dive|
+        new_dive = dive.deep_clone include: [:data_points, :buddies, { sightings: :animals }]
+        new_dive.photos = dive.photos
+        new_dive.user = self
+        new_dive.save
+      end
+    end
   end
 end
 
